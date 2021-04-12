@@ -1,0 +1,25 @@
+{
+	"name": "my-docs",
+	"scripts": {
+		"start": "docsify start ./docs",
+		"deploy": "now -p"
+	},
+	"files": [
+		"docs"
+	],
+	"docsify": {
+		"config": {
+			"basePath": "https://docsify.js.org/",
+			"loadSidebar": true,
+			"loadNavbar": true,
+			"coverpage": true,
+			"name": "docsify"
+		}
+	},
+	"devDependencies": {
+		"docsify-cli": "^4.4.3"
+	},
+	"dependencies": {
+		"vercel": "^21.3.3"
+	}
+}
