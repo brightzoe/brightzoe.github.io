@@ -8,6 +8,7 @@
   - [原型](prototype.md)
 - React
     - [数据应该放在哪](whereToSaveData.md)
+    - [如何理解受控组件和非受控组件](controlled&UncontrolledComponents.md)
     - [React-Router传参](passParamsInReact.md)
     - [Hook](hook.md)
 - 前端思维
