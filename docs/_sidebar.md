@@ -7,6 +7,7 @@
   - [闭包](closure.md)
   - [原型](prototype.md)
 - React
+    - [React设计模式和最佳实践](designPattern&bestPractices.md)
     - [数据应该放在哪](whereToSaveData.md)
     - [如何理解受控组件和非受控组件](controlled&UncontrolledComponents.md)
     - [React-Router传参](passParamsInReact.md)
