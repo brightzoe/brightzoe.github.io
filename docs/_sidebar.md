@@ -20,3 +20,4 @@
 - 其他
   - [使用antd时踩过的坑](setbacksIHadWithAntD.md)
   - [碰到的一些奇奇怪怪的问题](strangeQuestions.md)
+  - [项目优化](performanceOptimization.md)
