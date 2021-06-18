@@ -17,6 +17,61 @@ cra 没有 eject 的的项目没有这个问题。脚手架的后端服务是怎
 
 ## 前端
 
+### react 中 less 样式未生效
+
+- 产生了什么问题？
+ 配置好了less-loader，但引用.less 文件，样式并未生效，以下是对应的webpack配置。
+
+```js
+{
+  test: /\.less$/,
+  exclude: /node_modules/,
+  use: [
+    "style-loader",
+    {
+      loader: "css-loader",
+      options: {
+        modules: {
+          localIdentName: "[local]-[contenthash:8]",
+        },
+        importLoaders: 2,
+        localsConvention: "camelCase",
+        esModule: true,
+        sourceMap: true,
+      },
+    },
+    {
+      loader: "postcss-loader",
+      options: {
+      sourceMap: true,
+      },
+   },
+    {
+      loader: "less-loader",
+      options: {
+        sourceMap: true,
+        lessOptions: {
+          javascriptEnabled: true,
+        },
+      },
+    },
+  ],
+}
+```
+- 上网查询，分析原因：
+  css-loader自带css-modules,会把所有类名编译为哈希字符串.less文件中写的样式已经被重命名了，但react中的className并没有一起被处理。
+- 解决方案：
+  1. 按css-modules的方式引用样式，使用`style.cptbutton`
+  ```js
+     import style from './index.less';
+  ```
+  2. css-modules使用全局作用域。
+  在less文件中，所有内容外用:global语法包裹住。:global声明一个全局规则，凡是这样声明的class，都不会被编译成哈希字符串。
+  3. webpack css-loader,可以直接设置禁用css-modules.
+<hr/>
+
+### checkbox 监听不生效
+
 - 产生了什么问题？
   react 组件里的 checkbox 上的监听事件不生效。
 
