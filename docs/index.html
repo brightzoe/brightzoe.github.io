@@ -14,7 +14,26 @@
 
 	<body>
 		<div id="app"></div>
+
+		<!-- Docsify v4 -->
+		<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+		<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+		<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
 		<script>
+			const gitalk = new Gitalk({
+				clientID: "a89a6ee9101ef77ef103",
+				clientSecret: "f57c69ba7efd48b602edd94a372bbe76c1bcc9b4",
+				repo: "brightzoe.github.io",
+				owner: "brightzoe",
+				admin: ["brightzoe"],
+				// facebook-like distraction free mode
+				distractionFreeMode: false,
+				id: window.location.hash.substr(1),
+			});
+
 			window.$docsify = {
 				name: "brightzoe的blog",
 				repo: "https://github.com/brightzoe/brightzoe.github.io",
@@ -40,27 +59,18 @@
 							);
 						});
 					},
+					function (hook, vm) {
+						hook.beforeEach(function (content) {
+							// 使用插件机制，这样每次变换页面，都会更新id，
+							// 如果不加这个，因为gitalk在new的时候只处理了一次，后面切换页面，id还是固定的
+							// 每次切换，就会重新赋值gitalk.options.id，这样就是和当前页面一致了
+							// 另外如果hash只超过50，可能考虑md5处理下在赋值
+							gitalk.options.id = location.hash.substr(1);
+							return content;
+						});
+					},
 				],
 			};
-		</script>
-		<!-- Docsify v4 -->
-		<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-		<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-		<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-		<script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
-		<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
-		<script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
-		<script>
-			const gitalk = new Gitalk({
-				clientID: "a89a6ee9101ef77ef103",
-				clientSecret: "f57c69ba7efd48b602edd94a372bbe76c1bcc9b4",
-				repo: "brightzoe.github.io",
-				owner: "brightzoe",
-				admin: ["brightzoe"],
-				// facebook-like distraction free mode
-				distractionFreeMode: false,
-				id: window.location.pathname,
-			});
 		</script>
 	</body>
 </html>
