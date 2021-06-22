@@ -31,7 +31,16 @@
 				topMargin: 40,
 				// logo: "/_media/icon.png",//左侧大头像
 				formatUpdated: "{YY}/{MM}/{DD} {HH}:{mm}", //时间戳的显示方式
-				ga: "UA-G-F6SWNEE0MC",
+				ga: "UA-G-F6SWNEE0MC", //google 统计
+				count: {
+					//字数统计
+					countable: true,
+					fontsize: "0.9em",
+					color: "rgb(90,90,90)",
+					language: "chinese",
+					margin: "10px",
+					float:"right"
+				},
 				plugins: [
 					function (hook) {
 						hook.beforeEach(function (html) {
@@ -73,5 +82,6 @@
 		<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+		<script src="//unpkg.com/docsify-count/dist/countable.js"></script>
 	</body>
 </html>
