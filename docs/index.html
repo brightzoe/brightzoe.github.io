@@ -8,7 +8,7 @@
 		<link rel="shortcut icon" href="/_media/icon.png" type="image/x-icon" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
-		<link rel="stylesheet" href="./_media/style.css">
+		<link rel="stylesheet" href="./_media/style.css" />
 	</head>
 
 	<body>
@@ -18,12 +18,27 @@
 				name: "brightzoe的blog",
 				repo: "",
 				loadSidebar: true,
-				subMaxLevel: 2, //根据标题生成目录
+				loadNavbar: true,
+				subMaxLevel: 3, //根据标题生成目录
 				search: "auto",
 				auto2top: true,
-				routerMode: 'history',
+				routerMode: "history",
 				topMargin: 40,
-				// logo: "/_media/icon.png",
+				// logo: "/_media/icon.png",//左侧大头像
+				formatUpdated: "{YY}/{MM}/{DD} {HH}:{mm}", //时间戳的显示方式
+				plugins: [
+					function (hook) {
+						hook.beforeEach(function (html) {
+							return (
+								html +
+								"<hr/>" +
+								"Last modified {docsify-updated} " +
+								"<hr/>" +
+								"<span><a href='https://github.com/brightzoe'>brightzoe</a> &copy;2021</span>"
+							);
+						});
+					},
+				],
 			};
 		</script>
 		<!-- Docsify v4 -->

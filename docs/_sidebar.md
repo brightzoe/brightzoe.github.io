@@ -8,9 +8,9 @@
   - [原型](prototype.md)
   - [学习模块、模块化](learnModule.md)
 - React
-    - [React设计模式和最佳实践](designPattern&bestPractices.md)
+    - [React设计模式和最佳实践](designPatternAndBestPractices.md)
     - [数据应该放在哪](whereToSaveData.md)
-    - [如何理解受控组件和非受控组件](controlled&UncontrolledComponents.md)
+    - [如何理解受控组件和非受控组件](controlledAndUncontrolledComponents.md)
     - [React-Router传参](passParamsInReact.md)
     - [Hook](hook.md)
 - 前端思维
@@ -24,3 +24,4 @@
   - [项目优化](performanceOptimization.md)
   - [如何提升自己等软技能](socialSkillsToImprove.md)
   - [网站构建](websiteConstruction.md)
+  - [test](test.md)
