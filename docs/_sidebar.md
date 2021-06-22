@@ -6,6 +6,7 @@
 
   - [闭包](closure.md)
   - [原型](prototype.md)
+  - [学习模块、模块化](learnModule.md)
 - React
     - [React设计模式和最佳实践](designPattern&bestPractices.md)
     - [数据应该放在哪](whereToSaveData.md)
@@ -22,3 +23,4 @@
   - [碰到的一些奇奇怪怪的问题](strangeQuestions.md)
   - [项目优化](performanceOptimization.md)
   - [如何提升自己等软技能](socialSkillsToImprove.md)
+  - [网站构建](websiteConstruction.md)
