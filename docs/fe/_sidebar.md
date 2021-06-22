@@ -9,7 +9,7 @@
   - [学习模块、模块化](learnModule.md)
 - React
     - [React设计模式和最佳实践](designPatternAndBestPractices.md)
-    - [数据应该放在哪](whereToSaveData.md "在React中如何传递数据")
+    - [数据应该放在哪](whereToSaveData.md)
     - [如何理解受控组件和非受控组件](controlledAndUncontrolledComponents.md)
     - [React-Router传参](passParamsInReact.md)
     - [Hook](hook.md)
