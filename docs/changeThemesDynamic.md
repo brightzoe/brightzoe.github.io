@@ -39,6 +39,16 @@ preview.onclick = function (e) {
   <a data-theme="pure">pure.css</a>
 </div>
 
+<style>
+  .demo-theme-preview a {
+    padding-right: 10px;
+  }
+
+  .demo-theme-preview a:hover {
+    cursor: pointer;
+  }
+</style>
+
 <script>
   var preview = Docsify.dom.find('.demo-theme-preview');
   var themes = Docsify.dom.findAll('[rel="stylesheet"]');
@@ -47,7 +57,6 @@ preview.onclick = function (e) {
     themes.forEach(function (theme) {
       theme.disabled = theme.title !== title;
       });
-
   };
 </script>
 
