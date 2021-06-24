@@ -44,6 +44,7 @@
 					margin: "10px",
 					float: "right",
 				},
+				executeScript: true,//允许执行script，但只执行文档里第一个script标签，内嵌vue会自动开启
 				plugins: [
 					function (hook) {
 						hook.beforeEach(function (html) {
