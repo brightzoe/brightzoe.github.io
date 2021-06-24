@@ -51,7 +51,7 @@ Angular 依赖查询：查找节点，依赖注入
   使用PieceTable避免过多的元数据
 
 
-- reference：
+## reference：
 
 1.  被删：前端领域的算法
 

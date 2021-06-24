@@ -18,6 +18,7 @@
 - 业务
   - [前端权限控制](frontEndPermissionControl.md)
   - [对路由的理解](howToUnderstandRouter.md)
+  - [前端一键切换主题](changeThemesDynamic.md "前端换肤，动态切换主题的实现")
 - 其他
   - [使用antd时踩过的坑](setbacksIHadWithAntD.md)
   - [碰到的一些奇奇怪怪的问题](strangeQuestions.md)

@@ -1,11 +1,17 @@
-.markdown-section pre{
-  padding:0;
+.markdown-section pre {
+	padding: 0;
 }
-footer{
-  text-align: center;
+footer {
+	text-align: center;
 }
-.markdown-section>:first-child{
-  float: right;
-  margin-top: 20px !important;
-  margin-right: 30px;
+@media screen and (max-width: 400px) {
+	/* 宽度小的情况下隐藏github */
+	.app-nav li:last-child {
+		display: none;
+	}
+}
+.markdown-section > :first-child {
+	float: right;
+	margin-top: 20px !important;
+	margin-right: 30px;
 }
