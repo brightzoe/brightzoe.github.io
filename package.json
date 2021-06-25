@@ -2,6 +2,7 @@
 	"name": "my-docs",
 	"scripts": {
 		"start": "docsify start ./docs",
+		"serve": "docsify start ./docs",
 		"deploy": "now -p"
 	},
 	"files": [
