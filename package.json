@@ -1,7 +1,7 @@
 {
 	"name": "my-docs",
 	"scripts": {
-		"start": "docsify start ./docs",
+		"start": "docsify start ./docs -p 3333",
 		"serve": "docsify start ./docs",
 		"deploy": "now -p"
 	},

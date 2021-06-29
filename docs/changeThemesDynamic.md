@@ -6,6 +6,34 @@
 比较复杂的实现方式，先不考虑性能消耗等各种：
 可以写不同的 css 文件，设置点击事件，head 标签里动态添加移除 link 标签实现。
 
+## 写多套不同的css样式实现
+不同的样式拆分成不同的文件，动态改变引用css文件的地址。
+首先创建一个空link.
+```js
+  var createLink = (function() {
+    var $link = null;
+    return () => {
+      if ($link) {
+        return $link;
+      }
+      $link = document.createElement("link");
+      $link.rel = "stylesheet";
+      $link.type = "text/css";
+      document.querySelector("head").appendChild($link);
+      return $link;
+    };
+  })();
+```
+切换主题：
+```js
+  function toggleTheme(theme) {
+    var $link = window.createLink();
+    $link.href = "./" + theme + ".css";
+    return theme;
+  }
+  toggleTheme("light");
+```
+
 ## docsify 是如何实现的？
 
 点击 docsify 的切换主题按钮，打开控制台查看网页源码，看到 docsify 是引入了全部的 link，并通过点击给不同的 css link 设置 disabled 属性实现,实现很简单。
@@ -19,11 +47,11 @@ var preview = Docsify.dom.find(".demo-theme-preview");
 var themes = Docsify.dom.findAll('[rel="stylesheet"]');
 
 preview.onclick = function (e) {
-	var title = e.target.getAttribute("data-theme");
+  var title = e.target.getAttribute("data-theme");
 
-	themes.forEach(function (theme) {
-		theme.disabled = theme.title !== title;
-	});
+  themes.forEach(function (theme) {
+    theme.disabled = theme.title !== title;
+  });
 };
 ```
 
@@ -61,8 +89,36 @@ preview.onclick = function (e) {
   };
 </script>
 
-//TODO:给自己挖坑，待填。
 
+## 覆盖样式实现
+
+```scss
+  [data-theme="dark"] {
+    body {
+      background: $dark-fill-1;
+    }
+    .recommend .recommend-list .item .name {
+      color: $dark-color-text;
+    }
+    .recommend .recommend-list .item .desc {
+      color: $dark-color-text-1;
+    }
+    .header .text {
+      color: $dark-color-text-2;
+    }
+  }
+```
+
+```js
+  changeTheme() {
+    document.documentElement.setAttribute(
+      "data-theme",
+      this.theme ? "light" : "dark"
+    );
+  }
+```
+写一套默认的属性，在切换主题的时候，修改某属性的值（data-theme），写一套新的属性，利用css的后面覆盖前面的样式的特性。
+相应demo: https://github.com/brightzoe/skin/tree/brightzoe/style-coverage
 ## 通过 css 变量实现
 
 但可能存在一定的兼容性问题。[点击查看 css variables 的兼容性](https://caniuse.com/?search=css%20variables)
@@ -91,33 +147,67 @@ preview.onclick = function (e) {
     background: var(--primary-color);
   }
 ```
-
-```js
-  changeTheme() {
-    document.documentElement.setAttribute(
-      "data-theme",
-      this.theme ? "light" : "dark"
-    );
-  }
-```
+js同上修改data-theme的值。
 
 这样动态修改html的`data-theme`属性的值,使相应的 css 变量改变，进而影响对应设置的 css。
 相应demo: https://github.com/brightzoe/skin/tree/brightzoe/css-variables
 
 > `:root`:根伪类,用于声明全局 CSS 变量。
 > 对于 HTML 来说，`:root` 表示 `<html> `元素，除了优先级更高之外，与 html 选择器相同。
+
 > DOM 元素的 style 对象：`CSSStyleDeclaration`,可以用来操作 dom 改变 style 样式。 https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration 。 `document.body.style.setProperty("--primary-color", "red")` 或 `document.body.style.background="green"`
+
+## 使用sass变量
+```scss
+@mixin bg-color($key) {
+  background-color: map-get($colors-light, $key);
+  [data-theme="dark"] & {
+    background-color: map-get($colors-dark, $key);
+  }
+}
+// text色
+@mixin text-color($key) {
+  color: map-get($colors-light, $key);
+  [data-theme="dark"] & {
+    color: map-get($colors-dark, $key);
+  }
+}
+
+body,
+html {
+  // background: $fill-1;
+  @include bg-color(fill-1);
+}
+.text {
+  font-size: $font-size-large;
+  @include text-color(text-2);
+}
+```
+
+了解sass 变量的使用，mixin(混入) include(使用混入),函数map-get(映射)。
+
+## CSS变量兼容性
+考虑兼容性：
+  PostCSS Custom Properties (https://www.npmjs.com/package/postcss-custom-properties)
+  css-vars-ponyfill (https://jhildenbiddle.github.io/css-vars-ponyfill/#/)
+
+//呜呜，写不下去了。啥时候实际项目遇到了再补充完善吧。
 
 ## 总结：
 
 在项目中一键换肤的实现方式大概有以下几种：
 
 1. 抽取通用的样式写在一个 css 文件。另外用 link 标签引入两套不同的皮肤 css 文件，通过点击事件来切换不同 link 的 disabled 属性来实现。如上面 docsify 的实现方式。
-2. 使用CSS变量，在不同属性下，为变量设置不同的值。
->以上方式是不永久的，刷新或再打开仍然是默认样式，没有与服务器通信记住改变后的样式，只是改变了当前页面。
+2. 覆盖样式实现。先写一套属性。改变某自定义属性的值，在css文件后面写一套覆盖样式。
+3. 使用CSS变量，在不同自定义属性下，为变量设置不同的值。
+4. sass变量。
+
+>以上方式是不永久的，刷新或再打开仍然是默认样式，没有与服务器通信记住改变后的样式，只是改变了当前页面。记住主题的话，可以向服务器保存主题，也可以使用本地存储主题localStorage。
 
 ## reference
 
 1.  `<Link>`标签 https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link
 2.  CSS 变量的用法 https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties
 3.  前端换肤的 N 种方案 https://juejin.cn/post/6844904122643120141#heading-0
+4.  Css Variable的主题切换完美解决方案 https://zhuanlan.zhihu.com/p/149033179
+
