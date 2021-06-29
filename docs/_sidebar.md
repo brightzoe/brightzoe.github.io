@@ -3,7 +3,7 @@
   - [布局](layout.md)
 
 - JavaScript
-
+  - [script 标签中的 async 和 defer 属性](asyncAndDeferAttributesInTheScriptTag.md)
   - [闭包](closure.md)
   - [原型](prototype.md)
   - [学习模块、模块化](learnModule.md)
