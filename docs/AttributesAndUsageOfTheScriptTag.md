@@ -4,20 +4,22 @@
 
 ## script 标签的属性
 
-src:这个属性定义引用外部脚本的 URI，这可以用来代替直接在文档中嵌入脚本。指定了 src 属性的 script 元素标签内不应该再有嵌入的脚本。
+### 一些属性
 
-type:该属性定义 script 元素包含或 src 引用的脚本语言(text/javascript)。如果 type 属性为 module，代码会被当作 JavaScript 模块。
+- src:这个属性定义引用外部脚本的 URI，这可以用来代替直接在文档中嵌入脚本。指定了 src 属性的 script 元素标签内不应该再有嵌入的脚本。
 
-crossorigin:默认不使用 CORS。"anonymous"配置文件请求不必设置凭据标志。"use-credentials"设置凭据标志，意味着出站请求会包含凭据。
+- type:该属性定义 script 元素包含或 src 引用的脚本语言(text/javascript)。如果 type 属性为 module，代码会被当作 JavaScript 模块。
 
-![](https://i.loli.net/2021/06/29/Est72uLzZgnA9Qp.png)
+- crossorigin:默认不使用 CORS。"anonymous"配置文件请求不必设置凭据标志。"use-credentials"设置凭据标志，意味着出站请求会包含凭据。
 
-integrity:允许比对接收到的资源和指定的加密签名以验证子资源完整性（SRI,Subresource Integrity）。可以用于确保内容分发网络（CDN, Content Delivery Network）不会提供恶意内容。
-type:MIME 类型，通常为`type=application/javascript`/`application/javascript`
+  ![](https://i.loli.net/2021/06/29/Est72uLzZgnA9Qp.png)
 
-- `type=module`代码会被当成 ES6 模块，而且只有这时候代码中才能出现 import 和 export 关键字。
+- integrity:允许比对接收到的资源和指定的加密签名以验证子资源完整性（SRI,Subresource Integrity）。可以用于确保内容分发网络（CDN, Content Delivery Network）不会提供恶意内容。
+- type:MIME 类型，通常为`type=application/javascript`/`application/javascript`
 
-### async 与 defer(只对外部脚本有效)
+  - `type=module`代码会被当成 ES6 模块，而且只有这时候代码中才能出现 import 和 export 关键字。
+
+### async 与 defer属性(只对外部脚本有效)
 
 #### 普通的 script 标签加载与执行均会堵塞 DOM 解析。
 
