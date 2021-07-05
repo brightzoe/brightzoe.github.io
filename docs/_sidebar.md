@@ -3,7 +3,7 @@
   - [布局](layout.md)
 
 - JavaScript
-  - [script 标签的各种属性和使用](AttributesAndUsageOfTheScriptTag.md)
+  - [script 标签的各种属性和使用](attributesAndUsageOfTheScriptTag.md)
   - [闭包](closure.md)
   - [原型](prototype.md)
   - [学习模块、模块化](learnModule.md)
