@@ -23,6 +23,7 @@
   - [使用 antd 时踩过的坑](setbacksIHadWithAntD.md)
   - [碰到的一些奇奇怪怪的问题](strangeQuestions.md)
   - [项目优化](performanceOptimization.md)
+  - [工具集](tools.md)
   - [如何提升自己等软技能](socialSkillsToImprove.md)
   - [网站构建](websiteConstruction.md)
   - [test](test.md)
