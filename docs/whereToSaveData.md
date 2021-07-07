@@ -59,6 +59,10 @@
 
   子组件内部不能改变 this.props 的值
 
+## 在特定的场景下怎样设计数据的存放
+
+- 整个组件通用的数据，最好放在公用的父组件上，通过 props 传递。这样可以在父组件统一控制。
+
 ## reference:
 
 [Where to Hold React Component Data: state, store, static, and this](https://www.freecodecamp.org/news/where-do-i-belong-a-guide-to-saving-react-component-data-in-state-store-static-and-this-c49b335e2a00/)
