@@ -26,4 +26,4 @@
   - [工具集](tools.md)
   - [如何提升自己等软技能](socialSkillsToImprove.md)
   - [网站构建](websiteConstruction.md)
-  - [test](test.md)
+  - [给自己科普一些开发相关的东西](introductionToSthRelated.md)

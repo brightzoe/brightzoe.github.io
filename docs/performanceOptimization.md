@@ -26,7 +26,7 @@
   持续集成、持续交付、持续部署是一系列的软件工程实践方法，使用自动化手段达到完成软件。
 
   - 相关理解(https://www.zhihu.com/question/23444990)
-  
+
   CI工具：Jenkins
   - Jenkins 新手安装配置操作(https://zhuanlan.zhihu.com/p/80031057)
 
