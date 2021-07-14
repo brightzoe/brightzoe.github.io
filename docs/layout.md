@@ -17,30 +17,34 @@
 
   各个浏览器对于 CSS 宽高的解析不完全相同。
 
-  > 使用非绝对高度时的，如何让 `height:100%`生效，撑满整个高度？从html>body到目标元素，全部设置`height:100%`
+  > 使用非绝对高度时的，如何让 `height:100%`生效，撑满整个高度？从 html>body 到目标元素，全部设置`height:100%`,如下所示：
 
-      ```html
-      <html>
-      <body>
-        <div>
-          <p>
-            这样这个div的高度就会100%了
-          </p>
-        </div>
-      </body>
-      </html>
-      ```
-      ```css
-      html,body{
-        height:100%;
-        margin:0;
-        padding:0;
-      }
-      div{
-        height:100%;
-        background:red;
-      }
-      ```
+```html
+<html>
+	<head>
+		<style>
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			div {
+				height: 100%;
+				background: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<p>这样这个div的高度就会100%了</p>
+		</div>
+	</body>
+</html>
+```
+
+## 水平居中，垂直居中的设置方式
 
 ## reference:
 
