@@ -5,9 +5,10 @@
 - JavaScript
 
   - [script 标签的各种属性和使用](fe/attributesAndUsageOfTheScriptTag.md)
-  - [闭包](closure.md)
-  - [原型](prototype.md)
+  - [闭包](fe/closure.md)
+  - [原型](fe/prototype.md)
   - [学习模块、模块化](fe/learnModule.md)
+  - [对路由的理解](fe/howToUnderstandRouter.md)
 
 - 网络
 
@@ -28,7 +29,7 @@
 - 业务
 
   - [前端权限控制](frontEndPermissionControl.md)
-  - [对路由的理解](howToUnderstandRouter.md)
+
   - [前端一键切换主题](changeThemesDynamic.md "前端换肤，动态切换主题的实现")
 
 - 其他

@@ -61,7 +61,7 @@
 							// 使用插件机制，这样每次变换页面，都会更新id，
 							// 如果不加这个，因为gitalk在new的时候只处理了一次，后面切换页面，id还是固定的
 							// 每次切换，就会重新赋值gitalk.options.id，这样就是和当前页面一致了
-							// 另外如果hash只超过50，可能考虑md5处理下在赋值
+							// 另外如果hash值超过50，可能考虑md5处理下在赋值
 							gitalk.options.id = location.hash.substr(1);
 							return content;
 						});
