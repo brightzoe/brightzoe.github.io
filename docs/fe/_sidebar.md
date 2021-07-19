@@ -10,7 +10,6 @@
   - [学习模块、模块化](fe/learnModule.md)
   - [对路由的理解](fe/howToUnderstandRouter.md)
 
-
 - 网络
 
   - [axios 学习](howToUseAxios.md)
@@ -22,6 +21,10 @@
   - [如何理解受控组件和非受控组件](controlledAndUncontrolledComponents.md)
   - [React-Router 传参](passParamsInReact.md)
   - [Hook](hook.md)
+
+- 开发调试工具
+
+  - [Chrome DevTools](fe/chromeDevTools.md)
 
 - 前端思维
 
