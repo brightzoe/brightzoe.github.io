@@ -279,7 +279,7 @@ https://juejin.cn/book/6844733783166418958/section/6844733783225139214
 
 ## Reference：
 
-1. [快捷键-chrome](https://developer.chrome.com/docs/devtools/shortcuts/)
+1. [快捷键-developer.chrome.com](https://developer.chrome.com/docs/devtools/shortcuts/)
 2. [你不知道的 Chrome 调试技巧](https://juejin.cn/book/6844733783166418958/section/6844733783187390477)
 3. [通读「你不知道的 Chrome 调试技巧」](https://juejin.cn/post/6867099026995560455#heading-9)
-4.[console](https://developer.chrome.com/docs/devtools/console/)
+4. [console-developer.chrome.com](https://developer.chrome.com/docs/devtools/console/)

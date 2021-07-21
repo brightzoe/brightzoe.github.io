@@ -45,6 +45,15 @@
 
 目前就以上两个用的比较多，但它有很多插件可以选择，增强各种各样的功能。
 
+### 静态文档网站生成
+
+比较好的工具：
+
+1. 本 blog 正在使用的：[Docsify](https://github.com/docsifyjs/docsify/)
+2. 学习 ts 的时候看到的： [Pagic](https://github.com/xcatliu/pagic)
+
+   同作者提供了很好的[TS 入门文档](https://ts.xcatliu.com/)
+
 ## 行为方式
 
 一些改进自己做项目，写代码的规范等，算是软工具。
