@@ -1,3 +1,8 @@
+/* 以下内容是为了覆盖vue.css的样式 */
+.app-sub-sidebar li:before {
+	/* 不显示sidebar副标题的- */
+	content: "";
+}
 .markdown-section pre {
 	padding: 0;
 }
