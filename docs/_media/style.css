@@ -1,17 +1,37 @@
 .markdown-section pre {
 	padding: 0;
 }
+
+.markdown-section figure,
+.markdown-section p {
+	/* 文章中一般的p标签上下的margin过大 */
+	margin: 0.5em 0;
+}
+
+ul {
+	/* ul一般上面挨着的p离ul太远了 */
+	margin-top: -0.5em;
+}
+
+.markdown-section > :first-child {
+	/* count 字数，阅读时长提示 */
+	float: right;
+	margin-top: 20px !important;
+	margin-right: 30px;
+}
+
+img {
+	/* 一般插得图片希望在单独的一行 */
+	display: block;
+	margin-bottom: 16px;
+}
 footer {
 	text-align: center;
 }
+
 @media screen and (max-width: 400px) {
 	/* 宽度小的情况下隐藏github */
 	.app-nav li:last-child {
 		display: none;
 	}
-}
-.markdown-section > :first-child {
-	float: right;
-	margin-top: 20px !important;
-	margin-right: 30px;
 }

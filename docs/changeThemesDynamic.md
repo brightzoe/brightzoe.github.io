@@ -143,7 +143,7 @@ preview.onclick = function (e) {
 
 body,
 html {
-  // background: $fill-1;
+  background: $fill-1;
   @include bg-color(fill-1);
 }
 .text {
