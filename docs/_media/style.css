@@ -3,6 +3,14 @@
 	/* 不显示sidebar副标题的- */
 	content: "";
 }
+.sidebar ul {
+	/* sidebar的缩进 */
+	margin-left: 18px;
+}
+.sidebar > .sidebar-nav > ul > li > ul > li > ul > li > a {
+	/* sidebar: 文章里的二级标题 */
+	font-weight: 600;
+}
 .markdown-section pre {
 	padding: 0;
 }
