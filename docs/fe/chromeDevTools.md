@@ -4,50 +4,68 @@
 
 ## 通用
 
-- 对数据进行复制和保存
-  `copy(a)`这样就可以复制到剪贴板上啦,可以 copy 任何可以拿到的资源。不知道这种方式的时候，复制一个对象的方法可太蠢了= =
-  ![](https://user-gold-cdn.xitu.io/2018/12/7/16787442a1444125?imageslim ":size=60%")
+### 对数据进行复制和保存
 
-- 快捷键
-  - Ctrl + 1/2/3 切换不同 devtools 面板
-  - Ctrl + [/] 切换不同 devtools 面板
-  - F1 打开设置
-  - Ctrl + Shift + P 输入命令
-  - Ctrl + P 寻找文件
-  - Esc 在任何一个面板都可以打开一个Drawer ,调出一个Console 抽屉
-- 一些命令
-  首先要通过 Ctrl +Shift + P 打开命令行窗口
+`copy(a)`这样就可以复制到剪贴板上啦,可以 copy 任何可以拿到的资源。不知道这种方式的时候，复制一个对象的方法可太蠢了= =
+![](https://user-gold-cdn.xitu.io/2018/12/7/16787442a1444125?imageslim ":size=60%")
 
-  - screenShot 截图
-    1. Capture area screenshot: 选择一个矩形区域并截图
-    2. Capture full size screenshot: 整个网页截图
-    3. Capture node screenshot: 单独截图**某个节点**区域，需要先去 Elements 面板选中节点再执行指令。
-    4. Capture screenshot: 截图当前网页可视区域
-  - Drawer
-    可以直接按Esc 打开，也可通过命令行窗口使用
-    - Animations
-    - Changes
-    - Console : diff ，检查在控制台修改过的东西
-        有diff : 红绿对比差异化显示
-        可以撤销修改
-    - Coverage : 检查代码，有多少被使用，多少没被使用
-        跟踪当前加载的 JS 和 CSS 文件的 哪些行正在被执行 ，并显示 未使用字节的百分比 。
-        它用 绿色 的线条标记 运行 和用 红色 的线条标记 未运行
-    - Network conditions :模拟网络状态，也可以模拟特定用户代理
-    - Performance monitor
-    - Quick source :快速查看源码，或设置断点
-    - Remote devices
-    - Rendering
-    - Request blocking
-    - Search
-    - Sensors : 传感器，模拟特定的位置
-    - What’s new
-- snippets
-  预设代码块，类似 vscode snippets
+### debug()
 
-  1. Snippets 允许你存放 JavaScript 代码到 DevTools 中，方便你复用这些 JavaScript 代码块：
-  2. sources 面板 snippets 中 new snippet。可以直接右键 run 运行也可以用[Ctrl] + [enter]
-  3. 在 command menu(Ctrl + P) 用！+ 代码块名 查找预设代码块
+想调试一个方法可以使用 `debug(add)`,当再次调用该方法，比如：`add(1,2)`，就可以进入调试面板。
+
+### monitor 监听方法调用
+
+`monitor(add)`,监听一个方法的执行：是否被调用，入参是什么
+
+### monitorEvents(object[, events]) 监听事件调用
+
+`monitorEvents(window, "resize");`
+
+### 快捷键
+
+- Ctrl + 1/2/3 切换不同 devtools 面板
+- Ctrl + [/] 切换不同 devtools 面板
+- F1 打开设置
+- Ctrl + Shift + P 输入命令
+- Ctrl + P 寻找文件
+- Esc 在任何一个面板都可以打开一个 Drawer ,调出一个 Console 抽屉
+
+### 一些命令
+
+首先要通过 Ctrl +Shift + P 打开命令行窗口
+
+- screenShot 截图
+  1. Capture area screenshot: 选择一个矩形区域并截图
+  2. Capture full size screenshot: 整个网页截图
+  3. Capture node screenshot: 单独截图**某个节点**区域，需要先去 Elements 面板选中节点再执行指令。
+  4. Capture screenshot: 截图当前网页可视区域
+- Drawer
+  可以直接按 Esc 打开，也可通过命令行窗口使用
+  - Animations
+  - Changes
+  - Console : diff ，检查在控制台修改过的东西
+    有 diff : 红绿对比差异化显示
+    可以撤销修改
+  - Coverage : 检查代码，有多少被使用，多少没被使用
+    跟踪当前加载的 JS 和 CSS 文件的 哪些行正在被执行 ，并显示 未使用字节的百分比 。
+    它用 绿色 的线条标记 运行 和用 红色 的线条标记 未运行
+  - Network conditions :模拟网络状态，也可以模拟特定用户代理
+  - Performance monitor
+  - Quick source :快速查看源码，或设置断点
+  - Remote devices
+  - Rendering
+  - Request blocking
+  - Search
+  - Sensors : 传感器，模拟特定的位置
+  - What’s new
+
+### snippets
+
+预设代码块，类似 vscode snippets
+
+1. Snippets 允许你存放 JavaScript 代码到 DevTools 中，方便你复用这些 JavaScript 代码块：
+2. sources 面板 snippets 中 new snippet。可以直接右键 run 运行也可以用[Ctrl] + [enter]
+3. 在 command menu(Ctrl + P) 用！+ 代码块名 查找预设代码块
 
 ## Elements 面板
 
@@ -78,9 +96,11 @@
 ![](https://i.loli.net/2021/07/20/yU9FiZ15gco7K6h.png)
 
 ### 对元素的颜色进行编辑
+
 颜色选择器，功能相当丰富。
 
 ![](https://user-gold-cdn.xitu.io/2018/12/12/167a1d2cc62a8d0f?imageslim)
+
 ### 对元素的动画进行编辑
 
 Timing function editor 定时函数编辑器/Cubic bezier(贝塞尔) 编辑器
@@ -140,7 +160,9 @@ Timing function editor 定时函数编辑器/Cubic bezier(贝塞尔) 编辑器
   ![](https://i.loli.net/2021/07/20/Dko51asCHqjpNlm.png)
 
 - 在回调函数中检查传递的参数，可以直接传递 console.log 方法
-  ![](https://user-gold-cdn.xitu.io/2019/1/22/168744938b968240?imageView2 ":size=60%")
+
+  `getLocation(console.log)` ，不要 `getLocation((v)=>console.log(v))`
+![](https://user-gold-cdn.xitu.io/2019/1/22/168744938b968240?imageView2 ":size=60%")
 
 ### console 中的异步
 
@@ -209,6 +231,10 @@ Network 面板中的过滤器输入框接受字符串或正则表达式，对应
 在 Network 面板，你可以自定义这个表格都显示哪些列，在表头上或者任何一个请求上右键即可。大概有如下一些：
 ![](https://user-gold-cdn.xitu.io/2018/12/29/167f82824d09c68d?imageView2)
 
+### 禁用请求
+
+想看看当某些脚本、样式文件缺少或者其他资源加载失败时，网页的样子吗？在 Network 面板对某条请求右击选择 Block Request URL。一个新的 禁用请求 面板会被呼出，在这里可以管理被禁用的请求。
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8a7ad1fd71f24003b947b405805246b8~tplv-k3u1fbpfcp-zoom-1.image)
 ### 重新发送一个请求
 
 对于 Network 面板上的任何一个请求，不需要刷新页面，右键选择"Replay XHR"即可重新刷新。
@@ -232,7 +258,16 @@ Network 面板中的过滤器输入框接受字符串或正则表达式，对应
 ### 请求断点 XHR/fetch breakpoints
 
 对已经发送的请求进行断点调试,可以添加部分 URL 作为触发器或监听任何请求:
-![](https://user-gold-cdn.xitu.io/2019/1/22/16874662814db12c?imageView2 ":size="60%")
+![](https://user-gold-cdn.xitu.io/2019/1/22/16874662814db12c?imageView2 ":size=60%")
+
+### Source 里的 WorkSpace
+
+可以直接把文件夹拖动到 source 里面，直接在里面进行编辑。保存编辑后，可以直接同步编辑到本地的文件夹。
+![](https://user-gold-cdn.xitu.io/2018/12/29/167f5b37db4e23ac?imageslim)
+
+workSpace 相关：
+在 devTools 直接编辑，并同步变化到本地：
+https://juejin.cn/book/6844733783166418958/section/6844733783225139214
 
 ## 一些实际场景
 
@@ -247,3 +282,4 @@ Network 面板中的过滤器输入框接受字符串或正则表达式，对应
 1. [快捷键-chrome](https://developer.chrome.com/docs/devtools/shortcuts/)
 2. [你不知道的 Chrome 调试技巧](https://juejin.cn/book/6844733783166418958/section/6844733783187390477)
 3. [通读「你不知道的 Chrome 调试技巧」](https://juejin.cn/post/6867099026995560455#heading-9)
+4.[console](https://developer.chrome.com/docs/devtools/console/)
