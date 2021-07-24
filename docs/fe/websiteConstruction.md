@@ -24,3 +24,7 @@ DNS 解析可以配置规则，在目前国内访问国外网络存在些问题�
  sudo yum install nodejs
  npm install pm2
 ```
+
+## reference:
+
+1.  Hexo 博客 GitHub Pages + CODING 静态网站双部署 https://asurada.zone/post/Deploy-Hexoblog-To-Codingnet-And-GitHub/
