@@ -143,6 +143,58 @@ const g: undefined = undefined;
 const h: symbol = Symbol();
 let myFavoriteNumber: any = "seven"; //任意类型的值并且可以改变，一般不要使用，兼容老代码使用。
 myFavoriteNumber = 7;
+
+//Object类型
+const foo: object = function () {}; // 也可以是[] // {}
+const obj: { foo: number; bar: string } = { foo: 123, bar: "foo" }; //定义普通的对象,key要完全一致,不能多也不能少
+
+//Array
+const arr1: Array<number> = [1, 2];
+const arr2: number[] = [1, 2];
+
+//元组类型 {Tuple} 固定长度，固定类型的数组
+//应用： React的useState, es2017的Object.entries({foo:123})
+const tuple: [number, string] = [18, "foo"];
+const age = tuple[0];
+const [age, name] = tuple;
+
+//枚举类型 {Enum} 只存在几个固定的值
+// const postStatus ={Draft:0,Unpublished:1,Published:2} //js模拟枚举类型
+enum postStatus { //枚举类型
+	Draft = 0, //不指定值的话，从0开始累加。只指定第一个则从指定的值开始累加。也可以使用字符串。
+	Unpublished = 1,
+	Published = 2,
+}
+const post = {
+	status: postStatus.Draft,
+};
+//枚举类型会入侵到编译后的代码。
+//会被编译成双向键值对的对象：可以通过key读取，也可以通过value读取。
+
+//常量枚举
+//如果不通过索引值的方式读取枚举类型，推荐使用常量枚举。编译后枚举类型会被移除，使用的枚举值会被替换掉，以注释的形式标注。
+const enum postStatus {}
+//...
+
+//函数类型
+//函数声明式
+function func1(a: string, b?: number): string {
+	//添加参数和返回值的类型注解
+	//参数个数也必须一致，不能多或少。
+	//可选参数：添加问号或者使用参数默认值，必须在参数的最后一位
+	//不限制参数个数 ：...rest:number
+	return "foo";
+}
+
+//有什么好处？
+function sum(...args: number[]) {
+	//确保传过来的参数都是数字，不用单独进行类型判断。可靠。
+	return args.reduce((prev, curr) => prev + curr, 0);
+}
+
+const func2: (a: number, b: number) => string = function (a: number, b: number): string {
+	return "foo";
+};
 ```
 
 ### 作用域问题
@@ -153,57 +205,6 @@ myFavoriteNumber = 7;
 //一个文件加上export
 export {}; //以模块形式导出，一般不这样做，因为一般每个文件（组件）会以模块形式使用
 const a = 123;
-
-//Object类型
-const foo: object = function () {}; // 也可以是[] // {}
-const obj: { foo: number，bar:string } = { foo: 123 ,bar:"foo"}; //定义普通的对象,key要完全一致,不能多也不能少
-
-//Array
-const arr1:Array<number> = [1,2]
-const arr2:number[] =[1,2]
-
-//有什么好处？
-function sum(...args:number[]) {
-  //确保传过来的参数都是数字，不用单独进行类型判断。可靠。
-	return args.reduce((prev, curr) => prev + curr, 0);
-}
-
-//元组类型 {Tuple} 固定长度，固定类型的数组
-//应用： React的useState, es2017的Object.entries({foo:123})
-const tuple:[number,string] =[18,'foo']
-const age = tuple[0]
-const [age,name] = tuple
-
-//枚举类型 {Enum} 只存在几个固定的值
-// const postStatus ={Draft:0,Unpublished:1,Published:2} //js模拟枚举类型
-enum postStatus {//枚举类型
-  Draft=0, //不指定值的话，从0开始累加。只指定第一个则从指定的值开始累加。也可以使用字符串。
-  Unpublished=1,
-  Published=2
-}
-const post ={
-  status:postStatus.Draft
-}
-//枚举类型会入侵到编译后的代码。
-//会被编译成双向键值对的对象：可以通过key读取，也可以通过value读取。
-
-//常量枚举
-//如果不通过索引值的方式读取枚举类型，推荐使用常量枚举。编译后枚举类型会被移除，使用的枚举值会被替换掉，以注释的形式标注。
-const enum postStatus{
-  //...
-}
-
-//函数类型
-function func1(a:string,b?:number):string{//添加参数和返回值的类型注解
-//参数个数也必须一致，不能多或少。
-//可选参数：添加问号或者使用参数默认值，必须在参数的最后一位
-//不限制参数个数 ：...rest:number
-  return 'foo'
-}
-
-const func2: (a:number,b:number) => string = function(a: number,b: number): string{
-  return 'foo'
-}
 ```
 
 ### 隐式类型推断
@@ -215,6 +216,14 @@ age = "foo"; //报错,被推断为number
 let foo; //被推断为any
 foo = 100;
 foo = "foo";
+```
+
+### 类型别名
+
+```ts
+//顾名思义就是自定义一个类型，一般用于联合类型，给你想要的类型取一个别名
+type person = "man" | "woman";
+type TUser = string | number;
 ```
 
 ### 类型断言
