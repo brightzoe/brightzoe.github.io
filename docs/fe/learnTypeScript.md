@@ -9,7 +9,7 @@
   被声明类型是明确的，且不允许修改。
   在运行阶段才能够明确变量类型，且随时发生变化。
 
-![](https://i.loli.net/2021/07/23/NdEFO2ryn5ReHic.png ":size=50%")
+  ![](https://i.loli.net/2021/07/23/NdEFO2ryn5ReHic.png ":size=50%")
 
 > JS：动态类型语言，弱类型。 被设计时，小规模脚本，且不需要编译。
 
@@ -19,6 +19,9 @@
 重构更牢靠。
 
 ## Flow
+
+<details>
+  <summary><b>Flow (点击展开)</b></summary>
 
 JS 的类型检查,是一个小工具，在需要的时候添加类型,学习成本较小。
 
@@ -108,6 +111,8 @@ function passMixed (value:any){
 ```
 
 更多类型查询： https://www.saltycrane.com/cheat-sheets/flow-type/latest/
+
+</details>
 
 ## TS
 

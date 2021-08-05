@@ -69,10 +69,10 @@
 							// 解析成 html 后调用。beforeEach 和 afterEach 支持处理异步逻辑
 							// 异步处理完成后调用 next(html) 返回结果
 							// console.log(html);
-							let section = window.document.querySelector('section')
-							let a = document.createElement("a")
-							section.prepend(a)
-							next (html);
+							let section = window.document.querySelector("section");
+							let a = document.createElement("a");
+							section.prepend(a);
+							next(html);
 						});
 					},
 				],
@@ -120,5 +120,8 @@
 
 		<!-- 分页导航插件 -->
 		<script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+
+		<!-- Google Analytics -->
+		<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
 	</body>
 </html>
