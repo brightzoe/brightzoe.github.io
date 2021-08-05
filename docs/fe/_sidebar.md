@@ -1,6 +1,7 @@
 - CSS
 
   - [布局](layout.md)
+  - [简单的动画效果](simpleAnime.md)
 
 - JavaScript
 
