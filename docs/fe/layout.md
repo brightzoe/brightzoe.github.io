@@ -4,6 +4,7 @@
 
 - height:100%
   写的 height 以及 overflow 的设置方式总是出问题，对 height：100% 的理解有问题。
+- html,body 高度的设置：https://www.freecodecamp.org/news/html-page-width-height/
 
 ## 浏览器是如何计算高度和宽度的？
 
@@ -42,6 +43,16 @@
 		</div>
 	</body>
 </html>
+```
+
+如果要设置全屏的高度，也可以这样：
+
+```css
+body {
+	min-height: 100vh;
+	width: 100%;
+}
+/* 注意宽度上尽量不要使用100vw,由于超过100vh的内容，出现纵向滚动条占了8px 。如果里面的元素写了100vw ,会导致横向滚动条的出现。 */
 ```
 
 ## 水平居中，垂直居中的设置方式

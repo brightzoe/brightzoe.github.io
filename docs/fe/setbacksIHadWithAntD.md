@@ -21,6 +21,27 @@
 
 ## Form
 
+### 表单元素嵌套
+
+报错提示：`[antd: Form.Item] `children`is array of render props cannot have`name`.`
+
+```js
+//由于在 Form.Item 中插入了不止一个元素。按照一个元素的方式写就会有上述错误。
+<Form.Item label="username" name="username">
+	<Input />
+	<span>please input username.</span>
+</Form.Item>
+
+//正确写法：label留在外面，实际的元素用Form.Item再包一层，name 加在最里面。
+<Form.Item label="username">
+	<Form.Item name="username">
+		<Input />
+	</Form.Item>
+	<span>please input username.</span>
+</Form.Item>
+```
+复杂表单绑定里面元素：https://ant.design/components/form/#components-form-demo-complex-form-control
+
 ### 在部分场景下，禁用表单所有元素
 
 1. 给每个元素都写 disabled 属性过于繁琐。

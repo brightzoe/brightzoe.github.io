@@ -10,6 +10,7 @@
   - [原型](prototype.md)
   - [学习模块、模块化](learnModule.md)
   - [对路由的理解](howToUnderstandRouter.md)
+  - [前端数据存储,浏览器数据缓存](cachingInBrowser.md)
 
 - 网络
 
