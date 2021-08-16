@@ -19,7 +19,7 @@
 - React
 
   - [React 设计模式和最佳实践](designPatternAndBestPractices.md)
-  - [数据应该放在哪](whereToSaveData.md "在React中如何传递数据")
+  - [React中数据应该如何管理](whereToSaveDataInReact.md "在React中如何传递数据")
   - [如何理解受控组件和非受控组件](controlledAndUncontrolledComponents.md)
   - [React-Router 传参](passParamsInReact.md)
   - [Hooks](hooks.md)

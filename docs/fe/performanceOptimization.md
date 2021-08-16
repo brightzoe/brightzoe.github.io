@@ -1,5 +1,9 @@
 # 项目优化（性能优化以及其他）
 
+## 代码优化
+### React 性能优化
+减少不必要的渲染 https://brightzoe.top/#/fe/designPatternAndBestPractices?id=重新渲染-reconciliation
+
 ## 开发环境优化
 
 - webpack dashboard

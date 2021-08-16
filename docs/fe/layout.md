@@ -1,5 +1,20 @@
 # CSS
 
+## 字体配置
+
+字体的显示效果对于一个网站的美观可读程度有很大的影响。
+
+先配置西文字体，数字字体，然后才是中文字体。因为西文字体一般不包含中文字体，不会对中文字体效果产生覆盖，反之中文字体对英文，数字的显示效果一般不是很好看。
+
+后面配置 fallback,提供两种以上的字体，最后提供一种通用字体族，比如 serif/sans-serif(衬线字体，非衬线字体)
+
+示例：
+`font-family: -apple-system, Helvetica, Arial, 'Noto Sans SC', 'PingFangSC', 'Microsoft Yahei', sans-serif;`
+
+1. 如何优雅的选择字体(font-family) https://segmentfault.com/a/1190000006110417
+2. Web 字体 font-family 浅谈 https://segmentfault.com/a/1190000038284125
+3. font-family MDN https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family
+
 ## 搞不懂的 height
 
 - height:100%

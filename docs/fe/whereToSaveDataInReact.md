@@ -1,4 +1,4 @@
-# 如何存储数据和状态
+# 如何存储 React 中的数据和状态
 
 ## 四种 React 组件存放数据的方式
 
@@ -108,4 +108,3 @@
 2. [数据都放在 Redux 里吗？](https://juejin.cn/post/6986202846903402503#heading-0)
 3. [扩展： SWR-用于数据请求的 React Hooks 库](https://github.com/vercel/swr)
 4. [React-Query](https://github.com/tannerlinsley/react-query)
-
