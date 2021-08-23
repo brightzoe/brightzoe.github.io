@@ -4,6 +4,8 @@
 2. 在 React 中，一切都是组件；
 3. props 是 React 组件之间通讯的基本方式。
 
+生命周期图： https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
 ## 在设计 React 组件时，要注意以下原则：
 
 保持接口小，props 数量要少；
@@ -47,7 +49,45 @@ sass: cra 已内置 sass-loader,只需安装 mode-sass/sass(dart-sass)
 
 - 通过 craco 配置，antd4 推荐，暂未尝试。[参考](https://juejin.cn/post/6871148364919111688#heading-6)
 
-## pureComponent
+## React 中的性能优化
+
+### 跳过不必要的组件更新
+
+#### 重新渲染 reconciliation
+
+- 渲染何时触发：
+
+  组件挂载。React 组件构建并将 DOM 元素插入页面的过程称为挂载。当组件首次渲染的时候会调用 render，这个过程不可避免。
+
+  执行 setState 会触发 render。但是这里有个点值得关注，执行 setState 的时候一定会重新渲染吗？答案是不一定。当 setState 传入 null 的时候，并不会触发 render 。
+
+  父组件更新触发子组件重新渲染。父组件重新渲染了，即使传入子组件的 props 未发生变化，那么子组件也会重新渲染，进而触发 render。
+
+js 为单线程执行，显然，不必要的子组件的 render 会浪费 js 线程资源，复杂任务还会长时间占用线程导致假死状态，也就是页面卡顿，react 底层有 Fiber 来优化任务队列，但无法优化业务代码上的问题。
+
+一般子组件可以通过确认 props 是否发生变化来控制自身是否进行 render，比如 react-mobx 中的 observer 高阶方法或者 React.PureComponet 就是用来做浅层比较进行控制处理。
+
+- 减少不必要的重新渲染的使用方式：
+
+  1. class 组件 shouldComponentUpdate，根据情况决定是否要更新组件。当它的父组件 render 了，会触发该组件的 render 过程，但是进行到 shouldComponentUpdate 判断时会被阻止掉，从而就不调用它的 render 方法了，它自己下面的组件的 render 过程也不会触发了。
+
+  2. class 组件的 pureComponent，对类组件的 Props 和 State 进行浅比较， React.memo 是对函数组件的 Props 进行浅比较。
+
+  pureComponent 不能自定义对比逻辑，而 React.memo 可以通过第二个函数参数实现深层次比较。
+
+  ````js
+  	//利用React.memo第二个参数进行更深层次的比较
+  	function arePropsEqual(prevProps, nextProps) {
+  		//arePropsEqual 返回 true 时，不会触发 render，如果返回 false，则会。而 shouldComponentUpdate 刚好与其相反。
+  		// your code
+  		return prevProps === nextProps;
+  	}
+
+  	export default memo(Button, arePropsEqual);
+  	```
+  ````
+
+#### pureComponent
 
 自动调用 `shouldComponentUpdate()` ，以浅层对比 prop 和 state(shallowEqual )
 //TODO:手写原理和实现: https://segmentfault.com/a/1190000006741060
@@ -105,40 +145,30 @@ const MyComponent = React.memo(function Component(props) {
 });
 ```
 
-## 重新渲染 reconciliation
+#### useMemo,useCallback
 
-渲染何时触发：
+如果传给子组件的派生状态或函数，每次都是新的引用，那么 PureComponent 和 React.memo 优化就会失效。所以需要使用 useMemo 和 useCallback 来生成稳定值，并结合 PureComponent 或 React.memo 避免子组件重新 Render。
 
-    组件挂载。React 组件构建并将 DOM 元素插入页面的过程称为挂载。当组件首次渲染的时候会调用 render，这个过程不可避免。
+useCallback 是「useMemo 的返回值为函数」时的特殊情况.
 
-    执行 setState 会触发 render。但是这里有个点值得关注，执行 setState 的时候一定会重新渲染吗？答案是不一定。当 setState 传入 null 的时候，并不会触发 render 。
+#### 发布者订阅者跳过中间组件 Render 过程
 
-    父组件更新触发子组件重新渲染。父组件重新渲染了，即使传入子组件的 props 未发生变化，那么子组件也会重新渲染，进而触发 render。
+很多种方法实现发布订阅模式：redux、use-global-state、React.createContext 等。
 
-js 为单线程执行，显然，不必要的子组件的 render 会浪费 js 线程资源，复杂任务还会长时间占用线程导致假死状态，也就是页面卡顿，react 底层有 Fiber 来优化任务队列，但无法优化业务代码上的问题。
+使用 React.createContext 进行实现,from reference3: https://codesandbox.io/s/fabuzhedingyuezhemoshitiaoguozhongjianzujiande-render-guocheng-nm7nt?file=/src/PubSubCommunicate.js
 
-一般子组件可以通过确认 props 是否发生变化来控制自身是否进行 render，比如 react-mobx 中的 observer 高阶方法或者 React.PureComponet 就是用来做浅层比较进行控制处理。
+#### 状态下放，缩小状态影响范围
 
-### 减少不必要的重新渲染的使用方式
+https://juejin.cn/post/6935584878071119885#heading-10
 
-1. class 组件 shouldComponentUpdate，根据情况决定是否要更新组件。当它的父组件 render 了，会触发该组件的 render 过程，但是进行到 shouldComponentUpdate 判断时会被阻止掉，从而就不调用它的 render 方法了，它自己下面的组件的 render 过程也不会触发了。
+如果一个状态只在某部分子树中使用，那么可以将这部分子树提取为组件，并将该状态移动到该组件内部。
 
-2. class 组件的 pureComponent，自动比较组件 props 数据是否改变，注意只能比较一层，比如一个对象，对象中的属性改变，他不会重新渲染，只有对象改变，才重新渲染。(见上面 pureComponent) 函数组件的 React.memo(()=>{})
+如果一个状态在父组件以及部分子组件使用，可以将不使用这个状态的子组件变为一个插槽，通过props传递进来，使得该状态不影响不使用这个状态的子组件。
 
-	pureComponent 不能自定义对比逻辑，而React.memo可以通过第二个参数实现。
-
-   ```js
-   //利用React.memo第二个参数进行更深层次的比较
-   function arePropsEqual(prevProps, nextProps) {
-   	//arePropsEqual 返回 true 时，不会触发 render，如果返回 false，则会。而 shouldComponentUpdate 刚好与其相反。
-   	// your code
-   	return prevProps === nextProps;
-   }
-
-   export default memo(Button, arePropsEqual);
-   ```
+详细使用方法，见上面链接。
 
 ## Reference
 
 1. React 渲染优化-父组件导致子组件重复渲染 https://blog.csdn.net/hello__word__/article/details/108198812
 2. 优化 render,提升性能 https://www.zoo.team/article/react-render
+3. React 性能优化 https://juejin.cn/post/6935584878071119885#heading-1
