@@ -6,7 +6,7 @@ https://codesandbox.io/s/hook-e49wk?file=/src/useEffect.js
 
 ### useEffect
 
-每次渲染函数组件时，useEffect 都是新的，都是不一样的。组件重新渲染，会重新执行useEffect 内的回调，并且 里面count 值也是当时的快照的一个常量值。
+每次渲染函数组件时，useEffect 都是新的，都是不一样的。组件重新渲染，会重新执行 useEffect 内的回调，并且 里面 count 值也是当时的快照的一个常量值。
 
 https://codesandbox.io/s/hook-e49wk?file=/src/useEffect.js
 
@@ -28,6 +28,16 @@ https://codesandbox.io/s/hook-e49wk?file=/src/useMemo.js
 
 > 传递给 useMemo 的函数在渲染期间运行，注意里面的逻辑不要再次触发渲染，副作用应该放在 useEffect 里面。<br/>
 > 将 useMemo 作为性能优化，而不是语义保证，因为 React 有可能在某些情况下忘掉记住的值，重新计算。
+
+#### React.memo 与 useMemo
+
+开始总是弄混。
+
+React.memo 是包装整个组件，只是浅比较 props 来确定是否重新渲染，当然可以手动写第二个参数比较具体 props 的不同来进行 re-render. **对组件外层进行包装，控制组件是否重新渲染**
+
+useMemo 是实现局部 pure 的功能，控制组件的部分内容不要 re-render，而不是整个组件是否重新渲染。
+
+1. React.memo 与 useMemo https://zhuanlan.zhihu.com/p/105940433
 
 ### useCallback
 
@@ -118,9 +128,18 @@ https://segmentfault.com/a/1190000020108840
 
 https://codesandbox.io/s/hook-e49wk?file=/src/useApi.js
 
+### useContext
+
+### useReducer
+
+useReducer 与 Reducer
+
+useReducer 只支持同步,如何使用异步见[Reference5](https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch)
+
 ## Reference:
 
 1. [React 文档-useCallback](https://zh-hans.reactjs.org/docs/hooks-reference.html#usecallback)
 2. [你不知道的 useCallback](https://segmentfault.com/a/1190000020108840)
 3. [当我们讨论 hooks 时在讨论什么](https://zhuanlan.zhihu.com/p/328540840)
 4. [hook 一些基础](https://juejin.cn/book/6966551262766563328/section/6967228489208430603)
+5. [useReducer async](https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch)

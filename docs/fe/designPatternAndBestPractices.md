@@ -123,7 +123,9 @@ js 为单线程执行，显然，不必要的子组件的 render 会浪费 js �
 
 1. class 组件 shouldComponentUpdate，根据情况决定是否要更新组件。当它的父组件 render 了，会触发该组件的 render 过程，但是进行到 shouldComponentUpdate 判断时会被阻止掉，从而就不调用它的 render 方法了，它自己下面的组件的 render 过程也不会触发了。
 
-2. class 组件的 pureComponent，自动比较组件props数据是否改变，注意只能比较一层，比如一个对象，对象中的属性改变，他不会重新渲染，只有对象改变，才重新渲染。(见上面 pureComponent) 函数组件的 React.memo(()=>{})
+2. class 组件的 pureComponent，自动比较组件 props 数据是否改变，注意只能比较一层，比如一个对象，对象中的属性改变，他不会重新渲染，只有对象改变，才重新渲染。(见上面 pureComponent) 函数组件的 React.memo(()=>{})
+
+	pureComponent 不能自定义对比逻辑，而React.memo可以通过第二个参数实现。
 
    ```js
    //利用React.memo第二个参数进行更深层次的比较

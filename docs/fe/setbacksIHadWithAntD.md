@@ -40,6 +40,7 @@
 	<span>please input username.</span>
 </Form.Item>
 ```
+
 复杂表单绑定里面元素：https://ant.design/components/form/#components-form-demo-complex-form-control
 
 ### 在部分场景下，禁用表单所有元素
@@ -60,6 +61,16 @@
 ```
 
 3. 这个需求还蛮普遍的，antd 暂时没提供这样的方法(https://github.com/ant-design/ant-design/issues/30270)
+
+## Carousel
+
+### 自定义箭头
+
+使用 ref 与 Carousel 的方法:`ref.current.prev()`
+
+    1. https://stackoverflow.com/questions/58475891/using-ant-designs-carousel-next-and-previous-pane-methods-in-typescript?noredirect=1
+
+    2. https://stackoverflow.com/questions/67881626/ant-design-custom-carousel
 
 ## Reference:
 
