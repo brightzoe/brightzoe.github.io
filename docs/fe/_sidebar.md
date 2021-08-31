@@ -8,6 +8,7 @@
   - [script 标签的各种属性和使用](attributesAndUsageOfTheScriptTag.md)
   - [闭包](closure.md)
   - [原型](prototype.md)
+  - [数据类型](dataTypes.md)
   - [Set和Map](setAndMap.md)
   - [学习模块、模块化](learnModule.md)
   - [对路由的理解](howToUnderstandRouter.md)
