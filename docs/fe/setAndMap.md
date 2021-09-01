@@ -1,5 +1,111 @@
 # Set 和 Map
 
+## Set
+
+类似于数组，但成员的值都是唯一的。
+
+Set 函数可以接受一个数组（或者具有 iterable 接口的其他数据结构）作为参数，用来初始化。
+
+```js
+//用Set 去重
+
+//数组去重
+[...new Set(array)]
+
+//字符串去重
+[...new Set('abcabc')].join('')
+
+```
+
+> 向 Set 加入值时认为 NaN 等于自身。向 Set 实例添加了两次 NaN，但是只会加入一个。
+
+### 常用方法
+
+```js
+const s = new Set();
+s.size();
+s.add(value); //返回Set 本身,可以使用链式写法
+s.delete(value); //返回true/false
+s.has(value); //返回true/false
+s.clear();
+
+//遍历方法
+//Set的遍历顺序就是插入顺序。
+s.keys(); //返回键名的遍历器
+s.values(); //values 与上面keys 方法行为完全一致
+s.entries();//认为键名与键值是一样的映射
+s.forEach(...);
+
+//entries方法返回的遍历器，同时包括键名和键值，所以每次输出一个数组，它的两个成员完全相等。
+let set = new Set(['red', 'green', 'blue']);
+for (let item of set.entries()) {
+  console.log(item);
+}
+// ["red", "red"]
+// ["green", "green"]
+// ["blue", "blue"]
+
+for (let x of set) {
+  console.log(x);
+}
+// red
+// green
+// blue
+```
+
+### 与数组的转换
+
+```js
+let arr = [...set];
+let arr = Array.from(set);
+let set = new Set(arr);
+```
+
+### WeakSet
+
+与 Set 类似，也是不重复的值的集合
+
+#### 特点
+
+1.  成员只能是对象。
+
+2.  对象都是弱引用。
+    > 垃圾回收机制不考虑 WeakSet 对该对象的引用，也就是说，如果其他对象都不再引用该对象，那么垃圾回收机制会自动回收该对象所占用的内存，不考虑该对象还存在于 WeakSet 之中。
+
+WeakSet 适合临时存放一组对象，以及存放跟对象绑定的信息。只要这些对象在外部消失，它在 WeakSet 里面的引用就会自动消失。
+
+WeakSet 的成员是不适合引用的，因为它会随时消失。
+
+由于 WeakSet 内部有多少个成员，取决于垃圾回收机制有没有运行，运行前后很可能成员个数是不一样的，而垃圾回收机制何时运行是不可预测的，因此 ES6 规定 WeakSet 不可遍历。
+
+这些特点同样适用于 WeakMap.
+
+#### 方法
+
+没有 size,不能遍历。
+
+```js
+ws.add();
+ws.delete();
+ws.has();
+```
+
+#### 用例
+1. 存储dom 节点。
+2. 保证了Foo的实例方法，只能在Foo的实例上调用。
+  ```js
+  const foos = new WeakSet()
+  class Foo {
+    constructor() {
+      foos.add(this)
+    }
+    method () {
+      if (!foos.has(this)) {
+        throw new TypeError('Foo.prototype.method 只能在Foo的实例上调用！');
+      }
+    }
+  }
+```
 ## Map
 
 传统的 js 对象只能用字符串作为 key,使用上有很多限制。
@@ -87,6 +193,7 @@ function mapToObj(map){
 ### WeakMap
 
 类似于 map,也是键值对的集合。
+
 #### 特点：
 
 1. **只接受对象作为 key** ,null 除外。其他类型的作为键名会报错
@@ -105,9 +212,10 @@ WeakMap 只有四个方法可用：get()、set()、has()、delete()。
 2. 无法清空，即不支持 clear 方法。
 
 #### 实际用途
+
 1.  DOM 节点作为键名。一旦这个 DOM 节点删除，记录在节点上的值就会消失，不存在内存泄漏风险。
 
-2. 部署私有属性。内部属性是实例的弱引用，所以如果删除实例，它们也就随之消失，不会造成内存泄漏。
+2.  部署私有属性。内部属性是实例的弱引用，所以如果删除实例，它们也就随之消失，不会造成内存泄漏。
 
 ## Reference
 
