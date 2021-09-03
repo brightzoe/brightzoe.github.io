@@ -14,7 +14,7 @@ https://codesandbox.io/s/hook-e49wk?file=/src/useEffect.js
 
   1. 使用` useDeepCompareEffect from "react-use/lib/useDeepCompareEffect";`
 
-> 下面 useCallback,useMemo 的第二个参数同 useEffect ，它是用于监听你需要监听的变量，如在数组内添加 name、phone、等参数，当改变其中的值，都会触发子组件副作用的执行。useMemo 和 useCallback，都能为「重复渲染」这个问题，提供很好的帮助。useCallback 是「useMemo 的返回值为函数」时的特殊情况，是 React 提供的便捷方式。
+> 下面 useCallback,useMemo 的第二个参数同 useEffect ，它是用于监听你需要监听的变量，如在数组内添加 name、phone、等参数，当改变其中的值，都会触发子组件副作用的执行。如果不添加依赖，则在任何重新渲染时都会执行。useMemo 和 useCallback，都能为「重复渲染」这个问题，提供很好的帮助。useCallback 是「useMemo 的返回值为函数」时的特殊情况，是 React 提供的便捷方式。
 
 ### useMemo
 
@@ -47,8 +47,10 @@ https://codesandbox.io/s/hook-e49wk?file=/src/useCallback.js
 
 https://segmentfault.com/a/1190000020108840
 
-1.  比较引用，配合使用 useMemo:
-    https://codesandbox.io/s/reactmemo-usecallback-9tbdr?file=/src/index.js
+1.  比较引用，配合使用 React.memo:
+    https://codesandbox.io/s/hook-e49wk?file=/src/useCallback%2BReact.memo.js
+
+    使用 React.memo 将子组件作为 pureComponent,减少不必要的渲染。useCallback 缓存 props 中的函数，减少 props 不必要的变化导致的渲染。
 
     ```js
     const Child = React.memo(function ({ val, onChange }) {
@@ -61,6 +63,7 @@ https://segmentfault.com/a/1190000020108840
     	const [val2, setVal2] = useState("");
 
     	//如果不用useCallback, 任何一个输入框的变化都会导致另一个输入框重新渲染
+    	//一个输入框变化，父组件重新渲染，导致生成新的onChange函数，props 变化了，则子组件也重新渲染
     	const onChange1 = useCallback((evt) => {
     		setVal1(evt.target.value);
     	}, []);
