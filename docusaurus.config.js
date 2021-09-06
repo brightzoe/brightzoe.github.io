@@ -98,6 +98,21 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 					style: "dark",
 					copyright: `Copyright © ${new Date().getFullYear()} brightzoe's blog, Inc. Built with Docusaurus.`,
 				},
+// 				algolia: {
+// 					apiKey: 'YOUR_API_KEY',
+// 					indexName: 'YOUR_INDEX_NAME',
+//
+// 					// Optional: see doc section below
+// 					contextualSearch: true,
+//
+// 					// Optional: see doc section below
+// 					appId: 'YOUR_APP_ID',
+//
+// 					// Optional: Algolia search parameters
+// 					searchParameters: {},
+//
+// 					//... other Algolia params
+// 				},
 				prism: {
 					theme: lightCodeTheme,
 					darkTheme: darkCodeTheme,
