@@ -47,12 +47,12 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 						src: "img/logo.svg",
 					},
 					items: [
-						{
-							type: "doc",
-							docId: "README",
-							position: "left",
-							label: "README",
-						},
+						// {
+						// 	type: "doc",
+						// 	docId: "README",
+						// 	position: "left",
+						// 	label: "README",
+						// },
 						{ to: "/docs/css/layout", label: "HTML & CSS", position: "left" },
 						{ to: "/docs/JavaScript/scriptTag", label: "JavaScript", position: "left" },
 						{ to: "/docs/React/hooks", label: "React", position: "left" },
@@ -67,6 +67,34 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 					],
 				},
 				footer: {
+					links: [
+						{
+							title: "优秀博客推荐",
+							items: [
+								{
+									label: "Ashes Born's Blog",
+									href: "https://sadofriod.github.io/",
+								},
+								{
+									label: "Overreacted - Dan Abramov",
+									href: "https://overreacted.io/",
+								},
+							],
+						},
+						// {
+						// 	title: "More",
+						// 	items: [
+						// 		{
+						// 			label: "Blog",
+						// 			to: "/blog",
+						// 		},
+						// 		{
+						// 			label: "GitHub",
+						// 			href: "https://github.com/brightzoe",
+						// 		},
+						// 	],
+						// },
+					],
 					style: "dark",
 					copyright: `Copyright © ${new Date().getFullYear()} brightzoe's blog, Inc. Built with Docusaurus.`,
 				},

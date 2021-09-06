@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./HomepageFeatures.module.css";
+import styles from "./HomepageContent.module.css";
 
 const ContentProps = {
 	title: "Hello from here",
@@ -26,12 +26,10 @@ function Content({ Svg, title, description }) {
 	);
 }
 
-export default function HomepageFeatures() {
+export default function HomepageContent() {
 	return (
-		<section className={styles.features}>
-			<div className="container">
-				<Content {...ContentProps} />
-			</div>
-		</section>
+		<div className="container">
+			<Content {...ContentProps} />
+		</div>
 	);
 }
