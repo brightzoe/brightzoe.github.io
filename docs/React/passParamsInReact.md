@@ -53,4 +53,4 @@ Reference：
 
 1. [react router 相关 api 和参考](https://zhuanlan.zhihu.com/p/101129994)
 2. [pass params with history](https://stackoverflow.com/questions/44121069/how-to-pass-params-with-history-push-link-redirect-in-react-router-v4)
-3. [对路由的理解和使用](/fe/howToUnderstandRouter.md)
+3. [对路由的理解和使用](/docs/JavaScript/howToUnderstandRouter)
