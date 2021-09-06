@@ -6,14 +6,14 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 (
 	module.exports = {
 		title: "brightzoe's blog",
-		tagline: "Dinosaurs are cool",
-		url: "https://your-docusaurus-test-site.com",
+		tagline: "Learning by doing",
+		url: "https://brightzoe.github.io",
 		baseUrl: "/",
 		onBrokenLinks: "throw",
 		onBrokenMarkdownLinks: "warn",
 		favicon: "img/favicon.ico",
 		organizationName: "brightzoe", // Usually your GitHub org/user name.
-		projectName: "docusaurus", // Usually your repo name.
+		projectName: "brightzoe.github.io", // Usually your repo name.
 
 		presets: [
 			[
@@ -68,48 +68,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 				},
 				footer: {
 					style: "dark",
-					links: [
-						{
-							title: "Docs",
-							items: [
-								{
-									label: "前端汇总",
-									to: "/docs/README",
-								},
-							],
-						},
-						{
-							title: "Community",
-							items: [
-								{
-									label: "Stack Overflow",
-									href: "https://stackoverflow.com/questions/tagged/docusaurus",
-								},
-								{
-									label: "Discord",
-									href: "https://discordapp.com/invite/docusaurus",
-								},
-								{
-									label: "Twitter",
-									href: "https://twitter.com/docusaurus",
-								},
-							],
-						},
-						{
-							title: "More",
-							items: [
-								{
-									label: "Blog",
-									to: "/blog",
-								},
-								{
-									label: "GitHub",
-									href: "https://github.com/brightzoe",
-								},
-							],
-						},
-					],
-					copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+					copyright: `Copyright © ${new Date().getFullYear()} brightzoe's blog, Inc. Built with Docusaurus.`,
 				},
 				prism: {
 					theme: lightCodeTheme,
