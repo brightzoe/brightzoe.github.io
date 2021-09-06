@@ -1,4 +1,7 @@
-# script 标签的各种属性和使用
+---
+id: scriptTag
+title: 谈谈Script 标签
+---
 
 说说`<script>`标签，通常用作嵌入或引用可执行脚本。
 

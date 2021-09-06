@@ -1,4 +1,4 @@
-## Hooks 使用
+# Hooks
 
 函数组件 App，在每一次渲染都会被调用，而每一次调用都会形成一个独立的上下文，可以理解成一个快照。每一次渲染形成的快照，都是互相独立的。
 
@@ -134,8 +134,9 @@ https://codesandbox.io/s/hook-e49wk?file=/src/useApi.js
 ### useContext
 
 ### useReducer
-相比于useState,useReducer更适合：
-  例如 state 逻辑处理较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等场景。
+
+相比于 useState,useReducer 更适合：
+例如 state 逻辑处理较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等场景。
 useReducer 与 Reducer
 
 useReducer 只支持同步,如何使用异步见[Reference5](https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch)

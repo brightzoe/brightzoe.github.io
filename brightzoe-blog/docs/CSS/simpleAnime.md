@@ -117,6 +117,15 @@ transform: translate(10px, 10px) rotate(10deg);//给一个元素配置多个转�
 
     同时外面`overflow:hidden`,不能越过我画的圈圈！
 
+## 添加动画的好用的库
+
+1. Animate.css
+
+   https://animate.style/
+
+   简单好用，添加了一些常用的动画,使用简单，在上面主页上有使用方式。
+
+
 ## Reference
 
 1. [探究 CSS3 中的 transition 和 transform 属性](https://www.jianshu.com/p/80f6051389bd)
