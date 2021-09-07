@@ -40,8 +40,8 @@ jobs:
         env:
           USE_SSH: true
           GIT_USER: git
-          DEPLOYMENT_BRANCH: main
-          CURRENT_BRANCH: gh-pages
+          DEPLOYMENT_BRANCH: gh-pages
+          CURRENT_BRANCH: main
         run: |
           git config --global user.email "brightzoe.qq.com"
           git config --global user.name "brightzoe"
