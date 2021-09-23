@@ -22,6 +22,9 @@ function Content({ Svg, title, description }) {
 				<h3>{title}</h3>
 				<div>{description}</div>
 			</div>
+			<div className="text--center">
+				<Svg className={styles.featureSvg} alt={title} />
+			</div>
 		</div>
 	);
 }

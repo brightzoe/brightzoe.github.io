@@ -13,7 +13,6 @@ tags: [about, docusaurus]
 
 前期使用`docsify` 作为文档网站，2021.09 迁移至`docusaurus`。 [Docsify docs](https://docsify.js.org/#/zh-cn/)
 
-### Welcome here
 
 欢迎来到这里，如果对你有些帮助，我会很开心。有任何想说的或建议都欢迎留言。
 
