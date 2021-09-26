@@ -7,7 +7,7 @@
 ### 对数据进行复制和保存
 
 `copy(a)`这样就可以复制到剪贴板上啦,可以 copy 任何可以拿到的资源。不知道这种方式的时候，复制一个对象的方法可太蠢了= =
-![](https://user-gold-cdn.xitu.io/2018/12/7/16787442a1444125?imageslim ":size=60%")
+![](https://i.loli.net/2021/09/26/ukqnwjolXrTbQx7.gif)
 
 ### debug()
 
@@ -99,12 +99,12 @@
 
 颜色选择器，功能相当丰富。
 
-![](https://user-gold-cdn.xitu.io/2018/12/12/167a1d2cc62a8d0f?imageslim)
+![](https://i.loli.net/2021/09/26/A8tZJjOoDkW6Iyv.png)
 
 ### 对元素的动画进行编辑
 
 Timing function editor 定时函数编辑器/Cubic bezier(贝塞尔) 编辑器
-![](https://user-gold-cdn.xitu.io/2018/12/14/167ac1748b45fe3f?imageslim)
+![](https://i.loli.net/2021/09/26/NS4k67ZLY9mFMcU.gif)
 
 ### 监听对 DOM 元素的修改
 
@@ -114,14 +114,14 @@ Timing function editor 定时函数编辑器/Cubic bezier(贝塞尔) 编辑器
 - 选择 attribute modifications :监听任何当前选中的节点被 添加，移除 或者 被修改值的事件
 - 选择 node removal :监听被选中的元素被 移除 的事件
 
-![](https://user-gold-cdn.xitu.io/2019/1/22/168746caeae2a94e?imageView2 ":size=80%")
+![](https://i.loli.net/2021/09/26/bqyYD1gmPzaduSC.png)
 
 页面重新加载时会记住断点。当你设置了一个或多个断点的时候，可能都忘了它们所标记的位置了。怎么找它们呢？
 
 在 Elements 视图中有视觉提示，Sources 中也有专用列表。
 
 有时你添加了断点的元素被隐藏在一些折叠起来的父级元素中，不要担心 - 他们会在 Element 中用高亮展示出来。
-![](https://user-gold-cdn.xitu.io/2019/1/22/168747517998eb7d?imageView2 ":size=80%")
+![](https://i.loli.net/2021/09/26/y18tn2eDwPquREm.png)
 
 ## Console 面板
 
@@ -143,7 +143,7 @@ Timing function editor 定时函数编辑器/Cubic bezier(贝塞尔) 编辑器
 
 - `$_`
   对上次执行的结果的引用
-  ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9a4b2f432c2b4eddbe00922395ca3176~tplv-k3u1fbpfcp-zoom-1.image)
+  ![](https://i.loli.net/2021/09/26/EYG1I4obhrzWCkP.png)
 
 ### console.log
 
@@ -162,7 +162,7 @@ Timing function editor 定时函数编辑器/Cubic bezier(贝塞尔) 编辑器
 - 在回调函数中检查传递的参数，可以直接传递 console.log 方法
 
   `getLocation(console.log)` ，不要 `getLocation((v)=>console.log(v))`
-![](https://user-gold-cdn.xitu.io/2019/1/22/168744938b968240?imageView2 ":size=60%")
+  ![](https://i.loli.net/2021/09/26/dmzIkDnThp5HUPW.png)
 
 ### console 中的异步
 
@@ -190,7 +190,7 @@ json = await response.json();
 ![](https://i.loli.net/2021/07/20/FLJ7pi3qdTxoh1X.png)
 
 前面提到的`console.log({dad,kids})`,增强对象字面量(enhanced object literal),也可以直接换成 console.table
-![](https://user-gold-cdn.xitu.io/2019/1/22/1687448b6fdfc5bc?imageView2 ":size=60%")
+![](https://i.loli.net/2021/09/26/fwpIWgHnm9KOxDL.png)
 
 ### 计时相关
 
@@ -203,7 +203,7 @@ console 面板的每一行输出可以添加时间戳，可以 F1 在设置里�
 - console.timeEnd() — 结束计时并且将结果在 console 中打印出来
 
 如果你想一次记录多件事，可以往这些函数中传入不同的标签值。(例如: console.time('loading') ， console.timeEnd('loading') )
-![](https://user-gold-cdn.xitu.io/2018/12/13/167a484d3824545d?imageslim)
+![](https://i.loli.net/2021/09/26/Qrua1wkKWXLlBEj.png)
 
 ### 实时表达式
 
@@ -224,17 +224,19 @@ Network 面板中的 initiator 这一列显明了是哪个脚本的哪一行触�
 Network 面板中的过滤器输入框接受字符串或正则表达式，对应显示匹配的请求。 但是你也可以使用它来过滤很多属性。
 
 反过滤：过滤请求前面加上-号，如-method:OPTIONS，就可以过滤 OPTIONS 请求了。
-![](https://user-gold-cdn.xitu.io/2018/12/29/167f8282534dfe59?imageslim)
+![](https://i.loli.net/2021/09/26/7OydwU2nGfESmZt.gif)
 
 ### 自定义显示的列
 
 在 Network 面板，你可以自定义这个表格都显示哪些列，在表头上或者任何一个请求上右键即可。大概有如下一些：
-![](https://user-gold-cdn.xitu.io/2018/12/29/167f82824d09c68d?imageView2)
+![](https://i.loli.net/2021/09/26/nb7CkDtmfErHoSd.png)
+![](https://i.loli.net/2021/09/26/SVkamH7tKAOBgFz.gif)
 
 ### 禁用请求
 
 想看看当某些脚本、样式文件缺少或者其他资源加载失败时，网页的样子吗？在 Network 面板对某条请求右击选择 Block Request URL。一个新的 禁用请求 面板会被呼出，在这里可以管理被禁用的请求。
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8a7ad1fd71f24003b947b405805246b8~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://i.loli.net/2021/09/26/wK8I7TEcHanfLrm.png)
+
 ### 重新发送一个请求
 
 对于 Network 面板上的任何一个请求，不需要刷新页面，右键选择"Replay XHR"即可重新刷新。
@@ -251,19 +253,18 @@ Network 面板中的过滤器输入框接受字符串或正则表达式，对应
 
 1. 右击行号，选择 Add conditional breakpoint...(添加条件断点) 或者在你所添加的断点处，edit breakpoint
 2. 填入表达式，返回结果为 falsy 时不会暂停.(会通过执行表达式获得 true/false 来决定是否暂停)
-   ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/24248f3d6d584cd2940bd8123cae7b61~tplv-k3u1fbpfcp-zoom-1.image)
+   ![](https://i.loli.net/2021/09/26/hwulUkrDgzOHPMT.gif)
 
 ?> 填入的表达式也可以使用 console.log，而不必在源码中写 console.log ，方便调试
 
 ### 请求断点 XHR/fetch breakpoints
 
 对已经发送的请求进行断点调试,可以添加部分 URL 作为触发器或监听任何请求:
-![](https://user-gold-cdn.xitu.io/2019/1/22/16874662814db12c?imageView2 ":size=60%")
+![](https://i.loli.net/2021/09/26/W8j9dZKCsQ3gYLR.png)
 
 ### Source 里的 WorkSpace
 
 可以直接把文件夹拖动到 source 里面，直接在里面进行编辑。保存编辑后，可以直接同步编辑到本地的文件夹。
-![](https://user-gold-cdn.xitu.io/2018/12/29/167f5b37db4e23ac?imageslim)
 
 workSpace 相关：
 在 devTools 直接编辑，并同步变化到本地：
@@ -281,5 +282,6 @@ https://juejin.cn/book/6844733783166418958/section/6844733783225139214
 
 1. [快捷键-developer.chrome.com](https://developer.chrome.com/docs/devtools/shortcuts/)
 2. [你不知道的 Chrome 调试技巧](https://juejin.cn/book/6844733783166418958/section/6844733783187390477)
+2. [FrontendWingman -github](https://github.com/dendoink/FrontendWingman/blob/master/Chrome_Devtools_Tricks)
 3. [通读「你不知道的 Chrome 调试技巧」](https://juejin.cn/post/6867099026995560455#heading-9)
 4. [console-developer.chrome.com](https://developer.chrome.com/docs/devtools/console/)
