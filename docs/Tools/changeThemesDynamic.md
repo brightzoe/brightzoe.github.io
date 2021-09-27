@@ -65,6 +65,8 @@ preview.onclick = function (e) {
 
 好的，和 docsify 文档一样，我也在这里添加了切换皮肤的按钮,请点击切换：
 
+> 注： 这里是之前本 blog 使用 docsify 时的方法。
+
 ```html
 <div class="demo-theme-preview">
 	<a data-theme="vue">vue.css</a>

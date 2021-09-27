@@ -1,8 +1,8 @@
 # Hooks
 
-函数组件 App，在每一次渲染都会被调用，而每一次调用都会形成一个独立的上下文，可以理解成一个快照。每一次渲染形成的快照，都是互相独立的。
+> 注： 本文所有栗子均在： https://codesandbox.io/s/hook-e49wk
 
-https://codesandbox.io/s/hook-e49wk?file=/src/useEffect.js
+函数组件 App，在每一次渲染都会被调用，而每一次调用都会形成一个独立的上下文，可以理解成一个快照。每一次渲染形成的快照，都是互相独立的。
 
 ### useEffect
 
@@ -125,12 +125,6 @@ https://segmentfault.com/a/1190000020108840
 - context 使用方式：
   https://codesandbox.io/s/hooks-api-otmq6?file=/src/useContextExample.js
 
-### 自定义 hook:
-
-封装一段逻辑。比如有一个请求公共数据的接口，在多个页面中被重复使用，你便可通过自定义 Hook 的形式，将请求逻辑提取出来公用。
-
-https://codesandbox.io/s/hook-e49wk?file=/src/useApi.js
-
 ### useContext
 
 ### useReducer
@@ -141,10 +135,92 @@ useReducer 与 Reducer
 
 useReducer 只支持同步,如何使用异步见[Reference5](https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch)
 
-## Reference:
+### forwardRef
+
+ref 转发，方便父组件拿到子组件的实例。把自身外面的 ref 转发到内部的组件，使写在自己身上的 ref 不指向自己。
+
+https://codesandbox.io/s/hook-e49wk?file=/src/forwardRef.js
+
+```js
+function A(props, parentRef) {
+	return (
+		<div>
+			<input type="text" ref={parentRef} />
+		</div>
+	);
+}
+
+let ForwardChild = forwardRef(A); // 把子组件包裹起来
+
+export default function App() {
+	const parentRef = useRef();
+	function focusHander() {
+		console.log("input的value", parentRef.current.value);
+	}
+	return (
+		<div>
+			<ForwardChild ref={parentRef} />
+			<button onClick={focusHander}>获取焦点</button>
+		</div>
+	);
+}
+```
+
+### useImperativeHandle
+
+一般结合 forwardRef 使用，在 ref 转发到组件内部时，选择暴露一些特定的值或方法给父组件。
+
+为什么使用：
+
+- useImperativeHandle 可以让你在使用 ref 时，自定义暴露给父组件的实例值，不能让父组件想干嘛就干嘛
+
+- 通过 useImperativeHandle ，子组件还可以使用很多的 ref,可以暴露给父组件操作子组件内部的多个 ref
+
+  ```js
+  function Child(props,parentRef){
+    // 子组件内部自己创建 ref
+    let focusRef = useRef();
+    let inputRef = useRef();
+    useImperativeHandle(parentRef,()=>(
+      // 这个函数会返回一个对象
+      // 该对象会作为父组件 current 属性的值
+      // 通过这种方式，父组件可以使用操作子组件中的多个 ref
+        return {
+        focusRef,
+        inputRef,
+        name:'计数器',
+        focus(){
+            focusRef.current.focus();
+        },
+        changeText(text){
+            inputRef.current.value = text;
+        }
+      }
+    });
+    return (
+      <>
+        <input ref={focusRef}/>
+        <input ref={inputRef}/>
+      </>
+    )
+  }
+  Child = forwardRef(Child);
+  ```
+
+栗子见： https://codesandbox.io/s/hook-e49wk?file=/src/forwardRef.js
+
+### 自定义 hook
+
+封装一段逻辑。比如有一个请求公共数据的接口，在多个页面中被重复使用，你便可通过自定义 Hook 的形式，将请求逻辑提取出来公用。
+
+https://codesandbox.io/s/hook-e49wk?file=/src/useApi.js
+
+## Reference
 
 1. [React 文档-useCallback](https://zh-hans.reactjs.org/docs/hooks-reference.html#usecallback)
 2. [你不知道的 useCallback](https://segmentfault.com/a/1190000020108840)
 3. [当我们讨论 hooks 时在讨论什么](https://zhuanlan.zhihu.com/p/328540840)
 4. [hook 一些基础](https://juejin.cn/book/6966551262766563328/section/6967228489208430603)
 5. [useReducer async](https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch)
+6. [**React Hooks 系列之 3 useContext - 掘金**](https://juejin.cn/post/6844904153584500749#heading-0)
+7. [React Hooks 详解 【近 1W 字】+ 项目实战 - 掘金](https://juejin.cn/post/6844903985338400782#heading-27)
