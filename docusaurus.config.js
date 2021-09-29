@@ -35,9 +35,15 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 					theme: {
 						customCss: require.resolve("./src/css/custom.css"),
 					},
+					sitemap: {
+						changefreq: "weekly",
+						priority: 0.5,
+						trailingSlash: false,
+					},
 				}),
 			],
 		],
+		plugins: ["@docusaurus/plugin-ideal-image"],
 
 		themeConfig:
 			/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -113,6 +119,11 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 				prism: {
 					theme: lightCodeTheme,
 					darkTheme: darkCodeTheme,
+				},
+				googleAnalytics: {
+					trackingID: "UA-192447848-1",
+					// Optional fields.
+					anonymizeIP: true, // Should IPs be anonymized?
 				},
 			}),
 	}
