@@ -29,7 +29,7 @@ console.log(window.a);
 
 <!-- ![](https://i.loli.net/2021/09/26/Rr63yYwAt4DMJx2.png) -->
 
-![](../../static/img/09262157.svg)
+![](../../../static/img/09262157.svg)
 
 暂时性死区：
 

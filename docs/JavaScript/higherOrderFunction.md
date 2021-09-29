@@ -48,7 +48,9 @@ Array.prototype._forEach = function (callback, thisArg) {
 };
 ```
 
-有可能犯的错误[引用数据类型，基本数据类型]:
+有可能犯的错误:
+
+1. 引用数据类型，基本数据类型
 
 ```js
 const arr = [1, 3, 5];
@@ -64,6 +66,54 @@ foo.forEach((item, index) => {
 //  [{ a: 11 }, { a: 12 }];
 ```
 
+2. 在 forEach 中使用 await 异步的理解
+
+   [await 在 forEach 中无效 - 掘金](https://juejin.cn/post/6999795230430461966#heading-4)
+
+```js
+function api(i) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			const n = Math.random();
+			resolve(n);
+		}, 1000);
+	});
+}
+const list = [1, 2, 3, 4, 5];
+
+async function fn() {
+	// 数组forEach遍历方法 await无效
+	list.forEach(async (item, index) => {
+		const n = await api(item);
+		console.log(n, index);
+	});
+}
+fn();
+```
+
+希望得到的是每过一秒输出一次，结果以上代码输出是在 1s 后同时输出 5 个结果。
+
+通过 for 循环可以达到想要的效果：
+
+```js
+async function fn() {
+	for (let i = 0; i < list.length; i++) {
+		const n = await api(list[i]);
+		console.log("for--------", n, i);
+	}
+}
+fn();
+```
+
+:::note
+
+如何理解上述 forEach 并没有等待前面代码？
+
+1. forEach 本身就是需要内部循环完毕后才抛出结果，就像你在 forEach 中 return，break 也是一样失效，是用法本身的问题。
+2. await 只在所在的 async 函数内有效，控制的是函数内的异步顺序。forEach 的 async 函数回调被执行时是不同的 async 函数调用，并没有 async 包裹住多个函数，foreach 相当于是立即调用了多个 await，他们的调用是同步的，但是他们内部是异步控制的。同步调用每个 async ,每个 async 内部的 await 是异步的。
+
+:::
+
 ### map
 
 `ary.map(mapper)` //mapper
@@ -76,26 +126,25 @@ foo.forEach((item, index) => {
 
 如何选择合适的方法？
 
-[生动形象解释forEach、filter、map、some、every、find、findIndex、reduce间的区别 - 掘金](https://juejin.cn/post/6844903870154588168#heading-0)
+[生动形象解释 forEach、filter、map、some、every、find、findIndex、reduce 间的区别 - 掘金](https://juejin.cn/post/6844903870154588168#heading-0)
 
 - 从语义上分析：
 
   forEach: 对数组进行批量操作
 
-  map:映射，生成原始数据的特征信息的map
+  map:映射，生成原始数据的特征信息的 map
 
   filter:筛选，过滤
 
-  some: 有没有符合条件的？只要找到一个符合条件的，就回来报告true 所以并不会全部遍历，不做多余的活（性能优良）
+  some: 有没有符合条件的？只要找到一个符合条件的，就回来报告 true 所以并不会全部遍历，不做多余的活（性能优良）
 
-  every: 全符合条件吗？every对每一个元素执行一个callback，直到它找到一个使 callback 返回 false的元素，就返回false，直到遍历完成也没有返回false的话，就返回true
+  every: 全符合条件吗？every 对每一个元素执行一个 callback，直到它找到一个使 callback 返回 false 的元素，就返回 false，直到遍历完成也没有返回 false 的话，就返回 true
 
-  find: 返回一个符合的。 find和some很类似，都是寻找符合条件的，有一个就可以 不过some进去搜罗了一圈回来报了个“有”（true），而find则把那个土豆抱了出来（返回第一个符合条件的对象）
+  find: 返回一个符合的。 find 和 some 很类似，都是寻找符合条件的，有一个就可以 不过 some 进去搜罗了一圈回来报了个“有”（true），而 find 则把那个土豆抱了出来（返回第一个符合条件的对象）
 
   findIndex: 返回第一个符合条件的索引号
 
   reduce: 归并
-
 
 :::
 
@@ -136,7 +185,7 @@ arr1.forEach((v, i, arr) => {
 // window
 ```
 
-## reference
+## Reference
 
 1. [JavaScript 中 forEach、map、filter 详细 - 掘金](https://juejin.cn/post/6844903807176933384#heading-2)
-2. [生动形象解释forEach、filter、map、some、every、find、findIndex、reduce间的区别 - 掘金](https://juejin.cn/post/6844903870154588168#heading-0) [推荐]
+2. [生动形象解释 forEach、filter、map、some、every、find、findIndex、reduce 间的区别 - 掘金](https://juejin.cn/post/6844903870154588168#heading-0) [推荐]
