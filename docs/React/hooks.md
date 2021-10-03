@@ -130,10 +130,71 @@ https://segmentfault.com/a/1190000020108840
 ### useReducer
 
 相比于 useState,useReducer 更适合：
+
 例如 state 逻辑处理较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等场景。
-useReducer 与 Reducer
+
+基础使用：
+
+```js
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+	switch (action.type) {
+		case "increment":
+			return { count: state.count + 1 };
+		case "decrement":
+			return { count: state.count - 1 };
+		default:
+			throw new Error();
+	}
+}
+
+function Counter() {
+	const [state, dispatch] = useReducer(reducer, initialState);
+	return (
+		<>
+			Count: {state.count}
+			<button onClick={() => dispatch({ type: "decrement" })}>-</button>
+			<button onClick={() => dispatch({ type: "increment" })}>+</button>
+		</>
+	);
+}
+```
+
+> useState,useReducer 都提供了惰性初始化的方式。可以通过函数计算初始值。
 
 useReducer 只支持同步,如何使用异步见[Reference5](https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch)
+### UseRef
+返回一个可变的 ref 对象，其 .current 属性被初始化为传入的参数（initialValue）。返回的 ref 对象在组件的整个生命周期内持续存在。
+
+基本使用：
+```js
+//访问DOM元素
+function TextInputWithFocusButton() {
+  const inputEl = useRef(null);
+  const onButtonClick = () => {
+    // `current` 指向已挂载到 DOM 上的文本输入元素
+    inputEl.current.focus();
+  };
+  return (
+    <>
+      <input ref={inputEl} type="text" />
+      <button onClick={onButtonClick}>Focus the input</button>
+    </>
+  );
+}
+
+//也可以用来存放变量
+```
+>useRef 会在每次渲染时返回同一个 ref 对象。变更 .current 属性不会引发组件重新渲染。如果想要在 React 绑定或解绑 DOM 节点的 ref 时运行某些代码，则需要使用回调 ref 来实现。
+
+
+
+### 自定义 hook:
+
+封装一段逻辑。比如有一个请求公共数据的接口，在多个页面中被重复使用，你便可通过自定义 Hook 的形式，将请求逻辑提取出来公用。
+
+https://codesandbox.io/s/hook-e49wk?file=/src/useApi.js
 
 ### forwardRef
 
