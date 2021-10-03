@@ -15,7 +15,7 @@
 
 ### React 性能优化
 
-减少不必要的渲染 https://brightzoe.top/#/fe/designPatternAndBestPractices?id=重新渲染-reconciliation
+[减少不必要的渲染](/docs/React/designPatternAndBestPractices#react-%E4%B8%AD%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96)
 
 ## 开发环境优化
 
