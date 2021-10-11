@@ -4,7 +4,15 @@
 
 函数组件 App，在每一次渲染都会被调用，而每一次调用都会形成一个独立的上下文，可以理解成一个快照。每一次渲染形成的快照，都是互相独立的。
 
+### useState
+
+使用 useState 依赖上一次 state 时，使用 function 的方式更新 setState,确保拿到的是准确的 previous state。
+
+对于对象和数组，注意 useState 中不会自动补全旧的变量，需要使用展开运算符自己手动补充,完成合并更新。
+
 ### useEffect
+
+解决的问题：EffectHook 用于函数式组件中副作用，执行一些相关的操作，逻辑聚合。
 
 每次渲染函数组件时，useEffect 都是新的，都是不一样的。组件重新渲染，会重新执行 useEffect 内的回调，并且 里面 count 值也是当时的快照的一个常量值。
 
@@ -14,7 +22,8 @@ https://codesandbox.io/s/hook-e49wk?file=/src/useEffect.js
 
   1. 使用` useDeepCompareEffect from "react-use/lib/useDeepCompareEffect";`
 
-> 下面 useCallback,useMemo 的第二个参数同 useEffect ，它是用于监听你需要监听的变量，如在数组内添加 name、phone、等参数，当改变其中的值，都会触发子组件副作用的执行。如果不添加依赖，则在任何重新渲染时都会执行。useMemo 和 useCallback，都能为「重复渲染」这个问题，提供很好的帮助。useCallback 是「useMemo 的返回值为函数」时的特殊情况，是 React 提供的便捷方式。
+- 在 useEffect 的第一个参数中 return 一个函数，这个匿名函数将在组件卸载的时候执行，因此我们在这里移除监听等在卸载时执行的操作就好了。
+  > 下面 useCallback,useMemo 的第二个参数同 useEffect ，它是用于监听你需要监听的变量，如在数组内添加 name、phone、等参数，当改变其中的值，都会触发子组件副作用的执行。如果不添加依赖，则在任何重新渲染时都会执行。useMemo 和 useCallback，都能为「重复渲染」这个问题，提供很好的帮助。useCallback 是「useMemo 的返回值为函数」时的特殊情况，是 React 提供的便捷方式。
 
 ### useMemo
 
@@ -54,30 +63,30 @@ https://segmentfault.com/a/1190000020108840
 
     ```js
     const Child = React.memo(function ({ val, onChange }) {
-    	console.log("render...", val);
-    	return <input value={val} onChange={onChange} />;
+      console.log("render...", val);
+      return <input value={val} onChange={onChange} />;
     });
 
     function App() {
-    	const [val1, setVal1] = useState("");
-    	const [val2, setVal2] = useState("");
+      const [val1, setVal1] = useState("");
+      const [val2, setVal2] = useState("");
 
-    	//如果不用useCallback, 任何一个输入框的变化都会导致另一个输入框重新渲染
-    	//一个输入框变化，父组件重新渲染，导致生成新的onChange函数，props 变化了，则子组件也重新渲染
-    	const onChange1 = useCallback((evt) => {
-    		setVal1(evt.target.value);
-    	}, []);
+      //如果不用useCallback, 任何一个输入框的变化都会导致另一个输入框重新渲染
+      //一个输入框变化，父组件重新渲染，导致生成新的onChange函数，props 变化了，则子组件也重新渲染
+      const onChange1 = useCallback((evt) => {
+        setVal1(evt.target.value);
+      }, []);
 
-    	const onChange2 = useCallback((evt) => {
-    		setVal2(evt.target.value);
-    	}, []);
+      const onChange2 = useCallback((evt) => {
+        setVal2(evt.target.value);
+      }, []);
 
-    	return (
-    		<>
-    			<Child val={val1} onChange={onChange1} />
-    			<Child val={val2} onChange={onChange2} />
-    		</>
-    	);
+      return (
+        <>
+          <Child val={val1} onChange={onChange1} />
+          <Child val={val2} onChange={onChange2} />
+        </>
+      );
     }
     ```
 
@@ -127,6 +136,16 @@ https://segmentfault.com/a/1190000020108840
 
 ### useContext
 
+`Context` 是在组件树中自上而下地跨组件传递数据，不必显式地通过组件树逐级传递 props。
+
+https://codesandbox.io/s/hook-e49wk?file=/src/useContext.js
+
+应用于在很多不同层级的组件间访问同样一些数据，但是会使组件复用性变差。有时可以用组件组合代替。
+
+使用 context 的通用的场景包括管理当前的 locale，theme，userInfo 或者一些缓存数据，这比替代方案要简单的多。
+
+**调用了 useContext 的组件总会在 context 值变化时重新渲染**,useContext(MyContext) 只是让你能够读取 context 的值以及订阅 context 的变化.
+
 ### useReducer
 
 相比于 useState,useReducer 更适合：
@@ -139,35 +158,38 @@ https://segmentfault.com/a/1190000020108840
 const initialState = { count: 0 };
 
 function reducer(state, action) {
-	switch (action.type) {
-		case "increment":
-			return { count: state.count + 1 };
-		case "decrement":
-			return { count: state.count - 1 };
-		default:
-			throw new Error();
-	}
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    default:
+      throw new Error();
+  }
 }
 
 function Counter() {
-	const [state, dispatch] = useReducer(reducer, initialState);
-	return (
-		<>
-			Count: {state.count}
-			<button onClick={() => dispatch({ type: "decrement" })}>-</button>
-			<button onClick={() => dispatch({ type: "increment" })}>+</button>
-		</>
-	);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <>
+      Count: {state.count}
+      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+      <button onClick={() => dispatch({ type: "increment" })}>+</button>
+    </>
+  );
 }
 ```
 
 > useState,useReducer 都提供了惰性初始化的方式。可以通过函数计算初始值。
 
 useReducer 只支持同步,如何使用异步见[Reference5](https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch)
+
 ### UseRef
+
 返回一个可变的 ref 对象，其 .current 属性被初始化为传入的参数（initialValue）。返回的 ref 对象在组件的整个生命周期内持续存在。
 
 基本使用：
+
 ```js
 //访问DOM元素
 function TextInputWithFocusButton() {
@@ -186,11 +208,10 @@ function TextInputWithFocusButton() {
 
 //也可以用来存放变量
 ```
->useRef 会在每次渲染时返回同一个 ref 对象。变更 .current 属性不会引发组件重新渲染。如果想要在 React 绑定或解绑 DOM 节点的 ref 时运行某些代码，则需要使用回调 ref 来实现。
 
+> useRef 会在每次渲染时返回同一个 ref 对象。变更 .current 属性不会引发组件重新渲染。如果想要在 React 绑定或解绑 DOM 节点的 ref 时运行某些代码，则需要使用回调 ref 来实现。
 
-
-### 自定义 hook:
+### 自定义 hook
 
 封装一段逻辑。比如有一个请求公共数据的接口，在多个页面中被重复使用，你便可通过自定义 Hook 的形式，将请求逻辑提取出来公用。
 
@@ -204,26 +225,26 @@ https://codesandbox.io/s/hook-e49wk?file=/src/forwardRef.js
 
 ```js
 function A(props, parentRef) {
-	return (
-		<div>
-			<input type="text" ref={parentRef} />
-		</div>
-	);
+  return (
+    <div>
+      <input type="text" ref={parentRef} />
+    </div>
+  );
 }
 
 let ForwardChild = forwardRef(A); // 把子组件包裹起来
 
 export default function App() {
-	const parentRef = useRef();
-	function focusHander() {
-		console.log("input的value", parentRef.current.value);
-	}
-	return (
-		<div>
-			<ForwardChild ref={parentRef} />
-			<button onClick={focusHander}>获取焦点</button>
-		</div>
-	);
+  const parentRef = useRef();
+  function focusHander() {
+    console.log("input的value", parentRef.current.value);
+  }
+  return (
+    <div>
+      <ForwardChild ref={parentRef} />
+      <button onClick={focusHander}>获取焦点</button>
+    </div>
+  );
 }
 ```
 
@@ -284,4 +305,5 @@ https://codesandbox.io/s/hook-e49wk?file=/src/useApi.js
 4. [hook 一些基础](https://juejin.cn/book/6966551262766563328/section/6967228489208430603)
 5. [useReducer async](https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch)
 6. [**React Hooks 系列之 3 useContext - 掘金**](https://juejin.cn/post/6844904153584500749#heading-0)
-7. [React Hooks 详解 【近 1W 字】+ 项目实战 - 掘金](https://juejin.cn/post/6844903985338400782#heading-27)
+7. [React Hooks 系列之 4 useReducer - 掘金](https://juejin.cn/post/6844904157892050957#heading-3)
+8. [React Hooks 详解 【近 1W 字】+ 项目实战 - 掘金](https://juejin.cn/post/6844903985338400782#heading-27)

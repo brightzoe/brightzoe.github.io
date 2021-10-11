@@ -403,3 +403,4 @@ declare function replace(input: string): string; //如果没有类型声明，�
 
 1. [ts 入门教程](https://ts.xcatliu.com/)
 2. [flow](https://flow.org/en/docs/usage/)
+3. [TypeScript and React: Hooks](https://fettblog.eu/typescript-react/hooks/#useref)
