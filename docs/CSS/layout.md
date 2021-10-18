@@ -159,30 +159,6 @@ body {
 
   grid 布局也有问题：`grid-template-rows:100%` 调整高度就可以了。
 
-## 盒模型
-
-从外到内：margin-box,border-box,padding-box,content-box.
-
-margin 可以为负值，padding 不能为负值。
-
-background-color 会充满 content,padding,border.
-
-标准盒模型和 IE 盒模型：`box-sizing` 默认为`content-box`
-
-> 若不声明 DOCTYPE 类型，IE 浏览器会将盒子模型解释为 IE 盒子模型.
-
-- `box-sizing: content-box` : 设置的 width,height 为 content-box 的宽高。
-- `box-sizing: border-box` : 设置的 width,height 为 border-box 的宽高。(content+padding+border)
-
-### 获取盒模型对应的宽和高
-
-（1）`dom.style.width/height` 只能取到行内样式的宽和高，style 标签中和 link 外链的样式取不到。
-（2）`dom.currentStyle.width/height` （只有IE兼容）取到的是最终渲染后的宽和高
-（3）`window.getComputedStyle(dom).width/height` 同（2）但是多浏览器支持，IE9 以上支持。
-（4）`dom.getBoundingClientRect().width/height` 也是得到渲染后的宽和高，大多浏览器支持。IE9 以上支持，除此外还可以取到相对于视窗的上下左右的距离。
-（5）`dom.offsetWidth/offsetHeight` 包括高度（宽度）、内边距和边框，不包括外边距。最常用，兼容性最好。
-
-### 边距重叠问题
 
 
 ## Reference:
