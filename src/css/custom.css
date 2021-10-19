@@ -26,6 +26,9 @@
 html[data-theme="dark"] .docusaurus-highlight-code-line {
 	background-color: rgba(0, 0, 0, 0.3);
 }
+.token.comment {
+	white-space: break-spaces;
+}
 footer {
 	text-align: center;
 }
