@@ -63,6 +63,22 @@ bar();
 
 ## 块级作用域
 
-## reference
+## 一些问题
 
-1. [js 执行上下文与作用域\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1wD4y1D7Pp?from=search&seid=2212534765957722610)
+对象里写函数,对象的 fn 属性指向这个函数,函数并不属于这个对象,相对独立.
+
+这个函数是全局的,对象不是语句块,不会产生作用域.
+
+```js
+var obj = {
+	val: 3,
+	fn: function () {
+		return this.val;
+	},
+};
+obj.fn(); //this=>obj, 3
+```
+
+## Reference
+
+- [js 执行上下文与作用域\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1wD4y1D7Pp?from=search&seid=2212534765957722610)

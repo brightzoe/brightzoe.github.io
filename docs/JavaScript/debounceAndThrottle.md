@@ -41,6 +41,7 @@
 
 ```js
 //debounce
+//debounce(fn,1000)
 function debounce(fn, delay) {
 	return function () {
 		const that = this;
