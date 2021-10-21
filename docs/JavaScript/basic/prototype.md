@@ -116,6 +116,41 @@ function myInstanceof(left, right) {
 }
 ```
 
+## 一些题
+
+```js
+// 1
+var foo = {};
+var F = function () {};
+Object.prototype.a = "value a";
+Function.prototype.b = "value b";
+
+console.log(foo.a); //value a
+console.log(foo.b); //undefined
+console.log(F.a); //value a
+console.log(F.b); //value b
+
+// 2
+Function.prototype.a = () => alert("a");
+Object.prototype.b = () => alert("b");
+function A() {}
+const a = new A();
+
+a.a(); //a.a is undefined
+//a.a();a.__proto__.a();a.__proto__.__proto__.a()
+a.b(); //b
+```
+
+**如何判断一个函数当前是否被当做构造函数调用？**
+
+1. `instanceof ` 检查是否通过 new 调用，this 是否是构造函数的实例。
+
+   但不完全可靠，用 Person.call()/apply()也可以得到 Person 的实例。
+
+2. 当调用函数的 Constructor 方法时，new.target 被赋值给构造函数名(===Person).如果不是通过构造函数调用，new.target===undefined。
+   很可靠。在函数外使用 new.target 是语法错误。
+3. 用 class 声明的函数必须被 new 调用，不然会报错，就规定了这一种方法。
+
 ## Reference
 
 - [面不面试的，你都得懂原型和原型链 - 掘金](https://juejin.cn/post/6934498361475072014#heading-0)
