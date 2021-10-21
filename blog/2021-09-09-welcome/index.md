@@ -13,15 +13,22 @@ tags: [about, docusaurus]
 
 前期使用`docsify` 作为文档网站，2021.09 迁移至`docusaurus`。 [Docsify docs](https://docsify.js.org/#/zh-cn/)
 
-
 欢迎来到这里，如果对你有些帮助，我会很开心。有任何想说的或建议都欢迎留言。
 
-:::note
+:::info
 本 blog 中技术相关的文档，有参考来自网络的很多内容，包括来自 StackOverFlow, 掘金，思否，微信公众号，知乎等等。
 我在撰写文章，参考一些优秀内容时会记得添加到 References 注明出处, 若有疏漏，或者不小心侵权了，请放心联系我，尊重所有人的版权。
 :::
 
 <!--truncate-->
+
+## 文档撰写思路
+
+截至目前，本 blog 的技术相关文档还是以笔记为主，记录本人在技术学习过程中对参考资料的整理，以及练习某些技术的总结。
+
+以后在整理文档时，会在相关内容处直接放上参考，来源链接，并同时把链接放到最后‘Reference’处，方便使用。
+
+> 近期阅读参考‘掘金’比较多。 2021-10
 
 ## How to use docusaurus
 
@@ -68,8 +75,6 @@ Blog posts support [Docusaurus Markdown features](https://docusaurus.io/docs/mar
 Use the power of React to create interactive blog posts.
 <button onClick={() => alert('button clicked!')}>Click me!</button>
 :::
-
-**And if you don't want a blog**: just delete this directory, and use `blog: false` in your Docusaurus config.
 
 ## Reference
 

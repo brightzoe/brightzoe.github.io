@@ -26,6 +26,8 @@ object,array,function
   Object.prototype.toString.call("foo") === "[object String]";
   ```
 
+  [Object.prototype.toString() - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toString)
+
 - 判断是不是数组：
 
   ```js

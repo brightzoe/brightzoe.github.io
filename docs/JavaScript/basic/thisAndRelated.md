@@ -24,6 +24,8 @@ this 的丢失问题：`this` 指向调用的对象与函数声明的位置无�
 解决方法通过 `bind` 绑定 `this` 或者通过箭头函数。箭头函数的 `this` ，总是继承外层函数的对象，在定义时就确定，与调用无关。
 :::
 
+理解 this 的很多栗子：[this、apply、call、bind - 掘金](https://juejin.cn/post/6844903496253177863#heading-0)
+
 ## call,apply,bind
 
 call,apply 用来在函数调用时给函数绑定 this,作用相同，传参方式不同。
@@ -103,4 +105,6 @@ Function.prototype.myBind = function (context = window) {
 ```
 
 ## Reference
+
 - [this、apply、call、bind - 掘金](https://juejin.cn/post/6844903496253177863#heading-2)
+- [JS | 前端进阶之道](https://yuchengkai.cn/docs/frontend/#this)
