@@ -58,7 +58,7 @@ function bar() {
 }
 
 var a = 2;
-bar();
+bar(); //2 执行的foo 作用域在全局，则a 为全局的a
 ```
 
 ## 块级作用域
