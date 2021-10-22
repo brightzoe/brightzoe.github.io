@@ -2,7 +2,39 @@
 
 ## 基本数据类型
 
-string,number,boolean,undefined,null
+string,number,boolean,undefined,null，symbol
+
+### symbol
+
+基本数据类型。
+
+```js
+const a = Symbol(1);
+const b = Symbol();
+```
+
+`Symbol()`函数会返回`symbol`类型的值，该类型具有静态属性和静态方法。它的静态属性会暴露几个内建的成员对象；它的静态方法会暴露全局的`symbol`注册，且类似于内建对象类，但作为构造函数来说它并不完整，因为它不支持语法："new Symbol()"。
+
+每个从 Symbol()返回的 symbol 值都是唯一的。一个 symbol 值能作为对象属性的标识符；这是该数据类型仅有的目的。
+
+```js
+//唯一的，每次创建的都是新的symbol类型
+Symbol("foo") === Symbol("foo"); // false
+
+const sym = new Symbol(); // TypeError 不能new,语法错误
+```
+
+共享 Symbol:
+
+上面使用 Symbol() 函数的语法，不会在你的整个代码库中创建一个可用的全局的 symbol 类型。 要创建跨文件可用的 symbol，甚至跨域（每个都有它自己的全局作用域） , 使用 Symbol.for() 方法和 Symbol.keyFor() 方法从全局的 symbol 注册表设置和取得 symbol。
+
+symbol 注册表通常构建在 JavaScript 编译器基础设施，所以 symbol 注册表的内容不会出现 JavaScript 运行时环境，除了通过它们的反射方法。Symbol.for("tokenString") 方法从注册表返回一个 symbol 值，Symbol.keyFor(symbolValue) 方法从注册表返回"tokenString"；
+
+```js
+Symbol.keyFor(Symbol.for("tokenString")) == "tokenString"; // true
+```
+
+[Symbol - 术语表 | MDN](https://developer.mozilla.org/zh-CN/docs/Glossary/Symbol)
 
 ## 引用数据类型
 
@@ -51,3 +83,8 @@ object,array,function
 - `JSON.stringify()`//序列化
   - 接受 JavaScript 值并返回 JSON 编码的字符串
 - `JSON.parse()`//反序列化
+
+## Reference
+
+- [Symbol - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+- [Symbol - 术语表 | MDN](https://developer.mozilla.org/zh-CN/docs/Glossary/Symbol)
