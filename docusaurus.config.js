@@ -99,7 +99,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 						// },
 					],
 					style: "dark",
-					copyright: `Copyright © ${new Date().getFullYear()} brightzoe's blog, Inc. Built with Docusaurus.`,
+					copyright: `Copyright © ${new Date().getFullYear()} brightzoe's blog, Inc.`,
 				},
 				// 				algolia: {
 				// 					apiKey: 'YOUR_API_KEY',

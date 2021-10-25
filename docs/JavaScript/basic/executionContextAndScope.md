@@ -134,8 +134,74 @@ console.log(c); // ReferenceError: c没有定义
 console.log(d); // ReferenceError: d没有定义
 ```
 
-> ES5 使用 IIFE 可以模拟块级作用域，即在一个函数表达式内部声明变量，然后立即调用这个函数。这样位于函数体作用域的变量就像是在块级作用域中一样。
-> [10.15 立即调用表达式 JavaScript 高级程序设计（第 4 版）-马特·弗里斯比-微信读书](https://weread.qq.com/web/reader/751326d0720befab7514782kfe932230253fe9fc289c8a3)
+#### IIFE
+
+ES5 使用 IIFE 可以模拟块级作用域，即在一个函数表达式内部声明变量，然后立即调用这个函数。这样位于函数体作用域的变量就像是在块级作用域中一样。
+
+```js
+// module1.js
+(function () {
+	//内嵌块级作用域
+	var a = 1;
+	console.log(a);
+})();
+
+// module2.js
+(function () {
+	var a = 2;
+	console.log(a);
+})();
+```
+
+模拟块级作用域锁定值（闭包+IIFE）：
+
+```js
+let divs = document.querySelectorAll("div");
+for (var i = 0; i < divs.length; i++) {
+	divs[i].addEventListener(
+		"click",
+		(function (frozenCounter) {
+			return function () {
+				console.log(frozenCounter);
+			};
+		})(i)
+	);
+}
+```
+
+> 延申： [闭包 - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures) 提供了更多解决遍历问题的方式。
+> 可以使用forEach
+
+:::note 通过 IIFE 实现 UMD 模块化
+
+1. 使用 IIFE 完成封装，解决了模块名污染全局作用域的问题。
+2. 赋予选择的权力，根据不同的环境条件选择不同的执行
+
+```js
+// UMD 模块化
+(function (root, factory) {
+	if (typeof define === "function" && define.amd) {
+		// AMD
+		define(["jquery"], factory);
+	} else if (typeof exports === "object") {
+		// Node, CommonJS-like
+		module.exports = factory(require("jquery"));
+	} else {
+		// Browser globals (root is window)
+		root.returnExports = factory(root.jQuery);
+	}
+})(this, function ($) {
+	// methods
+	function myFunc() {}
+
+	// exposed public method
+	return myFunc;
+});
+```
+
+:::
+
+> [10.15 立即调用表达式 JavaScript 高级程序设计（第 4 版）-马特·弗里斯比-微信读书](https://weread.qq.com/web/reader/751326d0720befab7514782kfe932230253fe9fc289c8a3) > [面试官：说说作用域和闭包吧 - 掘金](https://juejin.cn/post/6844904165672484871#heading-8)
 
 ### 如何创建/改变作用域
 
@@ -148,13 +214,23 @@ function foo() {}
 2. 创建一个块级作用域，使用 let/const
 
 ```js
-for (let i = 0; i < 5; i++) {
+// 内嵌块级作用域
+{
+	let i;
+	for (i = 0; i < count; i++) {
+		console.log(i);
+	}
+}
+console.log(i); // 抛出错误
+
+// 循环的块级作用域
+for (let i = 0; i < count; i++) {
 	console.log(i);
 }
-console.log(i); //读不到了
+console.log(i); // 抛出错误
 ```
 
-> 使用 eval/with 修改作用域，不推荐。
+3. 使用 eval/with 修改作用域，不推荐。
 
 ### 作用域的应用场景
 
