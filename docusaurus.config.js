@@ -14,6 +14,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 		favicon: "img/favicon.ico",
 		organizationName: "brightzoe", // Usually your GitHub org/user name.
 		projectName: "brightzoe.github.io", // Usually your repo name.
+		themes: ["@codesandbox/sandpack-docusaurus"],
 
 		presets: [
 			[
