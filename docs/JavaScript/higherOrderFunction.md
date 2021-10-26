@@ -110,7 +110,7 @@ fn();
 如何理解上述 forEach 并没有等待前面代码？
 
 1. forEach 本身就是需要内部循环完毕后才抛出结果，就像你在 forEach 中 return，break 也是一样失效，是用法本身的问题。
-2. await 只在所在的 async 函数内有效，控制的是函数内的异步顺序。forEach 的 async 函数回调被执行时是不同的 async 函数调用，并没有 async 包裹住多个函数，foreach 相当于是立即调用了多个 await，他们的调用是同步的，但是他们内部是异步控制的。同步调用每个 async ,每个 async 内部的 await 是异步的。
+2. await 只在**所在的 async 函数内**有效，控制的是函数内的异步顺序。forEach 的 async 函数回调被执行时是不同的 async 函数调用，并没有 async 包裹住多个函数，foreach 相当于是立即调用了多个 await，他们的调用是同步的，但是他们内部是异步控制的。同步调用每个 async ,每个 async 内部的 await 是异步的。
 
 :::
 
