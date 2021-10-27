@@ -49,7 +49,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 		themeConfig:
 			/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 			({
-				tableOfContents: {
+				tableOfContents: { //todo:toc层级是否生效？
 					minHeadingLevel: 3,
 					maxHeadingLevel: 5,
 				},
