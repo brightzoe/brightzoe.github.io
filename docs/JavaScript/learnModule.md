@@ -21,7 +21,7 @@
 ### 解决的问题
 
 1. 变量间的相互污染，变量名冲突等问题
-2. 提高代码可维护性，可拓展性，可复用性
+2. 提高代码可维护性，可拓展性，可复用性。 代码拆分，在架构上解耦
 
 可以使用 IIFE 模拟实现模块化，通过函数作用域解决了命名冲突、污染全局作用域的问题。
 
@@ -151,18 +151,43 @@ ESModule 中 import 的模块会被 JS 引擎静态分析。模块代码是在�
 
 1.  CommonJS 输出的是值的拷贝，ESModule 输出的是值的引用。
 
-    CommonJS 输出的是值的**浅拷贝**，如果导出对象后，修改对象的值，另一个模块的也会变。[对于输出的值到底是深浅拷贝有疑问]
+    CommonJS 输出的是值的**浅拷贝**，如果导出对象后，修改对象的值，另一个模块的也会变。
+
+    ```js
+    // util\index.js
+    let object = {
+    	age: 10,
+    };
+    let fun = function () {
+    	console.log("modules obj", object);
+    	object = { age: 99 };
+    };
+    module.exports = {
+    	fun,
+    	object,
+    };
+
+    // index.js
+    var { name, fun, object } = require("./util/index.js");
+    console.log("before fun", object);
+    fun();
+    console.log("end fun", object); // 还是前面的10 而不是99
+    ```
 
     ESModule 在 JS 引擎对脚本静态分析时，遇到`import`模块，就会生成一个只读引用，会指向模块里对应的变量，是动态引用，并不会缓存模块里的值。
 
 2.  CommonJS （ AMD / CMD / CommonJS 都是）是运行时加载，ESModule 是编译时输出接口，编译阶段就确定了依赖关系。
-3. ESModule 导出的模块是只读的，不能变更，否则报错。
+    运行时加载：CommonJS 模块就是对象；即在输入时是先加载整个模块，生成一个对象，然后再从这个对象上面读取方法，这种加载称为“运行时加载”。
+
+    编译时加载： ES6 模块不是对象，而是通过 export 命令显式指定输出的代码，import 时采用静态命令的形式。即在 import 时可以指定加载某个输出值，而不是加载整个模块，这种加载称为“编译时加载”。
+
+3.  ESModule 导出的模块是只读的，不能变更，否则报错。
 
 ## Reference：
 
 - [第 26 章 JavaScript 高级程序设计（第 4 版）-马特·弗里斯比-微信读书](https://weread.qq.com/web/reader/751326d0720befab7514782k9dc32ad02bc9dcb88e010da)
 - [模块化 - 前端面试指南](https://mitianyi.gitbook.io/frontend-interview-guide/javascript-basics/modularization#wei-shen-me-shi-yong-mo-kuai-hua)
-- [你可能不知道的 JavaScript 模块化野史 - 掘金](https://juejin.cn/post/6844904056847073293#heading-0)
 - [前端模块化：CommonJS,AMD,CMD,ES6 - 掘金](https://juejin.cn/post/6844903576309858318#heading-2) - 推荐，并包含每种实现方式的小 demo
 - [JavaScript Modularization Journey](https://huangxuan.me/js-module-7day/#/) - slides
-- [你可能不知道的 JavaScript 模块化野史 - 掘金](https://juejin.cn/post/6844904056847073293#heading-0) - 了解一下历史，有个整体的有时间轴的认识
+- [你可能不知道的 JavaScript 模块化野史 - 掘金](https://juejin.cn/post/6844904056847073293#heading-0) - 了解一下历史，有个整体的并有时间轴的认识
+- [面试官让我解释什么是前端模块化 - 掘金](https://juejin.cn/post/6844903981311852551#comment)

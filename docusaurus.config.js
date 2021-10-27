@@ -49,6 +49,10 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 		themeConfig:
 			/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 			({
+				tableOfContents: {
+					minHeadingLevel: 3,
+					maxHeadingLevel: 5,
+				},
 				navbar: {
 					title: "brightzoe's blog",
 					logo: {
@@ -60,7 +64,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 						{ to: "/docs/JavaScript/scriptTag", label: "JavaScript", position: "left" },
 						{ to: "/docs/React/hooks", label: "React", position: "left" },
 						{ to: "/docs/DataStructure/README", label: "数据结构与算法", position: "left" },
-						{ to: "/docs/Business/frontEndPermissionControl", label: "业务使用", position: "left" },
+						{ to: "/docs/Business/README", label: "业务使用", position: "left" },
 						{ to: "/docs/Tools/chromeDevTools", label: "工具技巧", position: "left" },
 						{ to: "/blog", label: "碎碎谈", position: "left" },
 						{
