@@ -5,7 +5,11 @@
 问题描述：yarn start 启动，Ctrl+C 停止服务。在同一窗口启动服务，或者未关闭窗口在另一个窗口启动此服务，提示当前端口还在占用，并没有停止。
 环境：WIN 10，git bash
 原因：webpack-dev-server 端口占用的问题
-解决方案： 1. 使用 windows 自带的 cmd 执行 npm run dev ,可以通过 ctrl+c 杀死 node 进程 2. 直接在 git Bash 中 task kill node,直接 kill node 进程 3. 多按几次 ctrl+c(个人习惯此种方式)
+
+解决方案：
+1. 使用 windows 自带的 cmd 执行 npm run dev ,可以通过 ctrl+c 杀死 node 进程
+2. 直接在 git Bash 中 task kill node,直接 kill node 进程
+3. 多按几次 ctrl+c(个人习惯此种方式)
 
 NOTE: 思考：有些项目没有这个问题，构建方式有何不同？
 cra 没有 eject 的的项目没有这个问题。脚手架的后端服务是怎么实现的？

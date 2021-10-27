@@ -15,6 +15,11 @@
 2. Web 字体 font-family 浅谈 https://segmentfault.com/a/1190000038284125
 3. font-family MDN https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family
 
+
+外部字体由于 wall 的问题 把 googleapis.com 改为 font.im：
+
+`<link href="https://fonts.font.im/css?family=Noto+Sans+SC:100,300,400,500,700,900" as="font" crossorigin>`
+
 ### 控制字体的加载和替换
 
 @font-face 加载自定义字体：
