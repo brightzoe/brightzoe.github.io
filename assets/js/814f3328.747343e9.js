@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbrightzoe_blog=self.webpackChunkbrightzoe_blog||[]).push([[2535],{5641:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"\u5b66\u4e60 The Little Schemer","permalink":"/blog/theLittleSchemer"},{"title":"Welcome","permalink":"/blog/welcome"}]}')}}]);
