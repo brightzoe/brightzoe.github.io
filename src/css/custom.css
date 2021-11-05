@@ -35,3 +35,8 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 footer {
 	text-align: center;
 }
+
+code {
+	border: none;
+	border-radius: unset;
+}
