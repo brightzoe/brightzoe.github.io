@@ -9,45 +9,61 @@ Word 是二进制格式，并不是文本文件，版本控制系统没办法跟
 ### 配置
 
 `git config --list` //查看当前配置
+
 `git config --global --edit` //编辑全局配置
+
 `git config --global alias.st status`设置别名
 
 ### 一些基本操作
 
 `git init` 初始化仓库
-`git add xx.txt` 添加工作区的文件到暂存区;`git rm xx.txt` 删除工作区文件
+
+`git add xx.txt` 添加工作区的文件到暂存区;
+
+`git rm xx.txt` 删除工作区文件
+
 `git checkout -- file` 丢弃工作区的修改（用版本库的修改替换工作区版本）
+
 `git commit -m "add a file"` 提交修改到本地版本库;`git commit -a -m"xxxx"`添加并提交
 
-- add 后， commit 前撤销 add，使用 `git reset (<file>)`；commit 后可以使用`git reset`版本回退
-
 `git status` 掌握工作区状态
+
 `git diff xx.txt` Show changes between commits, commit and working tree, etc
 
 - 一般是把文件暂存在缓冲区前查看在工作区做了哪些修改
 
 `git log (--online/--graph)` 查看提交日志；`git relog`查看所有的命令记录
 
-- `git reset --hard <commit—id>` 回退到某个版本。上一个版本:head^
-- `git reset` 既可以回退版本，也可以把暂存区的修改回退到工作区
+`git reset --hard <commit—id>` 回退到某个版本。上一个版本:head^
+
+`git reset` 既可以回退版本，也可以把暂存区的修改回退到工作区
 
 `git remote add origin git@github.com:brightzoe/learngit.git`本地仓库关联远程库
+
 `git remote set-url origin URL` 修改远程地址
+
 `git push (-u) origin master`本地库推送到远程，把本地的 master 分支和远程的 master 分支关联，可简化为 git push
 
 ### 分支
 
 `git branch` 查看分支
+
 `git branch xx`创建分支
+
 `git checkout/switch <name>`切换分支
+
 `git checkout -b <name>` or `git switch -c <name> `创建并改切换分支
+
 `git checkout -b <branchName> <remoteBranchName>` 拉远程一个新分支下来（本地创建新分支，并给他设定远程分支）
+
 `git branch -d <name>`删除分支;强制删除把 d 改成 D
+
 `git branch --set-upstream-to=origin/branchName branchName ` 建立本地分支和远程分支的关联
 
 `git merge <name>` 合并某分支到当前分支
-通常，合并分支时，如果可能，Git 会用 Fast forward 模式，但这种模式下，删除分支后，会丢掉分支信息。
-如果要强制禁用 Fast forward 模式，Git 就会在 merge 时生成一个新的 commit，这样，从分支历史上就可以看出分支信息。
+
+- 通常，合并分支时，如果可能，Git 会用 Fast forward 模式，但这种模式下，删除分支后，会丢掉分支信息。
+  如果要强制禁用 Fast forward 模式，Git 就会在 merge 时生成一个新的 commit，这样，从分支历史上就可以看出分支信息。
 
 `git merge --no-ff -m "xxxx" <name>` 禁用 FF 的合并分支
 
@@ -58,25 +74,31 @@ Word 是二进制格式，并不是文本文件，版本控制系统没办法跟
 ### 标签
 
 `git tag <name>`打标签，默认是打在最新提交的 commit 上。`git tag -d <name>`删除标签
+
 `git tag v0.9 f52c633` 给历史 commit 打标签
+
 `git tag -a <tagname> -m "xxxx"`可以指定标签信息
+
 `git show <tagname>`查看标签信息
-创建的标签都只存储在本地，不会自动推送到远程。
+
+- 创建的标签都只存储在本地，不会自动推送到远程。
+
 `git push origin <tagname>` 推动标签到远程 `git push origin --tags`推动所有标签到远程
+
 `git push origin :refs/tags/<tagname>` 先删除本地标签后，此命令删除远程标签
 
 ### 如何 Pull Request
 
-> 在哪些情况下可以直接使用 master branch 来提交 Pull Request:
->
-> - 你只想为主项目贡献某一处代码，贡献完自己的 repo 就可以扔的那种。
-> - 你打算为主项目长期贡献代码，而且希望追随原项目的主线开发，不保留自己的特性。
-> - 你打算为主项目长期贡献代码，默认 master branch 追随原项目主线，把自己的特性放到别的 branch 中。
->
-> 在哪种情况下应该使用主题 branch 来提交 Pull Request:
->
-> - 想用 master branch 完全来做自己的开发。在这种情形下:会从上游库合并更新，但是这些 merge 本身的 commits 显然不可能作为返还到上游库的 Pull Request 的一部分。
-> - 存在自己的（未被 merge 或者不想被 merge 到上游库的）commits。
+在哪些情况下可以直接使用 master branch 来提交 Pull Request:
+
+- 你只想为主项目贡献某一处代码，贡献完自己的 repo 就可以扔的那种。
+- 你打算为主项目长期贡献代码，而且希望追随原项目的主线开发，不保留自己的特性。
+- 你打算为主项目长期贡献代码，默认 master branch 追随原项目主线，把自己的特性放到别的 branch 中。
+
+在哪种情况下应该使用主题 branch 来提交 Pull Request:
+
+- 想用 master branch 完全来做自己的开发。在这种情形下:会从上游库合并更新，但是这些 merge 本身的 commits 显然不可能作为返还到上游库的 Pull Request 的一部分。
+- 存在自己的（未被 merge 或者不想被 merge 到上游库的）commits。
 
 > 鉴于 Git 的分布式开发哲学，每一个库均可以看作是一个独立的项目，显然是后一种（为每一个新特性建立一个专门的主题 branch 来向主项目推送 Pull Request）的贡献方式更可取。
 
