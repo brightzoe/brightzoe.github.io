@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./HomepageContent.module.css";
+import DocusaurusMountain from "@site/static/img/undraw_docusaurus_mountain.svg";
 
 const ContentProps = {
 	title: "Hello from here",
-	Svg: require("../../static/img/undraw_docusaurus_mountain.svg").default,
+	Svg: DocusaurusMountain,
 	description: (
 		<>
 			<p>你好，我是 brightzoe, 一枚小小的前端攻城狮。兴趣广泛，好奇心重，热爱交朋友！👋👋</p>

@@ -17,39 +17,45 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 		themes: ["@codesandbox/sandpack-docusaurus"],
 
 		presets: [
+			//预设:将某些插件和主题一起使用
 			[
 				"@docusaurus/preset-classic",
 				/** @type {import('@docusaurus/preset-classic').Options} */
-				({
+				{
 					docs: {
+						//@docusaurus/plugin-content-docs
 						sidebarPath: require.resolve("./sidebars.js"),
-						// Please change this to your repo.
 						editUrl: "https://github.com/brightzoe/brightzoe.github.io",
 						showLastUpdateTime: true,
 						sidebarCollapsed: false,
 					},
 					blog: {
+						//@docusaurus/plugin-content-blog
 						showReadingTime: true,
-						// Please change this to your repo.
 						editUrl: "https://github.com/brightzoe/brightzoe.github.io",
 					},
 					theme: {
 						customCss: require.resolve("./src/css/custom.css"),
 					},
+					pages: {
+						//@docusaurus/plugin-content-pages
+					},
 					sitemap: {
+						//@docusaurus/plugin-content-sitemap
 						changefreq: "weekly",
 						priority: 0.5,
 						trailingSlash: false,
 					},
-				}),
+				},
 			],
 		],
 		plugins: ["@docusaurus/plugin-ideal-image"],
 
 		themeConfig:
 			/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-			({
-				tableOfContents: { //todo:toc层级是否生效？
+			{
+				tableOfContents: {
+					//todo:toc层级是否生效？
 					minHeadingLevel: 3,
 					maxHeadingLevel: 5,
 				},
@@ -130,6 +136,6 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 					// Optional fields.
 					anonymizeIP: true, // Should IPs be anonymized?
 				},
-			}),
+			},
 	}
 );

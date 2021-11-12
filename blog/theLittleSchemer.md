@@ -10,9 +10,9 @@ tags: [reading, dev, fp]
 
 ## 基本语法
 
-`atom`: 字符串 `atom`
+`atom`: 元子 `atom`
 
-`list`: 集合 `(atom ss)` `()`
+`list`: 列表 `(atom ss)` `()`
 
 `car`: list 里的第一个 元素 `(car l)`
 
@@ -32,4 +32,7 @@ tags: [reading, dev, fp]
 
 `( atom? s )` 是`atom`吗?
 
-`( eq? a1 a2)` 这两个`atom`相等吗? eq takes two arguments. Both of them must be non-numeric atoms.
+`( eq? a1 a2)` 这两个`atom`相等吗? Eq takes two arguments. Both of them must be non-numeric atoms.
+
+----------------第一章end
+`(lat? l)` 是全为`atom`的`list`吗? Every lat is a list of atoms.

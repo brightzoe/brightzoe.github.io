@@ -39,17 +39,6 @@
   部署静态网站，运行 python/node/go/ruby 脚本，充当服务器。
   零配置部署，访问速度快，构建快。
 
-# 一些其他的理解
-
-- CI/CD,DevOps
-  持续集成、持续交付、持续部署是一系列的软件工程实践方法，使用自动化手段达到完成软件。
-
-  - 相关理解(https://www.zhihu.com/question/23444990)
-
-  CI 工具：Jenkins
-
-  - Jenkins 新手安装配置操作(https://zhuanlan.zhihu.com/p/80031057)
-
 ## Reference
 
 1. 聊一聊前端性能优化 https://juejin.cn/post/6911472693405548557
