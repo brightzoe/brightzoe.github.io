@@ -87,21 +87,6 @@ Word 是二进制格式，并不是文本文件，版本控制系统没办法跟
 
 `git push origin :refs/tags/<tagname>` 先删除本地标签后，此命令删除远程标签
 
-### 如何 Pull Request
-
-在哪些情况下可以直接使用 master branch 来提交 Pull Request:
-
-- 你只想为主项目贡献某一处代码，贡献完自己的 repo 就可以扔的那种。
-- 你打算为主项目长期贡献代码，而且希望追随原项目的主线开发，不保留自己的特性。
-- 你打算为主项目长期贡献代码，默认 master branch 追随原项目主线，把自己的特性放到别的 branch 中。
-
-在哪种情况下应该使用主题 branch 来提交 Pull Request:
-
-- 想用 master branch 完全来做自己的开发。在这种情形下:会从上游库合并更新，但是这些 merge 本身的 commits 显然不可能作为返还到上游库的 Pull Request 的一部分。
-- 存在自己的（未被 merge 或者不想被 merge 到上游库的）commits。
-
-> 鉴于 Git 的分布式开发哲学，每一个库均可以看作是一个独立的项目，显然是后一种（为每一个新特性建立一个专门的主题 branch 来向主项目推送 Pull Request）的贡献方式更可取。
-
 ## 注意事项
 
 - git push 的时候有时忽略一些文件夹,注意有没有传上去。有时忽略的文件也会意外的加入版本控制里面,都要注意。
@@ -135,7 +120,45 @@ Word 是二进制格式，并不是文本文件，版本控制系统没办法跟
 
   ![git流程图](https://i.loli.net/2020/09/06/iO3DlgQRjBXCrM2.png)
 
-### Reference
+## 如何 Pull Request
+
+在哪些情况下可以直接使用 master branch 来提交 Pull Request:
+
+- 你只想为主项目贡献某一处代码，贡献完自己的 repo 就可以扔的那种。
+- 你打算为主项目长期贡献代码，而且希望追随原项目的主线开发，不保留自己的特性。
+- 你打算为主项目长期贡献代码，默认 master branch 追随原项目主线，把自己的特性放到别的 branch 中。
+
+在哪种情况下应该使用 feature branch 来提交 Pull Request:
+
+- 想用 master branch 完全来做自己的开发。在这种情形下:会从上游库合并更新，但是这些 merge 本身的 commits 显然不可能作为返还到上游库的 Pull Request 的一部分。
+- 存在自己的（未被 merge 或者不想被 merge 到上游库的）commits。
+
+> 鉴于 Git 的分布式开发哲学，每一个库均可以看作是一个独立的项目，显然是后一种（为每一个新特性建立一个专门的主题 branch 来向主项目推送 Pull Request）的贡献方式更可取。
+
+## PR 与 MR
+
+Pull Request 与 Merge Request 有区别吗？本质没啥区别，都是请求别人合并你的代码。
+
+#### 一种理解
+
+PR 指的是在不同仓库之间，请求其他人合并你的代码的行为。比如在 GitHub 上,向开源仓库贡献代码，需要自己先 fork 仓库，提交了相应的 commit ，然后提交合并请求到被 fork 的仓库，如上面“如何 Pull Request”所述。
+
+MR 指的是在相同仓库，不同分支之间，请求将当前分支的代码合并到公共分支的行为。例如在公司中，和其他同事合作开发同一项目，大家在同一仓库的不同分支进行开发，在开发完之后，需要提交 MR 到公共分支。
+
+> Merge or pull requests are created in a git management application and ask an assigned person to merge two branches. Tools such as GitHub and Bitbucket choose the name pull request since the first manual action would be to pull the feature branch. Tools such as GitLab and Gitorious choose the name merge request since that is the final action that is requested of the assignee.
+
+上面是 GitLab 官方的说明，PR 与 MR 只是同一种行为的不同叫法。
+在其他人合并你的代码时需要执行的命令：
+
+```git
+git pull
+
+git merge
+```
+
+只是在这两个命令中取了不同的单词来命名。PR 与 MR 都可以直接理解为请求其他人合并你的代码的行为，包含同一仓库的不同分支之间以及不同仓库的之间的操作，无需纠结他们的区别。
+
+## Reference
 
 - [Git Cheat Sheet](https://gitee.com/liaoxuefeng/learn-java/raw/master/teach/git-cheatsheet.pdf)
 - [Git 官网](https://git-scm.com/)
@@ -143,3 +166,4 @@ Word 是二进制格式，并不是文本文件，版本控制系统没办法跟
 - [Git 教程，廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/896043488029600)
 - [GitHub 官方文档](https://help.github.com/cn)
 - [如何参与开源项目并贡献代码](http://www.qtcn.org/bbs/simple/?t53628.html)
+- [Pull Request 与 Merge Request 的区别\_azl397985856 的专栏-CSDN 博客](https://blog.csdn.net/azl397985856/article/details/106088794)
