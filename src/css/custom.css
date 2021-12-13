@@ -6,7 +6,8 @@
 
 /* You can override the default Infima variables here. */
 :root {
-	--ifm-color-primary: #25c2a0;
+	/* --ifm-background-color: rgb(245, 241, 237); */
+	--ifm-color-primary: rgb(37, 194, 160);
 	--ifm-color-primary-dark: rgb(33, 175, 144);
 	--ifm-color-primary-darker: rgb(31, 165, 136);
 	--ifm-color-primary-darkest: rgb(26, 136, 112);
@@ -26,10 +27,10 @@
 	padding: 0 var(--ifm-pre-padding);
 }
 
-html[data-theme='dark'] {
-  /* --ifm-color-primary: #4e89e8;
+html[data-theme="dark"] {
+	/* --ifm-color-primary: #4e89e8;
   --ifm-color-primary-dark: #5a91ea; */
-  /* 任何你要覆盖的其它颜色 */
+	/* 任何你要覆盖的其它颜色 */
 }
 
 html[data-theme="dark"] .docusaurus-highlight-code-line {

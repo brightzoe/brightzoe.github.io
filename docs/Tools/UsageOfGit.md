@@ -101,9 +101,9 @@ Word 是二进制格式，并不是文本文件，版本控制系统没办法跟
 
 - fork 后修改，如何同步源的更新？
 
-  `git remote add upstream <url>`配置上游仓库；
+  `git remote add upstream <url>`配置上游仓库
 
-  `git fetch upstream`抓取上游仓库（所有分支）的更新；
+  `git fetch upstream`抓取上游仓库（所有分支）的更新
 
   `git rebase upstream/master`合并
 
@@ -111,7 +111,7 @@ Word 是二进制格式，并不是文本文件，版本控制系统没办法跟
 
 - `git rebase` 与 `git merge` 的区别
 
-  `git rebase` 的 log 记录更清晰，`git merge` 会生成一条新的 merge commit.
+  `git rebase` 的 log 记录更清晰，`git merge` 会生成一条新的 merge commit
   ![git rebase与git merge from stackoverflow](https://i.loli.net/2020/09/06/lGR3ByZYIw8Qfnt.png)
 
 - `git pull` 与 `git fetch` 的区别

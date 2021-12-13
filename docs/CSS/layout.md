@@ -9,14 +9,10 @@
 后面配置 fallback,提供两种以上的字体，最后提供一种通用字体族，比如 `serif/sans-serif`(衬线字体，非衬线字体)
 
 示例：
+
 `font-family: -apple-system, Helvetica, Arial, 'Noto Sans SC', 'PingFangSC', 'Microsoft Yahei', sans-serif;`
 
-1. 如何优雅的选择字体(font-family) https://segmentfault.com/a/1190000006110417
-2. Web 字体 font-family 浅谈 https://segmentfault.com/a/1190000038284125
-3. font-family MDN https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family
-
-
-外部字体由于 wall 的问题 把 googleapis.com 改为 font.im：
+外部字体由于 wall 的问题把 googleapis.com 改为 font.im：
 
 `<link href="https://fonts.font.im/css?family=Noto+Sans+SC:100,300,400,500,700,900" as="font" crossorigin>`
 
@@ -177,3 +173,6 @@ body {
 ## Reference:
 
 - 为什么你写的 height:100% 不生效？ https://segmentfault.com/a/1190000012707337
+- 如何优雅的选择字体(font-family) https://segmentfault.com/a/1190000006110417
+- Web 字体 font-family 浅谈 https://segmentfault.com/a/1190000038284125
+- font-family MDN https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family
