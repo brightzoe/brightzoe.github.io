@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://brightzoe.github.io/blog</id>
     <title>brightzoe's blog Blog</title>
-    <updated>2021-12-13T02:12:02.400Z</updated>
+    <updated>2021-12-13T10:52:18.126Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://brightzoe.github.io/blog"/>
     <subtitle>brightzoe's blog Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[学习 The Little Schemer]]></title>
         <id>theLittleSchemer</id>
         <link href="https://brightzoe.github.io/blog/theLittleSchemer"/>
-        <updated>2021-12-13T02:12:02.400Z</updated>
+        <updated>2021-12-13T10:52:18.126Z</updated>
         <summary type="html"><![CDATA[环境配置]]></summary>
         <author>
             <name>brightzoe</name>
