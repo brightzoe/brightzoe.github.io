@@ -11,7 +11,8 @@ align-items: center;
 
 ## 各个属性规则
 
-**针对于 flex-container 的属性：**
+### 针对于 flex-container 的属性
+
 **`flex-direction`** 设置主轴方向。
 
 - row
@@ -30,7 +31,7 @@ align-items: center;
 
 > 不能与 `flex-grow` 一起使用。
 
-**`align-items`** 侧轴方向元素在每个行中的摆放。
+**`align-items`** 侧轴方向元素在**每个 flex 行**中的摆放。
 
 - flex-start
 - flex-end
@@ -38,7 +39,7 @@ align-items: center;
 - baseline 每一行文本基线对齐。
 - stretch 仅子元素高度为 auto 时生效。
 
-**`align-content`** 侧轴方向的空间如何分给每一个 flex 行。
+**`align-content`** 侧轴方向的额外空间如何分给每一个 flex 行。（与`justify-content`对应）
 
 - flex-start
 - flex-end
@@ -48,7 +49,10 @@ align-items: center;
 - space-evenly
 - stretch
 
-> 只适用于多行的 flex-box。
+> 只适用于多行的 flex-box，且 flex-container 要有高度，有多余的空间。
+
+一种特殊情况
+https://codesandbox.io/s/flex-te-shu-qing-kuang-8pkmw?file=/src/App.js
 
 **`flex-wrap`** 在主轴方向上是否折行。
 
@@ -60,9 +64,9 @@ align-items: center;
 
 - `flex-flow: column wrap;`
 
-**针对于 flex-item 的属性：**
+### 针对于 flex-item 的属性
 
-**`align-self`** 当前元素在侧轴方向上的摆放，用于覆盖针对于所有元素的`align-items`属性。
+**`align-self`** 当前元素在侧轴方向上的摆放，用于覆盖针对于所有元素的`align-items`属性。（给自己开小灶，设置个特殊情况~）
 
 - auto
 - flex-start
@@ -70,3 +74,7 @@ align-items: center;
 - center
 - baseline
 - stretch
+
+## Reference
+
+- [align-items 和 align-content 的区别\_码飞\_CC 的博客-CSDN 博客\_align items](https://blog.csdn.net/cc18868876837/article/details/88138057)
