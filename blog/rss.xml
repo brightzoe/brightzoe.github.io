@@ -4,14 +4,14 @@
         <title>brightzoe's blog Blog</title>
         <link>https://brightzoe.github.io/blog</link>
         <description>brightzoe's blog Blog</description>
-        <lastBuildDate>Tue, 14 Dec 2021 10:46:27 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 21 Dec 2021 01:39:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <item>
             <title><![CDATA[学习 The Little Schemer]]></title>
             <link>https://brightzoe.github.io/blog/theLittleSchemer</link>
             <guid>theLittleSchemer</guid>
-            <pubDate>Tue, 14 Dec 2021 10:46:27 GMT</pubDate>
+            <pubDate>Tue, 21 Dec 2021 01:39:00 GMT</pubDate>
             <description><![CDATA[环境配置]]></description>
         </item>
         <item>
