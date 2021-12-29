@@ -4,21 +4,21 @@
         <title>brightzoe's blog Blog</title>
         <link>https://brightzoe.github.io/blog</link>
         <description>brightzoe's blog Blog</description>
-        <lastBuildDate>Tue, 28 Dec 2021 01:40:29 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 29 Dec 2021 08:43:32 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>版权所有 © 2021 Facebook, Inc.</copyright>
         <item>
             <title><![CDATA[学习 The Little Schemer]]></title>
             <link>https://brightzoe.github.io/blog/the-little-schemer</link>
-            <guid>the-little-schemer</guid>
-            <pubDate>Tue, 28 Dec 2021 01:40:29 GMT</pubDate>
+            <guid>学习 The Little Schemer</guid>
+            <pubDate>Wed, 29 Dec 2021 08:43:32 GMT</pubDate>
             <description><![CDATA[环境配置]]></description>
         </item>
         <item>
             <title><![CDATA[2021年终总结]]></title>
-            <link>https://brightzoe.github.io/blog/year-end-summary</link>
-            <guid>year-end-summary</guid>
+            <link>https://brightzoe.github.io/blog/2021/12/27/year-end-summary-of-2021</link>
+            <guid>2021年终总结</guid>
             <pubDate>Mon, 27 Dec 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[缘起]]></description>
         </item>
