@@ -4,7 +4,6 @@
 
 ### 数据缓存的类型
 
-[reference1](cachingInBrowser?id=reference)
 
 1、localStorage
 大小 5M，文件存储级别，不清理浏览器缓存不消失
