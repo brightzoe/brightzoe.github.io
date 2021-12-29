@@ -1,5 +1,4 @@
 ---
-slug: the-little-schemer
 title: 学习 The Little Schemer
 authors: [zoe]
 tags: [reading, dev, fp]

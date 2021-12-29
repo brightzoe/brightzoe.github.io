@@ -1,5 +1,4 @@
 ---
-slug: year-end-summary
 title: 2021年终总结
 authors: [zoe]
 tags: [diary, thought]
