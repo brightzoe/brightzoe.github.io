@@ -87,11 +87,11 @@ module.exports = {
 				},
 				items: [
 					{ to: "/docs/css/layout", label: "HTML & CSS", position: "left" },
-					{ to: "/docs/javascript/scriptTag", label: "JavaScript", position: "left" },
+					{ to: "/docs/javascript/basic/data-types", label: "JavaScript", position: "left" },
 					{ to: "/docs/react/hooks", label: "React", position: "left" },
 					{ to: "/docs/data-structure/README", label: "数据结构与算法", position: "left" },
 					{ to: "/docs/business/README", label: "业务使用", position: "left" },
-					{ to: "/docs/tools/chrome-devTools", label: "工具技巧", position: "left" },
+					{ to: "/docs/tools/chrome-devtools", label: "工具技巧", position: "left" },
 					{ to: "/blog", label: "碎碎谈", position: "left" },
 					{
 						href: "https://github.com/brightzoe",

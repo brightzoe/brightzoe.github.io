@@ -1,3 +1,5 @@
+# TS 基础
+
 ## 背景
 
 - 强类型 vs 弱类型 ：
@@ -138,30 +140,30 @@ TypeScript 编译的时候即使报错了，还是会生成编译结果，我们
 #### 数据类型
 
 ```ts
-const a: string = "foo";
-const b: number = 100; //NaN,Infinity
-const c: boolean = true;
-const d: string = null; //严格模型不行
-const e: void = undefined; //null/undefined
-const f: null = null;
-const g: undefined = undefined;
-const h: symbol = Symbol();
-let myFavoriteNumber: any = "seven"; //任意类型的值并且可以改变，一般不要使用，兼容老代码使用。
-myFavoriteNumber = 7;
+const a: string = "foo"
+const b: number = 100 //NaN,Infinity
+const c: boolean = true
+const d: string = null //严格模型不行
+const e: void = undefined //null/undefined
+const f: null = null
+const g: undefined = undefined
+const h: symbol = Symbol()
+let myFavoriteNumber: any = "seven" //任意类型的值并且可以改变，一般不要使用，兼容老代码使用。
+myFavoriteNumber = 7
 
 //Object类型
-const foo: object = function () {}; // 也可以是[] // {}
-const obj: { foo: number; bar: string } = { foo: 123, bar: "foo" }; //定义普通的对象,key要完全一致,不能多也不能少
+const foo: object = function () {} // 也可以是[] // {}
+const obj: { foo: number; bar: string } = { foo: 123, bar: "foo" } //定义普通的对象,key要完全一致,不能多也不能少
 
 //Array
-const arr1: Array<number> = [1, 2];
-const arr2: number[] = [1, 2];
+const arr1: Array<number> = [1, 2]
+const arr2: number[] = [1, 2]
 
 //元组类型 {Tuple} 固定长度，固定类型的数组
 //应用： React的useState, es2017的Object.entries({foo:123})
-const tuple: [number, string] = [18, "foo"];
-const age = tuple[0];
-const [age, name] = tuple;
+const tuple: [number, string] = [18, "foo"]
+const age = tuple[0]
+const [age, name] = tuple
 
 //枚举类型 {Enum} 只存在几个固定的值
 // const postStatus ={Draft:0,Unpublished:1,Published:2} //js模拟枚举类型
@@ -172,7 +174,7 @@ enum postStatus { //枚举类型
 }
 const post = {
 	status: postStatus.Draft,
-};
+}
 //枚举类型会入侵到编译后的代码。
 //会被编译成双向键值对的对象：可以通过key读取，也可以通过value读取。
 
@@ -188,18 +190,18 @@ function func1(a: string, b?: number): string {
 	//参数个数也必须一致，不能多或少。
 	//可选参数：添加问号或者使用参数默认值，必须在参数的最后一位
 	//不限制参数个数 ：...rest:number
-	return "foo";
+	return "foo"
 }
 
 //有什么好处？
 function sum(...args: number[]) {
 	//确保传过来的参数都是数字，不用单独进行类型判断。可靠。
-	return args.reduce((prev, curr) => prev + curr, 0);
+	return args.reduce((prev, curr) => prev + curr, 0)
 }
 
 const func2: (a: number, b: number) => string = function (a: number, b: number): string {
-	return "foo";
-};
+	return "foo"
+}
 ```
 
 ### 作用域问题
@@ -208,38 +210,38 @@ const func2: (a: number, b: number) => string = function (a: number, b: number):
 
 ```ts
 //一个文件加上export
-export {}; //以模块形式导出，一般不这样做，因为一般每个文件（组件）会以模块形式使用
-const a = 123;
+export {} //以模块形式导出，一般不这样做，因为一般每个文件（组件）会以模块形式使用
+const a = 123
 ```
 
 ### 隐式类型推断
 
 ```ts
-let age = 18;
-age = "foo"; //报错,被推断为number
+let age = 18
+age = "foo" //报错,被推断为number
 
-let foo; //被推断为any
-foo = 100;
-foo = "foo";
+let foo //被推断为any
+foo = 100
+foo = "foo"
 ```
 
 ### 类型别名
 
 ```ts
 //顾名思义就是自定义一个类型，一般用于联合类型，给你想要的类型取一个别名
-type person = "man" | "woman";
-type TUser = string | number;
+type person = "man" | "woman"
+type TUser = string | number
 ```
 
 ### 类型断言
 
 ```ts
-const num = [11, 12, 14];
-const res = num.find((i) => i > 0); //被推断为number/undefined
+const num = [11, 12, 14]
+const res = num.find((i) => i > 0) //被推断为number/undefined
 
 //可以断言res一定是num。
-const num1 = res as number;
-const num2 = <number>res; //JSX不能使用，会产生冲突
+const num1 = res as number
+const num2 = <number>res //JSX不能使用，会产生冲突
 //断言与转换的区别：断言是在编译时的概念，转换是在运行时的概念。在编译后，断言就不存在了。
 ```
 
@@ -251,28 +253,28 @@ const num2 = <number>res; //JSX不能使用，会产生冲突
 
 ```ts
 interface Post {
-	title: string;
-	content: string;
+	title: string
+	content: string
 }
 function printPost(post: Post) {
-	console.log(post.title);
-	console.log(post.content);
+	console.log(post.title)
+	console.log(post.content)
 }
 printPost({
 	title: "hello ts",
 	content: "js superset",
-});
+})
 
 interface Post {
-	title: string;
-	content: string;
-	subtitle?: string; //可选成员
-	readonly summary: string; //只读成员，初始化后便不可修改
+	title: string
+	content: string
+	subtitle?: string //可选成员
+	readonly summary: string //只读成员，初始化后便不可修改
 }
 
 //动态接口
 interface Cache {
-	[key: string]: string;
+	[key: string]: string
 }
 ```
 
@@ -358,14 +360,14 @@ class AutoMan implements Eat,Run{
 abstract class Animal {
 	//抽象类只能被继承，不能实例化
 	eat(food: string): void {
-		console.log(`呼噜呼噜了：${food}`);
+		console.log(`呼噜呼噜了：${food}`)
 	}
-	abstract run(distance: number): void; //抽象方法，不需要具体实现
+	abstract run(distance: number): void //抽象方法，不需要具体实现
 }
 
 class Dog extends Animal {
 	run(distance: number): void {
-		console.log("...");
+		console.log("...")
 	}
 }
 ```
@@ -377,26 +379,26 @@ class Dog extends Animal {
 //目的：更大程度地复用代码
 
 function createNumberArray(length: number, value): number[] {
-	const arr = Array<number>(length).fill(value);
-	return arr;
+	const arr = Array<number>(length).fill(value)
+	return arr
 }
-const res = createNumberArray(3, 1);
+const res = createNumberArray(3, 1)
 
 function createArray<T>(length: number, value: T): T[] {
 	//T泛型，不明确类型，把类型变成一个参数，在调用的时候传递
-	const arr = Array < T > { length }.fill(value);
+	const arr = Array < T > { length }.fill(value)
 }
 
-const res = createArray<string>(3, "foo"); //调用的时候明确类型
+const res = createArray<string>(3, "foo") //调用的时候明确类型
 ```
 
 ### 类型声明
 
 ```ts
-import { replace } from "lodash"; //没有类型声明
+import { replace } from "lodash" //没有类型声明
 //一般常用地模块都有的，可以安装对应的类型声明模块。 .d.ts  一般的模块会直接包含类型声明，含有相关类型约束。
 
-declare function replace(input: string): string; //如果没有类型声明，自己声明一下类型。
+declare function replace(input: string): string //如果没有类型声明，自己声明一下类型。
 ```
 
 ## Reference

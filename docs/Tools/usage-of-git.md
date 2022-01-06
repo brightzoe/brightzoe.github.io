@@ -109,10 +109,26 @@ Word 是二进制格式，并不是文本文件，版本控制系统没办法跟
 
   `git push (origin master)`推送到远程仓库
 
+- 如何使用远端代码直接覆盖本地，丢弃本地的提交？
+
+  `git fetch --all` 从远程下载最新的，而不尝试合并或 rebase 任何东西。
+
+  `git reset --hard origin/<branch_name>` 将分支重置为您刚刚获取的内容。`--hard` 选项更改工作树中的所有文件以匹配 `origin/branch` 中的文件。
+
 - `git rebase` 与 `git merge` 的区别
 
   `git rebase` 的 log 记录更清晰，`git merge` 会生成一条新的 merge commit
   ![git rebase与git merge from stackoverflow](https://i.loli.net/2020/09/06/lGR3ByZYIw8Qfnt.png)
+
+- 提交信息写了几个错别字，该如何改之前的提交记录？
+
+  `git rebase -i 32e0q12f ` git rebase 到需要修改 message 的那个 commit 的前 1 个 commit
+
+  将要修改的 commit message 的 ‘pick’改为 ‘reword’ ，保存。
+
+  接着会弹出之前 reword 的 commit message 编辑框 ，修改 commit message 内容，保存。
+
+  这样就完成了修改，然后强制 push 即可。 `git push --force`
 
 - `git pull` 与 `git fetch` 的区别
 

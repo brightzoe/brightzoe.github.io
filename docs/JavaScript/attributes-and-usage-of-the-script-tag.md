@@ -1,5 +1,4 @@
 ---
-id: scriptTag
 title: 谈谈Script 标签
 ---
 
