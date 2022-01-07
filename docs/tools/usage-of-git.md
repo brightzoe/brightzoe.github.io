@@ -91,6 +91,42 @@ Word 是二进制格式，并不是文本文件，版本控制系统没办法跟
 
 - git push 的时候有时忽略一些文件夹,注意有没有传上去。有时忽略的文件也会意外的加入版本控制里面,都要注意。
 
+- Windows/Mac 的 git 文件名大小写不敏感。
+
+  Linux 操作系统文件的大小写却是敏感的，不同大小写意味着不同的路径。Git 是大小写默认是不敏感的。
+
+  :::caution
+
+  在这里踩了个坑。
+
+  - 问题描述：
+
+    最近为了项目文件命名规范，把博客里面的文件夹名，全部改为了中划线连接。其中涉及到部分，原来为大驼峰命名，改为了小写，比如文件夹名由 Tools 改为了 tools。
+
+    本地启动项目，在 tools 下的目录正常，而线上通过 github actions 打包部署的网站，tools 下的没有正常生成目录。
+
+    点到线上的 repo 才发现，线上的文件夹名并没有修改，只有本地的文件夹名称修改了，而且 git status 也没有读取出不一致 😮。
+    导致线上并没有找到小写的 tools 文件，没有生成目录..
+
+  - 尝试解决：
+    按照网上的方法，设置了 ignorecase false， `git config core.ignorecase false`，以为解决了问题，我就愉快的提交了，然而提交之后，repo 中既有大写的文件夹，也有小写的文件夹...😥 然后再进行重新拉取，本地仍然只有一个文件，线上就是两份，无法保持一致了...
+
+  发现这个坑好多人都踩过，应该先多看几篇文章再进行操作。
+
+  - 解决问题：
+
+    使用 git mv [old name] [new name]进行重命名。(文件名)
+
+    If nothing worked use git rm filename to delete file from disk and add it back.
+
+  参考：
+
+  1. [解决 Git 和 Windows 的大小写不敏感产生的问题\_weixin_43968429 的博客-CSDN 博客\_git windows 大小写](https://blog.csdn.net/weixin_43968429/article/details/109783446)
+  2. [Mac 中 git 大小写问题的解决方案 | 山月行](https://shanyue.tech/bug/mac-git-ignorecase.html#%E9%A2%84%E9%98%B2%E6%96%B9%E6%A1%88)
+  3. [How do I commit case-sensitive only filename changes in Git? - Stack Overflow](https://stackoverflow.com/questions/17683458/how-do-i-commit-case-sensitive-only-filename-changes-in-git)
+
+  :::
+
 - ssh 方式与 https 方式的不同?
 
   区别在于对内容的安全管理。使用 https 方式，每次需要验证用户身份信息，添加 ssh-key 后用 ssh 方式则信任当前用户不用再输用户名和密码。没有设置 ssh 前默认用 https 方式，设置了 ssh 后可以更改为 remote 地址(`git remote set-url origin [url]`)，使用 ssh 方式连接,通过 ssh 协议的传输速度最快。具体添加 ssh 的方式不再赘述。
