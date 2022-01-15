@@ -38,7 +38,7 @@
     "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial,
     sans-serif;
   --ifm-font-family-monospace: JetBrainsMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+    "Liberation Mono", "Courier New", lxgwwenkai-regular, monospace;
 }
 
 .docusaurus-highlight-code-line {
