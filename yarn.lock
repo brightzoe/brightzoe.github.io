@@ -6445,6 +6445,11 @@ lunr@^2.3.9:
   resolved "https://registry.npm.taobao.org/lunr/download/lunr-2.3.9.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flunr%2Fdownload%2Flunr-2.3.9.tgz#18b123142832337dd6e964df1a5a7707b25d35e1"
   integrity sha1-GLEjFCgyM33W6WTfGlp3B7JdNeE=
 
+lxgw-wenkai-screen-webfont@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmmirror.com/lxgw-wenkai-screen-webfont/download/lxgw-wenkai-screen-webfont-1.1.0.tgz#a313f9406c09cc3586c96e79ef2642359b0d5e9c"
+  integrity sha512-wybT+LkE6UR+SnQujRDThURf1ViWDZfYT17oHtmu5gWnn32aWvw0M8it9BBTPRKS7x4WjY7c5g+hFmxCyT4J2w==
+
 lz-string@^1.4.4:
   version "1.4.4"
   resolved "https://registry.npm.taobao.org/lz-string/download/lz-string-1.4.4.tgz#c0d8eaf36059f705796e1e344811cf4c498d3a26"

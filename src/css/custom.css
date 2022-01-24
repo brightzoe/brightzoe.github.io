@@ -5,15 +5,8 @@
  */
 
 /* You can override the default Infima variables here. */
+@import "~lxgw-wenkai-screen-webfont/style.css";
 
-@font-face {
-  font-family: lxgwwenkai-regular;
-  src: url("../../static/fonts/lxgw-wenkai-webfont-screen.woff2")
-    format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 @font-face {
   font-family: jetbrainsmono-regular;
   src: url("../../static/fonts/JetBrainsMono-Regular.woff2") format("woff2");
@@ -34,11 +27,11 @@
   --ifm-leading: 0.7rem;
   --ifm-list-paragraph-margin: 0.6rem;
   --ifm-paragraph-margin-bottom: 0.6rem;
-  --ifm-font-family-base: lxgwwenkai-regular, JetBrainsMono-Regular, avenir,
+  --ifm-font-family-base: "LXGW WenKai Screen", JetBrainsMono-Regular, avenir,
     "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial,
     sans-serif;
   --ifm-font-family-monospace: JetBrainsMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", lxgwwenkai-regular, monospace;
+    "Liberation Mono", "Courier New", monospace;
 }
 
 .docusaurus-highlight-code-line {

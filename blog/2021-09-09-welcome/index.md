@@ -33,6 +33,7 @@ tags: [about, docusaurus]
 ## ChangeLog
 
 1. 2021.10 添加@codesandbox/sand-pack，直接在 md 文档里放可以运行预览的代码。
+2. 2022.01 添加`lxgw-wenkai-screen`字体。字体文件较大，使用 github [chawyehsu/lxgw-wenkai-webfont: webfont package for the LXGW WenKai typeface](https://github.com/chawyehsu/lxgw-wenkai-webfont) 的 node 包，优化加载。
 
 ## How to use docusaurus
 

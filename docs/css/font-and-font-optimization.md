@@ -121,6 +121,8 @@ woff，woff2 是进行过内部压缩的，尤其是 woff2 字体的体积小。
 - 使用 Service Worker 进行缓存字体。
   Service Worker 是浏览器在后台独立于网页运行的、用 JavaScript 编写的脚本。一般与 PWA 一起提起。暂未深入了解。
 
+//todo: 学习如何将比较大的字体文件，分包加载，以及如何放在 cdn 上。 参考 [chawyehsu/lxgw-wenkai-webfont: webfont package for the LXGW WenKai typeface](https://github.com/chawyehsu/lxgw-wenkai-webfont) 。
+
 ## Reference
 
 - [【微信公众号：三分钟学前端 2021-09-18】Web 性能优化：使用 CSS font-display 控制字体加载和替换](https://mp.weixin.qq.com/s/ceFNHqKCkb-F21mnJx8VIQ)
