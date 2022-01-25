@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://brightzoe.github.io/blog</id>
+    <id>https://brightzoe.top/blog</id>
     <title>brightzoe's blog Blog</title>
     <updated>2021-12-27T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://brightzoe.github.io/blog"/>
+    <link rel="alternate" href="https://brightzoe.top/blog"/>
     <subtitle>brightzoe's blog Blog</subtitle>
-    <icon>https://brightzoe.github.io/img/favicon.ico</icon>
+    <icon>https://brightzoe.top/img/favicon.ico</icon>
     <rights>版权所有 © 2022 Facebook, Inc.</rights>
     <entry>
         <title type="html"><![CDATA[2021年终总结]]></title>
         <id>2021年终总结</id>
-        <link href="https://brightzoe.github.io/blog/2021/12/27/year-end-summary-of-2021"/>
+        <link href="https://brightzoe.top/blog/2021/12/27/year-end-summary-of-2021"/>
         <updated>2021-12-27T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[缘起]]></summary>
         <author>
@@ -22,7 +22,7 @@
     <entry>
         <title type="html"><![CDATA[学习 The Little Schemer]]></title>
         <id>学习 The Little Schemer</id>
-        <link href="https://brightzoe.github.io/blog/2021/11/05/the-little-schemer"/>
+        <link href="https://brightzoe.top/blog/2021/11/05/the-little-schemer"/>
         <updated>2021-11-05T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[环境配置]]></summary>
         <author>
@@ -33,7 +33,7 @@
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
         <id>welcome</id>
-        <link href="https://brightzoe.github.io/blog/welcome"/>
+        <link href="https://brightzoe.top/blog/welcome"/>
         <updated>2021-09-09T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[About]]></summary>
         <author>

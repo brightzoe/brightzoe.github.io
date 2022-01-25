@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
         <title>brightzoe's blog Blog</title>
-        <link>https://brightzoe.github.io/blog</link>
+        <link>https://brightzoe.top/blog</link>
         <description>brightzoe's blog Blog</description>
         <lastBuildDate>Mon, 27 Dec 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,21 +10,21 @@
         <copyright>版权所有 © 2022 Facebook, Inc.</copyright>
         <item>
             <title><![CDATA[2021年终总结]]></title>
-            <link>https://brightzoe.github.io/blog/2021/12/27/year-end-summary-of-2021</link>
+            <link>https://brightzoe.top/blog/2021/12/27/year-end-summary-of-2021</link>
             <guid>2021年终总结</guid>
             <pubDate>Mon, 27 Dec 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[缘起]]></description>
         </item>
         <item>
             <title><![CDATA[学习 The Little Schemer]]></title>
-            <link>https://brightzoe.github.io/blog/2021/11/05/the-little-schemer</link>
+            <link>https://brightzoe.top/blog/2021/11/05/the-little-schemer</link>
             <guid>学习 The Little Schemer</guid>
             <pubDate>Fri, 05 Nov 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[环境配置]]></description>
         </item>
         <item>
             <title><![CDATA[Welcome]]></title>
-            <link>https://brightzoe.github.io/blog/welcome</link>
+            <link>https://brightzoe.top/blog/welcome</link>
             <guid>welcome</guid>
             <pubDate>Thu, 09 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[About]]></description>
