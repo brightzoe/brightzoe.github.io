@@ -166,7 +166,7 @@ html {
   /* 根伪类 */
   :root  {
       /* 自定义属性，不是实际的变量 */
-      --primary-color:'#gaf34d'
+      --primary-color:'#gaf34d';
   	  --fill-1: #fff;
   	  --text: #3c3c3c;
   	  --text-1: #757575;

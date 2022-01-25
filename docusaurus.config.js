@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula")
 module.exports = {
 	title: "brightzoe's blog",
 	tagline: "Learning by doing",
-	url: "https://brightzoe.github.io",
+	url: "https://brightzoe.top",
 	baseUrl: "/",
 	onBrokenLinks: "throw",
 	onBrokenMarkdownLinks: "warn",

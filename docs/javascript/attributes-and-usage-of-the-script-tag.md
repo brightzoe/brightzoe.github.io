@@ -16,6 +16,16 @@ title: 谈谈Script 标签
 
   ![](https://i.loli.net/2021/06/29/Est72uLzZgnA9Qp.png)
 
+:::tip 关于跨域
+
+通过 script 标签直接引入的外部资源，是不受跨域限制的。通过 html 原始标签的 src 属性引入也一样，比如（img/video/script），不受跨域限制。
+
+同时，通过 script 引入的其他域的资源，会自动执行，而不能拿到对应的资源源码。
+
+默认情况下（即未指定 crossOrigin 属性时），CORS 根本不会使用，网络请求的请求头是没有 origin 字段的。
+
+:::
+
 - integrity:允许比对接收到的资源和指定的加密签名以验证子资源完整性（SRI,Subresource Integrity）。可以用于确保内容分发网络（CDN, Content Delivery Network）不会提供恶意内容。
 - type:MIME 类型，通常为`type=application/javascript`/`application/javascript`
 
@@ -113,10 +123,11 @@ document.body.append(script);
 
 ## Reference
 
-1. MDN-script https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script
-2. 图解 script 标签的 async 和 defer 属性 https://juejin.cn/post/6894629999215640583
-3. 图片源： https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html
-4. JavaScript 高级程序设计(第四版) - 2 .1`<script>`元素
-5. SRI 子资源完整性 https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity
-6. MDN-动态加载 script https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLScriptElement
-7. 通过 rel="preload"进行内容预加载 https://developer.mozilla.org/zh-CN/docs/orphaned/Web/HTML/Preloading_content
+- [`<script>` - HTML（超文本标记语言） | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script)
+- [图解 script 标签中的 async 和 defer 属性 - 掘金](https://juejin.cn/post/6894629999215640583)
+- [async vs defer attributes - Growing with the Web](https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html)
+- JavaScript 高级程序设计(第四版) - 2 .1`<script>`元素
+- [Subresource Integrity - Web 安全 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity)
+- [HTMLScriptElement - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLScriptElement)
+- [链接类型：preload - HTML（超文本标记语言） | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Link_types/preload)
+- [script crossorigin 属性 - 掘金](https://juejin.cn/post/6969825311361859598)
