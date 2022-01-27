@@ -7,24 +7,46 @@
 原因：webpack-dev-server 端口占用的问题
 
 解决方案：
+
 1. 使用 windows 自带的 cmd 执行 npm run dev ,可以通过 ctrl+c 杀死 node 进程
 2. 直接在 git Bash 中 task kill node,直接 kill node 进程
 3. 多按几次 ctrl+c(个人习惯此种方式)
 
-NOTE: 思考：有些项目没有这个问题，构建方式有何不同？
+todo: 思考：有些项目没有这个问题，构建方式有何不同？
 cra 没有 eject 的的项目没有这个问题。脚手架的后端服务是怎么实现的？
 
-- reference
-  1. [windows 系统下 webpack-dev-server 占用端口](https://juejin.cn/post/6844903609528745991)
+参考： [windows 系统下 webpack-dev-server 占用端口](https://juejin.cn/post/6844903609528745991)
 
 <hr/>
 
 ## 前端
 
+### node 版本管理
+
+问题描述：在多个项目之间切换，会遇到不同的项目所需要的 node 版本不一致，会有切换 node 版本的需求。
+
+todo:包管理器 npm yarn pnpm 。node npm npx 怎么理解？ dependencies/devDependencies
+
+todo:
+
+[npx 使用教程 - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2019/02/npx.html)
+
+[简单聊聊 npx 和 npm - 掘金](https://juejin.cn/post/6886818067913900046#heading-3)
+
+linux/Mac OS 可以使用 n /nvm ,仅限了解。
+
+目前还是使用 windows 比较多，可以使用 nvm [coreybutler/nvm-windows: A node.js version management utility for Windows. Ironically written in Go.](https://github.com/coreybutler/nvm-windows)进行管理。但是使用 nvm 之前需要卸载电脑上已有的所有版本的 node，有点麻烦。
+
+也可以使用 npx 进行 node 版本切换。
+
+针对一个项目，临时使用另一个版本的 node ，并执行一些命令。
+
+`npx -p node@16 yarn start` // 临时使用 node v16+ 的版本，并启动项目
+
 ### react 中 less 样式未生效
 
 - 产生了什么问题？
- 配置好了less-loader，但引用.less 文件，样式并未生效，以下是对应的webpack配置。
+  配置好了 less-loader，但引用.less 文件，样式并未生效，以下是对应的 webpack 配置。
 
 ```js
 {
@@ -61,26 +83,30 @@ cra 没有 eject 的的项目没有这个问题。脚手架的后端服务是怎
   ],
 }
 ```
-- 上网查询，分析原因：
-  css-loader自带css modules,会把所有类名编译为哈希字符串.less文件中写的样式已经被重命名了，但react中的className并没有一起被处理。
-- 解决方案：
-  1. 按css modules的方式引用样式，使用`style.cptbutton`
-  ```js
-     import style from './index.less';
-  ```
-  2. css modules使用全局作用域。
-  在less文件中，所有内容外用:global语法包裹住。:global声明一个全局规则，凡是这样声明的class，都不会被编译成哈希字符串。
-  3. webpack css-loader,可以直接设置禁用css modules.
 
-- 好的，那么什么是css modules?像sass/less一样的预处理器吗？
-  css Modules,是通过构建工具达到样式的scope。
+- 上网查询，分析原因：
+  css-loader 自带 css modules,会把所有类名编译为哈希字符串.less 文件中写的样式已经被重命名了，但 react 中的 className 并没有一起被处理。
+- 解决方案：
+
+  1. 按 css modules 的方式引用样式，使用`style.cptbutton`
+
+  ```js
+  import style from "./index.less";
+  ```
+
+  2. css modules 使用全局作用域。
+     在 less 文件中，所有内容外用:global 语法包裹住。:global 声明一个全局规则，凡是这样声明的 class，都不会被编译成哈希字符串。
+  3. webpack css-loader,可以直接设置禁用 css modules.
+
+- 好的，那么什么是 css modules?像 sass/less 一样的预处理器吗？
+  css Modules,是通过构建工具达到样式的 scope。
+
   - 解决了什么问题？
     避免全局命名冲突，只需要保证组件内的命名不冲突，因为命名会被编译。
 
     解决选择器嵌套层次过深的问题。
 
-    模块化：可以使用composes来引入自身模块中的样式以及另一个模块的样式。
-
+    模块化：可以使用 composes 来引入自身模块中的样式以及另一个模块的样式。
 
 <hr/>
 
@@ -123,5 +149,3 @@ cra 没有 eject 的的项目没有这个问题。脚手架的后端服务是怎
   在本菜菜的角度，原来的逻辑不是很清楚的情况下是不能贸然重构的。重构的基础是，你对原来的功能逻辑足够熟悉，能够和前端负责人，产品对整体的功能逻辑简单沟通。并在重构后，安排一定量的测试。但也有点理想化了...其实我也还不是很确定到底什么情况下可以重构? 现在不能贸然重构的想法，也是因为年轻理想化，私自改了几个逻辑，测试没有覆盖到，在生产环境才发现的问题。总之重构是需要衡量考虑的，不能贸贸然。
 
 <hr/>
-
-
