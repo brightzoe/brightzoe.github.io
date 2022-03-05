@@ -15,7 +15,7 @@
 ## create-react-app
 
 webpack 配置：
-sass: cra 已内置 sass-loader,只需安装 mode-sass/sass(dart-sass)
+sass: cra 已内置 sass-loader,只需安装 node-sass/sass(dart-sass)
 
 修改其他配置，不 eject 的方式：
 
@@ -25,25 +25,25 @@ sass: cra 已内置 sass-loader,只需安装 mode-sass/sass(dart-sass)
   const { override, addBabelPlugin, addBabelPreset, addWebpackAlias, adjustStyleLoaders } = require("customize-cra");
   const path = require("path");
   module.exports = override(
-  	//写样式的方式
-  	addBabelPlugin("styled-jsx/babel"),
+    //写样式的方式
+    addBabelPlugin("styled-jsx/babel"),
 
-  	//别名
-  	addWebpackAlias({
-  		"@": path.resolve(__dirname, ".", "src"),
-  	}),
+    //别名
+    addWebpackAlias({
+      "@": path.resolve(__dirname, ".", "src"),
+    }),
 
-  	//sass-resources-loader共享公共样式文件
-  	adjustStyleLoaders((rule) => {
-  		if (rule.test.toString().includes("scss")) {
-  			rule.use.push({
-  				loader: require.resolve("sass-resources-loader"),
-  				options: {
-  					resources: "./src/styles/shared.scss", //地址
-  				},
-  			});
-  		}
-  	})
+    //sass-resources-loader共享公共样式文件
+    adjustStyleLoaders((rule) => {
+      if (rule.test.toString().includes("scss")) {
+        rule.use.push({
+          loader: require.resolve("sass-resources-loader"),
+          options: {
+            resources: "./src/styles/shared.scss", //地址
+          },
+        });
+      }
+    })
   );
   ```
 
@@ -101,39 +101,39 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is
  */
 function is(x: mixed, y: mixed): boolean {
-	if (x === y) {
-		return x !== 0 || y !== 0 || 1 / x === 1 / y;
-	} else {
-		return x !== x && y !== y;
-	}
+  if (x === y) {
+    return x !== 0 || y !== 0 || 1 / x === 1 / y;
+  } else {
+    return x !== x && y !== y;
+  }
 }
 
 function shallowEqual(objA: mixed, objB: mixed): boolean {
-	// 首先对基本类型进行比较
-	if (is(objA, objB)) {
-		return true;
-	}
+  // 首先对基本类型进行比较
+  if (is(objA, objB)) {
+    return true;
+  }
 
-	if (typeof objA !== "object" || objA === null || typeof objB !== "object" || objB === null) {
-		return false;
-	}
+  if (typeof objA !== "object" || objA === null || typeof objB !== "object" || objB === null) {
+    return false;
+  }
 
-	const keysA = Object.keys(objA);
-	const keysB = Object.keys(objB);
+  const keysA = Object.keys(objA);
+  const keysB = Object.keys(objB);
 
-	// 长度不相等直接返回false
-	if (keysA.length !== keysB.length) {
-		return false;
-	}
+  // 长度不相等直接返回false
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
 
-	// key相等的情况下，再去循环比较
-	for (let i = 0; i < keysA.length; i++) {
-		if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
-			return false;
-		}
-	}
+  // key相等的情况下，再去循环比较
+  for (let i = 0; i < keysA.length; i++) {
+    if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
+      return false;
+    }
+  }
 
-	return true;
+  return true;
 }
 ```
 
@@ -141,7 +141,7 @@ function shallowEqual(objA: mixed, objB: mixed): boolean {
 
 ```js
 const MyComponent = React.memo(function Component(props) {
-	/* 使用 props 渲染 */
+  /* 使用 props 渲染 */
 });
 ```
 

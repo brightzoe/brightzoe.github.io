@@ -20,6 +20,6 @@ sidebar_position: 1
   ```
 
 - `react-router` 与 `react-router-dom`库的区别，都是用来干嘛的？
-  `react-router`是路由核心库。`react-router-dom`基于`react-router`，加入了一些在浏览器运行的功能，与dom 相关。一般二者要一起使用。
+  `react-router`是路由核心库。`react-router-dom`基于`react-router`，加入了一些在浏览器运行的功能，与 dom 相关。一般二者要一起使用。
 
 ## 相关生态，常用的库

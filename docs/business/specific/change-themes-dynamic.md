@@ -13,17 +13,17 @@
 
 ```js
 var createLink = (function () {
-	var $link = null;
-	return () => {
-		if ($link) {
-			return $link;
-		}
-		$link = document.createElement("link");
-		$link.rel = "stylesheet";
-		$link.type = "text/css";
-		document.querySelector("head").appendChild($link);
-		return $link;
-	};
+  var $link = null;
+  return () => {
+    if ($link) {
+      return $link;
+    }
+    $link = document.createElement("link");
+    $link.rel = "stylesheet";
+    $link.type = "text/css";
+    document.querySelector("head").appendChild($link);
+    return $link;
+  };
 })();
 ```
 
@@ -31,9 +31,9 @@ var createLink = (function () {
 
 ```js
 function toggleTheme(theme) {
-	var $link = window.createLink();
-	$link.href = "./" + theme + ".css";
-	return theme;
+  var $link = window.createLink();
+  $link.href = "./" + theme + ".css";
+  return theme;
 }
 toggleTheme("light");
 ```
@@ -51,11 +51,11 @@ var preview = Docsify.dom.find(".demo-theme-preview");
 var themes = Docsify.dom.findAll('[rel="stylesheet"]');
 
 preview.onclick = function (e) {
-	var title = e.target.getAttribute("data-theme");
+  var title = e.target.getAttribute("data-theme");
 
-	themes.forEach(function (theme) {
-		theme.disabled = theme.title !== title;
-	});
+  themes.forEach(function (theme) {
+    theme.disabled = theme.title !== title;
+  });
 };
 ```
 
@@ -69,31 +69,31 @@ preview.onclick = function (e) {
 
 ```html
 <div class="demo-theme-preview">
-	<a data-theme="vue">vue.css</a>
-	<a data-theme="buble">buble.css</a>
-	<a data-theme="dark">dark.css</a>
-	<a data-theme="pure">pure.css</a>
+  <a data-theme="vue">vue.css</a>
+  <a data-theme="buble">buble.css</a>
+  <a data-theme="dark">dark.css</a>
+  <a data-theme="pure">pure.css</a>
 </div>
 
 <style>
-	.demo-theme-preview a {
-		padding-right: 10px;
-	}
+  .demo-theme-preview a {
+    padding-right: 10px;
+  }
 
-	.demo-theme-preview a:hover {
-		cursor: pointer;
-	}
+  .demo-theme-preview a:hover {
+    cursor: pointer;
+  }
 </style>
 
 <script>
-	var preview = Docsify.dom.find(".demo-theme-preview");
-	var themes = Docsify.dom.findAll('[rel="stylesheet"]');
-	preview.onclick = function (e) {
-		var title = e.target.getAttribute("data-theme");
-		themes.forEach(function (theme) {
-			theme.disabled = theme.title !== title;
-		});
-	};
+  var preview = Docsify.dom.find(".demo-theme-preview");
+  var themes = Docsify.dom.findAll('[rel="stylesheet"]');
+  preview.onclick = function (e) {
+    var title = e.target.getAttribute("data-theme");
+    themes.forEach(function (theme) {
+      theme.disabled = theme.title !== title;
+    });
+  };
 </script>
 ```
 
@@ -101,18 +101,18 @@ preview.onclick = function (e) {
 
 ```scss
 [data-theme="dark"] {
-	body {
-		background: $dark-fill-1;
-	}
-	.recommend .recommend-list .item .name {
-		color: $dark-color-text;
-	}
-	.recommend .recommend-list .item .desc {
-		color: $dark-color-text-1;
-	}
-	.header .text {
-		color: $dark-color-text-2;
-	}
+  body {
+    background: $dark-fill-1;
+  }
+  .recommend .recommend-list .item .name {
+    color: $dark-color-text;
+  }
+  .recommend .recommend-list .item .desc {
+    color: $dark-color-text-1;
+  }
+  .header .text {
+    color: $dark-color-text-2;
+  }
 }
 ```
 
@@ -132,27 +132,27 @@ preview.onclick = function (e) {
 
 ```css
 @mixin bg-color($key) {
-	background-color: map-get($colors-light, $key);
-	[data-theme="dark"] & {
-		background-color: map-get($colors-dark, $key);
-	}
+  background-color: map-get($colors-light, $key);
+  [data-theme="dark"] & {
+    background-color: map-get($colors-dark, $key);
+  }
 }
 // text色
 @mixin text-color($key) {
-	color: map-get($colors-light, $key);
-	[data-theme="dark"] & {
-		color: map-get($colors-dark, $key);
-	}
+  color: map-get($colors-light, $key);
+  [data-theme="dark"] & {
+    color: map-get($colors-dark, $key);
+  }
 }
 
 body,
 html {
-	background: $fill-1;
-	@include bg-color(fill-1);
+  background: $fill-1;
+  @include bg-color(fill-1);
 }
 .text {
-	font-size: $font-size-large;
-	@include text-color(text-2);
+  font-size: $font-size-large;
+  @include text-color(text-2);
 }
 ```
 

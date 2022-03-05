@@ -24,10 +24,7 @@ import SparkMd5 from "spark-md5";
 // 增量计算 hash
 const calculateHash = (file, chunkSize) =>
   new Promise((resolve, reject) => {
-    let blobSlice =
-        File.prototype.slice ||
-        File.prototype.mozSlice ||
-        File.prototype.webkitSlice,
+    let blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice,
       chunks = Math.ceil(file.size / chunkSize),
       currentChunk = 0,
       spark = new SparkMd5.ArrayBuffer(),
@@ -73,12 +70,11 @@ calculateHash(file, chunkSize)
 > 扩展：
 > 可以在上述逻辑中添加计算 hash 的进度：当前计算到的分片数/总分片数
 
-
 ### xxx
 
 ## Reference
 
 - [spark-md5 - npm](https://www.npmjs.com/package/spark-md5)
-- [前端通过spark-md5.js计算本地文件md5 - 掘金](https://juejin.cn/post/6844903641527091208)
+- [前端通过 spark-md5.js 计算本地文件 md5 - 掘金](https://juejin.cn/post/6844903641527091208)
 - [Javascript 中的二进制数据](https://zhangkai.pro/2020/09/09/binary-data-in-javascript) ArrayBuffer with BinaryString
 - [【文件上传那些事儿】- 03 两种计算 hash 的方式 - 掘金](https://juejin.cn/post/6919690643136577550#heading-4) 计算 hash 进一步阅读

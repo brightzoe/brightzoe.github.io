@@ -7,7 +7,8 @@
 ### 解决了什么问题
 
 解决在单页面网站中，通过切换浏览器地址路径，来匹配相对应的页面组件，实现页面内容的切换。前端控制页面的切换，而不需要向后端请求页面。前端更多的负责了展示相关的内容，减少了向后端的请求，节约资源，减小了服务器的压力。
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1ac50c7ba4cd4d85bbbdb3cd491b1e47~tplv-k3u1fbpfcp-zoom-1.image)
+
+![](https://s2.loli.net/2022/03/05/DJ3zv4mXkif2NeQ.png)
 
 图片来自 Reference[4] - 掘金：尼克陈
 
@@ -21,14 +22,13 @@
 
   缺点：每次不同的 URL 都会访问服务器，没有合理利用缓存，对服务器压力增大，耦合性变重，用户体验差，代码维护也变差。
 
-1998 年提出的 Ajax，实现异步加载，页面交互不用刷新页面，用户体验提升。
-单页应用页面交互无刷新，页面跳转业务刷新，前端路由的推出，是为了配合单页面应用跳转。
+1998 年提出的 Ajax，实现异步加载，页面交互不用刷新页面，用户体验提升。单页应用页面交互无刷新，页面跳转业务刷新，前端路由的推出，是为了配合单页面应用跳转。
 
 - 前端路由
 
   优点：页面不完全刷新就可以切换视图，URL 变了，也不需要重新加载，用户体验接近原生 APP.
-  缺点：但页面开发，服务器端的 HTML 是不完整的，通过 JS 进行的动态 DOM 拼接，渲染速度会变慢，也不利于 SEO。
-  没有复杂交互，SEO 要求严格的网站，更适合 SSR。
+
+  缺点：但页面开发，服务器端的 HTML 是不完整的，通过 JS 进行的动态 DOM 拼接，渲染速度会变慢，也不利于 SEO。没有复杂交互，SEO 要求严格的网站，更适合 SSR。
 
 ## 核心原理
 
@@ -52,6 +52,7 @@
   ![location](https://i.loli.net/2021/07/16/u67A4ixONwfjKbt.png)
 
 hash 值指的 URL 中锚点，用来做页面定位，对应 DOM id，在 HTML5 的 history 特性前，都是通过监听 hash 值实现前端路由.利用 hashchange 事件,操作 dom。
+
 相关特点：
 
 1. hash 值是网页的一个标志点，与 HTTP 请求无关，对后端没有影响。
@@ -59,28 +60,34 @@ hash 值指的 URL 中锚点，用来做页面定位，对应 DOM id，在 HTML5
 3. hash 改变会改变浏览器历史记录
 4. hash 改变会触发 window.onhashchange 事件(pushState 不会触发 hashchange)
 
-?> hash 改变不触发页面重载
+> hash 改变不触发页面重载
 
 如何改变 hash 值：
 
 1. a 标签 `<a href="#footer"></a>`
-2. js window.location.hash = "gg"
+2. js `window.location.hash = "gg"`
 3. 浏览器的前进后退 history.back(),history.forward(),history.go(1)
 
 ### History 原理
 
 - window.history - Html5 的特性
-  ![history](https://i.loli.net/2021/07/16/5I4JETHks2qgdMB.png)
+
+![history](https://i.loli.net/2021/07/16/5I4JETHks2qgdMB.png)
 
 浏览器的历史记录，类似于栈，先进后出，你可以自由前进后退。浏览器的历史记录，通过 history 对象实现。URL 的每次改变，**包括 hash 的变化**，都会形成一条历史记录。
+
 相关方法：
 
 - history.length
 - history.back()/go()/forward()
 - pushState(state,title,URL):页面不加载，不刷新
+
   state：用于存储该 URL 对应的状态对象，可以通过 history.state 获取
+
   title：标题，目前浏览器并不支持
+
   URL：定义新的历史 URL 记录，需要注意，新的 URL 必须与当前 URL 同源，不能跨域
+
 - replaceState(): 替换当前页面历史记录，history.length 不改变
 - window.onpopstate 事件
 
@@ -89,24 +96,27 @@ hash 值指的 URL 中锚点，用来做页面定位，对应 DOM id，在 HTML5
 ```js
 //hashchange:只能监听 url hash 的变化 location.hash
 window.addEventListener("hashchange", function (e) {
-	console.log(e);
+  console.log(e);
 });
 
 //popstate:
 //监听点击浏览器的前进后退，以及 history.back()/go()/forward()
 //监听不到: history.pushState() 和 history.replaceState()
 window.addEventListener("popstate", function (e) {
-	console.log(e);
+  console.log(e);
 });
 ```
 
 `<a href="/page1">page1</a>`,history 模式下，a 标签的点击导致 URL 的切换不会被 popstate 事件监听到。 如果希望被监听，可以覆盖 a 的点击事件，通过点击 a，调用 history api 实现。
-> [router实现](https://github.com/brightzoe/Playground/tree/master/router)
+
+> [router 实现](https://github.com/brightzoe/Playground/tree/master/router)
 
 ### 一些相关的问题
 
 - hash，history 在浏览器中刷新页面，会不会到服务器？ 重定向怎么处理
+
   history 路由的情况下，刷新页面，会根据实际的 URL 向服务器发请求。
+
   hash 路由，hash 值不会发送到服务器。
 
 ## reference:
