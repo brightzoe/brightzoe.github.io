@@ -14,8 +14,8 @@
 
 ```js
 <TabPane tab="tab1" key="1">
-	{/*加三元表达式判断:清除Tabs组件默认的缓存机制*/}
-	{activeTabKey === "1" ? <TabContent /> : null}
+  {/*加三元表达式判断:清除Tabs组件默认的缓存机制*/}
+  {activeTabKey === "1" ? <TabContent /> : null}
 </TabPane>
 ```
 
@@ -28,16 +28,16 @@
 ```js
 //由于在 Form.Item 中插入了不止一个元素。按照一个元素的方式写就会有上述错误。
 <Form.Item label="username" name="username">
-	<Input />
-	<span>please input username.</span>
+  <Input />
+  <span>please input username.</span>
 </Form.Item>
 
 //正确写法：label留在外面，实际的元素用Form.Item再包一层，name 加在最里面。
 <Form.Item label="username">
-	<Form.Item name="username">
-		<Input />
-	</Form.Item>
-	<span>please input username.</span>
+  <Form.Item name="username">
+  <Input />
+  </Form.Item>
+  <span>please input username.</span>
 </Form.Item>
 ```
 
@@ -51,12 +51,12 @@
 
 > HTML `<fieldset>` 元素用于对表单中的控制元素进行分组（也包括 label 元素）。
 
-```js
+```html
 <form>
-    <fieldset disabled>
-        <legend>表单标题</legend>
-        <...>
-    </fieldset>
+  <fieldset disabled>
+    <legend>表单标题</legend>
+    <...>
+  </fieldset>
 </form>
 ```
 
@@ -74,5 +74,5 @@
 
 ## Reference:
 
-1. 如何 disabled 禁用所有表单 input 输入框元素-原生 https://www.zhangxinxu.com/wordpress/2019/04/disabled-all-form-elements/
-2. `<fieldset>`-MDN https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/fieldset
+- 如何 disabled 禁用所有表单 input 输入框元素-原生 https://www.zhangxinxu.com/wordpress/2019/04/disabled-all-form-elements/
+- `<fieldset>`-MDN https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/fieldset
