@@ -35,6 +35,7 @@
 ### Static
 
 - 作用范围：
+
   //todo:用处
 
   可以直接通过 class 的名字访问，并且不会 re-render。作用于当前组件，同类型组件共享这个数据。
@@ -53,7 +54,7 @@
 
 ### Props
 
-- 写在 HTML 标签上，给子组件添加属性，传递给子组件的 props
+- 写在 JSX 标签上，给子组件添加属性，传递给子组件的 props
 
 - 注意事项：
 
@@ -61,7 +62,7 @@
 
   子组件内部不能改变 this.props 的值
 
-## 状态管理 - reference[2]
+## 状态管理
 
 ### 逻辑和交互
 
@@ -81,7 +82,7 @@
 
 我们可以从以下几个方向去考虑：
 
-**视图状态：**
+#### 视图状态
 
 1. 完全受当前组件控制，不受其他组件影响。 ----自己组件内管理
 2. 组件间互相影响，要根据应用复杂度，组件间的跨度决定
@@ -89,22 +90,26 @@
    如果跨度相对较远且应用不复杂，可以把状态提升到共同的 Context 中
    如果应用复杂，再考虑使用状态管理方案
 
-**领域状态：**
+#### 领域状态
 
 对于业务的各种逻辑状态，本来就是分布在不同的组件中的。
 
 1. 简单的小应用可以任其分布在组件中，或者提升到共同的 Context 中。
 2. 其他的情况，推荐使用状态管理，比如 Redux,Vuex,mobx。
 
-!> 切勿一股脑将所有状态都交给 Redux 处理，杀鸡焉用宰牛刀。全部由 Redux 处理是可行的，但是会影响项目的可读性，扩展性和性能。
+:::caution
+
+切勿一股脑将所有状态都交给 Redux 处理，杀鸡焉用宰牛刀。全部由 Redux 处理是可行的，但是会影响项目的可读性，扩展性和性能。
 
 甚至，对于领域状态中的子领域，可以在有状态管理方案的基础上再抽象出来单独处理。
 
 比如对于服务端请求的数据这一领域状态，其性质更类似于缓存，在 React 中可以使用 SWR 或 React Query 处理。
 
-### reference:
+:::
 
-1. [Where to Hold React Component Data: state, store, static, and this](https://www.freecodecamp.org/news/where-do-i-belong-a-guide-to-saving-react-component-data-in-state-store-static-and-this-c49b335e2a00/)
-2. [数据都放在 Redux 里吗？](https://juejin.cn/post/6986202846903402503#heading-0)
-3. [扩展： SWR-用于数据请求的 React Hooks 库](https://github.com/vercel/swr)
-4. [React-Query](https://github.com/tannerlinsley/react-query)
+## reference:
+
+- [Where to Hold React Component Data: state, store, static, and this](https://www.freecodecamp.org/news/where-do-i-belong-a-guide-to-saving-react-component-data-in-state-store-static-and-this-c49b335e2a00/)
+- [数据都放在 Redux 里吗？](https://juejin.cn/post/6986202846903402503#heading-0)
+- [扩展： SWR-用于数据请求的 React Hooks 库](https://github.com/vercel/swr)
+- [React-Query](https://github.com/tannerlinsley/react-query)
