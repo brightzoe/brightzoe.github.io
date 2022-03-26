@@ -11,6 +11,7 @@ module.exports = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
+  trailingSlash: false, //customize the presence/absence of a trailing slash at the end of URLs/links, and how static HTML files are generated
   organizationName: "brightzoe", // Usually your GitHub org/user name.
   projectName: "brightzoe.github.io", // Usually your repo name.
   themes: ["@codesandbox/sandpack-docusaurus", "@docusaurus/theme-live-codeblock"],
