@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbrightzoe_blog=self.webpackChunkbrightzoe_blog||[]).push([[4595],{8266:function(e){e.exports=JSON.parse('{"allTagsPath":"/blog/tags","name":"fp","count":1,"permalink":"/blog/tags/fp"}')}}]);
