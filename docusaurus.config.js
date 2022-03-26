@@ -13,7 +13,7 @@ module.exports = {
   favicon: "img/favicon.ico",
   organizationName: "brightzoe", // Usually your GitHub org/user name.
   projectName: "brightzoe.github.io", // Usually your repo name.
-  themes: ["@codesandbox/sandpack-docusaurus"],
+  themes: ["@codesandbox/sandpack-docusaurus", "@docusaurus/theme-live-codeblock"],
 
   presets: [
     //预设:将某些插件和主题一起使用
@@ -51,6 +51,12 @@ module.exports = {
           priority: 0.5,
           trailingSlash: false,
         },
+        googleAnalytics: {
+          //@docusaurus/plugin-google-analytics
+          trackingID: "UA-192447848-1",
+          // Optional fields.
+          anonymizeIP: true, // Should IPs be anonymized?
+        },
       },
     ],
   ],
@@ -76,7 +82,7 @@ module.exports = {
     {
       tableOfContents: {
         //todo:toc层级是否生效？
-        minHeadingLevel: 3,
+        minHeadingLevel: 2,
         maxHeadingLevel: 5,
       },
       navbar: {
@@ -92,13 +98,13 @@ module.exports = {
             label: "JavaScript",
             position: "left",
           },
-          { to: "/docs/react/README", label: "React", position: "left" },
+          { to: "/docs/react", label: "React", position: "left" },
           {
-            to: "/docs/data-structure/README",
+            to: "/docs/data-structure",
             label: "数据结构与算法",
             position: "left",
           },
-          { to: "/docs/business/README", label: "业务使用", position: "left" },
+          { to: "/docs/business", label: "业务使用", position: "left" },
           {
             to: "/docs/tools/chrome-devtools",
             label: "工具技巧",
@@ -166,11 +172,6 @@ module.exports = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-      },
-      googleAnalytics: {
-        trackingID: "UA-192447848-1",
-        // Optional fields.
-        anonymizeIP: true, // Should IPs be anonymized?
       },
     },
 };

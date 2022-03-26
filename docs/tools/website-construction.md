@@ -6,11 +6,7 @@
   - cd 相对路径（相对于当前工作目录）
     - ../ 表示当前文件夹的父文件夹 （中合路径中的上一个文件夹）anv/.. =0
     - ./ 表示当前文件夹，可忽略
-  - cd 绝对路径，, 以 / 开头； （cd - 上一个文件夹）
-  - 补充：
-    - 路径
-    - 相对路径 以 / 开头
-    - 绝对路径 以 // 开头
+  - cd 绝对路径，以 / 开头； （cd - 上一个文件夹）
 
 ```bash
 pwd # 显示目前所在的路径
@@ -72,9 +68,11 @@ sudo apt-get install -y nodejs
  npm install pm2
 ```
 
-### 部署
+## 部署
 
-- 在服务器开启对应端口的访问（入站出站配置）
+首先在服务器开启对应端口的访问（入站出站配置）
+
+### nginx
 
 ```bash
 # nginx
@@ -107,14 +105,19 @@ server {
 
 ```
 
+### pm2
+
 ```bash
 # pm2 nodejs 的进程管理工具,也可以管理其他linux进程
 pm2 start xx.js -- args for xx.js   #重启机器后就没有了
+pm2 list
 pm2 show/stop/restart id
 pm2 save #save后,再重启机器不会丢失
 pm2 resurrect #重启进程
 pm2 startup #配置为开机自启动 pm2 unstartup
 ```
+
+### https
 
 ```bash
 # ssl 证书
@@ -147,7 +150,7 @@ DNS 解析可以配置规则，在目前国内访问国外网络存在些问题�
 
 前两天尝试将此博客，在境外解析到 github,境内解析到 CODING。这样，国内用户访问，就会访问 CODING 上部署的内容，在境外访问就会访问到 github 上部署的内容。目前取消托管到 CODING 上了，由于静态网站部署不支持选择目录，以及选择分支，更新后自动部署的设置也有些问题，暂时放弃了。
 
-## Reference:
+## Reference
 
 - [Hexo 博客 GitHub Pages + CODING 静态网站双部署 | Asurada's Zone](https://asurada.zone/post/Deploy-Hexoblog-To-Codingnet-And-GitHub/)
 - [Nginx 从入门到实践，万字详解！ - 掘金](https://juejin.cn/post/6844904144235413512#heading-0)

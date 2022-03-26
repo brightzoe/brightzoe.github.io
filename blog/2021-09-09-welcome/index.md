@@ -22,7 +22,7 @@ tags: [about, docusaurus]
 
 <!--truncate-->
 
-## 撰写思路
+## Site Content
 
 截至目前，本 blog 的技术相关文档还是以笔记为主，记录本人在技术学习过程中对参考资料的整理，以及练习某些技术的总结。
 
@@ -38,6 +38,8 @@ tags: [about, docusaurus]
 ## How to use docusaurus
 
 以下为个人使用 docusaurus 的 doc 参考，更多请直接参考官方文档。
+
+### Docusaurus blogging features
 
 [Docusaurus blogging features](https://docusaurus.io/docs/blog) are powered by the [blog plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog).
 
@@ -81,6 +83,32 @@ Use the power of React to create interactive blog posts.
 <button onClick={() => alert('button clicked!')}>Click me!</button>
 :::
 
+### Using Interactive code editor
+
+```jsx live
+function Clock(props) {
+  const [date, setDate] = useState(new Date());
+  useEffect(() => {
+    var timerID = setInterval(() => tick(), 1000);
+
+    return function cleanup() {
+      clearInterval(timerID);
+    };
+  });
+
+  function tick() {
+    setDate(new Date());
+  }
+
+  return (
+    <div>
+      <h2>It is {date.toLocaleTimeString()}.</h2>
+    </div>
+  );
+}
+```
+
 ## Reference
 
-1. [Docusaurus docs](https://docusaurus.io/docs)
+- [Docusaurus docs](https://docusaurus.io/docs)
+- [Code blocks | Docusaurus](https://docusaurus.io/docs/markdown-features/code-blocks#interactive-code-editor)
