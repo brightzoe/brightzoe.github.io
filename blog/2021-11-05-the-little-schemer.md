@@ -33,5 +33,5 @@ tags: [reading, dev, fp]
 
 `( eq? a1 a2)` 这两个`atom`相等吗? Eq takes two arguments. Both of them must be non-numeric atoms.
 
-----------------第一章end
+----------------第一章 end
 `(lat? l)` 是全为`atom`的`list`吗? Every lat is a list of atoms.

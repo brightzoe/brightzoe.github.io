@@ -1,5 +1,3 @@
-
-
 # 盒模型
 
 从外到内：margin-box,border-box,padding-box,content-box.
@@ -49,7 +47,7 @@ background-color 会充满 content,padding,border.
 
 解决 margin 重叠问题： 创建 BFC，或通过对父元素建立 border，padding，或者间隔可以使外边距不合并。
 
-- [CSS 使用BFC阻止margin合并](https://codepen.io/SHERlocked93/pen/eVOevN)
+- [CSS 使用 BFC 阻止 margin 合并](https://codepen.io/SHERlocked93/pen/eVOevN)
 
 > 水平方向 margin 不会合并，左右 margin 会紧挨着排列
 
@@ -82,5 +80,5 @@ background-color 会充满 content,padding,border.
 ## Reference
 
 - [快速了解 CSS display:flow-root 声明 « 张鑫旭-鑫空间-鑫生活](https://www.zhangxinxu.com/wordpress/2020/05/css-display-flow-root/)
-- [CSS中重要的BFC - 掘金](https://juejin.cn/post/6844903641485148173#heading-8)
-- [CSS 使用BFC阻止margin合并](https://codepen.io/SHERlocked93/pen/eVOevN)
+- [CSS 中重要的 BFC - 掘金](https://juejin.cn/post/6844903641485148173#heading-8)
+- [CSS 使用 BFC 阻止 margin 合并](https://codepen.io/SHERlocked93/pen/eVOevN)

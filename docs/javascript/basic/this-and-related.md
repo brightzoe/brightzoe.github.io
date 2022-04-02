@@ -44,63 +44,63 @@ bind ,绑定 this 以及部分参数，返回一个新的函数。 这个新函�
 //改变了 this 指向，让新的对象可以执行该函数。那么思路是给新的对象添加这个函数方法，然后在执行完以后删除
 //// fn.call(obj,xx,xx,xx)=>obj.fn(xx,xx,xx)
 Function.prototype.myCall = function (context = window) {
-	//obj.fn = fn
-	context.fn = this; //把调用时的this(fn) 挂在新对象context上
-	// 获取剩余参数
-	const otherArg = [...arguments].slice(1);
-	// 将这个方法的执行结果传给 result
-	const result = context.fn(...otherArg);
-	// 删除这个变量
-	delete context.fn;
-	// 返回 result 结果
-	return result;
+  //obj.fn = fn
+  context.fn = this; //把调用时的this(fn) 挂在新对象context上
+  // 获取剩余参数
+  const otherArg = [...arguments].slice(1);
+  // 将这个方法的执行结果传给 result
+  const result = context.fn(...otherArg);
+  // 删除这个变量
+  delete context.fn;
+  // 返回 result 结果
+  return result;
 };
 
 //apply
 //fn.apply(context,[args])=>context.fn(...args)
 Function.prototype.myApply = function (context = window) {
-	context.fn = this;
-	//第二个参数是数组
-	const args = arguments[1];
-	let res;
-	//是否存在参数，存在就展开处理
-	if (args) {
-		res = context.fn(...args);
-	} else {
-		res = context.fn();
-	}
-	delete context.fn;
-	return res;
+  context.fn = this;
+  //第二个参数是数组
+  const args = arguments[1];
+  let res;
+  //是否存在参数，存在就展开处理
+  if (args) {
+    res = context.fn(...args);
+  } else {
+    res = context.fn();
+  }
+  delete context.fn;
+  return res;
 };
 
 //bind
 //fn.bind(context,...args) 绑定this,固定部分参数
 Function.prototype.bind2 = function (context = window) {
-	if (typeof this !== "function") {
-		throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
-	}
-	const _this = this;
-	const args = [...arguments].slice(1); //bind 的参数
-	return function () {
-		return _this.apply(context, [...args, ...arguments]); //arguments=>bind返回的函数调用时传入的参数
-	};
+  if (typeof this !== "function") {
+    throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
+  }
+  const _this = this;
+  const args = [...arguments].slice(1); //bind 的参数
+  return function () {
+    return _this.apply(context, [...args, ...arguments]); //arguments=>bind返回的函数调用时传入的参数
+  };
 };
 //bind 完整版
 //fn.bind(context,...args)
 Function.prototype.myBind = function (context = window) {
-	if (typeof this !== "function") {
-		throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
-	}
-	var _this = this;
-	var args = [...arguments].slice(1);
-	// 返回一个函数
-	return function F() {
-		// 因为返回了一个函数，我们可以 new F()，所以需要判断
-		if (this instanceof F) {
-			return new _this(...args, ...arguments);
-		}
-		return _this.apply(context, [...args, ...arguments]);
-	};
+  if (typeof this !== "function") {
+    throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
+  }
+  var _this = this;
+  var args = [...arguments].slice(1);
+  // 返回一个函数
+  return function F() {
+    // 因为返回了一个函数，我们可以 new F()，所以需要判断
+    if (this instanceof F) {
+      return new _this(...args, ...arguments);
+    }
+    return _this.apply(context, [...args, ...arguments]);
+  };
 };
 ```
 

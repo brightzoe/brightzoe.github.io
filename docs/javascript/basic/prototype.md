@@ -35,8 +35,8 @@
 ```js
 // 构造函数:
 function myFunction(arg1, arg2) {
-	this.firstName = arg1;
-	this.lastName = arg2;
+  this.firstName = arg1;
+  this.lastName = arg2;
 }
 
 // This  creates a new object
@@ -59,16 +59,16 @@ a.lastName; //Cherry
 
 ```js
 function myNew(Fn, ...args) {
-	if (typeof Fn !== "function") {
-		//要被new 的构造函数必须是函数
-		throw new Error("constructor must be a function");
-	}
-	// const obj = {}; //创建新对象
-	// obj.__proto__ = Fn.prototype; // 新对象的隐式原型指向构造函数的显式原型
-	const obj = Object.create(Fn.prototype); //创建新对象,原型指向构造函数
-	const result = Fn.call(obj, ...args); //调用构造函数，并绑定this 给新对象
-	//return typeof result === "object" ? result : obj; //如果构造函数显式返回了对象就返回这个对象，如果没有则返回前面创建的空对象obj
-	return result instanceof Object ? result : obj; //构造函数显式返回了函数也算返回，用instanceof 不用typeof
+  if (typeof Fn !== "function") {
+    //要被new 的构造函数必须是函数
+    throw new Error("constructor must be a function");
+  }
+  // const obj = {}; //创建新对象
+  // obj.__proto__ = Fn.prototype; // 新对象的隐式原型指向构造函数的显式原型
+  const obj = Object.create(Fn.prototype); //创建新对象,原型指向构造函数
+  const result = Fn.call(obj, ...args); //调用构造函数，并绑定this 给新对象
+  //return typeof result === "object" ? result : obj; //如果构造函数显式返回了对象就返回这个对象，如果没有则返回前面创建的空对象obj
+  return result instanceof Object ? result : obj; //构造函数显式返回了函数也算返回，用instanceof 不用typeof
 }
 ```
 
@@ -94,25 +94,25 @@ js 的继承基于原型链实现，instanceof 用来判断该实例的构造函
 ```js
 // 变量R的原型 存在于 变量L的原型链上
 function myInstanceof(left, right) {
-	//基本数据类型肯定不是
-	const basicTypes = ["string", "number", "boolean", "undefined", "symbol"];
-	if (basicTypes.includes(typeof left)) {
-		//typeof 判断不了array,null,其他都可以
-		return false;
-	}
-	//不是基本数据类型
-	let lp = left.__proto__;
-	let rp = right.prototype;
-	//循环向上找原型，直到找到或者到头找到null
-	while (true) {
-		if (lp === rp) {
-			return true;
-		}
-		if (lp === null) {
-			return false;
-		}
-		lp = lp.__proto__;
-	}
+  //基本数据类型肯定不是
+  const basicTypes = ["string", "number", "boolean", "undefined", "symbol"];
+  if (basicTypes.includes(typeof left)) {
+    //typeof 判断不了array,null,其他都可以
+    return false;
+  }
+  //不是基本数据类型
+  let lp = left.__proto__;
+  let rp = right.prototype;
+  //循环向上找原型，直到找到或者到头找到null
+  while (true) {
+    if (lp === rp) {
+      return true;
+    }
+    if (lp === null) {
+      return false;
+    }
+    lp = lp.__proto__;
+  }
 }
 ```
 

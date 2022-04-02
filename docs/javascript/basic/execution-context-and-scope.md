@@ -44,8 +44,8 @@ console.log(window.a); //a
 ```js
 var a = "123";
 function foo() {
-	console.log(a);
-	let a;
+  console.log(a);
+  let a;
 }
 foo(); //Uncaught ReferenceError: Cannot access 'a' before initialization
 ```
@@ -65,12 +65,12 @@ foo(); //Uncaught ReferenceError: Cannot access 'a' before initialization
 ```js
 var a = 2;
 function foo() {
-	console.log(a);
+  console.log(a);
 }
 
 function bar() {
-	var a = 3;
-	foo();
+  var a = 3;
+  foo();
 }
 
 bar(); //2 执行的foo 作用域在全局，则a 为全局的a
@@ -97,7 +97,7 @@ bar(); //2 执行的foo 作用域在全局，则a 为全局的a
 
 ```js
 if (true) {
-	var a = 1;
+  var a = 1;
 }
 
 console.log(a); // 结果??? 1
@@ -107,7 +107,7 @@ ES6 使用 let 和 const 代替 var 关键字，来“创建块级作用域”�
 
 ```js
 if (true) {
-	let a = 1;
+  let a = 1;
 }
 
 console.log(a); // ReferenceError
@@ -117,17 +117,17 @@ ES6 新增的 let 关键字跟 var 很相似，但它的作用域是块级的，
 
 ```js
 if (true) {
-	let a;
+  let a;
 }
 console.log(a); // ReferenceError: a没有定义
 
 while (true) {
-	let b;
+  let b;
 }
 console.log(b); // ReferenceError: b没有定义
 
 function foo() {
-	let c;
+  let c;
 }
 console.log(c); // ReferenceError: c没有定义
 // 这没什么可奇怪的
@@ -136,7 +136,7 @@ console.log(c); // ReferenceError: c没有定义
 // JavaScript解释器会根据其中内容识别出它来
 
 {
-	let d;
+  let d;
 } //单独的块也是 let 声明变量的作用域。
 console.log(d); // ReferenceError: d没有定义
 ```
@@ -148,15 +148,15 @@ ES5 使用 IIFE 可以模拟块级作用域，即在一个函数表达式内部�
 ```js
 // module1.js
 (function () {
-	//内嵌块级作用域
-	var a = 1;
-	console.log(a);
+  //内嵌块级作用域
+  var a = 1;
+  console.log(a);
 })();
 
 // module2.js
 (function () {
-	var a = 2;
-	console.log(a);
+  var a = 2;
+  console.log(a);
 })();
 ```
 
@@ -165,14 +165,14 @@ ES5 使用 IIFE 可以模拟块级作用域，即在一个函数表达式内部�
 ```js
 let divs = document.querySelectorAll("div");
 for (var i = 0; i < divs.length; i++) {
-	divs[i].addEventListener(
-		"click",
-		(function (frozenCounter) {
-			return function () {
-				console.log(frozenCounter);
-			};
-		})(i)
-	);
+  divs[i].addEventListener(
+    "click",
+    (function (frozenCounter) {
+      return function () {
+        console.log(frozenCounter);
+      };
+    })(i)
+  );
 }
 ```
 
@@ -187,22 +187,22 @@ for (var i = 0; i < divs.length; i++) {
 ```js
 // UMD 模块化
 (function (root, factory) {
-	if (typeof define === "function" && define.amd) {
-		// AMD
-		define(["jquery"], factory);
-	} else if (typeof exports === "object") {
-		// Node, CommonJS-like
-		module.exports = factory(require("jquery"));
-	} else {
-		// Browser globals (root is window)
-		root.returnExports = factory(root.jQuery);
-	}
+  if (typeof define === "function" && define.amd) {
+    // AMD
+    define(["jquery"], factory);
+  } else if (typeof exports === "object") {
+    // Node, CommonJS-like
+    module.exports = factory(require("jquery"));
+  } else {
+    // Browser globals (root is window)
+    root.returnExports = factory(root.jQuery);
+  }
 })(this, function ($) {
-	// methods
-	function myFunc() {}
+  // methods
+  function myFunc() {}
 
-	// exposed public method
-	return myFunc;
+  // exposed public method
+  return myFunc;
 });
 ```
 
@@ -223,16 +223,16 @@ function foo() {}
 ```js
 // 内嵌块级作用域
 {
-	let i;
-	for (i = 0; i < count; i++) {
-		console.log(i);
-	}
+  let i;
+  for (i = 0; i < count; i++) {
+    console.log(i);
+  }
 }
 console.log(i); // 抛出错误
 
 // 循环的块级作用域
 for (let i = 0; i < count; i++) {
-	console.log(i);
+  console.log(i);
 }
 console.log(i); // 抛出错误
 ```
@@ -252,10 +252,10 @@ console.log(i); // 抛出错误
 
 ```js
 var obj = {
-	val: 3,
-	fn: function () {
-		return this.val;
-	},
+  val: 3,
+  fn: function () {
+    return this.val;
+  },
 };
 obj.fn(); //this=>obj, 3
 ```

@@ -4,7 +4,7 @@
 
 ### 如何定义闭包
 
-**函数和函数对其词法环境的引用捆绑在一起，这样的组合就是闭包。** -MDN
+**函数和函数对其词法环境的引用捆绑在一起，这样的组合就是闭包。** - MDN
 
 上级作用域中的变量，因为被下级作用域内引用，而没有被释放，导致上级作用域内的变量，等到下级作用域执行完后才得到正常释放。
 
@@ -16,13 +16,13 @@
 
 ```js
 function createCounter() {
-	let counter = 0;
-	const myFunction = function () {
-		//counter 在myFunction 创建时就放在它的包包里啦
-		counter = counter + 1;
-		return counter;
-	};
-	return myFunction;
+  let counter = 0;
+  const myFunction = function () {
+    //counter 在myFunction 创建时就放在它的包包里啦
+    counter = counter + 1;
+    return counter;
+  };
+  return myFunction;
 }
 const increment = createCounter();
 const c1 = increment(); //这行执行完后，闭包的counter=1，这个increment函数被销毁，但下面还存在对increment 的引用，counter 还在不被销毁，下面使用的counter 初始值为1
@@ -43,21 +43,21 @@ console.log("example increment", c1, c2, c3); //example increment 1 2 3
 
 ```js
 var makeCounter = function () {
-	var privateCounter = 0;
-	function changeBy(val) {
-		privateCounter += val;
-	}
-	return {
-		increment: function () {
-			changeBy(1);
-		},
-		decrement: function () {
-			changeBy(-1);
-		},
-		value: function () {
-			return privateCounter;
-		},
-	};
+  var privateCounter = 0;
+  function changeBy(val) {
+    privateCounter += val;
+  }
+  return {
+    increment: function () {
+      changeBy(1);
+    },
+    decrement: function () {
+      changeBy(-1);
+    },
+    value: function () {
+      return privateCounter;
+    },
+  };
 };
 
 var Counter1 = makeCounter();

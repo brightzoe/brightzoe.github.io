@@ -22,8 +22,7 @@
      font-style: normal;
      font-weight: 500;
      /* 指定项目内部或网络字体，比如Google Fonts */
-     src: url(/fonts/raleway.woff2) format("woff2"), url(/fonts/raleway.woff)
-         format("woff");
+     src: url(/fonts/raleway.woff2) format("woff2"), url(/fonts/raleway.woff) format("woff");
      /*解决可能的兼容性问题，使用woff兜底*/
      /*字体不大的情况下也可以直接base64，提升加载体验*/
      font-dispaly: swap; /* 控制字体的加载方式 */
@@ -59,10 +58,7 @@
 1. 添加到 URL：
 
    ```html
-   <link
-     href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
-     rel="stylesheet"
-   />
+   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
    ```
 
 2. 直接在`@font-face` 中使用：
@@ -125,6 +121,9 @@ woff，woff2 是进行过内部压缩的，尤其是 woff2 字体的体积小。
 
 ## Reference
 
+- [如何优雅的选择字体(font-family) - SegmentFault 思否](https://segmentfault.com/a/1190000006110417)
+- [Web 字体 font-family 浅谈 - SegmentFault 思否](https://segmentfault.com/a/1190000038284125)
+- [font-family - CSS（层叠样式表） | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family)
 - [【微信公众号：三分钟学前端 2021-09-18】Web 性能优化：使用 CSS font-display 控制字体加载和替换](https://mp.weixin.qq.com/s/ceFNHqKCkb-F21mnJx8VIQ)
 - [Ensure text remains visible during webfont load](https://web.dev/font-display/)
 - [前端网页字体优化指南 - 掘金](https://juejin.cn/post/6984971905069482021#heading-3)

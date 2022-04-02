@@ -1,25 +1,19 @@
 # 布局
 
-
 ## 搞不懂的 height
 
-- height:100%
-  写的 height 以及 overflow 的设置方式总是出问题，对 height：100% 的理解有问题。
+- `height:100%` 百分比基于什么计算？
 
-:::note 百分比基于什么计算？
+如果一个块级元素的高度是百分数，这个值是包含块高度的百分数。如果没有显式声明包含块的高度（固定高度或有效的百分比高度），子元素的百分比高度无效；从 html 元素向下一层一层传递的百分比是有效的。
 
-如果一个块级元素的高度是百分数，这个值是包含块高度的百分数。如果没有显式声明包含块的高度，子元素的百分比高度无效；
+如果用百分数表示 margin 或 padding， 值是包含块宽度的百分数。
 
-如果用百分数表示 margin 或 padding, 值是包含块宽度的百分数。
-
-:::
-
-- html,body 高度的设置：https://www.freecodecamp.org/news/html-page-width-height/
+- html,body 高度的设置： [HTML vs Body: How to Set Width and Height for Full Page Size](https://www.freecodecamp.org/news/html-page-width-height/)
 
 使用非绝对高度时的，如何让 `height:100%`生效，撑满整个高度？
 
 ```html
-<!--从 html>body 到目标元素，全部设置`height:100%`,如下所示：  -->
+<!--从 html>body 到目标元素，全部设置`height:100%`,一层一层传下去，如下所示：  -->
 <html>
   <head>
     <style>
@@ -32,6 +26,11 @@
       div {
         height: 100%;
         background: red;
+      }
+      p {
+        margin: 10%;
+        background: green;
+        height: 50%;
       }
     </style>
   </head>
@@ -51,7 +50,23 @@ body {
   min-height: 100vh;
   width: 100%;
 }
-/* 注意宽度上尽量不要使用100vw,由于超过100vh的内容，出现纵向滚动条占了8px 。如果里面的元素写了100vw ,会导致横向滚动条的出现。 */
+```
+
+:::tip
+
+宽度上尽量不要使用 100vw,由于高度上出现超过 100vh 的内容，产生纵向滚动条占了 8px 宽度。如果里面的元素写了 100vw ,会导致横向滚动条的出现。
+
+If you set the width to 100% on the body element you will have a full page width. This is essentially equivalent to not setting a width value and allowing the default.
+:::
+
+### 重置浏览器的布局默认值
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 ```
 
 ### 浏览器是如何计算高度和宽度的？
@@ -62,7 +77,7 @@ body {
 - 高度
   浏览器对于高度的计算方式与宽度完全不一样。事实上，浏览器根本不计算内容的高度，除非内容超出了视窗的范围，导致出现滚动条。或者你给页面设置一个绝对高度，那么浏览器会根据 css 设置这个元素的高度。否则，浏览器的行为只会简单的让内容向下堆砌，页面的高度不会被考虑。
 
-  如果你给一个块级元素的高度设定为百分比高度，他的百分比是根据父元素高度来计算的。如果父元素元素没有一个绝对高度，那么无法获取父元素的高度，自然无法计算自己的高度。
+  如果你给一个块级元素的高度设定为百分比高度，他的百分比是根据父元素高度来计算的。如果父元素元素没有一个绝对高度（固定高度或有效的百分比高度），那么无法获取父元素的高度，自然无法计算自己的高度。
 
   各个浏览器对于 CSS 宽高的解析不完全相同。
 
@@ -99,7 +114,5 @@ body {
 
 ## Reference:
 
+- [HTML vs Body: How to Set Width and Height for Full Page Size](https://www.freecodecamp.org/news/html-page-width-height/)
 - 为什么你写的 height:100% 不生效？ https://segmentfault.com/a/1190000012707337
-- 如何优雅的选择字体(font-family) https://segmentfault.com/a/1190000006110417
-- Web 字体 font-family 浅谈 https://segmentfault.com/a/1190000038284125
-- font-family MDN https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family
