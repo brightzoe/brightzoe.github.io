@@ -25,9 +25,11 @@ module.exports = {
         docs: {
           //@docusaurus/plugin-content-docs
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/brightzoe/brightzoe.github.io",
+          editUrl: "https://github.com/brightzoe/brightzoe.github.io/edit/main",
           showLastUpdateTime: true,
           sidebarCollapsed: false,
+          // options for remark-admonitions
+          admonitions: {},
         },
         blog: {
           //@docusaurus/plugin-content-blog
@@ -80,8 +82,12 @@ module.exports = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
+      colorMode: {
+        defaultMode: "light",
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
+      },
       tableOfContents: {
-        //todo:toc层级是否生效？
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
       },
@@ -154,21 +160,6 @@ module.exports = {
         style: "dark",
         copyright: `Copyright © ${new Date().getFullYear()} brightzoe's blog, Inc.`,
       },
-      // 				algolia: {
-      // 					apiKey: 'YOUR_API_KEY',
-      // 					indexName: 'YOUR_INDEX_NAME',
-      //
-      // 					// Optional: see doc section below
-      // 					contextualSearch: true,
-      //
-      // 					// Optional: see doc section below
-      // 					appId: 'YOUR_APP_ID',
-      //
-      // 					// Optional: Algolia search parameters
-      // 					searchParameters: {},
-      //
-      // 					//... other Algolia params
-      // 				},
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
