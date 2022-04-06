@@ -1,6 +1,12 @@
+---
+sidebar_position: 2
+# description:
+# keywords:
+---
+
 # 布局
 
-## 搞不懂的 height
+## 搞不懂的 `height`
 
 - `height:100%` 百分比基于什么计算？
 
@@ -43,7 +49,21 @@
 </html>
 ```
 
+> 但是应该尽量避免这种多层百分比高度嵌套的风格。
+
 如果要设置全屏的高度，也可以这样：
+
+```css
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+```
+
+或
 
 ```css
 body {
@@ -65,11 +85,24 @@ If you set the width to 100% on the body element you will have a full page width
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 ```
 
-### 浏览器是如何计算高度和宽度的？
+此方法使用通用选择器，`*`导致 CSS 渲染引擎在渲染 CSS 时遍历整个 DOM 树，影响渲染性能，同时会重置一些没必要的值，不推荐。
+
+:::info 一些重置浏览器默认布局的库
+
+- Sanitize.css (https://github.com/csstools/sanitize.css)
+- Modern-normalize (https://github.com/sindresorhus/modern-normalize) - used by tailwind (https://tailwindcss.com/docs/preflight)
+- Reboot (https://getbootstrap.com/docs/5.0/content/reboot/) - used by BS4+
+
+You can use Sanitize.css or Modern-normalize in non-Bootstrap projects, use the built in Modern-normalize in Tailwind projects and use the already included Reboot when working on a modern Bootstrap projects (newer than 3).
+
+[Is this library still functional/relevant/maintained as of 2021? · Issue #856 · necolas/normalize.css](https://github.com/necolas/normalize.css/issues/856)
+
+:::
+
+### 浏览器如何计算高度和宽度
 
 - 宽度
   对于一个块级元素，浏览器计算的有效宽度，会考虑浏览器窗口的打开宽度，如果不设置宽度，浏览器会自动将该元素平铺填满整个横向宽度。
@@ -81,7 +114,106 @@ If you set the width to 100% on the body element you will have a full page width
 
   各个浏览器对于 CSS 宽高的解析不完全相同。
 
+  :::caution
+  `min-height` 不是一个有效的高度值：高度不明确。
+
+  :::
+  特殊的`min-height`为父元素的百分比生效的现象：
+
+  //todo:why?
+
+  ```html
+  <!-- 父元素 min-height + 子元素为绝对定位 -->
+  <div class="container">
+    <div class="child"></div>
+  </div>
+
+  <style>
+    .container {
+      min-height: 100px;
+      border: 1px solid;
+      position: relative;
+    }
+    .child {
+      width: 100%;
+      height: 50%;
+      background: red;
+      position: absolute;
+    }
+  </style>
+  ```
+
+  ```html
+  <!-- 父元素 min-height + 父元素为flex-item -->
+  <div class="box">
+    <div class="container">
+      <div class="child"></div>
+    </div>
+  </div>
+
+  <style>
+    .box {
+      display: flex;
+    }
+    .container {
+      width: 100%;
+      min-height: 100px;
+      border: 1px solid;
+    }
+    .child {
+      height: 50%;
+      background: red;
+    }
+  </style>
+  ```
+
+  ```html
+  <!-- 父元素 min-height + 父元素为 grid -->
+
+  <div class="container">
+    <div class="child"></div>
+  </div>
+
+  <style>
+    .container {
+      width: 100%;
+      display: grid;
+      min-height: 100px;
+      border: 1px solid;
+    }
+    .child {
+      height: 50%;
+      background: red;
+    }
+  </style>
+  ```
+
 ## 水平居中，垂直居中的设置方式
+
+1. 绝对定位加 `transform`
+
+   ```html
+   <div class="div1">
+     <div class="div2">height:100%;</div>
+   </div>
+   <style>
+     .div1 {
+       background-color: blueviolet;
+       position: relative;
+       height: 500px;
+     }
+     .div2 {
+       font-size: 30px;
+       color: white;
+       text-align: center;
+       width: 400px;
+       position: absolute;
+       left: 50%;
+       top: 50%;
+       transform: translate(-50%, -50%);
+     }
+   </style>
+   ```
 
 ## 常见布局实现
 
@@ -112,7 +244,8 @@ If you set the width to 100% on the body element you will have a full page width
 
   grid 布局也有问题：`grid-template-rows:100%` 调整高度就可以了。
 
-## Reference:
+## Reference
 
 - [HTML vs Body: How to Set Width and Height for Full Page Size](https://www.freecodecamp.org/news/html-page-width-height/)
-- 为什么你写的 height:100% 不生效？ https://segmentfault.com/a/1190000012707337
+- [前端小知识--为什么你写的 height:100%不起作用？ - SegmentFault 思否](https://segmentfault.com/a/1190000012707337)
+- [Is this library still functional/relevant/maintained as of 2021? · Issue #856 · necolas/normalize.css](https://github.com/necolas/normalize.css/issues/856)
