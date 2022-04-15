@@ -4,7 +4,6 @@
 
 ### 数据缓存的类型
 
-
 1、localStorage
 大小 5M，文件存储级别，不清理浏览器缓存不消失
 
@@ -119,22 +118,24 @@ https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent
 
    ```
 
-7. 溢出问题。以下api可以获取存储总量，以及使用了多少。
+7. 溢出问题。以下 api 可以获取存储总量，以及使用了多少。
 
    ```js
    navigator.storage.estimate().then((estimate) => {
-   	console.log(estimate);
+     console.log(estimate);
    });
    ```
-   >需要在https且浏览器支持的情况下，存在兼容性问题。
-   >https://developer.mozilla.org/zh-CN/docs/Web/API/StorageManager
 
-  如果濒临溢出，可以对存储时间戳进行排序，把旧的清除掉。
+   > 需要在 https 且浏览器支持的情况下，存在兼容性问题。
+   > https://developer.mozilla.org/zh-CN/docs/Web/API/StorageManager
+
+如果濒临溢出，可以对存储时间戳进行排序，把旧的清除掉。
+
 ### 可以使用一些封装好的库
 
 比如 [store2](https://www.npmjs.com/package/store2)
 
 ### reference:
 
-1. 前端数据缓存（前端数据库）的一些见解，利用内存存储帮你优化接口请求 https://juejin.cn/post/6955672622587707428/
-2. 【收藏就会】浏览器WebStorage缓存使用指南 https://juejin.cn/post/6984908770149138446#heading-13
+- [前端数据缓存（前端数据库）的一些见解，利用内存存储帮你优化接口请求 - 掘金](https://juejin.cn/post/6955672622587707428/)
+- [【收藏就会】浏览器 WebStorage 缓存使用指南 - 掘金](https://juejin.cn/post/6984908770149138446#heading-13)

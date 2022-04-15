@@ -244,6 +244,8 @@ You can use Sanitize.css or Modern-normalize in non-Bootstrap projects, use the 
 
   grid 布局也有问题：`grid-template-rows:100%` 调整高度就可以了。
 
+## 响应式页面适配
+
 ## Reference
 
 - [HTML vs Body: How to Set Width and Height for Full Page Size](https://www.freecodecamp.org/news/html-page-width-height/)

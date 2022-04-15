@@ -37,12 +37,12 @@ CommonJS 模块定义需要使用 require()指定依赖，而使用 exports 对�
 //moduleA.js
 var moduleB = require("./moduleB");
 module.exports = {
-	stuff: moduleB.doStuff(),
+  stuff: moduleB.doStuff(),
 };
 
 //可以支持动态依赖
 if (condition) {
-	var A = require("./moduleA");
+  var A = require("./moduleA");
 }
 ```
 
@@ -64,9 +64,9 @@ CommonJS 依赖几个全局属性如 `require` 和 `module.exports`。如果想�
 //moduleA.js
 //我的名字叫moduleA,我依赖moduleB，ModuleC,赶紧去加载，执行依赖。 异步加载依赖，不影响后面的语句
 define("moduleA", ["moduleB", "moduleC"], function (moduleB) {
-	return {
-		stuff: moduleB.doStuff(),
-	};
+  return {
+    stuff: moduleB.doStuff(),
+  };
 });
 ```
 
@@ -74,16 +74,16 @@ define("moduleA", ["moduleB", "moduleC"], function (moduleB) {
 
 ```js
 define("moduleA", ["require", "exports"], function (require, exports) {
-	var moduleB = require("moduleB");
-	exports.stuff = moduleB.doStuff();
+  var moduleB = require("moduleB");
+  exports.stuff = moduleB.doStuff();
 });
 
 //也可以支持动态依赖
 define("moduleA", ["require", "exports"], function (require, exports) {
-	if (condition) {
-		//里面使用require 实现延迟加载
-		var moduleB = require("moduleB");
-	}
+  if (condition) {
+    //里面使用require 实现延迟加载
+    var moduleB = require("moduleB");
+  }
 });
 ```
 
@@ -134,14 +134,14 @@ CommonJS 与 AMD 之间的冲突正是我们现在享用的 ECMAScript 6 模块�
 /** 定义模块 math.js **/
 var basicNum = 0;
 var add = function (a, b) {
-	return a + b;
+  return a + b;
 };
 export { basicNum, add };
 
 /** 引用模块 **/
 import { basicNum, add } from "./math";
 function test(ele) {
-	ele.textContent = add(99 + basicNum);
+  ele.textContent = add(99 + basicNum);
 }
 ```
 
@@ -156,15 +156,15 @@ ESModule 中 import 的模块会被 JS 引擎静态分析。模块代码是在�
     ```js
     // util\index.js
     let object = {
-    	age: 10,
+      age: 10,
     };
     let fun = function () {
-    	console.log("modules obj", object);
-    	object = { age: 99 };
+      console.log("modules obj", object);
+      object = { age: 99 };
     };
     module.exports = {
-    	fun,
-    	object,
+      fun,
+      object,
     };
 
     // index.js

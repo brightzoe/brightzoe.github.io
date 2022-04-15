@@ -10,7 +10,7 @@
 
 ![](https://s2.loli.net/2022/03/05/DJ3zv4mXkif2NeQ.png)
 
-图片来自 Reference[4] - 掘金：尼克陈
+图片来自 [谈谈对前端路由的理解](https://juejin.cn/post/6917523941435113486#heading-0)
 
 > 拓展： 无刷新切换页面，所以前端框架中每个组件都有自己的生命周期，来在切换到当前页面，切换走等等的时候做一些事情。
 
@@ -26,7 +26,7 @@
 
 - 前端路由
 
-  优点：页面不完全刷新就可以切换视图，URL 变了，也不需要重新加载，用户体验接近原生 APP.
+  优点：页面不完全刷新就可以切换视图，URL 变了，也不需要重新加载，用户体验接近原生 APP。
 
   缺点：但页面开发，服务器端的 HTML 是不完整的，通过 JS 进行的动态 DOM 拼接，渲染速度会变慢，也不利于 SEO。没有复杂交互，SEO 要求严格的网站，更适合 SSR。
 
@@ -119,9 +119,9 @@ window.addEventListener("popstate", function (e) {
 
   hash 路由，hash 值不会发送到服务器。
 
-## reference:
+## Reference
 
-1. [SPA 路由三部曲之核心原理](https://juejin.cn/post/6895882310458343431#heading-0)
-2. [Location - MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Location)
-3. [History - MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/History)
-4. [谈谈对前端路由的理解](https://juejin.cn/post/6917523941435113486#heading-0) - 包含如何实现两种模式的路由
+- [SPA 路由三部曲之核心原理](https://juejin.cn/post/6895882310458343431#heading-0)
+- [Location - MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Location)
+- [History - MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/History)
+- [谈谈对前端路由的理解](https://juejin.cn/post/6917523941435113486#heading-0) - 包含如何实现两种模式的路由

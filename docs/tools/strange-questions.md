@@ -22,27 +22,7 @@ todo: 思考：有些项目没有这个问题，构建方式有何不同？ cra 
 
 ## 前端
 
-### node 版本管理
 
-问题描述：在多个项目之间切换，会遇到不同的项目所需要的 node 版本不一致，会有切换 node 版本的需求。
-
-todo:包管理器 npm yarn pnpm 。node npm npx 怎么理解？ dependencies/devDependencies
-
-todo:
-
-[npx 使用教程 - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2019/02/npx.html)
-
-[简单聊聊 npx 和 npm - 掘金](https://juejin.cn/post/6886818067913900046#heading-3)
-
-linux/Mac OS 可以使用 n /nvm ,仅限了解。
-
-目前还是使用 windows 比较多，可以使用 nvm [coreybutler/nvm-windows: A node.js version management utility for Windows. Ironically written in Go.](https://github.com/coreybutler/nvm-windows)进行管理。但是使用 nvm 之前需要卸载电脑上已有的所有版本的 node，有点麻烦。
-
-也可以使用 npx 进行 node 版本切换。
-
-针对一个项目，临时使用另一个版本的 node ，并执行一些命令。
-
-`npx -p node@16 yarn start` // 临时使用 node v16+ 的版本，并启动项目
 
 ### react 中 less 样式未生效
 
