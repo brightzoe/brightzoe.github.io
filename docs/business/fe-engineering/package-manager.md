@@ -2,8 +2,6 @@
 
 `npm`，`yarn`，`pnpm`
 
-<!-- todo:包管理器 npm yarn pnpm 。node npm npx 怎么理解？ dependencies/devDependencies -->
-
 ## npm
 
 npm 使用最多的功能是作为一个在线的包管理工具。npm 本身不能执行任何包，对于本地项目的包，需要写入 `package.json` 文件，然后通过 npm 解析 `package.json` 文件，解析到包的 `.bin` 目录下，在 bash 中执行。
@@ -81,7 +79,7 @@ yarn 也是包管理器，与 npm 没有本质的区别，都是管理和安装�
 1. 采用缓存机制，支持离线安装（npm@5 已支持）
 2. 依赖扁平化结构（npm@3 已支持）
 3. 依赖安装确定性 yarn.lock（npm@5 增加了 package-lock.json）
-4. 安装速度快并行下载
+4. 安装速度快，并行下载
 5. 安装失败自动重试
 
 ```bash
@@ -114,11 +112,11 @@ pnpm 的 node_modules 结构：
 
 ```
 node_modules
-├── foo -> ./.pnpm/foo@1.0.0/node_modules/foo
+├── foo -> ./.pnpm/foo@1.0.0/node_modules/foo  //软链接，类似于快捷方式
 └── .pnpm
     ├── bar@1.0.0
     │   └── node_modules
-    │       └── bar -> <store>/bar
+    │       └── bar -> <store>/bar //硬链接
     └── foo@1.0.0
         └── node_modules
             ├── foo -> <store>/foo
@@ -134,12 +132,33 @@ node_modules
 1. 包安装速度快。
 2. 磁盘空间利用非常高效。
    不会重复安装同一个包，即使有一个包的不同版本，pnpm 也会极大程度地复用之前版本的代码。
-3. 支持 monorepo
+3. 支持 monorepo。
+   > pnpm workspace，yarn workspace，lerna 等多种 monorepo 策略。
 4. 继承了 npm 与 yarn 的其他优势，比如安装确定性与离线模式。
 5. 安全性高，可以规避非法访问依赖的风险，比如幽灵依赖。
 
+了解更多：
+
+- [Why should we use pnpm? by @ZoltanKochan](https://www.kochan.io/nodejs/why-should-we-use-pnpm.html)
 - [平铺的结构不是 node_modules 的唯一实现方式 | pnpm](https://pnpm.io/zh/blog/2020/05/27/flat-node-modules-is-not-the-only-way)
 - [基于符号链接的 node_modules 结构 | pnpm](https://pnpm.io/zh/symlinked-node-modules-structure)
+- [All in one：项目级 monorepo 策略最佳实践 - SegmentFault 思否](https://segmentfault.com/a/1190000039157365)
+
+## lockfiles
+
+### 项目依赖出现问题，直接删除 lockfiles
+
+不推荐！ 不要轻易删除 lockfiles ，如果原来的依赖有了更新的版本，可能导致无法启动。删除 node_modules 然后重新 install 即可，有问题可以更新报错的具体 package。有些包需要特定的 node 版本，可以尝试切换 node 版本。
+
+lockfiles 作用：确定依赖的安装结构，在任意的机器上都能得到完全相同的 node_modules 结构。
+
+> 任何时候都不要直接操作 lock 文件。
+
+### 何时提交 lock 文件
+
+开发一个应用时，建议提交 lock 文件，保证所有团队开发者以及 CI 环节安装的依赖版本都一致。
+
+开发一个 npm 包时，包是需要被其他仓库依赖的，如果发布了 lock 文件，依赖包就不能和其他依赖共享同意范围的依赖。是不应该发布 lock 文件的。
 
 ## some questions
 
@@ -193,6 +212,33 @@ linux/Mac OS 可以使用 n /nvm ,仅限了解。
 ```
 
 <!-- todo: only-allow学习   [从 vue3 和 vite 源码中，我学到了一行代码统一规范团队包管理器的神器 - 掘金](https://juejin.cn/post/7033560885050212389) -->
+
+### dependencies
+
+dependencies：最常用，依赖会被最终构建到部署环境。
+
+> `npm install --production`： 只安装 dependencies，生产环境（dependencies）不需要开发环境（devDependencies）的依赖。 若是把某个生产环境的依赖写到 devDependencies，发布之后则引用不到这个依赖。
+
+devDependencies：开发过程的依赖，比如 eslint ，prettier，webpack，babel 等，线上压缩的代码不需要。
+
+peerDependencies：比如一些插件的依赖，需要指定它依赖的宿主的版本号。该插件不能单独被依赖使用，使用的前提时必须已经有核心依赖库。
+
+> 比如开发一个组件用到 react ，组件发布打包时，不需要把 react 打包进去，宿主项目开发时需要引入 react，通过 peerDependencies 校验 react 包版本是否符合要求。
+
+bundledDependencies：与`npm pack`打包命令有关,在 bundledDependencies 中指定的依赖包, 必须先在 dependencies 和 devDependencies 声明过。
+
+optionalDependencies：可选依赖，不建议使用，增加项目不确定性和复杂性。
+
+<!-- todo:
+[字节的一个小问题 npm 和 yarn不一样吗？  - 掘金](https://juejin.cn/post/7060844948316225572)
+
+[字节的一个小问题npm 和 yarn不一样吗？(续篇) - 掘金](https://juejin.cn/post/7071659901654827039/#heading-4) -->
+
+<!-- todo:
+npm install [【微信公众号：code秘密花园 2019-12-17 08:10】npm install 原理分析](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247490258&idx=1&sn=b293a8deef3b41693e9b547c95f7b135&source=41#wechat_redirect)
+
+npm run [三面面试官：运行 npm run xxx 的时候发生了什么？ - 掘金](https://juejin.cn/post/7078924628525056007)
+ -->
 
 ## Reference
 
