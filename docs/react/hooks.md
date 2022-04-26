@@ -4,15 +4,45 @@ sidebar_position: 2
 # keywords:
 ---
 
-# Hooks
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-> 注： 本文所有栗子均在： https://codesandbox.io/s/hook-e49wk
+# React Hooks
+
+> 本文所有栗子均在： https://codesandbox.io/s/hook-e49wk
 
 函数组件 App，在每一次渲染都会被调用，而每一次调用都会形成一个独立的上下文，可以理解成一个快照。每一次渲染形成的快照，都是互相独立的。
 
+```jsx live
+//函数组件每一次渲染的独立上下文
+function App() {
+  const [count, setCount] = useState(0);
+  const handleClick = () => {
+    setTimeout(() => {
+      console.log("点击次数: " + count);
+    }, 3000);
+  };
+  //1、点击增加按钮两次，将 count 增加到 2。
+  //2、点击「展示点击次数」。
+  //3、在 console.log 执行之前，也就是 3 秒内，再次点击新增按钮 2 次，将 count 增加到 4。
+  //打印出2，而不是4。
+  return (
+    <div className="App">
+      <button onClick={() => setCount(count + 1)}>点击{count}次</button>
+      <button onClick={handleClick}>展示点击次数</button>
+    </div>
+  );
+}
+```
+
+使用 Hooks 的规则：
+
+1. 总在组件的顶部调用 Hooks，不能在循环，条件或嵌套函数中使用 Hooks。
+2. 只能在函数组件中使用 Hooks 或者在自定义 Hooks 中调用 Hooks。不要在普通的 js 函数中调用 Hooks。
+
 ### useState
 
-使用 useState 依赖上一次 state 时，使用 function 的方式更新 setState,确保拿到的是准确的 previous state。
+使用 useState 依赖上一次 state 时，使用 function 的方式更新 setState，确保拿到的是准确的 previous state。
 
 对于对象和数组，注意 useState 中不会自动补全旧的变量，需要使用展开运算符自己手动补充,完成合并更新。
 
@@ -20,137 +50,381 @@ sidebar_position: 2
 
 解决的问题：EffectHook 用于函数式组件中副作用，执行一些相关的操作，逻辑聚合。
 
-每次渲染函数组件时，useEffect 都是新的，都是不一样的。组件重新渲染，会重新执行 useEffect 内的回调，并且 里面 count 值也是当时的快照的一个常量值。
+每次渲染函数组件时，useEffect 都是新的，都是不一样的。组件重新渲染，会重新执行 useEffect 内的回调，并且里面 count 值也是当时的快照的一个常量值。
 
-https://codesandbox.io/s/hook-e49wk?file=/src/useEffect.js
+<Tabs>
+  <TabItem value="useeffect" label="useEffect 闭包">
+
+```jsx live
+// useEffect 每次重新渲染都是新的
+function App() {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    setTimeout(() => {
+      console.log("点击次数: " + count);
+    }, 3000);
+  }); //没有deps,组件重新渲染时，会重新执行 useEffect 内的回调，并且里面 count 值也是当时的快照的一个常量值。
+  return (
+    <div className="App">
+      <button onClick={() => setCount(count + 1)}>点击{count}次</button>
+    </div>
+  );
+}
+```
+
+  </TabItem>
+  <TabItem value="componentDidUpdate" label="componentDidUpdate">
+
+```jsx live
+//类组件类组件，声明之后，会在内部生成一个实例 instance，所有的数据都会存在类的上下文中，所以 this.state.count 会一直指向最新的 count 值，与上面useEffect更新取到的state不一致，没有独立上下文
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
+  componentDidUpdate() {
+    setTimeout(() => {
+      console.log("点击次数: " + this.state.count);
+    }, 3000);
+  }
+  render() {
+    return <button onClick={() => this.setState({ count: this.state.count + 1 })}>点击{this.state.count}次</button>;
+  }
+}
+```
+
+  </TabItem>
+</Tabs>
 
 - 依赖项如果是对象，只能浅比较，是不是同一个对象。如果需要深比较，实现方式：
 
-  1. 使用` useDeepCompareEffect from "react-use/lib/useDeepCompareEffect";`
+  1. 使用` useDeepCompareEffect`
 
-- 在 useEffect 的第一个参数中 return 一个函数，这个匿名函数将在组件卸载的时候执行，因此我们在这里移除监听等在卸载时执行的操作就好了。
-  > 下面 useCallback,useMemo 的第二个参数同 useEffect ，它是用于监听你需要监听的变量，如在数组内添加 name、phone、等参数，当改变其中的值，都会触发子组件副作用的执行。如果不添加依赖，则在任何重新渲染时都会执行。useMemo 和 useCallback，都能为「重复渲染」这个问题，提供很好的帮助。useCallback 是「useMemo 的返回值为函数」时的特殊情况，是 React 提供的便捷方式。
+- 在 useEffect 的第一个参数中 return 一个函数，这个匿名函数将在组件卸载的时候执行，因此在这里可以移除监听等在卸载时执行的操作。
+
+:::tip
+
+下面的 useCallback,useMemo 的第二个参数同 useEffect 一致，用于监听变量，如在数组内添加 name、phone 等参数，当改变其中的值，都会触发子组件副作用的执行。
+
+**如果不添加依赖，则在任何重新渲染时都会执行。**
+
+useMemo 和 useCallback，都能为「重复渲染」这个问题，提供很好的帮助。useCallback 是「useMemo 的返回值为函数」时的特殊情况，是 React 提供的便捷方式。
+
+:::
 
 ### useMemo
 
-解决父组件更新引起子组件更新的问题，告诉子组件需要在什么时候更新，什么时候不更新。
-
-相当于把父组件需要传递的参数做了一个标记，参数更新时更新子组件。无论父组件其他状态更新任何值，都不会影响要传递给子组件的对象。
+用于缓存一个值。
 
 `const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);`
 
-https://codesandbox.io/s/hook-e49wk?file=/src/useMemo.js
+可以用于解决父组件更新引起子组件更新的问题，告诉子组件需要在什么时候更新，什么时候不更新。相当于把父组件需要传递的参数做了一个标记，参数更新时更新子组件。无论父组件其他状态更新任何值，都不会影响要传递给子组件的对象。
 
-> 传递给 useMemo 的函数在渲染期间运行，注意里面的逻辑不要再次触发渲染，副作用应该放在 useEffect 里面。<br/>
-> 将 useMemo 作为性能优化，而不是语义保证，因为 React 有可能在某些情况下忘掉记住的值，重新计算。
+<!--
+note: live-codeblock 里添加多个组件的方法：添加 noInLine, 代码最后写render()
+-->
+
+```jsx live noInline
+function Child({ data }) {
+  useEffect(() => {
+    console.log("查询条件：", data);
+  }, [data]);
+
+  return <div>子组件</div>;
+}
+
+function App() {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [kw, setKw] = useState("");
+
+  // const data = {
+  //   name,
+  //   phone
+  // };
+  //如果按照上面的部分，即使child的props 只有name,phone，没有kw,但修改kw,父组件重新渲染也会导致子组件重新渲染。
+  //下面把导致重新渲染的值用useMemo包起来，使kw变化，父组件改变不影响子组件。
+  const data = useMemo(
+    () => ({
+      name,
+      phone,
+    }),
+    [name, phone]
+  );
+
+  return (
+    <div className="App">
+      <input onChange={(e) => setName(e.target.value)} type="text" placeholder="请输入姓名" />
+      <input onChange={(e) => setPhone(e.target.value)} type="text" placeholder="请输入电话" />
+      <input onChange={(e) => setKw(e.target.value)} type="text" placeholder="请输入关键词" />
+      <Child data={data} />
+    </div>
+  );
+}
+render(<App />);
+```
+
+:::caution
+传递给 useMemo 的函数在**渲染期间运行**，注意里面的逻辑**不要再次触发渲染**，副作用应该放在 useEffect 里面。
+
+如果不提供依赖数组，则会在每次渲染时都重新计算。
+
+将 useMemo 作为性能优化，而不是语义保证，因为 React 有可能在某些情况下忘掉记住的值，重新计算。
+:::
 
 #### React.memo 与 useMemo
 
-开始总是弄混。
+长得比较像，开始总是弄混。
 
-React.memo 是包装整个组件，只是浅比较 props 来确定是否重新渲染，当然可以手动写第二个参数比较具体 props 的不同来进行 re-render. **对组件外层进行包装，控制组件是否重新渲染**
+React.memo 是包装整个组件，只是浅比较 props 来确定是否重新渲染，当然可以手动写第二个参数比较具体 props 的不同来进行 re-render。**对组件外层进行包装，控制整个组件是否重新渲染。**
 
 useMemo 是实现局部 pure 的功能，控制组件的部分内容不要 re-render，而不是整个组件是否重新渲染。
 
-1. React.memo 与 useMemo https://zhuanlan.zhihu.com/p/105940433
+```jsx live noInline
+const Child = (props = {}) => {
+  console.log(`--- re-render ---`, props);
+  return (
+    <div>
+      <p>number is : {props.number}</p>
+    </div>
+  );
+};
+const isEqual = (prevProps, nextProps) => {
+  if (prevProps.number !== nextProps.number) {
+    return false;
+  }
+  return true;
+};
+const ChildMemo = memo((props = {}) => {
+  console.log(`--- memo re-render ---`, props);
+  return (
+    <div>
+      <p>number is : {props.number}</p>
+    </div>
+  );
+}, isEqual);
+const App = (props = {}) => {
+  const [step, setStep] = useState(0);
+  const [count, setCount] = useState(0);
+  const [number, setNumber] = useState(0);
+
+  const handleSetStep = () => {
+    setStep(step + 1);
+  };
+
+  const handleSetCount = () => {
+    setCount(count + 1);
+  };
+
+  const handleCalNumber = () => {
+    setNumber(count + step);
+  };
+
+  return (
+    <div>
+      <button onClick={handleSetStep}>step is : {step} </button>
+      <button onClick={handleSetCount}>count is : {count} </button>
+      <button onClick={handleCalNumber}>numberis : {number} </button>
+      <hr />
+      <Child step={step} count={count} number={number} /> <hr />
+      <ChildMemo step={step} count={count} number={number} />
+    </div>
+  );
+};
+render(<App />);
+```
+
+```jsx
+//当然也可以用 useMemo 来缓存一个函数组件的返回值，也可以减少组件的重新渲染。
+const ChildUseMemo = (props = {}) => {
+  console.log(`--- component re-render ---`);
+  //useMemo 包裹子组件渲染部分的逻辑。父组件更新时，子组件会重新执行，但并不会重新渲染
+  return useMemo(() => {
+    console.log(`--- useMemo re-render ---`);
+    return (
+      <div>
+        <p>number is : {props.number}</p>
+      </div>
+    );
+  }, [props.number]);
+};
+```
+
+- [React.memo 与 useMemo - 知乎](https://zhuanlan.zhihu.com/p/105940433)
 
 ### useCallback
 
-https://codesandbox.io/s/hook-e49wk?file=/src/useCallback.js
+```jsx live noInline
+function Child({ callback }) {
+  useEffect(() => {
+    callback();
+  }, [callback]);
 
-使用场景：
+  return <div>子组件</div>;
+}
+function App() {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [kw, setKw] = useState("");
+  // const callback = () => {
+  //   console.log('我是callback')
+  // }
+  //按照上面，父组件的重新渲染就会导致子组件重新渲染，给子组件添加依赖什么重新渲染,作为性能优化。
+  const callback = useCallback(() => {
+    console.log("我是callback");
+  }, []);
+  return (
+    <div className="App">
+      <input onChange={(e) => setName(e.target.value)} type="text" placeholder="请输入姓名" />
+      <input onChange={(e) => setPhone(e.target.value)} type="text" placeholder="请输入电话" />
+      <input onChange={(e) => setKw(e.target.value)} type="text" placeholder="请输入关键词" />
+      <Child callback={callback} />
+    </div>
+  );
+}
 
-https://segmentfault.com/a/1190000020108840
+render(<App />);
+```
 
-1.  比较引用，配合使用 React.memo:
-    https://codesandbox.io/s/hook-e49wk?file=/src/useCallback%2BReact.memo.js
+#### useCallback 配合 React.memo 减少不必要的渲染
 
-    使用 React.memo 将子组件作为 pureComponent,减少不必要的渲染。useCallback 缓存 props 中的函数，减少 props 不必要的变化导致的渲染。
+```jsx live noInline
+//使用 React.memo 将子组件作为 pureComponent,减少不必要的渲染。useCallback 缓存 props 中的函数，减少 props 不必要的变化导致的渲染。
+const Child = React.memo(function ({ val, onChange }) {
+  console.log("render...", val);
+  return <input value={val} onChange={onChange} />;
+});
 
-    ```js
-    const Child = React.memo(function ({ val, onChange }) {
-      console.log("render...", val);
-      return <input value={val} onChange={onChange} />;
-    });
+function App() {
+  const [val1, setVal1] = useState("");
+  const [val2, setVal2] = useState("");
 
-    function App() {
-      const [val1, setVal1] = useState("");
-      const [val2, setVal2] = useState("");
+  //如果不用useCallback, 任何一个输入框的变化都会导致另一个输入框重新渲染.
+  //一个输入框变化，父组件重新渲染，导致生成新的onChange函数，props 变化了，则子组件也重新渲染
+  const onChange1 = useCallback((evt) => {
+    setVal1(evt.target.value);
+  }, []);
 
-      //如果不用useCallback, 任何一个输入框的变化都会导致另一个输入框重新渲染
-      //一个输入框变化，父组件重新渲染，导致生成新的onChange函数，props 变化了，则子组件也重新渲染
-      const onChange1 = useCallback((evt) => {
-        setVal1(evt.target.value);
-      }, []);
+  const onChange2 = useCallback((evt) => {
+    setVal2(evt.target.value);
+  }, []);
 
-      const onChange2 = useCallback((evt) => {
-        setVal2(evt.target.value);
-      }, []);
+  return (
+    <>
+      <Child val={val1} onChange={onChange1} />
+      <Child val={val2} onChange={onChange2} />
+    </>
+  );
+}
+render(<App />);
+```
 
-      return (
-        <>
-          <Child val={val1} onChange={onChange1} />
-          <Child val={val2} onChange={onChange2} />
-        </>
-      );
-    }
-    ```
+#### useCallback 配合使用 useEffect 实现按需加载
 
-    TODO: https://codesandbox.io/s/usecallbackzidingyihook-gydlj
+useCallback 支持我们缓存某一函数，当且仅当依赖项发生变化时，才更新该函数。这使得我们可以在子组件中配合 useEffect ，实现按需加载。
 
-2.  实现按需加载,配合使用 useEffect:
-    useCallback 支持我们缓存某一函数，当且仅当依赖项发生变化时，才更新该函数。这使得我们可以在子组件中配合 useEffect ，实现按需加载。
+```js live noInline
+function Parent() {
+  const [count, setCount] = useState(0);
+  const [query, setQuery] = useState("keyword");
 
-    ```js
-    function Parent() {
-      const [count, setCount] = useState(0);
-      const [query, setQuery] = useState('keyword');
+  const getData = useCallback(() => {
+    const url = `https://mocks.alibaba-inc.com/mock/fO87jdfKqX/demo/queryData.json?query=${query}`;
+    // 请求数据...
+    console.log(`请求路径为：${url}`);
+  }, [query]); // 当且仅当 query 改变时 getData 才更新
 
-      const getData = useCallback(() => {
-      const url = `https://mocks.alibaba-inc.com/mock/fO87jdfKqX/demo/queryData.json?query=${query}`;
-        // 请求数据...
-        console.log(`请求路径为：${url}`);
-      }, [query]); // 当且仅当 query 改变时 getData 才更新
+  // 计数值的变化并不会引起 Child 重新请求数据
+  return (
+    <>
+      <h4>计数值为：{count}</h4>
+      <button onClick={() => setCount(count + 1)}> +1 </button>
+      <input
+        onChange={(e) => {
+          setQuery(e.target.value);
+        }}
+      />
+      <Child getData={getData} />
+    </>
+  );
+}
 
-    // 计数值的变化并不会引起 Child 重新请求数据
-      return (
-        <>
-        <h4>计数值为：{count}</h4>
-        <button onClick={() => setCount(count + 1)}> +1 </button>
-        <input onChange={(e) => {setQuery(e.target.value)}} />
-        <Child getData={getData} />
-        </>
-      );
-    }
+function Child({ getData }) {
+  useEffect(() => {
+    getData();
+  }, [getData]); // 函数可以作为依赖项参与到数据流中
 
-    function Child({getData}) {
-      useEffect(() => {
-        getData();
-      }, [getData]); // 函数可以作为依赖项参与到数据流中
+  return <p>child</p>;
+}
+render(<Parent />);
+```
 
-      return (
-      // ...
-      );
-    }
-    ```
+- 解决 eslint:exhaustive-deps,依赖错误的相关问题： [reactjs - How to fix missing dependency warning when using useEffect React Hook - Stack Overflow](https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook)
 
-- 解决 eslint:exhaustive-deps,依赖错误的相关问题：
-  https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook
+了解更多： [你不知道的 useCallback - SegmentFault 思否](https://segmentfault.com/a/1190000020108840)
 
-- context 使用方式：
-  https://codesandbox.io/s/hooks-api-otmq6?file=/src/useContextExample.js
+<!-- TODO: 上面的链接的栗子 https://codesandbox.io/s/usecallbackzidingyihook-gydlj -->
 
 ### useContext
 
 `Context` 是在组件树中自上而下地跨组件传递数据，不必显式地通过组件树逐级传递 props。
 
-https://codesandbox.io/s/hook-e49wk?file=/src/useContext.js
-
 应用于在很多不同层级的组件间访问同样一些数据，但是会使组件复用性变差。有时可以用组件组合代替。
 
-使用 context 的通用的场景包括管理当前的 locale，theme，userInfo 或者一些缓存数据，这比替代方案要简单的多。
+具体使用场景：管理当前的 locale，theme，userInfo 或者一些缓存数据，比替代方案要简单的多。
 
-**调用了 useContext 的组件总会在 context 值变化时重新渲染**,useContext(MyContext) 只是让你能够读取 context 的值以及订阅 context 的变化.
+**Provider 的 value 值发生变化时，它内部的所有消费组件都会重新渲染。** 即使组件使用 React.memo 或 shouldComponentUpdate，也会在组件本身使用 useContext 时重新渲染。
+
+```jsx live noInline
+const UserContext = React.createContext("default");
+const ChannelContext = React.createContext("channel");
+//只有当组件所处的树中没有匹配到 Provider 时，其 defaultValue 参数才会生效。
+
+//两种消费方式
+function ComponentC() {
+  return (
+    <UserContext.Consumer>
+      {/** 接收当前 context 值，返回一个React 节点 **/}
+      {/** 当使用多个 context 时，这种消费方式结构会比较复杂 **/}
+      {(user) => <div>CCCCCC User context value {user}</div>}
+    </UserContext.Consumer>
+  );
+}
+function ComponentE() {
+  //使用多个context 的时候，useContext 相比consumer 更优雅简洁
+  const user = useContext(UserContext);
+  const channel = useContext(ChannelContext);
+  console.log("user Render");
+  return (
+    <div>
+      FFFFFFF {user} - {channel}
+    </div>
+  );
+}
+const ComponentF = React.memo(ComponentE);
+const App = () => {
+  const [user, setUser] = useState("");
+  const changeUser = (e) => {
+    setUser(e.target.value);
+  };
+  return (
+    <div className="App">
+      <input value={user} onChange={changeUser} />
+      <UserContext.Provider value={user}>
+        {/* Provider变化会引起内部组件重新渲染 */}
+        <ComponentC />
+        <ComponentF />
+      </UserContext.Provider>
+    </div>
+  );
+};
+
+render(<App />);
+```
+
+了解更多： [**React Hooks 系列之 3 useContext - 掘金**](https://juejin.cn/post/6844904153584500749#heading-0)
 
 ### useReducer
 
@@ -305,11 +579,11 @@ https://codesandbox.io/s/hook-e49wk?file=/src/useApi.js
 
 ## Reference
 
-1. [React 文档-useCallback](https://zh-hans.reactjs.org/docs/hooks-reference.html#usecallback)
-2. [你不知道的 useCallback](https://segmentfault.com/a/1190000020108840)
-3. [当我们讨论 hooks 时在讨论什么](https://zhuanlan.zhihu.com/p/328540840)
-4. [hook 一些基础](https://juejin.cn/book/6966551262766563328/section/6967228489208430603)
-5. [useReducer async](https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch)
-6. [**React Hooks 系列之 3 useContext - 掘金**](https://juejin.cn/post/6844904153584500749#heading-0)
-7. [React Hooks 系列之 4 useReducer - 掘金](https://juejin.cn/post/6844904157892050957#heading-3)
-8. [React Hooks 详解 【近 1W 字】+ 项目实战 - 掘金](https://juejin.cn/post/6844903985338400782#heading-27)
+- [React 文档-useCallback](https://zh-hans.reactjs.org/docs/hooks-reference.html#usecallback)
+- [你不知道的 useCallback](https://segmentfault.com/a/1190000020108840)
+- [当我们讨论 hooks 时在讨论什么](https://zhuanlan.zhihu.com/p/328540840)
+- [hook 一些基础](https://juejin.cn/book/6966551262766563328/section/6967228489208430603)
+- [useReducer async](https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch)
+- [**React Hooks 系列之 3 useContext - 掘金**](https://juejin.cn/post/6844904153584500749#heading-0)
+- [React Hooks 系列之 4 useReducer - 掘金](https://juejin.cn/post/6844904157892050957#heading-3)
+- [React Hooks 详解 【近 1W 字】+ 项目实战 - 掘金](https://juejin.cn/post/6844903985338400782#heading-27)
