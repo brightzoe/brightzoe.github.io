@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 # description:
-keywords: React Hooks Usage
+keywords: [React Hooks Usage]
 ---
 
 import Tabs from '@theme/Tabs';
