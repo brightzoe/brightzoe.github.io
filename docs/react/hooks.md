@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 # description:
-# keywords:
+keywords: React Hooks Usage
 ---
 
 import Tabs from '@theme/Tabs';
@@ -430,80 +430,142 @@ render(<App />);
 
 相比于 useState,useReducer 更适合：
 
-例如 state 逻辑处理较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等场景。
+state 逻辑处理较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等场景。
 
 基础使用：
 
-```js
+```jsx live noInline
 const initialState = { count: 0 };
-
 function reducer(state, action) {
+  //接收当前 state 和 action， 并根据不同的 action 返回不同的新的 state。
   switch (action.type) {
     case "increment":
       return { count: state.count + 1 };
     case "decrement":
       return { count: state.count - 1 };
+    case "reset":
+      return { count: 0 };
     default:
-      throw new Error();
+      return state;
   }
 }
-
 function Counter() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <>
       Count: {state.count}
+      {/* dispatch 一个action */}
       <button onClick={() => dispatch({ type: "decrement" })}>-</button>
       <button onClick={() => dispatch({ type: "increment" })}>+</button>
+      <button onClick={() => dispatch({ type: "reset" })}>reset</button>
     </>
   );
 }
+render(<Counter />);
 ```
 
 > useState,useReducer 都提供了惰性初始化的方式。可以通过函数计算初始值。
 
-useReducer 只支持同步,如何使用异步见[Reference5](https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch)
+useReducer + useContext 实现全局 state：[hook - CodeSandbox](https://codesandbox.io/s/hook-e49wk?file=/src/useReducer%2BuseContext.js)
+
+useReducer 实现 todo：[react-todo - CodeSandbox](https://codesandbox.io/s/react-todo-k99v11?file=/src/reducer-todos/todos.js)
+
+useReducer 中的 reducer 不支持异步，配合使用异步：[hook - CodeSandbox](https://codesandbox.io/s/hook-e49wk?file=/src/asyncUseReducer.js)
+
+了解更多：
+
+[React Hooks 系列之 4 useReducer - 掘金](https://juejin.cn/post/6844904157892050957#heading-3)
+
+[reactjs - React useReducer async data fetch - Stack Overflow](https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch)
+
+[React Hooks: useState 和 useReducer 有什么区别？ · 语雀](https://www.yuque.com/lxylona/note/knwwpt#0U9me)
+
+:::tip
+
+**useReducer 与 useState**
+
+React 内部的 useState 是通过 useReducer 实现的，setState 内部封装了一个 dispatch。
+
+useState 适合处理结构简单的 State，算是一个在使用上更简单的 useReducer。
+
+useReducer 适合处理简易的组件间数据流管理，比 Redux 更轻量。
+
+:::
 
 ### UseRef
 
-返回一个可变的 ref 对象，其 .current 属性被初始化为传入的参数（initialValue）。返回的 ref 对象在组件的整个生命周期内持续存在。
+返回一个可变的 ref 对象，其 `.current` 属性被初始化为传入的参数（initialValue）。返回的 ref 对象在组件的整个生命周期内持续存在。
 
-基本使用：
+可以用 Ref 指向一个 dom 来控制它的变化，另外也可以用来存放变量，比如 setTimeout，setInterval，存起来方便在合适的时机清除。
 
-```js
+<Tabs>
+<TabItem value="domRef" label="domRef">
+
+```jsx live
 //访问DOM元素
 function TextInputWithFocusButton() {
-  const inputEl = useRef(null);
+  const inputRef = useRef(null);
   const onButtonClick = () => {
     // `current` 指向已挂载到 DOM 上的文本输入元素
-    inputEl.current.focus();
+    inputRef.current.focus();
   };
   return (
     <>
-      <input ref={inputEl} type="text" />
+      <input ref={inputRef} type="text" />
       <button onClick={onButtonClick}>Focus the input</button>
     </>
   );
 }
-
-//也可以用来存放变量
 ```
 
-> useRef 会在每次渲染时返回同一个 ref 对象。变更 .current 属性不会引发组件重新渲染。如果想要在 React 绑定或解绑 DOM 节点的 ref 时运行某些代码，则需要使用回调 ref 来实现。
+  </TabItem>
+  <TabItem value="variableRef" label="variableRef">
+
+```jsx live
+//缓存变量
+function Counter() {
+  const [count, setCount] = useState(0);
+  const prevRef = useRef();
+  const increment = () => {
+    prevRef.current = count;
+    setCount((count) => count + 1);
+  };
+  const decrement = () => {
+    prevRef.current = count;
+    setCount((count) => count - 1);
+  };
+
+  return (
+    <div>
+      <p>当前count： {count} </p>
+      <p>上一次的count：{prevRef.current}</p>
+      <button onClick={increment}>increment</button>
+      <button onClick={decrement}>decrement</button>
+    </div>
+  );
+}
+```
+
+  </TabItem>
+</Tabs>
+
+:::tip
+
+useRef 会在每次渲染时返回同一个 ref 对象。变更 `.current` 属性不会引发组件重新渲染。如果想要在 React 绑定或解绑 DOM 节点的 ref 时运行某些代码，则需要使用回调 ref 来实现。
+
+:::
 
 ### 自定义 hook
 
 封装一段逻辑。比如有一个请求公共数据的接口，在多个页面中被重复使用，你便可通过自定义 Hook 的形式，将请求逻辑提取出来公用。
 
-https://codesandbox.io/s/hook-e49wk?file=/src/useApi.js
+实现一些 custom Hooks [hook - CodeSandbox](https://codesandbox.io/s/hook-e49wk?file=/src/customHooks/useCounter.js)
 
 ### forwardRef
 
 ref 转发，方便父组件拿到子组件的实例。把自身外面的 ref 转发到内部的组件，使写在自己身上的 ref 不指向自己。
 
-https://codesandbox.io/s/hook-e49wk?file=/src/forwardRef.js
-
-```js
+```jsx live noInline
 function A(props, parentRef) {
   return (
     <div>
@@ -511,10 +573,8 @@ function A(props, parentRef) {
     </div>
   );
 }
-
 let ForwardChild = forwardRef(A); // 把子组件包裹起来
-
-export default function App() {
+function App() {
   const parentRef = useRef();
   function focusHander() {
     console.log("input的value", parentRef.current.value);
@@ -526,6 +586,7 @@ export default function App() {
     </div>
   );
 }
+render(<App />);
 ```
 
 ### useImperativeHandle
@@ -538,44 +599,38 @@ export default function App() {
 
 - 通过 useImperativeHandle ，子组件还可以使用很多的 ref,可以暴露给父组件操作子组件内部的多个 ref
 
-  ```js
-  function Child(props,parentRef){
-    // 子组件内部自己创建 ref
-    let focusRef = useRef();
-    let inputRef = useRef();
-    useImperativeHandle(parentRef,()=>(
-      // 这个函数会返回一个对象
-      // 该对象会作为父组件 current 属性的值
-      // 通过这种方式，父组件可以使用操作子组件中的多个 ref
-        return {
-        focusRef,
-        inputRef,
-        name:'计数器',
-        focus(){
-            focusRef.current.focus();
-        },
-        changeText(text){
-            inputRef.current.value = text;
-        }
-      }
-    });
-    return (
-      <>
-        <input ref={focusRef}/>
-        <input ref={inputRef}/>
-      </>
-    )
-  }
-  Child = forwardRef(Child);
-  ```
-
-栗子见： https://codesandbox.io/s/hook-e49wk?file=/src/forwardRef.js
-
-### 自定义 hook
-
-封装一段逻辑。比如有一个请求公共数据的接口，在多个页面中被重复使用，你便可通过自定义 Hook 的形式，将请求逻辑提取出来公用。
-
-https://codesandbox.io/s/hook-e49wk?file=/src/useApi.js
+```jsx live noInline
+function Child(props, parentRef) {
+  const inputRef = useRef();
+  const [name, setName] = useState("默认name");
+  // 把子组件A 内部的一些值或方法暴露给父组件使用
+  useImperativeHandle(parentRef, () => {
+    return {
+      name,
+    };
+  });
+  return (
+    <div>
+      <input type="text" ref={inputRef} onChange={(e) => setName(e.target.value)} />
+    </div>
+  );
+}
+let ForwardChild = forwardRef(Child);
+function App() {
+  const parentRef = useRef();
+  //parentRef.current 拿到的是子组件通过useImperativeHandle 返回的一个对象
+  const say = () => {
+    console.log(parentRef.current.name);
+  };
+  return (
+    <>
+      <ForwardChild ref={parentRef} />
+      <button onClick={say}>打印子组件name</button>
+    </>
+  );
+}
+render(<App />);
+```
 
 ## Reference
 
