@@ -1,4 +1,4 @@
-# React 设计模式和最佳实践 -掘金小册
+# React 设计模式和最佳实践
 
 1. 在 React 中，界面完全由数据驱动；
 2. 在 React 中，一切都是组件；
@@ -49,7 +49,7 @@ sass: cra 已内置 sass-loader,只需安装 node-sass/sass(dart-sass)
   );
   ```
 
-- 通过 craco 配置，antd4 推荐。[参考](https://juejin.cn/post/6871148364919111688#heading-6)
+- 通过 craco 配置，antd4 推荐。 [无 eject 重写 CRA 配置 — Craco 详解 - 掘金](https://juejin.cn/post/6871148364919111688#heading-6)
 
 ## React 中的性能优化
 
@@ -57,7 +57,7 @@ sass: cra 已内置 sass-loader,只需安装 node-sass/sass(dart-sass)
 
 ### 重新渲染 reconciliation
 
-#### 渲染何时触发：
+#### 渲染触发时间
 
 - 组件挂载。React 组件构建并将 DOM 元素插入页面的过程称为挂载。当组件首次渲染的时候会调用 render，这个过程不可避免。
 
@@ -69,7 +69,9 @@ js 为单线程执行，显然，不必要的子组件的 render 会浪费 js �
 
 一般子组件可以通过确认 props 是否发生变化来控制自身是否进行 render，比如 react-mobx 中的 observer 高阶方法或者 React.PureComponet 就是用来做浅层比较进行控制处理。
 
-#### 减少不必要的重新渲染的使用方式：
+#### 减少不必要的重新渲染
+
+- 合理的组件结构。将变的部分与不变的部分抽离，可以在不使用任何性能优化 api 的情况下优化你的组件。
 
 1. class 组件 shouldComponentUpdate，根据情况决定是否要更新组件。当它的父组件 render 了，会触发该组件的 render 过程，但是进行到 shouldComponentUpdate 判断时会被阻止掉，从而就不调用它的 render 方法了，它自己下面的组件的 render 过程也不会触发了。
 
