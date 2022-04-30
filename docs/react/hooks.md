@@ -42,13 +42,42 @@ function App() {
 
 ### useState
 
+useState 的参数是变量、对象或者是函数，变量或者对象会作为 state 的初始值，如果是函数，函数的返回值会作为初始值。
+
 使用 useState 依赖上一次 state 时，使用 function 的方式更新 setState，确保拿到的是准确的 previous state。
+
+```jsx live
+function Count() {
+  let [count, setCount] = useState(0);
+  const handleAdd = function () {
+    //批量更新
+    setCount(count + 1); // setCount(count=>count + 1);
+    setCount(count + 1);
+  };
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={handleAdd}>add</button>
+    </div>
+  );
+}
+```
 
 对于对象和数组，注意 useState 中不会自动补全旧的变量，需要使用展开运算符自己手动补充,完成合并更新。
 
 ### useEffect
 
 解决的问题：EffectHook 用于函数式组件中副作用，执行一些相关的操作，逻辑聚合。
+
+> 所谓副作用，不在渲染过程中产生的作用。
+
+**useEffect 的执行**
+
+依赖 deps：每次 deps 改变就会执行回调函数（useEffect 的第一个参数）。如果不传 deps，只要该组件有 state 改变就会触发回调函数。如果 deps 为一个空数组，回调函数只会在该组件初始化时执行一次。
+
+依赖项如果是对象，只能浅比较，是不是同一个对象。如果需要深比较，实现方式：可以使用` useDeepCompareEffect`。
+
+在 useEffect 的第一个参数中 return 一个函数，这个匿名函数将在组件卸载的时候执行，因此在这里可以移除监听等在卸载时执行的操作。
 
 每次渲染函数组件时，useEffect 都是新的，都是不一样的。组件重新渲染，会重新执行 useEffect 内的回调，并且里面 count 值也是当时的快照的一个常量值。
 
@@ -98,19 +127,13 @@ class App extends React.Component {
   </TabItem>
 </Tabs>
 
-- 依赖项如果是对象，只能浅比较，是不是同一个对象。如果需要深比较，实现方式：
-
-  1. 使用` useDeepCompareEffect`
-
-- 在 useEffect 的第一个参数中 return 一个函数，这个匿名函数将在组件卸载的时候执行，因此在这里可以移除监听等在卸载时执行的操作。
-
 :::tip
+
+**关于依赖**
 
 下面的 useCallback,useMemo 的第二个参数同 useEffect 一致，用于监听变量，如在数组内添加 name、phone 等参数，当改变其中的值，都会触发子组件副作用的执行。
 
 **如果不添加依赖，则在任何重新渲染时都会执行。**
-
-useMemo 和 useCallback，都能为「重复渲染」这个问题，提供很好的帮助。useCallback 是「useMemo 的返回值为函数」时的特殊情况，是 React 提供的便捷方式。
 
 :::
 
@@ -288,6 +311,8 @@ function App() {
 render(<App />);
 ```
 
+useMemo 和 useCallback，都能为「重复渲染」这个问题，提供很好的帮助。useCallback 是「useMemo 的返回值为函数」时的特殊情况，是 React 提供的便捷方式。
+
 #### useCallback 配合 React.memo 减少不必要的渲染
 
 ```jsx live noInline
@@ -430,9 +455,7 @@ render(<App />);
 
 相比于 useState,useReducer 更适合：
 
-state 逻辑处理较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等场景。
-
-基础使用：
+state 逻辑处理较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等场景。每次 state 变化时，都会触发一次重新渲染。
 
 ```jsx live noInline
 const initialState = { count: 0 };
@@ -630,6 +653,72 @@ function App() {
   );
 }
 render(<App />);
+```
+
+## 理论篇/面试篇
+
+### 为什么不能在循环中使用 hook
+
+不能在循环/条件判断/嵌套函数中使用 hook，要保证每个 hook 的调用顺序稳定。
+
+每一个 hook 都是有序的存在 fiber 上的，如果在 if 里用 hook，可能会导致新的 hook 位置和之前记录的不一致，这样就不知道要跟谁对比了，导致 hook 功能无效。
+
+### useLayloutEffect
+
+useLayoutEffect 会在所有 dom 变更之后同步调用 effect，适合用来读取 dom 布局并同步触发重渲染。在浏览器执行绘制之前，useLayoutEffect 内部的更新计划将被同步刷新。
+
+#### useEffect 与 useLayoutEffect
+
+使用方式一致。
+
+执行时机不同： useEffect 的回调在页面渲染后执行，useLayoutEffect 在页面渲染前执行。
+
+底层处理不同： useEffect 是异步非阻塞调用，useLayoutEffect 同步阻塞调用。
+
+大部分情况下适合使用 useEffect，useLayoutEffect 很可能会堵塞浏览器渲染。
+执行顺序见下面的栗子：
+
+```jsx live noInline
+function Son() {
+  useEffect(() => {
+    console.log("son useEffect"); //3
+  }, []);
+  useLayoutEffect(() => {
+    console.log("son useLayoutEffect"); //1
+  }, []);
+  return <></>;
+}
+
+function Parent() {
+  useEffect(() => {
+    console.log("parent useEffect"); //4
+  }, []);
+  useLayoutEffect(() => {
+    console.log("parent useLayoutEffect"); //2
+  }, []);
+  return <Son />;
+}
+render(<Parent />);
+```
+
+- [用过 useEffect，useLayoutEffect 吗 - 掘金](https://juejin.cn/post/7081103851884904484#heading-9)
+
+### useEffect 闭包陷阱
+
+```jsx live
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    // 闭包：回调函数只运行一次，这里的 count 只记住初次渲染的那个值
+    const id = setInterval(() => {
+      setCount(count + 1);
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return <h1>{count}</h1>;
+}
 ```
 
 ## Reference
