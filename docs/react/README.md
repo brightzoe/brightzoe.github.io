@@ -34,3 +34,6 @@ ReactDOM.render(<App />, document.getElementById("root"));
    函数组件的思考模式是依赖，副作用。围绕着 state,props 的变化而做什么事情。
 
 ## 相关生态，常用的库
+
+### 动画
+- [react-spring](https://react-spring.io/)
