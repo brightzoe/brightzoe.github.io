@@ -25,15 +25,20 @@ ReactDOM.render(<App />, document.getElementById("root"));
 
 ## Class Component 与 Function Component 的区别
 
-1. 类组件相对复杂，并且含有 this,比较难以理解
+1. 类组件相对复杂，并且含有 this,比较难以理解。
 2. 类组件相对较大，从长远角度难以维护。而 Hooks 组件相对较短，更容易拆分，可读性高也更方便维护。
 3. 组件复用成本低，更容易抽象出单独的组件或单独的逻辑。
-4. 函数组件更加灵活，更适合做到逻辑和 UI 的解耦。
+4. 函数组件更加灵活，更适合做到逻辑和 UI 的解耦。但类组件的逻辑也更清晰：构造函数以及生命周期的角度。
 5. 思考模式不同。
    Class 组件的模式是先做什么再做什么，按照时间维度划分，比如 this.setState 的第二个参数，比如生命周期的使用。
    函数组件的思考模式是依赖，副作用。围绕着 state,props 的变化而做什么事情。
 
+- [函数式组件与类组件有何不同？ — Overreacted](https://overreacted.io/zh-hans/how-are-function-components-different-from-classes/)
+
+函数式组件捕获了渲染所使用的值。hooks 追求的是渲染一致性，当执行一些方法时，读到的 state,props 是当时的状态快照。
+
 ## 相关生态，常用的库
 
 ### 动画
+
 - [react-spring](https://react-spring.io/)

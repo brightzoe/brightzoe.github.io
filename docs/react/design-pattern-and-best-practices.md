@@ -161,7 +161,7 @@ useCallback 是「useMemo 的返回值为函数」时的特殊情况.
 
 很多种方法实现发布订阅模式：redux、use-global-state、React.createContext 等。
 
-使用 React.createContext 进行实现,from reference3: https://codesandbox.io/s/fabuzhedingyuezhemoshitiaoguozhongjianzujiande-render-guocheng-nm7nt?file=/src/PubSubCommunicate.js
+使用 React.createContext 进行实现： https://codesandbox.io/s/fabuzhedingyuezhemoshitiaoguozhongjianzujiande-render-guocheng-nm7nt?file=/src/PubSubCommunicate.js
 
 ### 状态下放，缩小状态影响范围
 
