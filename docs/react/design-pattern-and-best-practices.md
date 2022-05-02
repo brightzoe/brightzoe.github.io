@@ -61,7 +61,9 @@ sass: cra 已内置 sass-loader,只需安装 node-sass/sass(dart-sass)
 
 - 组件挂载。React 组件构建并将 DOM 元素插入页面的过程称为挂载。当组件首次渲染的时候会调用 render，这个过程不可避免。
 
-- 执行 setState 会触发 render。但是这里有个点值得关注，执行 setState 的时候一定会重新渲染吗？答案是不一定。当 setState 传入 null 的时候，并不会触发 render 。
+- 执行 setState 会触发 render。
+
+> 但是这里有个点值得关注，执行 setState 的时候一定会重新渲染吗？答案是不一定。当 setState 传入 null 的时候，并不会触发 render 。
 
 - 父组件更新触发子组件重新渲染。父组件重新渲染了，即使传入子组件的 props 未发生变化，那么子组件也会重新渲染，进而触发 render。
 
@@ -103,7 +105,7 @@ react 源码中的浅比较：
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 function shallowEqual(objA: mixed, objB: mixed): boolean {
-  // 首先对基本类型进行比较
+  // Object.is() 对基本类型/同一个引用的对象进行比较
   if (is(objA, objB)) {
     return true;
   }
@@ -161,7 +163,7 @@ useCallback 是「useMemo 的返回值为函数」时的特殊情况.
 
 很多种方法实现发布订阅模式：redux、use-global-state、React.createContext 等。
 
-使用 React.createContext 进行实现： https://codesandbox.io/s/fabuzhedingyuezhemoshitiaoguozhongjianzujiande-render-guocheng-nm7nt?file=/src/PubSubCommunicate.js
+使用 React.createContext 进行实现： [发布者订阅者模式跳过中间组件的 Render 过程 - CodeSandbox](https://codesandbox.io/s/fabuzhedingyuezhemoshitiaoguozhongjianzujiande-render-guocheng-nm7nt?file=/src/PubSubCommunicate.js)
 
 ### 状态下放，缩小状态影响范围
 

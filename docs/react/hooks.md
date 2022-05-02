@@ -311,7 +311,7 @@ function App() {
 render(<App />);
 ```
 
-useMemo 和 useCallback，都能为「重复渲染」这个问题，提供很好的帮助。useCallback 是「useMemo 的返回值为函数」时的特殊情况，是 React 提供的便捷方式。
+useMemo 和 useCallback，都能为「重复渲染」这个问题，提供很好的帮助。useCallback 是「useMemo 的返回值为函数时的特殊情况，`useCallback(fn, deps)` 相当于 `useMemo(() => fn, deps)`。
 
 #### useCallback 配合 React.memo 减少不必要的渲染
 
@@ -402,6 +402,8 @@ render(<Parent />);
 
 **Provider 的 value 值发生变化时，它内部的所有消费组件都会重新渲染。** 即使组件使用 React.memo 或 shouldComponentUpdate，也会在组件本身使用 useContext 时重新渲染。
 
+> Provider 内部的组件，如果不消费 context ,用 memo 包起来可以减少渲染。
+
 ```jsx live noInline
 const UserContext = React.createContext("default");
 const ChannelContext = React.createContext("channel");
@@ -449,13 +451,19 @@ const App = () => {
 render(<App />);
 ```
 
-了解更多： [**React Hooks 系列之 3 useContext - 掘金**](https://juejin.cn/post/6844904153584500749#heading-0)
+了解更多：
+
+- [**React Hooks 系列之 3 useContext - 掘金**](https://juejin.cn/post/6844904153584500749#heading-0)
+
+- [发布者订阅者模式跳过中间组件的 Render 过程 - CodeSandbox](https://codesandbox.io/s/fabuzhedingyuezhemoshitiaoguozhongjianzujiande-render-guocheng-nm7nt?file=/src/PubSubCommunicate.js)
 
 ### useReducer
 
 相比于 useState,useReducer 更适合：
 
-state 逻辑处理较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等场景。每次 state 变化时，都会触发一次重新渲染。
+state 逻辑处理较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等场景。
+
+每次 state 变化时，都会触发一次重新渲染。
 
 ```jsx live noInline
 const initialState = { count: 0 };
@@ -578,12 +586,6 @@ useRef 会在每次渲染时返回同一个 ref 对象。变更 `.current` 属�
 
 :::
 
-### 自定义 hook
-
-封装一段逻辑。比如有一个请求公共数据的接口，在多个页面中被重复使用，你便可通过自定义 Hook 的形式，将请求逻辑提取出来公用。
-
-实现一些 custom Hooks [hook - CodeSandbox](https://codesandbox.io/s/hook-e49wk?file=/src/customHooks/useCounter.js)
-
 ### forwardRef
 
 ref 转发，方便父组件拿到子组件的实例。把自身外面的 ref 转发到内部的组件，使写在自己身上的 ref 不指向自己。
@@ -654,6 +656,16 @@ function App() {
 }
 render(<App />);
 ```
+
+### 自定义 Hook
+
+使用 use 开头，调用一些 hook，封装自己的逻辑。
+
+比如有一个请求公共数据的接口，在多个页面中被重复使用，你便可通过自定义 Hook 的形式，将请求逻辑提取出来公用。
+
+自定义 Hook 在同一个组件内使用多次，hooks 内的 state 和副作用都是完全隔离的，不用担心它们会互相干扰。
+
+实现一些 custom Hooks [hook - CodeSandbox](https://codesandbox.io/s/hook-e49wk?file=/src/customHooks/useCounter.js)
 
 ## Reference
 

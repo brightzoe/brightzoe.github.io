@@ -5,9 +5,31 @@ import TabItem from '@theme/TabItem';
 
 ## 为什么使用 useEffect
 
-官方叫法是用于函数的副作用，但不好理解。 useEffect 的意义是指定一个数组依赖，在依赖变化的时候触发副作用，相比写在函数顶层，更能够根据需要避免多余的 render。
+官方叫法是用于函数的副作用，但不好理解。
 
-执行时机：在每次页面渲染之后。
+useEffect 的意义是指定一个数组依赖，在依赖变化的时候触发副作用，相比写在函数顶层，更能够根据需要避免多余的 render。
+
+### 执行时机
+
+在每次浏览器页面绘制之后，大多数 effects 不会阻塞屏幕的更新，同样 effect 的清除也会被延迟。
+
+```js
+useEffect(() => {
+  ChatAPI.subscribeToFriendStatus(props.id, handleStatusChange);
+  return () => {
+    ChatAPI.unsubscribeFromFriendStatus(props.id, handleStatusChange);
+  };
+});
+```
+
+以上代码，如果 props 从`{id: 10}`变到`{id:20}`，执行如下：
+
+1. React 渲染{id: 20}的 UI。
+2. 浏览器绘制。我们在屏幕上看到{id: 20}的 UI。
+3. React 清除{id: 10}的 effect。
+4. React 运行{id: 20}的 effect。
+
+> 来自 [useEffect 完整指南 — Overreacted](https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/)
 
 ## useEffect 闭包陷阱
 
