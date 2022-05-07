@@ -53,7 +53,19 @@ sass: cra 已内置 sass-loader,只需安装 node-sass/sass(dart-sass)
 
 ## React 中的性能优化
 
-跳过不必要的组件更新。
+### React 工作流
+
+reconciliation 调和阶段：
+
+1. 将目标 state 计算出虚拟 DOM 结构。
+2. DOM diff ，寻找到目标虚拟 DOM 的最优更新方案。
+
+commit 阶段：
+
+1. 对于 reconciliation 调和阶段比较完成后，将获取到的变化部分应用到真实的 DOM 树上。
+2. 调用暴露给用户的钩子方法。比如 ComponentDidUpdate/useLayoutEffect 等。
+
+主要的性能优化点在计算虚拟 DOM 阶段：跳过不必要的组件更新。
 
 ### 重新渲染 reconciliation
 
@@ -71,28 +83,13 @@ js 为单线程执行，显然，不必要的子组件的 render 会浪费 js �
 
 一般子组件可以通过确认 props 是否发生变化来控制自身是否进行 render，比如 react-mobx 中的 observer 高阶方法或者 React.PureComponet 就是用来做浅层比较进行控制处理。
 
-#### 减少不必要的重新渲染
+### 减少不必要的重新渲染
 
-- 合理的组件结构。将变的部分与不变的部分抽离，可以在不使用任何性能优化 api 的情况下优化你的组件。
+首先是合理的组件结构。将变的部分与不变的部分抽离，可以在不使用任何性能优化 api 的情况下优化你的组件。
 
-1. class 组件 shouldComponentUpdate，根据情况决定是否要更新组件。当它的父组件 render 了，会触发该组件的 render 过程，但是进行到 shouldComponentUpdate 判断时会被阻止掉，从而就不调用它的 render 方法了，它自己下面的组件的 render 过程也不会触发了。
+#### pureComponent
 
-2. class 组件的 pureComponent，对类组件的 Props 和 State 进行浅比较， React.memo 是对函数组件的 Props 进行浅比较。pureComponent 不能自定义对比逻辑，而 React.memo 可以通过第二个函数参数实现深层次比较。
-
-   ```js
-   //利用React.memo第二个参数进行更深层次的比较
-   function arePropsEqual(prevProps, nextProps) {
-     //arePropsEqual 返回 true 时，不会触发 render，如果返回 false，则会。而 shouldComponentUpdate 刚好与其相反。
-     // your code
-     return prevProps === nextProps;
-   }
-
-   export default memo(Button, arePropsEqual);
-   ```
-
-### pureComponent
-
-自动调用 `shouldComponentUpdate()` ，以浅层对比 prop 和 state(shallowEqual )
+pureComponent 自动调用 `shouldComponentUpdate()` ，以浅层对比 prop 和 state(shallowEqual )
 
 浅比较：比较 state & props 的第一层`Object.keys(state | props)`，长度是否相等，每一个 key 是否都有，并且是否是同一个引用。
 
@@ -153,19 +150,34 @@ const MyComponent = React.memo(function Component(props) {
 });
 ```
 
-### useMemo,useCallback
+1. class 组件 shouldComponentUpdate，根据情况决定是否要更新组件。当它的父组件 render 了，会触发该组件的 render 过程，但是进行到 shouldComponentUpdate 判断时会被阻止掉，从而就不调用它的 render 方法了，它自己下面的组件的 render 过程也不会触发了。
+
+2. class 组件的 pureComponent，对类组件的 Props 和 State 进行浅比较， React.memo 是对函数组件的 Props 进行浅比较。pureComponent 不能自定义对比逻辑，而 React.memo 可以通过第二个函数参数实现深层次比较。
+
+   ```js
+   //利用React.memo第二个参数进行更深层次的比较
+   function arePropsEqual(prevProps, nextProps) {
+     //arePropsEqual 返回 true 时，不会触发 render，如果返回 false，则会。而 shouldComponentUpdate 刚好与其相反。
+     // your code
+     return prevProps === nextProps;
+   }
+
+   export default memo(Button, arePropsEqual);
+   ```
+
+#### useMemo,useCallback
 
 如果传给子组件的是派生状态或函数，每次都是新的引用，那么 PureComponent 和 React.memo 优化就会失效。所以需要使用 useMemo 和 useCallback 来生成稳定值，并结合 PureComponent 或 React.memo 避免子组件重新 Render。
 
-useCallback 是「useMemo 的返回值为函数」时的特殊情况.
+> useCallback 是「useMemo 的返回值为函数」时的特殊情况.
 
-### 发布者订阅者跳过中间组件 Render 过程
+#### 发布者订阅者跳过中间组件 Render 过程
 
 很多种方法实现发布订阅模式：redux、use-global-state、React.createContext 等。
 
 使用 React.createContext 进行实现： [发布者订阅者模式跳过中间组件的 Render 过程 - CodeSandbox](https://codesandbox.io/s/fabuzhedingyuezhemoshitiaoguozhongjianzujiande-render-guocheng-nm7nt?file=/src/PubSubCommunicate.js)
 
-### 状态下放，缩小状态影响范围
+#### 状态下放，缩小状态影响范围
 
 https://juejin.cn/post/6935584878071119885#heading-10
 
@@ -176,7 +188,6 @@ https://juejin.cn/post/6935584878071119885#heading-10
 详细使用方法，见上面链接。
 
 ### 添加 key , 使用数据的 ID 作为 key ,尽量不使用索引。
-
 ## Reference
 
 - [React 实战：设计模式和最佳实践 - 程墨 - 掘金课程](https://juejin.cn/book/6844733754326401038)
