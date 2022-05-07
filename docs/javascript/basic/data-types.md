@@ -2,7 +2,7 @@
 
 ## 基本数据类型
 
-string,number,boolean,undefined,null,symbol
+string,number,boolean,undefined,null,symbol,bigInt
 
 ### symbol
 
@@ -43,7 +43,7 @@ object,array,function
 ## 判断数据类型
 
 - `typeof` 一元运算符，返回类型
-  返回值：`string`/`number`/`boolean`/`undefined`/`object`/`function`/`symbol`
+  返回值：`string`/`number`/`boolean`/`undefined`/`object`/`function`/`symbol`/'bigInt'
 
   - 无法区分 array 和普通对象
   - `typeof null `=> `object`
@@ -98,6 +98,11 @@ object,array,function
   ```
 
   > 孰优孰劣见 reference。 个人一般采用 String()，比较明确，存在 null,undefined 等不会报错。
+
+## 基本类型与引用类型的区别
+
+引用类型的本质是相同的内存地址
+
 
 ## Reference
 
