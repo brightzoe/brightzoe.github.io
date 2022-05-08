@@ -1,4 +1,8 @@
-# git 使用
+---
+title: git 使用
+authors: [zoe]
+tags: [dev, usage]
+---
 
 所有的版本控制系统，只能跟踪文本文件的改动，比如 txt,以及所有的程序代码。版本控制系统可以告诉你每次的改动，比如在哪里添加了一个单词，在哪里删除了一个单词。而图片/视频等二进制文件，可以由版本控制系统管理，但没法跟踪文件的变化，只能知道图片大小改变，但具体改了什么是不知道的。
 
@@ -127,52 +131,54 @@ Word 是二进制格式，并不是文本文件，版本控制系统没办法跟
 
   :::
 
-- ssh 方式与 https 方式的不同?
+## 一些问题
 
-  区别在于对内容的安全管理。使用 https 方式，每次需要验证用户身份信息，添加 ssh-key 后用 ssh 方式则信任当前用户不用再输用户名和密码。没有设置 ssh 前默认用 https 方式，设置了 ssh 后可以更改为 remote 地址(`git remote set-url origin [url]`)，使用 ssh 方式连接,通过 ssh 协议的传输速度最快。具体添加 ssh 的方式不再赘述。
+### ssh 方式与 https 方式的不同
 
-- 忽略特殊文件比如明文密码？
+区别在于对内容的安全管理。使用 https 方式，每次需要验证用户身份信息，添加 ssh-key 后用 ssh 方式则信任当前用户不用再输用户名和密码。没有设置 ssh 前默认用 https 方式，设置了 ssh 后可以更改为 remote 地址(`git remote set-url origin [url]`)，使用 ssh 方式连接,通过 ssh 协议的传输速度最快。具体添加 ssh 的方式不再赘述。
 
-  .gitignore 文件 [Templates in Github](https://github.com/github/gitignore)
+### 忽略特殊文件比如明文密码
 
-- fork 后修改，如何同步源的更新？
+.gitignore 文件 [Templates in Github](https://github.com/github/gitignore)
 
-  `git remote add upstream <url>`配置上游仓库
+### fork 后修改，如何同步源的更新
 
-  `git fetch upstream`抓取上游仓库（所有分支）的更新
+`git remote add upstream <url>`配置上游仓库
 
-  `git rebase upstream/master`合并
+`git fetch upstream`抓取上游仓库（所有分支）的更新
 
-  `git push (origin master)`推送到远程仓库
+`git rebase upstream/master`合并
 
-- 如何使用远端代码直接覆盖本地，丢弃本地的提交？
+`git push (origin master)`推送到远程仓库
 
-  `git fetch --all` 从远程下载最新的，而不尝试合并或 rebase 任何东西。
+### 如何使用远端代码直接覆盖本地，丢弃本地的提交
 
-  `git reset --hard origin/<branch_name>` 将分支重置为您刚刚获取的内容。`--hard` 选项更改工作树中的所有文件以匹配 `origin/branch` 中的文件。
+`git fetch --all` 从远程下载最新的，而不尝试合并或 rebase 任何东西。
 
-- `git rebase` 与 `git merge` 的区别
+`git reset --hard origin/<branch_name>` 将分支重置为您刚刚获取的内容。`--hard` 选项更改工作树中的所有文件以匹配 `origin/branch` 中的文件。
 
-  `git rebase` 的 log 记录更清晰，`git merge` 会生成一条新的 merge commit
-  ![git rebase与git merge from stackoverflow](https://i.loli.net/2020/09/06/lGR3ByZYIw8Qfnt.png)
+### `git rebase` 与 `git merge` 的区别
 
-- 提交信息写了几个错别字，该如何改之前的提交记录？
+`git rebase` 的 log 记录更清晰，`git merge` 会生成一条新的 merge commit
+![git rebase与git merge from stackoverflow](https://i.loli.net/2020/09/06/lGR3ByZYIw8Qfnt.png)
 
-  `git rebase -i 32e0q12f ` git rebase 到需要修改 message 的那个 commit 的前 1 个 commit
+### 提交信息写了几个错别字，该如何改之前的提交记录
 
-  将要修改的 commit message 的 ‘pick’改为 ‘reword’ ，保存。
+`git rebase -i 32e0q12f ` git rebase 到需要修改 message 的那个 commit 的前 1 个 commit
 
-  接着会弹出之前 reword 的 commit message 编辑框 ，修改 commit message 内容，保存。
+将要修改的 commit message 的 ‘pick’改为 ‘reword’ ，保存。
 
-  这样就完成了修改，然后强制 push 即可。 `git push --force`
+接着会弹出之前 reword 的 commit message 编辑框 ，修改 commit message 内容，保存。
 
-- `git pull` 与 `git fetch` 的区别
+这样就完成了修改，然后强制 push 即可。 `git push --force`
 
-  `git pull` = `git fetch` + `git merge`
+### `git pull` 与 `git fetch` 的区别
 
-  ![git流程图](https://i.loli.net/2020/09/06/iO3DlgQRjBXCrM2.png)
+`git pull` = `git fetch` + `git merge`
 
-## 如何 Pull Request
+![git流程图](https://i.loli.net/2020/09/06/iO3DlgQRjBXCrM2.png)
+
+### 如何 Pull Request
 
 在哪些情况下可以直接使用 master branch 来提交 Pull Request:
 
@@ -187,7 +193,7 @@ Word 是二进制格式，并不是文本文件，版本控制系统没办法跟
 
 > 鉴于 Git 的分布式开发哲学，每一个库均可以看作是一个独立的项目，显然是后一种（为每一个新特性建立一个专门的主题 branch 来向主项目推送 Pull Request）的贡献方式更可取。
 
-## PR 与 MR
+### PR 与 MR
 
 Pull Request 与 Merge Request 有区别吗？本质没啥区别，都是请求别人合并你的代码。
 

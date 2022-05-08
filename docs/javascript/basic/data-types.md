@@ -43,7 +43,8 @@ object,array,function
 ## 判断数据类型
 
 - `typeof` 一元运算符，返回类型
-  返回值：`string`/`number`/`boolean`/`undefined`/`object`/`function`/`symbol`/'bigInt'
+
+  返回值：`string`/`number`/`boolean`/`undefined`/`object`/`function`/`symbol`/`bigInt`
 
   - 无法区分 array 和普通对象
   - `typeof null `=> `object`
@@ -102,7 +103,6 @@ object,array,function
 ## 基本类型与引用类型的区别
 
 引用类型的本质是相同的内存地址
-
 
 ## Reference
 
