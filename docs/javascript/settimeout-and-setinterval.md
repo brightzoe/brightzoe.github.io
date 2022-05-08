@@ -8,7 +8,7 @@
 
 ## 定时器标识符与取消定时器
 
-setInterval 返回一个时间间隔 ID，该 ID 唯一地标识时间间隔，稍后可以通过 `clearInterval(ID)` 来清除，返回的 intervalID 是一个非零数值.
+`setInterval` 返回一个时间间隔 ID，该 ID 唯一地标识时间间隔，稍后可以通过 `clearInterval(ID)` 来清除，返回的 intervalID 是一个非零数值。
 
 ```js
 let timerId = setTimeout(() => alert("never happens"), 1000);
@@ -20,17 +20,17 @@ alert(timerId); // 还是这个标识符（并没有因为调度被取消了而�
 
 > 在浏览器中，定时器标识符是一个数字。在其他环境中，可能是其他的东西。例如 Node.js 返回的是一个定时器对象，这个对象包含一系列方法。
 
-setInterval()和 setTimeout()共享同一个 ID 池，并且 clearInterval()和 clearTimeout()在技术上是可互换使用的。但是，我们必须去匹配 clearInterval()和 clearTimeout()对应的 id，以避免代码杂乱无章，增强代码的可维护性。
+`setInterval()`和 `setTimeout()`共享同一个 ID 池，并且 `clearInterval()`和 `clearTimeout()`在技术上是可互换使用的。但是，我们必须去匹配 `clearInterval()`和 `clearTimeout()`对应的 id，以避免代码杂乱无章，增强代码的可维护性。
 
 ## setInterval 的执行时间
 
 是设定的时间间隔后才开始第一次执行，并不会立即执行，如何让他先立即执行再定时执行呢？
 
-1. 常规方法封装一个立即执行的 setInterval：
+1. 常规方法封装一个立即执行的 `setInterval`：
 
    ```js
    const target = () => {
-   	console.log("Do something...");
+     console.log("Do something...");
    };
 
    target(); //先调用一次然后再setInterval
@@ -42,8 +42,8 @@ setInterval()和 setTimeout()共享同一个 ID 池，并且 clearInterval()和 
 
    ```js
    const setIntervalImmediately = (func, interval) => {
-   	func();
-   	return setInterval(func, interval);
+     func();
+     return setInterval(func, interval);
    };
 
    // 定义一个全局的定时器变量timer，用于保存和清除定时器
@@ -58,8 +58,8 @@ setInterval()和 setTimeout()共享同一个 ID 池，并且 clearInterval()和 
 
    ```js
    const target = () => {
-   	console.log("Do something...");
-   	return target;
+     console.log("Do something...");
+     return target;
    };
 
    timer && clearInterval(timer);
@@ -68,8 +68,8 @@ setInterval()和 setTimeout()共享同一个 ID 池，并且 clearInterval()和 
 
 :::caution
 
-1. 使用 setImmediatelyInterval 比较通用，比较灵活，多人合作也可以当作公用函数 utils.
-2. 目标函数返回自身缺少一定的灵活性，如果想要有其他的返回值就不行了。同时 setinterval 与 target 增加了耦合性，独自开发可以使用，使用的场景受限。
+1. 使用 `setImmediatelyInterval` 比较通用，比较灵活，多人合作也可以当作公用函数 utils。
+2. 目标函数返回自身缺少一定的灵活性，如果想要有其他的返回值就不行了。同时 `setinterval` 与 `target` 增加了耦合性，独自开发可以使用，使用的场景受限。
 
 :::
 
@@ -82,8 +82,8 @@ setInterval()和 setTimeout()共享同一个 ID 池，并且 clearInterval()和 
 
    ```js
    let timerId = setTimeout(function tick() {
-   	alert("tick");
-   	timerId = setTimeout(tick, 2000); //第一次执行了tick 之后又挂上了第二次
+     alert("tick");
+     timerId = setTimeout(tick, 2000); //第一次执行了tick 之后又挂上了第二次
    }, 2000);
    ```
 
@@ -117,7 +117,7 @@ setInterval()和 setTimeout()共享同一个 ID 池，并且 clearInterval()和 
 
 ## Reference
 
-1. [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval)
-2. [JS setInterval 函数从立即执行到定时执行的三种方案](https://blog.csdn.net/qq_39075021/article/details/110137215)
-3. [调度：setTimeout 和 setInterval](https://zh.javascript.info/settimeout-setinterval#setinterval)
-4. [深度解密 setTimeout 和 setInterval——为 setInterval 正名！ - 掘金](https://juejin.cn/post/6844903773622501383#heading-15)
+- [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval)
+- [JS setInterval 函数从立即执行到定时执行的三种方案](https://blog.csdn.net/qq_39075021/article/details/110137215)
+- [调度：setTimeout 和 setInterval](https://zh.javascript.info/settimeout-setinterval#setinterval)
+- [深度解密 setTimeout 和 setInterval——为 setInterval 正名！ - 掘金](https://juejin.cn/post/6844903773622501383#heading-15)

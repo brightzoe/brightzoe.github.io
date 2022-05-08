@@ -13,7 +13,7 @@
 
 ## [ React 性能优化](/docs/react/design-pattern-and-best-practices#react-中的性能优化)
 
-## 通用优化
+## 代码优化
 
 ### 组件按需加载
 

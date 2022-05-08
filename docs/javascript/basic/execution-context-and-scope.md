@@ -5,11 +5,11 @@
 > 来源： [面试官：说说作用域和闭包吧 - 掘金](https://juejin.cn/post/6844904165672484871#heading-3)
 
 1. javascript 语言层面只原生支持两种作用域类型：全局作用域 和 函数作用域 。全局作用域程序运行就有，函数作用域只有定义函数的时候才有，它们之间是包含的关系。
-2. 作用域之间是可以嵌套的，我们把这种嵌套关系称为 作用域链。
+2. 作用域之间是可以嵌套的，我们把这种嵌套关系称为**作用域链**。
 3. 可执行代码在作用域中查询变量时，只能查询 本地作用域 及 上层作用域，不能查找内部的函数作用域。JS 引擎搜索变量时，会先询问本地作用域，找到即返回，找不到再去询问上层作用域...层层往上，直到全局作用域。
-4. javascript 中使用的是 “词法作用域”（静态作用域），因此函数作用域的范围在函数定义时就已经被确定，和函数在哪执行没有关系。
+4. javascript 中使用的是 “词法作用域”（静态作用域），因此**函数作用域的范围在函数定义时就已经被确定**，和函数在哪执行没有关系。
 5. 有权访问另一个函数内部变量的函数，我们称为 闭包。闭包的本质是利用了作用域的机制，来达到外部作用域访问内部作用域的目的。
-6. 闭包的使用场景非常广泛，然而过度使用会导致闭包内的变量所占用的内存空间无法释放，带来 内存泄露 的问题。
+6. 闭包的使用场景非常广泛，然而过度使用会导致闭包内的变量所占用的内存空间无法释放，带来**内存泄露**的问题。
 7. 我们可以借助于 chrome 开发者工具查找代码中导致了内存泄露的代码。
 8. 避免内存泄露的几种方法：避免使用全局变量、谨慎地为 DOM 绑定事件、避免过度使用闭包。最重要的，还是代码规范。
 
@@ -19,7 +19,7 @@
 
 ## 执行上下文
 
-- var 和 function 声明创建的变量和函数在全局对象中（浏览器环境是 window 对象），而 let,const,class 声明的变量创建在全局 scope 中。
+var 和 function 声明创建的变量和函数在全局对象中（浏览器环境是 window 对象），而 let,const,class 声明的变量创建在全局 scope 中。
 
 ```js
 let a = "a";
@@ -35,11 +35,11 @@ console.log(window.a); //a
 
 创建全局执行上下文：
 
-![](https://i.loli.net/2021/09/26/Rr63yYwAt4DMJx2.png)
+![全局执行上下文](https://i.loli.net/2021/09/26/Rr63yYwAt4DMJx2.png)
 
 暂时性死区：
 
-![](https://i.loli.net/2021/09/26/tRu9X2mKk4HpFNq.png)
+![暂时性死区](https://i.loli.net/2021/09/26/tRu9X2mKk4HpFNq.png)
 
 ```js
 var a = "123";
@@ -54,9 +54,8 @@ foo(); //Uncaught ReferenceError: Cannot access 'a' before initialization
 
 作用域：当前执行上下文或当前上下文的词法环境。
 
-    全局作用域： 全局执行上下文。全局作用域为程序的最外层作用域，一直存在。
-
-    函数作用域： 函数执行上下文。只有函数被定义时才会创建，包含在父级函数作用域 / 全局作用域内。
+- 全局作用域： 全局执行上下文。全局作用域为程序的最外层作用域，一直存在。
+- 函数作用域： 函数执行上下文。只有函数被定义时才会创建，包含在父级函数作用域 / 全局作用域内。
 
 函数调用时的执行上下文： 函数在哪里创建，他就处于哪个执行上下文。
 
@@ -80,20 +79,20 @@ bar(); //2 执行的foo 作用域在全局，则a 为全局的a
 
 ### 作用域嵌套
 
-![](https://i.loli.net/2021/10/22/YT4vOU6dL9QgCi3.png)
+![作用域嵌套](https://i.loli.net/2021/10/22/YT4vOU6dL9QgCi3.png)
 用图片表示，上述代码一共有三层作用域嵌套，分别是：
 
 1. 全局作用域
 2. foo 作用域
 3. bar 作用域
 
-当可执行代码内部访问变量时，会先查找本地作用域，如果找到目标变量即返回，否则会去父级作用域继续查找...一直找到全局作用域。我们把这种作用域的嵌套机制，称为 作用域链。
+当可执行代码内部访问变量时，会先查找本地作用域，如果找到目标变量即返回，否则会去父级作用域继续查找...一直找到全局作用域。我们把这种作用域的嵌套机制，称为 “作用域链”。
 
 [面试官：说说作用域和闭包吧 - 掘金](https://juejin.cn/post/6844904165672484871#heading-3)
 
 ### 块级作用域 ES6
 
-在 ES5 即之前并没有块级作用域的概念。
+在 ES5 及之前并没有块级作用域的概念。
 
 ```js
 if (true) {
@@ -103,7 +102,7 @@ if (true) {
 console.log(a); // 结果??? 1
 ```
 
-ES6 使用 let 和 const 代替 var 关键字，来“创建块级作用域”。
+ES6 使用 let 和 const 代替 var 关键字，和它最近的{}就会创建块级作用域。
 
 ```js
 if (true) {
@@ -113,7 +112,7 @@ if (true) {
 console.log(a); // ReferenceError
 ```
 
-ES6 新增的 let 关键字跟 var 很相似，但它的作用域是块级的，这也是 JavaScript 中的新概念。块级作用域由最近的一对包含花括号{}界定。换句话说，if 块、while 块、function 块，甚至连单独的块也是 let 声明变量的作用域。
+ES6 新增的 let 关键字跟 var 很相似，但它的作用域是块级的。块级作用域由最近的一对包含花括号{}界定。换句话说，if 块、while 块、function 块，甚至连单独的块也是 let 声明变量的作用域。
 
 ```js
 if (true) {
@@ -130,8 +129,7 @@ function foo() {
   let c;
 }
 console.log(c); // ReferenceError: c没有定义
-// 这没什么可奇怪的
-// var声明也会导致报错
+// 这没什么可奇怪的，var声明也会导致报错
 // 这不是对象字面量，而是一个独立的块
 // JavaScript解释器会根据其中内容识别出它来
 
@@ -200,15 +198,12 @@ for (var i = 0; i < divs.length; i++) {
 })(this, function ($) {
   // methods
   function myFunc() {}
-
   // exposed public method
   return myFunc;
 });
 ```
 
 :::
-
-> [10.15 立即调用表达式 JavaScript 高级程序设计（第 4 版）-马特·弗里斯比-微信读书](https://weread.qq.com/web/reader/751326d0720befab7514782kfe932230253fe9fc289c8a3) > [面试官：说说作用域和闭包吧 - 掘金](https://juejin.cn/post/6844904165672484871#heading-8)
 
 ### 如何创建/改变作用域
 
@@ -224,14 +219,14 @@ function foo() {}
 // 内嵌块级作用域
 {
   let i;
-  for (i = 0; i < count; i++) {
+  for (i = 0; i < 5; i++) {
     console.log(i);
   }
 }
 console.log(i); // 抛出错误
 
 // 循环的块级作用域
-for (let i = 0; i < count; i++) {
+for (let i = 0; i < 5; i++) {
   console.log(i);
 }
 console.log(i); // 抛出错误
@@ -246,9 +241,9 @@ console.log(i); // 抛出错误
 
 ## 一些问题
 
-对象里写函数,对象的 fn 属性指向这个函数,函数并不属于这个对象,相对独立.
+对象里写函数，对象的 fn 属性指向这个函数，但是函数并不属于这个对象,相对独立。
 
-这个函数是全局的,对象不是语句块,不会产生作用域.
+这个函数是全局的,对象不是语句块,不会产生作用域。
 
 ```js
 var obj = {
@@ -262,11 +257,26 @@ obj.fn(); //this=>obj, 3
 
 ### var,let,const
 
-**let 与 var**
+#### let 与 var
 
-1. let 与 var 的另一个不同之处是在同一作用域内不能声明两次。重复的 var 声明会被忽略，而重复的 let 声明会抛出 SyntaxError。
+都是用于声明变量。
 
-2. let 的行为非常适合在循环中声明迭代变量。**使用 var 声明的迭代变量会泄漏到循环外部**，这种情况应该避免.
+1. var 声明的变量会被提升到当前所在作用域最前面，但不赋值，到赋值的行才会赋值。
+
+   let 在 JavaScript 运行时中也会被提升，但由于“暂时性死区”（temporal dead zone）的缘故，实际上不能在声明之前使用 let 变量。因此，let 的提升跟 var 是不一样的。
+
+   ```js
+   // TDZ 块级作用域中也不能使用外部作用域的同名变量
+   var a = 8;
+   {
+     console.log(a); //ReferenceError: Cannot access 'a' before initialization
+     let a = 9;
+   }
+   ```
+
+2. let 与 var 的一个不同之处是在同一作用域内不能声明两次。重复的 var 声明会被忽略，而重复的 let 声明会抛出 SyntaxError。
+
+3. let 的行为非常适合在循环中声明迭代变量。**使用 var 声明的迭代变量会泄漏到循环外部**，这种情况应该避免。
 
    ```js
    for (var i = 0; i < 10; ++i) {}
@@ -276,9 +286,9 @@ obj.fn(); //this=>obj, 3
    console.log(j); // ReferenceError: j没有定义
    ```
 
-3. let 在 JavaScript 运行时中也会被提升，但由于“暂时性死区”（temporal dead zone）的缘故，实际上不能在声明之前使用 let 变量。因此，从写 JavaScript 代码的角度说，let 的提升跟 var 是不一样的。
+4. 如果在浏览器的全局作用域中，使用 var 声明的变量会作为 window 的属性，而 let 声明的变量不会。
 
-**const**
+#### const
 
 使用 const 声明的变量必须同时初始化为某个值。一经声明，在其生命周期的任何时候都不能再重新赋予新值.
 
@@ -286,10 +296,11 @@ obj.fn(); //this=>obj, 3
 const a; //Uncaught SyntaxError: Missing initializer in const declaration,定义时没有初始化
 ```
 
-除了以上这点，其他与 let 相同。
+除了以上这点，其他与 let 相同，建立块级作用域，存在暂时性死区的问题，不能在同一作用域声明两次。
 
 ## Reference
 
 - [js 执行上下文与作用域\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1wD4y1D7Pp?from=search&seid=2212534765957722610)
 - [面试官：说说作用域和闭包吧 - 掘金](https://juejin.cn/post/6844904165672484871#heading-3)
 - [4.2 执行上下文与作用域 JavaScript 高级程序设计（第 4 版）-马特·弗里斯比-微信读书](https://weread.qq.com/web/reader/751326d0720befab7514782k182326e0221182be0c5ca23)
+- [10.15 立即调用表达式 JavaScript 高级程序设计（第 4 版）-马特·弗里斯比-微信读书](https://weread.qq.com/web/reader/751326d0720befab7514782kfe932230253fe9fc289c8a3)

@@ -194,3 +194,4 @@ https://juejin.cn/post/6935584878071119885#heading-10
 - [React 前端渲染优化——父组件导致子组件重复渲染\_DominicElvira 的博客-CSDN 博客\_react 父组件渲染为什么会导致子组件渲染](https://blog.csdn.net/hello__word__/article/details/108198812)
 - [性能！！让你的 React 组件跑得再快一点 - 政采云前端团队](https://www.zoo.team/article/react-render)
 - [React 性能优化 | 包括原理、技巧、Demo、工具使用 - 掘金](https://juejin.cn/post/6935584878071119885#heading-1)
+- [我在工作中写React，学到了什么？性能优化篇 - 掘金](https://juejin.cn/post/6889247428797530126#heading-1)
