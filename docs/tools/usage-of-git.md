@@ -131,6 +131,18 @@ Word 是二进制格式，并不是文本文件，版本控制系统没办法跟
 
   :::
 
+## git hooks
+
+控制 git 流程，分为客户端钩子和服务端钩子。
+
+常用 hooks:
+
+pre-commit
+
+commit-msg
+
+相关工具：husky
+
 ## 一些问题
 
 ### ssh 方式与 https 方式的不同
