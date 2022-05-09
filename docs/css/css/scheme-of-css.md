@@ -4,7 +4,7 @@
 
 ## Sass/Less
 
-在个人项目中，习惯使用 less，公司项目中中一般使用 sass(与公司保持一致,我决定不了)。
+在个人项目中，习惯使用 less，公司项目中中一般使用 sass(与团队保持一致)。
 
 最多使用的功能点:
 
@@ -21,6 +21,16 @@ CSS 方案的一种方法论 [BEM — Block Element Modifier](http://getbem.com/
 
 在 HTML 中添加更多的类，这样就可以直接针对它们，保持选择器的低特异性。
 ![](https://s2.loli.net/2021/12/08/eibYSCRELKdt326.png)
+
+## PostCSS
+
+依赖各种插件转换 CSS 的工具。
+
+- Autoprefixer ：为 css 添加特定前缀。比如浏览器相关：`:-webkit-full-screen`，解决浏览器兼容问题。
+- PostCSS Preset Env：将最新 CSS 语法转换成更多浏览器支持的语法。
+- CSS modules：解决全局命名冲突，命名会被编译。 PostCSS 或 css loader 都可以开启 css-modules。
+- postcss-px-to-viewport-8-plugin： 移动端适配。写 px 自动转换为 vw/vh
+- stylelint：检查 CSS 语法。
 
 ## Tailwind CSS
 
@@ -43,7 +53,7 @@ CSS 方案的一种方法论 [BEM — Block Element Modifier](http://getbem.com/
 
 - 大量重复 CSS ，CSS 文件大小膨胀速度过快。
 
-//TODO: 练习使用 Tailwind CSS ，体验一下。
+<!-- //TODO: 练习使用 Tailwind CSS ，体验一下。 -->
 
 ## HTML 与 CSS 的关系
 
@@ -54,6 +64,7 @@ CSS 方案的一种方法论 [BEM — Block Element Modifier](http://getbem.com/
 换一个角度： 从依赖的方向：是 CSS 依赖于 HTML 还是 HTML 依赖于 CSS
 
 - CSS 依赖于 HTML
+
   **关注点分离**，CSS 命名规则依赖于 HTML 的内容。
 
   这种方式下，CSS 需要了解 HTML 暴露了哪些类名，并根据这些类名来设计样式，但 CSS 不能重用。

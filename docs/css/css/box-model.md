@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
-# description:
-# keywords:
+description: css box-model
+keywords: [css,box-model]
 ---
 
 # 盒模型

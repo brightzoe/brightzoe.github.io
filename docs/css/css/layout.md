@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
-# description:
-# keywords:
+description: css layout
+keywords: [css,layout]
 ---
 
 # 布局
@@ -215,7 +215,23 @@ You can use Sanitize.css or Modern-normalize in non-Bootstrap projects, use the 
    </style>
    ```
 
+2. 绝对定位 + margin:auto
+3. flex
+
+4. grid
+
+   place-items: center
+
+5. table
+6. 行内元素： line-height=height
+
 ## 常见布局实现
+
+- 左侧固定，右侧自适应
+
+  左侧：flex-basis:100px;flex-grow:1
+
+  右侧：flex-shrink:0
 
 - 假设高度已知，实现三栏布局，左右均为 300px ,中间自适应
 

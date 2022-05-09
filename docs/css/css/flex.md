@@ -75,6 +75,26 @@ https://codesandbox.io/s/flex-te-shu-qing-kuang-8pkmw?file=/src/App.js
 - baseline
 - stretch
 
+**`flex-basis`**
+
+在分配多余空间之前，项目占据的主轴空间。
+
+flex-basis 不为 auto，为具体值时，flex-basis 的优先级比宽高的优先级高 (flex-basis:100px; width:200px，前者生效）
+
+**`flex-grow`**
+
+主轴方向上的扩展系数，直接使用，按比例分剩余的部分
+
+**`flex-shink`**
+
+主轴方向上的收缩系数，需要与宽度/高度相乘。空间不足时才生效，负值无效。缩小的距离即为该 item 所占的权重比例乘以整体的缩小距离。
+
+**`flex`**
+
+是 flex-grow, flex-shrink 和 flex-basis 的简写，默认值为 0 1 auto。
+**`order`**
+项目的排列顺序，默认为0。数值越小越前面。
+
 ## Reference
 
 - [flex 布局的基本概念 - CSS（层叠样式表） | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox#%E7%AE%80%E5%86%99%E5%B1%9E%E6%80%A7_flex-flow)

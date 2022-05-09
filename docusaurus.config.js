@@ -98,7 +98,7 @@ module.exports = {
           src: "img/logo.svg",
         },
         items: [
-          { to: "/docs/css/layout", label: "HTML & CSS", position: "left" },
+          { to: "/docs/css/html", label: "HTML & CSS", position: "left" },
           {
             to: "/docs/javascript/basic/data-types",
             label: "JavaScript",
