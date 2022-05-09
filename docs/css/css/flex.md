@@ -1,4 +1,4 @@
-# flex
+# flex 布局
 
 常用的一套规则：
 
@@ -93,7 +93,7 @@ flex-basis 不为 auto，为具体值时，flex-basis 的优先级比宽高的�
 
 是 flex-grow, flex-shrink 和 flex-basis 的简写，默认值为 0 1 auto。
 **`order`**
-项目的排列顺序，默认为0。数值越小越前面。
+项目的排列顺序，默认为 0。数值越小越前面。
 
 ## Reference
 

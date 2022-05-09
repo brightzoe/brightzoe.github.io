@@ -70,7 +70,8 @@ calculateHash(file, chunkSize)
 > 扩展：
 > 可以在上述逻辑中添加计算 hash 的进度：当前计算到的分片数/总分片数
 
-### xxx
+### 文件切片
+blob.slice
 
 ## Reference
 

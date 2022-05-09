@@ -140,4 +140,27 @@ display:inline 水平方向的 margin，padding 有效，垂直方向无效。
 
 浮动元素脱离正常流，不占据空间（引起高度塌陷），吸附到父元素的左边或右边。
 
+浮动元素可以左右移动，直到遇到另一个浮动元素或者遇到它外边缘的包含框。
+
+浮动元素会触发 BFC.
+
 浮动不影响块元素，只影响行内元素。
+
+- 清除浮动
+  clear:left/right/both，用于块元素，使其下移到两边没有浮动元素。块元素的 border box 和浮动元素的 margin box 紧挨着。
+
+- [float - CSS（层叠样式表） | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/float)
+
+## 定位
+
+- absolute 与 fixed
+
+  都脱离普通文档流。
+
+  absolute：可以设置根元素，时相对根元素的位置。
+
+  fixed： 相对视口的位置，不随滚动条滚动。
+
+- sticky
+
+  粘连定位。粘性定位可以被认为是相对定位和固定定位的混合。元素在跨越特定值前为相对定位，之后为固定定位,固定定位相对于他的包含块。

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 description: css box-model
-keywords: [css,box-model]
+keywords: [css, box-model]
 ---
 
 # 盒模型
@@ -30,9 +30,9 @@ keywords: [css,box-model]
 
 ### 边框合并
 
-边框合并：如果一个包含块高度为 auto, 没有 border,padding, 且只有块级子元素，其默认高度为最高块级子元素的边框边界到最低块级子元素边框，也就是说不包含子元素上下的 margin, 子元素 margin 会成为包含块 margin
+边框合并：如果一个包含块高度为 auto, 没有 border，padding，且只有块级子元素，其默认高度为最高块级子元素的边框边界到最低块级子元素边框，也就是说不包含子元素上下的 margin, 子元素 margin 会成为包含块 margin。
 
-边框不合并：但是如果包含块有 padding 或 border, 则包含子元素上下的 margin, 是从最高子元素的上外边距边界到最低子元素下外边距边界的距离。如果子元素 margin 为负，包含块高度越来越小，但最低为 0, 不会为负值。
+边框不合并：但是如果包含块有 padding 或 border， 则包含子元素上下的 margin， 是从最高子元素的上外边距边界到最低子元素下外边距边界的距离。如果子元素 margin 为负，包含块高度越来越小，但最低为 0, 不会为负值。
 
 ### 外边距重叠问题
 
@@ -54,29 +54,49 @@ keywords: [css,box-model]
 
 ### BFC 块级格式化上下文
 
-概念： 块级格式化上下文。自身形成一个布局单元：布局此元素内部时不用考虑其外部，可以理解为完全隔离的独立容器，容器里面的元素不会在布局上影响到外面的元素
-
-规则：
-
-1. BFC 垂直方向
+概念： 块级格式化上下文。自身形成一个布局单元：布局此元素内部时不用考虑其外部，可以理解为完全隔离的独立容器，容器里面的元素不会在布局上影响到外面的元素。
 
 创建 BFC：
 
-- overflow 值不为 visible 的块元素
+- html/body 元素
+- overflow 值不为 visible 的块元素 hidden/auto/scroll
 - 浮动元素（元素的 float 不是 none）
-- 定位元素（position 不是 static/relative)
+- 定位元素（position 不是 static/relative) absolute/fixed
 - display 值为 flow-root 的元素： 成为块级元素，并创建 BFC
-
-使用场景：
+- display:inline-block/table-cell/table
 
 [创建 BFC](https://codepen.io/brightzoe/pen/LYjVbee)
 
+使用场景：
+
 - 清除浮动
 - 解决边框合并
-- 布局
-  BFC 元素的子元素即使是 float,也会参与父元素高度计算。
+- 布局 子元素设置浮动的高度塌陷问题
+
+  BFC 元素的子元素即使是 float，也会参与父元素高度计算。
 
   浮动元素一般不参与父元素高度计算，如果给父元素创建了 BFC,浮动元素的高度也会参与父元素高度计算。
+  BFC 元素不会与浮动的元素发生重叠。
+
+- 两栏自适应布局 float + BFC
+
+  ```html
+  <style>
+    .left {
+      width: 100px;
+      height: 200px;
+      background: red;
+      float: left;
+    }
+    .right {
+      height: 300px;
+      background: blue;
+      overflow: hidden;
+    }
+  </style>
+  <div class="left"></div>
+  <div class="right"></div>
+  ```
 
 ## Reference
 

@@ -21,7 +21,7 @@
 
    ```js
    if ((value ?? "") !== "") {
-   	// 不是null/undefined/''
+     // 不是null/undefined/''
    }
    ```
 
@@ -107,10 +107,10 @@ const { a: a1 } = obj; // 提取变量a 并赋值给a1：a1 对应obj.a
    const c = [...new Set([...a, ...b])]; //[1,2,3,5,6]
 
    const obj1 = {
-   	a: 1,
+     a: 1,
    };
    const obj2 = {
-   	b: 1,
+     b: 1,
    };
    const obj = { ...obj1, ...obj2 }; //{a:1,b:1}
    ```

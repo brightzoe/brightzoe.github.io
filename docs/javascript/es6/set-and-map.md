@@ -3,6 +3,7 @@
 Set 和 Map 主要的应用场景在于数组去重和数据存储.Set 是一种叫做集合的数据结构，Map 是一种叫做字典的数据结构.
 
 集合:集合是由一组无序且唯一(即不能重复)的项组成的，可以想象成集合是一个既没有重复元素，也没有顺序概念的数组.
+
 ## Set
 
 类似于数组，但成员的值都是唯一的。
@@ -101,14 +102,14 @@ ws.has();
 ```js
 const foos = new WeakSet();
 class Foo {
-	constructor() {
-		foos.add(this);
-	}
-	method() {
-		if (!foos.has(this)) {
-			throw new TypeError("Foo.prototype.method 只能在Foo的实例上调用！");
-		}
-	}
+  constructor() {
+    foos.add(this);
+  }
+  method() {
+    if (!foos.has(this)) {
+      throw new TypeError("Foo.prototype.method 只能在Foo的实例上调用！");
+    }
+  }
 }
 ```
 
@@ -146,7 +147,7 @@ m.forEach(); //遍历map 的所有成员
 //访问遍历器 使用for of
 //MapIterator {"F", "T"}
 for (let key of map.keys()) {
-	console.log(key);
+  console.log(key);
 }
 ```
 
@@ -194,6 +195,7 @@ function mapToObj(map){
   }
   return res
 }
+//也可使用Object.fromEntries方法
 ```
 
 ### WeakMap
@@ -225,6 +227,6 @@ WeakMap 只有四个方法可用：get()、set()、has()、delete()。
 
 ## Reference
 
-1.  ECMAScript 6 入门 - 阮一峰 https://es6.ruanyifeng.com/#docs/set-map
-2.  MDN-Map https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map
-3.  [ES6 的 Set 和 Map 数据结构，由你制造 - 掘金](https://juejin.cn/post/6844903589920374792#heading-0)
+- [ECMAScript 6 入门 - 阮一峰](https://es6.ruanyifeng.com/#docs/set-map)
+- [MDN-Map](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map)
+- [ES6 的 Set 和 Map 数据结构，由你制造 - 掘金](https://juejin.cn/post/6844903589920374792#heading-0)

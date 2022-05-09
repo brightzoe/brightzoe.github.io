@@ -31,7 +31,9 @@ title: 谈谈Script 标签
 
   - `type=module`代码会被当成 ES6 模块，而且只有这时候代码中才能出现 import 和 export 关键字。
 
-### async 与 defer 属性(只对外部脚本有效)
+### async 与 defer 属性
+
+async 与 defer 属性只对外部脚本有效。
 
 #### 普通的 script 标签加载与执行均会堵塞 DOM 解析。
 

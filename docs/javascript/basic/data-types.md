@@ -36,6 +36,25 @@ Symbol.keyFor(Symbol.for("tokenString")) == "tokenString"; // true
 
 [Symbol - 术语表 | MDN](https://developer.mozilla.org/zh-CN/docs/Glossary/Symbol)
 
+### number
+
+`Number.MAX_SAFE_INTEGER` ：2^53 -1 。大于这个范围的数是可以表示的，但不能保证精确，溢出的位会被截断。
+
+- 判断是整数
+  - Number.isInteger
+  - number % 1
+  - Math.floor/Math.ceil/Math.round 之后与原值是否相等
+
+### bigInt
+
+表示任意大的整数。
+
+```js
+const a = BigInt(9007199254740991);
+const b = 9007199254740991n;
+const hugeHex = BigInt("0x1fffffffffffff");
+```
+
 ## 引用数据类型
 
 object,array,function
