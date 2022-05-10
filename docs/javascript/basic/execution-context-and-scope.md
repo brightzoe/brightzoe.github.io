@@ -94,6 +94,11 @@ bar(); //2 执行的foo 作用域在全局，则a 为全局的a
 
 在 ES5 及之前并没有块级作用域的概念。
 
+为什么需要块级作用域？
+
+- 内层变量可能覆盖外层变量
+- 用来计数的循环变量泄露为全局变量
+
 ```js
 if (true) {
   var a = 1;
@@ -243,7 +248,7 @@ console.log(i); // 抛出错误
 
 对象里写函数，对象的 fn 属性指向这个函数，但是函数并不属于这个对象，相对独立。
 
-这个函数是全局的,对象不是语句块，不会产生作用域。
+这个函数是全局的，对象不是语句块，不会产生作用域。
 
 ```js
 var obj = {
@@ -298,9 +303,28 @@ const a; //Uncaught SyntaxError: Missing initializer in const declaration,定义
 
 除了以上这点，其他与 let 相同，建立块级作用域，存在暂时性死区的问题，不能在同一作用域声明两次。
 
+### JS 里变量的存储
+
+理想情况下会认为原始数据类型存储在栈内，引用数据类型存储在堆内，栈内存储的是堆内地址的引用，但这不准确的。
+
+实际上：
+
+局部变量中未捕获的基础变量会存储在栈内，其他在栈内存储的都是地址。
+
+被捕获的变量比如闭包中引用的变量会存在特殊的对象 Scope 中。
+
+全局变量 global，var/let 不一致，let 声明的变量是放在全局的 Scope 中。
+
+> 栈： 先进后出，占用空间小，读取速度快。
+> 堆： 占用空间大，大小不固定。
+
+了解更多： [JS 变量存储？栈 & 堆？NONONO! - 掘金](https://juejin.cn/post/6844903997615128583#heading-0)
+
 ## Reference
 
 - [js 执行上下文与作用域\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1wD4y1D7Pp?from=search&seid=2212534765957722610)
 - [面试官：说说作用域和闭包吧 - 掘金](https://juejin.cn/post/6844904165672484871#heading-3)
 - [4.2 执行上下文与作用域 JavaScript 高级程序设计（第 4 版）-马特·弗里斯比-微信读书](https://weread.qq.com/web/reader/751326d0720befab7514782k182326e0221182be0c5ca23)
 - [10.15 立即调用表达式 JavaScript 高级程序设计（第 4 版）-马特·弗里斯比-微信读书](https://weread.qq.com/web/reader/751326d0720befab7514782kfe932230253fe9fc289c8a3)
+
+<!-- //TODO: - [JS 变量存储？栈 & 堆？NONONO! - 掘金](https://juejin.cn/post/6844903997615128583#heading-0)-->

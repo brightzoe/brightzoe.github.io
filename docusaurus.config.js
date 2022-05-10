@@ -100,7 +100,7 @@ module.exports = {
         items: [
           { to: "/docs/css/html", label: "HTML & CSS", position: "left" },
           {
-            to: "/docs/javascript/basic/data-types",
+            to: "/docs/javascript/basic",
             label: "JavaScript",
             position: "left",
           },

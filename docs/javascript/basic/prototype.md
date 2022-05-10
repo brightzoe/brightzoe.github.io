@@ -1,26 +1,28 @@
 # 原型和原型链
 
-在访问对象自身不包含的属性时,会从对象原型中搜索属性.
+在访问对象自身不包含的属性时,会从对象原型中搜索属性。
 
-每个对象除了拥有自己的属性外,都包含一个隐式原型`__proto__`属性.指向另一个对象(创建该对象的构造函数的显式原型`prototype`),是对象的属性来源.
+每个对象除了拥有自己的属性外,都包含一个隐式原型`__proto__`属性。指向另一个对象(创建该对象的构造函数的显式原型`prototype`)，是对象的属性来源。
 
-获取一个对象的原型:`Object.getPrototypeOf(obj)` or `obj.__proto__`
+获取一个对象的原型:`Object.getPrototypeOf(obj)` 或 `obj.__proto__`
 
-每个函数都拥有自己的`prototype`属性。一个函数的`prototype`含有一个`constructor`属性，指向这个函数。`Function.prototype.constructor===Function`
+每个函数都拥有自己的`prototype`属性。一个函数的`prototype`含有一个`constructor`属性，指向这个函数自己。`Function.prototype.constructor===Function`
 
-> 以下 隐式原型：`__proto__` 显式原型：`prototype`
+| 隐式原型    | 显式原型    |
+| ----------- | ----------- |
+| `__proto__` | `prototype` |
 
 ![](https://i.loli.net/2021/10/21/uT3n6x8p7BFgIaf.png)
 
-可以改变一个对象的原型,也可以设置为 null `obj.__proto__=null`
+可以改变一个对象的原型,也可以设置为 null。 `obj.__proto__=null`
 
 创建一个具有特定原型的对象:`let obj =Object.create(proto, [propertiesObject])` 它接收两个参数，第二个可选参数是属性描述符（不常用，默认是 undefined）。
 
 ## 原型链
 
-所有对象的父原型,终极原型:`Object.prototype`,再终极是 null.`Object.prototype.__proto__ === null`
+所有对象的父原型，终极原型：`Object.prototype`，再终极是 null。`Object.prototype.__proto__ === null`
 
-> 对象的原型关系树形结构,整个树根是`Object.prototype`,提供了可以在所有对象中使用的方法. 许多对象并不直接将`Object.prototype`作为其原型，而会使用另一个原型对象，用于提供一系列不同的默认属性。函数继承自`Function.prototype`，而数组继承自`Array.prototype`。
+> 对象的原型关系树形结构,整个树根是 `Object.prototype` ，提供了可以在所有对象中使用的方法。许多对象并不直接将 `Object.prototype` 作为其原型，而会使用另一个原型对象，用于提供一系列不同的默认属性。函数继承自 `Function.prototype` ，而数组继承自 `Array.prototype` 。
 
 ![](https://i.loli.net/2021/10/21/SQhZbroGAqMjTCi.png)
 
@@ -30,7 +32,7 @@
 
 构造函数一般以大写开头，创建的对象的隐式原型指向构造函数的 prototype 属性。
 
-构造函数中包含指向新对象的变量 this ,返回新创建的对象，新创建的对象是构造函数的实例，除非构造函数显式返回另一个对象的值。
+构造函数中包含指向新对象的变量 this ，返回新创建的对象，新创建的对象是构造函数的实例，除非构造函数显式返回另一个对象的值。
 
 ```js
 // 构造函数:
@@ -95,7 +97,7 @@ js 的继承基于原型链实现，instanceof 用来判断该实例的构造函
 // 变量R的原型 存在于 变量L的原型链上
 function myInstanceof(left, right) {
   //基本数据类型肯定不是
-  const basicTypes = ["string", "number", "boolean", "undefined", "symbol"];
+  const basicTypes = ["string", "number", "boolean", "undefined", "symbol", "bigint"];
   if (basicTypes.includes(typeof left)) {
     //typeof 判断不了array,null,其他都可以
     return false;
@@ -145,9 +147,9 @@ a.b(); //b
 
 1. `instanceof ` 检查是否通过 new 调用，this 是否是构造函数的实例。
 
-   但不完全可靠，用 Person.call()/apply()也可以得到 Person 的实例。
+   但不完全可靠，用 Person.call()/apply() 也可以得到 Person 的实例。
 
-2. 当调用函数的 Constructor 方法时，new.target 被赋值给构造函数名(===Person).如果不是通过构造函数调用，new.target===undefined。
+2. 当调用函数的 constructor 方法时，new.target 被赋值给构造函数名(===Person)。如果不是通过构造函数调用，new.target===undefined。
    很可靠。在函数外使用 new.target 是语法错误。
 3. 用 class 声明的函数必须被 new 调用，不然会报错，就规定了这一种方法。
 

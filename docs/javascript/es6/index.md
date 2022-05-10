@@ -4,22 +4,52 @@
 - Map Set WeakMap WeakSet WeakRef
 - const/let
 - 扩展运算符，剩余参数 ...
-- 箭头函数
 - class
 - Promise async await
 - generator iterator
 - Proxy/Reflect
 
+## 扩展运算符
+
+拷贝可遍历的属性，浅拷贝。
+
+```js
+let bar = { a: 1, b: 2 };
+let baz = { ...bar }; // { a: 1, b: 2 } 与Object.assign 一致
+```
+
 ## 解构赋值
 
 ```js
 const { a, b: y } = { a: 3, b: 4 };
-//a :3 y:4  y 是对 b 的重命名
+//a :3 y:4  y 是对 b 的重命名。外边声明的是y，取值取 b 的值。
 
 let { foo, bar } = { foo: "aaa", bar: "bbb" };
 foo; // "aaa"
 bar; // "bbb"
 ```
+
+提取高度嵌套对象里的指定属性：
+
+```js
+const school = {
+  classes: {
+    stu: {
+      name: "Bob",
+      age: 24,
+    },
+  },
+};
+
+const { classes: { stu: { name } }} = school
+console.log(name)  // 'Bob'
+```
+
+## 箭头函数
+
+- 简洁
+- 没有自己的 this，继承上层作用域的 this，永远不会改变。不能通过 call，apply，bind 等去改变。
+- 不能作为构造函数，因为 this 的问题。
 
 ## Array API
 

@@ -6,7 +6,7 @@ string,number,boolean,undefined,null,symbol,bigInt
 
 ### symbol
 
-基本数据类型。
+基本数据类型。 创建后独一无二不可变，可以解决全局变量冲突的问题。
 
 ```js
 const a = Symbol(1);
@@ -38,6 +38,14 @@ Symbol.keyFor(Symbol.for("tokenString")) == "tokenString"; // true
 
 ### number
 
+```js
+typeof NaN === "number"; // true
+
+NaN !== NaN; //true
+
+Number.isNaN(NaN); // true
+```
+
 `Number.MAX_SAFE_INTEGER` ：2^53 -1 。大于这个范围的数是可以表示的，但不能保证精确，溢出的位会被截断。
 
 - 判断是整数
@@ -68,8 +76,13 @@ object,array,function
   - 无法区分 array 和普通对象
   - `typeof null `=> `object`
 
-- `instanceof` 二元运算符，判断某个对象是否继承自某个特定的构造函数
-  `[1] instanceof Array` =>true
+- `instanceof` 二元运算符，判断某个对象是否继承自某个特定的构造函数，不能判断基本数据类型。
+
+  ```js
+  [1] instanceof Array; //true
+  "str" instanceof String; // false
+  true instanceof Boolean; // false
+  ```
 
 - `Object.prototype.toString` 可以准确判断所有的类型，Array、String 等都重写了该方法，因此就需要借助 call/apply 来调用 Object.prototype 上的方法。
 
@@ -86,6 +99,8 @@ object,array,function
   Array.isArray(ary)
   Object.prototype.toString.call(ary)==='[object Array]'
   ary.instanceof Array
+  ary.__proto__ === Array.prototype;
+
   ```
 
 ## 其他相关数据类型，数据结构
