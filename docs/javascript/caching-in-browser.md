@@ -1,8 +1,6 @@
-# 前端数据存储
+# 浏览器本地存储
 
-多指浏览器缓存。
-
-### 数据缓存的类型
+### 数据存储的类型
 
 1、localStorage
 大小 5M，文件存储级别，不清理浏览器缓存不消失
@@ -14,7 +12,7 @@
 按 4097 字节算吧，前端可以操作（后端可以定义不可操作的数据），但是一般由后端定义，并且现在新版的浏览器在逐步的抛弃该功能
 
 4、IndexedDB
-最小 250M，文件级别（支持事务，属于 websql 的替代品），需要清理浏览器缓存才可以。一般用不到，主要是因为浏览器不做客户端的话那么就没什么用。做本地客户端可以用，比如 electron
+最小 250M，文件级别（支持事务，属于 websql 的替代品），需要清理浏览器缓存才可以。一般用不到，主要是因为浏览器不做客户端的话那么就没什么用，做本地客户端可以用，比如 electron
 
 5、内存存储
 就是变量存储，可以说是没有上线，取决于你的内存
@@ -23,7 +21,7 @@
 
 使用 cookie 的问题：
 
-1. 存放数据太少，4kb.
+1. 存放数据太少，4kb。
 2. 每次都会携带在 HTTP 请求头，会与服务端进行交互，如果只是为了存储本地数据，会造成性能浪费。
 
 webStorage：
@@ -39,22 +37,22 @@ webStorage：
 - 可以给使用的本地存储添加前缀，项目前缀或作者等，对使用本地存储做一层封装，统一管理本地存储。
   在 config 统一注册需要存储的 key,只有注册了才能操作，没注册的提醒先去注册再进行存取删的操作。config 中规范所有本地存储中的值，分别代表什么。
 
-  这个思路不错，来源于：项目优化——localStorage|sessionStorage 统一管理方案 https://juejin.cn/post/6919376014867070989#heading-0
+  这个思路不错，来源于：[项目优化——localStorage|sessionStorage 统一管理方案 - 掘金](https://juejin.cn/post/6919376014867070989#heading-0)
 
 ### 使用 webStorage 的注意事项
 
 1. 环境检查 `window && window.localStorage && window.sessionStorage`
-2. 只能存储字符串。存储一些引用类型的数据，需要区分是否可以被 JSON.stringify.比如 undefined,Function,Symbol 等不可用。
+2. 只能存储字符串。存储一些引用类型的数据，需要区分是否可以被 JSON.stringify。比如 undefined，Function，Symbol 等不可用。
 3. 存入数据时可以添加时间戳，方便维护和调试。
 
-   ```js
+   ```ts
    /**
    * 设置当前
    * @param key 设置当前存储key
    * @param value 设置当前存储value
    */
    setItem(key: string, value) {
-     if (hasStringify(value)) {//能被徐磊话
+     if (hasStringify(value)) {//能被序列化
        const saveData: StorageSaveFormat = {
          timestamp: new Date().getTime(),
          data: value
@@ -73,7 +71,7 @@ webStorage：
 
 4. 过期时间。localStorage 不手动清除是不会过期的，上面设置在存储时设置了时间戳，控制一个过期时间，在读取的时候添加是否过期的判断。
 
-   ```js
+   ```ts
    /**
    * 获取数据
    * @param key 获取当前数据key
@@ -96,7 +94,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent
 
 6. 封装一个修改的方法.把旧的值变成新的值。与 setItem 的区别是是不是需要旧的值。
 
-   ```js
+   ```ts
    /**
    * 修改当前存储内容数据
    * @param key 当前存储key
@@ -130,6 +128,14 @@ https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent
    > https://developer.mozilla.org/zh-CN/docs/Web/API/StorageManager
 
 如果濒临溢出，可以对存储时间戳进行排序，把旧的清除掉。
+
+### 场景
+
+- 搜索历史：频繁修改 storage ，可以使用 changeItem 方法。
+- 大量的资源路径，如一堆 emoji 可以先存在 storage，不需要每次刷新都去请求。
+- 跨标签通信
+  - 一个窗口登出，所有窗口登出
+  - 编辑数据，所有窗口数据都更新
 
 ### 可以使用一些封装好的库
 

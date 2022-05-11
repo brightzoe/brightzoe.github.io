@@ -6,7 +6,7 @@
 
 ## 对概念的理解
 
-防抖 debounce：在事件被触发的一段时间后再执行回调，如果在这段时间内又被触发，则重新计时。
+防抖 debounce：在事件被触发了一段时间后再执行回调，如果在这段时间内又被触发，则重新计时。
 
 节流 throttle：在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效。
 
@@ -43,66 +43,69 @@
 //debounce
 //debounce(fn,1000)
 function debounce(fn, delay) {
-	return function () {
-		const that = this;
-		const _args = arguments;
-		fn.id && clearTimeout(fn.id);
-		fn.id = setTimeout(() => fn.apply(that, _args), delay);
-	};
+  let timer;
+  return function () {
+    const context = this;
+    const _args = arguments;
+    timer && clearTimeout(fn.id);
+    timer = setTimeout(() => fn.apply(context, _args), delay);
+  };
 }
+```
 
+```js
 //throttle(定时器标记版)
 function throttle(fn, delay) {
-	let timer;
-	return function () {
-		if (timer) {
-			//已经安排上了，就不再安排了
-			return;
-		}
-		const that = this;
-		const _args = arguments;
-		timer = setTimeout(() => fn.apply(that, _args), delay);
-	};
+  let timer;
+  return function () {
+    if (timer) {
+      //已经安排上了，就不再安排了
+      return;
+    }
+    const context = this;
+    const _args = arguments;
+    timer = setTimeout(() => fn.apply(context, _args), delay);
+  };
 }
 
 //throttle(时间戳版)
 function throttle(fn, delay) {
-	let last = 0;
-	return function () {
-		const that = this;
-		const _args = arguments;
-		const now = Date.now();
-		if (now - last > delay) {
-			fn.call(that, _args);
-			last = now;
-		} else {
-			console.log("时间差不满足要求,不执行");
-		}
-	};
+  let last = 0;
+  return function () {
+    const context = this;
+    const _args = arguments;
+    const now = Date.now();
+    if (now - last > delay) {
+      fn.call(context, _args);
+      last = now;
+    } else {
+      console.log("时间差不满足要求,不执行");
+    }
+  };
 }
 //上面时间戳版和定时器版的节流函数的区别是，时间戳版的函数触发是在时间段内开始的时候，而定时器版的函数触发是在时间段内结束的时候。
 
 //throttle时间戳且最后一次也要执行
 function throttle(fn, delay) {
-	let last, timer;
-	return function () {
-		const that = this;
-		const _args = arguments;
-		const now = Date.now();
-		clearTimeout(timer);
-		if (last && now < last + delay) {
-			//加上这段会使单位时间内最后一次请求也执行,有没有必要是存在争议的,具体是否需要要看具体场景。
-			const diff = delay - (now - last);
-			timer = setTimeout(function () {
-				last = now;
-				fn.apply(that, _args);
-			}, diff);
-			//我们要限制1s中只有1个请求是有用的。假设用户1s中点了100次。按理来说，第2-100次都是无用的。但是在第100次的时候，由于执行了上面的代码块后，第100次的点击事件由于定时器操作，造成它变成有效的请求了，感觉有点违背函数节流的定义。
-		} else {
-			last = now;
-			fn.apply(that, _args);
-		}
-	};
+  let last, timer;
+  return function () {
+    const context = this;
+    const _args = arguments;
+    const now = Date.now();
+    clearTimeout(timer);
+    if (last && now < last + delay) {
+      //加上这段会使单位时间内最后一次请求也执行,有没有必要是存在争议的,具体是否需要要看具体场景。
+      const diff = delay - (now - last);
+      timer = setTimeout(function () {
+        last = now;
+        fn.apply(context, _args);
+      }, diff);
+      //我们要限制1s中只有1个请求是有用的。假设用户1s中点了100次。按理来说，第2-100次都是无用的。但是在第100次的时候，由于执行了上面的代码块后，第100次的点击事件由于定时器操作，造成它变成有效的请求了，感觉有点违背函数节流的定义。
+    } else {
+      last = now;
+      fn.apply(context, _args);
+    }
+  };
 }
 ```
 

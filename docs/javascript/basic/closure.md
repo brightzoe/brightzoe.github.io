@@ -1,5 +1,11 @@
 # 闭包
 
+什么是： 有权访问外部作用域变量的函数。
+
+优缺点： 私有化数据，私有化的基础上保持数据。使用不恰当容易造成内存泄漏。
+
+应用： 节流防抖，vue react 中也有很多应用。
+
 ## 什么是闭包
 
 ### 如何定义闭包
@@ -39,7 +45,7 @@ console.log("example increment", c1, c2, c3); //example increment 1 2 3
 
 ## 闭包的应用场景
 
-#### 模拟私有方法
+### 模拟私有方法
 
 使用闭包来定义公共函数，并令其可以访问私有函数和变量。这个方式也称为模块模式（module pattern）。
 
@@ -81,6 +87,12 @@ console.log(Counter2.value()); /* logs 0 */
 
 [闭包 - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)
 
+### 实际场景
+
+- 防抖，节流
+- 函数柯里化
+- react hooks 每次渲染都保存当时的状态快照
+
 ## 问题
 
 ```js
@@ -113,3 +125,4 @@ print(fn); // 100
 
 - [我从来不理解 JavaScript 闭包，直到有人这样向我解释它 - 掘金](https://juejin.cn/post/6844903858636849159#heading-4)
 - [闭包 - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)
+- [我从来不理解闭包，直到我要去面试 - 掘金](https://juejin.cn/post/7088216038063472670#heading-0)
