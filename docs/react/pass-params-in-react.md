@@ -46,12 +46,12 @@ const To = (props)=>{
 
 <hr/>
 
-- 搜到的相关内容总是提到 withRouter HOC,不知道干嘛的，在这里记录下：
+- 搜到的相关内容总是提到 withRouter HOC，在这里记录下：
 
   路由组件（直接与路由相连），拿到路由的参数，可以直接从 props.history/location 中拿到，而非路由组件，不能直接获取路由的参数，需要用 withRouter 包裹，才能拿到路由中的这些属性。
 
-//todo: react-router v6 学习，api 尝试
-//todo: react-router 实现路由守卫。相关功能：离开页面，刷新或关闭页面时提示或做一些操作。
+<!-- //todo: react-router v6 学习，api 尝试
+//todo: react-router 实现路由守卫。相关功能：离开页面，刷新或关闭页面时提示或做一些操作。 -->
 
 ## Reference：
 

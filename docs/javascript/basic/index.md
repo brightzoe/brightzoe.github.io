@@ -97,7 +97,7 @@ function cloneDeep(obj) {
 
 ## for in 与 for of
 
-1. for in 主要用于遍历对象所有可枚举属性，且会遍历对象原型链上的属性，性能较低。
+1. for in 主要用于遍历对象所有可枚举属性，且会遍历对象原型链上的属性，性能较低。也可遍历数组，但是遍历出来的是数组的索引。
 2. for of 用于遍历所有有 iterator 接口的数据结构。可以遍历数组，类数组对象、Map，Set，字符串等，不会遍历原型链。普通的对象使用 for of 会报错，如果需要可以自己定义相应的 Iterator 接口，默认的 Iterator 接口部署在数据结构的 `Symbol.iterator` 属性。
 
 ## js 内存机制
