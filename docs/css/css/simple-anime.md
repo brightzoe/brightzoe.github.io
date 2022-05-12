@@ -99,27 +99,47 @@ transform: translate(10px, 10px) rotate(10deg);//给一个元素配置多个转�
 1. 卡片聚焦的效果：
    ![](https://i.loli.net/2021/08/02/JjqbUf2lTtm7YSw.gif)
 
-```css
-.wrapper {
-  transition: all 0.2s ease-in-out;
-}
-.wrapper:hover {
-  transform: scale(1.05, 1.05);
-}
-```
+   ```css
+   .wrapper {
+     transition: all 0.2s ease-in-out;
+   }
+   .wrapper:hover {
+     transform: scale(1.05, 1.05);
+   }
+   ```
 
-2.  向往外面的图片，不能出圈圈。效果展示：
-    ![](https://i.loli.net/2021/08/02/PETa1dcnrYyAitS.gif)
+2. 向往外面的图片，不能出圈圈。效果展示：
+   ![](https://i.loli.net/2021/08/02/PETa1dcnrYyAitS.gif)
 
-    demo 人间富贵花代码：
-    https://codepen.io/brightzoe/pen/dyWOEBp
+   - [外框不变，里面动画 demo](https://codepen.io/brightzoe/pen/dyWOEBp)
 
-    核心是：
-    里面的元素`transition: all 0.4s ease-in-out;`,设定动画效果。
+   核心是：
+   里面的元素`transition: all 0.4s ease-in-out;`,设定动画效果。
 
-    外面的 hover 时，里面`transform: scale(1.1, 1.1);`,变换成什么样子。
+   外面的 hover 时，里面`transform: scale(1.1, 1.1);`,变换成什么样子。
 
-    同时外面`overflow:hidden`,不能越过我画的圈圈！
+   同时外面`overflow:hidden`,不能越过我画的圈圈！
+
+3. translation 控制变化的方向
+
+   一个 100px 块元素，如何让高度从 100px 变到 0？
+
+   ```css
+   .red {
+     height: 200px;
+     width: 100px;
+     background: red;
+     transition: height ease-in-out 5s;
+     /* 以上是高度从下到上消失，如何从上到下消失呢？根据流式布局，脱离正常流用绝对定位就可以了 */
+     /* position:absolute; */
+     /* bottom:0; */
+   }
+   .red:hover {
+     height: 0px;
+   }
+   ```
+
+   - [css translation 高度消失方向 demo](https://codepen.io/brightzoe/pen/wvyzWPG)
 
 ## 添加动画的好用的库
 
