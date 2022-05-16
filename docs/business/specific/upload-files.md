@@ -79,7 +79,7 @@ calculateHash(file, chunkSize)
 
 ## 文件切片
 
-blob.slice
+file.slice
 
 ## 断点续传
 

@@ -8,11 +8,13 @@ js 单线程执行，在执行时将不同的函数执行上下文压入执行�
 - 执行完所有的微任务后，有必要会渲染页面
 - 下一轮 Event Loop
 
-> 浏览器的当前渲染进程下的 JS 引擎线程是单线程的。
+## 为什么需要事件循环
+
+浏览器的当前渲染进程下的 JS 引擎线程是单线程的。如果有的任务耗时很长，后一个任务就需要一直等待，产生阻塞。我们希望协调事件，渲染，网络等执行顺序。
 
 ## 执行栈
 
-存储函数调用，栈顶是最近执行的上下文。先进后出。
+存储函数调用，栈顶是最近执行的上下文，先进后出。
 
 同步代码的执行：
 
@@ -26,7 +28,7 @@ js 引擎遇到一个异步事件后并不会一直等待其返回结果，而�
 
 ### 微任务和宏任务
 
-任务队列不止一个，根据任务的种类分成微任务和宏任务
+任务队列不止一个，根据任务的种类分成微任务和宏任务。
 
 - 宏任务： script 脚本执行，setTimeout，setInterval，setImmediate，IO 操作，UI 渲染等。
 - 微任务：promise.then(async await)，promise.catch，node 的 process.nextTick，new MutationObserver 等
@@ -78,19 +80,18 @@ console.log("script end");
 
 ```js
 console.log("script start");
-
 async function async1() {
   await async2(); //这里执行完就跳出当前函数，先执行其他函数
   console.log("async1 end"); //控制权转移，最后注册的微任务
 }
 async function async2() {
+  //里面有异步
   console.log("async2 end");
   return Promise.resolve().then(() => {
     console.log("async2 end1");
   });
 }
 async1();
-
 setTimeout(function () {
   console.log("setTimeout");
 }, 0);
@@ -105,15 +106,16 @@ new Promise((resolve) => {
   .then(function () {
     console.log("promise2");
   });
-
 console.log("script end");
 ```
 
 ## NodeJS 的事件循环
 
-JS 引擎本身不实现事件循环，是由它的宿主实现的。
+JS 引擎本身不实现事件循环，是由它的宿主实现的，Node.js 的 Event Loop 是基于 libuv。
 
-Node 中的事件循环也是循环＋任务队列的流程，以及微任务优先于宏任务的大概机制。不过与浏览器中的也有一些差异，并新增了一些任务类型和任务阶段。由 Libuv 库实现，在 Libuv 中完成。
+> libuv 是一个多平台支持库，主要用于异步 I/O
+
+Node 中的事件循环也是循环＋任务队列的流程，以及微任务优先于宏任务的大概机制。不过与浏览器中的也有一些差异，并新增了一些任务类型和任务阶段。
 
 ### 异步方法
 
@@ -124,14 +126,27 @@ Node 中的事件循环也是循环＋任务队列的流程，以及微任务优
 
 ### 事件循环的各个阶段
 
-- timers 阶段。执行所有 setTimeout setInterval 回调。
-- pending callback 阶段。某些系统操作的回调。
-- poll 阶段。轮询等待新的连接和请求，执行 I/O 回调。进入 Libuv 引擎后首先进入此阶段。
-- check 阶段。 执行 setImmediate 回调。
-- close callback 阶段。关闭回调执行。
+- timers 定时器阶段。执行所有 setTimeout setInterval 回调。
+- pending callback 待定回调阶段。执行延迟到下一个循环迭代的 I/O 回调。
+- poll 轮询阶段。检索新的 I/O 事件，执行 I/O 回调。进入 Libuv 引擎后首先进入此阶段。
+- check 检测阶段。 执行 setImmediate 回调。
+- close callback 关闭的回调函数阶段。关闭回调执行。`socket.on('close', ...)`
 
 上面每个阶段都会执行完当前阶段的任务队列，然后执行当前阶段的微任务队列，当前阶段的微任务都执行完才会进入下一个阶段。
 ![](https://s2.loli.net/2022/05/11/n4XrUmpL6uPckVF.jpg)
+
+- [Node.js 事件循环，定时器和 process.nextTick() | Node.js](https://nodejs.org/zh-cn/docs/guides/event-loop-timers-and-nexttick/)
+
+### setTimeout & setImmediate
+
+setImmediate 被设计为一旦在当前轮询阶段完成，就执行这个脚本。
+
+### process.nextTick()
+
+nextTick 比较特殊，它存有自己的队列，独立于 Event Loop，无论 Event Loop 处于何种阶段，都会在阶段结束的时候清空 nextTick 队列。
+
+process.nextTick() 优先于其他的微任务（microtask）执行。
+
 ## Reference
 
 - [面试题：说说事件循环机制(满分答案来了) - 掘金](https://juejin.cn/post/6844904079353708557#heading-1)
