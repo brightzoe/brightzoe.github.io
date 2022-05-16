@@ -41,8 +41,12 @@ const school = {
   },
 };
 
-const { classes: { stu: { name } }} = school
-console.log(name)  // 'Bob'
+const {
+  classes: {
+    stu: { name },
+  },
+} = school;
+console.log(name); // 'Bob'
 ```
 
 ## 箭头函数
@@ -61,6 +65,45 @@ console.log(name)  // 'Bob'
 - array.flat 默认只拍平一层
 - array.flatMap
 - array.at(index)
+
+<details>
+  <summary> 实现 flat</summary>
+
+```js
+//flat 实现 不带层级
+function flatDeep(arr) {
+  return arr.reduce((acc, curr) => (Array.isArray(curr) ? [...acc, ...flatDeep(curr)] : [...acc, curr]), []);
+}
+
+//flat 带层级展开
+//1 借助外部函数递归
+const flat = (arr, level = 1) => {
+  return helper(arr, level, []);
+};
+const helper = (arr, level = 1, res = []) => {
+  for (let item of arr) {
+    if (Array.isArray(item) && level > 0) {
+      res = [...res, ...flat(item, level - 1)];
+    } else {
+      res = [...res, item];
+    }
+  }
+  return res;
+};
+console.log(flat([1, 2, 3, [1, 2, [1, 2, 3]]], 2));
+
+//2 reduce 递归
+function flat(arr, level = 1) {
+  return arr.reduce(
+    (acc, curr) => (Array.isArray(curr) && level > 0 ? [...acc, ...flat(curr, level - 1)] : [...acc, curr]),
+    []
+  );
+}
+```
+
+- [Array.prototype.flat() - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat#try_it)
+
+</details>
 
 ## Object API
 
