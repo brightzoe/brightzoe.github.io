@@ -121,10 +121,13 @@ pm2 startup #配置为开机自启动 pm2 unstartup
 
 ```bash
 # ssl 证书
-curl https://get.acme.sh | sh
+curl https://get.acme.sh | sh -s email=brightzoe@qq.com
 
 #ssl证书 验证域名  acme.sh
-acme.sh --issue --standalone -d vote.brightzoe.top
+acme.sh --issue --standalone -d 7.brightzoe.top
+
+# 命令未找到，使用绝对路径验证域名
+/root/.acme.sh/acme.sh --issue --standalone -d 7.brightzoe.top
 
 #设置https
 const https = require('https')
