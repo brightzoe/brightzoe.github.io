@@ -12,13 +12,21 @@
 
 ## 构建流程
 
-- 初始化参数
+初始化
+
+- 初始化参数 option
 - 解析项目。创建 Compiler 对象并开始解析项目
+
+编译构建
+
 - 确定入口。从入口文件（entry）开始解析，并且找到其导入的依赖模块，递归遍历分析，形成依赖关系树
 - 编译模块。根据入口的依赖，调用 loader 进行转换
 - 完成编译进行输出，形成不同的 chunk
 - 输出完成。将 chunk 输出到文件系统
-- 整个过程中 webpack 会通过发布订阅模式，向外抛出一些 hooks，而 webpack 的插件即可通过监听这些关键的事件节点，执行插件任务进而达到干预输出结果的目的。
+
+整个过程中 webpack 会通过发布订阅模式，向外抛出一些 hooks，而 webpack 的插件即可通过监听这些关键的事件节点，执行插件任务进而达到干预输出结果的目的。
+
+<!-- - [面试官：webpack原理都不会？ - 掘金](https://juejin.cn/post/6859538537830858759#heading-21) -->
 
 ### loader 与 plugin
 
@@ -70,12 +78,27 @@ compilation 对象是 complier 的实例，是每一次构建的上下文对象�
 
 有一份映射的文件以.map 结尾，标记源码位置。
 
+### tree shaking
+
+不需要用到的代码将不会进入到打包结果中，减少打包体积。
+
+此功能主要依赖 es module 语法，因为它提供静态分析（即不运行代码对代码进行分析，不会因为逻辑成立与否而引入或导出某个模块，import/export 不会存在 if 里面）的可能性。其他方式书写的模块很难去做 tree shaking 分析。
+
+### code spliting
+
+一般打包为一个单一的文件。 但是所有的业务逻辑和框架等打包到一个单一文件的话会很大。更主要的是，就算把所有功能都打包到一个文件中，也不是所有功能都会被使用。
+
+比如网络应用，一次性下载所有功能的代码是不必要的。code spliting 用户在打开界面的时候，只加载基本功能/入口页面的功能，随着用户的交互能更快打开入口页面。
+
 ### webpack 优化
 
 构建时间优化
 
-- thread-loader 并行构建，放在费时间的 loader 之前
-- cache-loader 缓存，提高二次构建速度
+- speed-measure-webpack-plugin 分析打包耗时
+- 比较耗时的包可以使用 cdn 分包。或者预编译资源为 dll
+- thread-loader 并行构建，放在费时间的 loader 之前。（开启 worker，也有开销，仅在耗时的操作中使用）
+- 并行压缩 terser-webpack-plugin 的一个选项
+- cache-loader 缓存，提高二次构建速度（webpack5 已内置 cache 模块可不添加此 loader）
 - hot-module-replacement-plugin 热更新，修改一个文件不刷新整个项目
 
 区分构建环境
@@ -85,11 +108,19 @@ compilation 对象是 complier 的实例，是每一次构建的上下文对象�
 
 打包体积优化
 
-- css-minimizer-webpack-plugin 压缩 css，去重 只在生产环境
-- terser-webpack-plugin 打包后 js 压缩 只在生产环境
+- webpack-bundle-analyzer 打包体积分析，定位问题
+- 提取公共模块
+- css-minimizer-webpack-plugin 压缩 CSS，去重
+- mini-css-extract-plugin 抽离 CSS 文件 只在生产环境
+- purgecss-webpack-plugin 移除无用 CSS 只在生产环境
+- terser-webpack-plugin 打包后 js 压缩
 - tree-shaking 默认开启的，只打包有用的代码
 - source-map 方便定位代码位置，不同环境不同选项
-- webpack-bundle-analyzer 打包体积分析，只在生产环境开启
+
+监控面板
+
+- speed-measure-webpack-plugin 分析打包耗时，每个 loader ，plugin 构建耗费的时间
+- webpack-dashboard 了解当前构建现状，进度，每个 chunk 大小等
 
 ### 用户体验优化
 
@@ -103,3 +134,4 @@ gzip: 前后端配合 compression-webpack-plugin 在生产环境配置
 
 - [当面试官问 Webpack 的时候他想知道什么 - 掘金](https://juejin.cn/post/6943468761575849992#heading-0)
 - [关于 loader 和 plugins - 掘金](https://juejin.cn/post/6971220402466979848#heading-8)
+- [一套骚操作下来，webpack 项目打包速度飞升 🚀、体积骤减 ↓ - 掘金](https://juejin.cn/post/7046616302521155614#heading-1)

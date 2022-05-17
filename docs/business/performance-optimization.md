@@ -1,4 +1,4 @@
-# 项目优化（性能优化以及其他）
+# 项目优化
 
 ## 如何衡量一个项目/网站的性能
 
@@ -8,8 +8,33 @@
 
 2. https://www.webpagetest.org/
 
-3. webpack-bundle-analyzer
-   资源打包分析
+## 定位问题
+
+1.  React：Profiler，识别出应用中渲染较慢的部分。 除了相关 api，在 react-devtools 也有。
+2.  chrome-devtools：performance
+3.  webpack-bundle-analyzer
+    资源打包分析
+
+## 选择合适的优化方式
+
+- 打包体积优化：treeshaking,css/js 代码压缩，codespliting
+- 网络优化： 静态资源多放 cdn ，使用 http2 突破 tcp 连接数限制
+- 运行时加载：组件动态加载，图片懒加载
+- 缓存：http 缓存
+- 渲染优化
+  1. 存在不必要的组件更新。--跳过不需要的组件更新，减少重新渲染。
+  2. 页面挂载太多不可见的组件。--选择懒加载，虚拟渲染等方式。
+  3. 多次设置状态，引发多次更新。--选择批量更新，debounce/throttle 优化频繁触发的函数。
+  4. 组件渲染阶段耗时，需要定位到具体耗时代码，考虑通过缓存优化，或者按优先级更新，先响应用户才做。
+
+## Webpack 优化
+
+主要分为
+
+- 构建速度 先定位哪里耗时长（speed-measure-webpack-plugin）
+- 打包体积 先定位哪里最大。
+
+[Webpack 优化](/docs/business/fe-engineering#webpack-优化)
 
 ## [ React 性能优化](/docs/react/design-pattern-and-best-practices#react-中的性能优化)
 
@@ -59,24 +84,8 @@
 input 输入搜索场景：debounce，只需响应用户的最后一次输入，无需响应用户中间输入值。
 
 throttle 更适合需要实时响应的场景：拖拽进行放大缩小,滚动事件。实时响应用户操作场景中，如果回调耗时小，甚至可以用 requestAnimationFrame 代替 throttle。
-### 添加的setTimeout,监听事件等要及时清除。
 
-## 选择合适的优化方式
-
-1. 存在不必要的组件更新。--跳过不需要的组件更新，减少重新渲染。
-2. 页面挂载太多不可见的组件。--选择懒加载，虚拟渲染等方式。
-3. 多次设置状态，引发多次更新。--选择批量更新，debounce/throttle 优化频繁触发的函数。
-4. 组件渲染阶段耗时，需要定位到具体耗时代码，考虑通过缓存优化，或者按优先级更新，先响应用户才做。
-
-### 定位问题
-
-1.  React：Profiler，识别出应用中渲染较慢的部分。 除了相关api，在react-devtools也有。
-2. chrome-devtools：performance
-
-## 开发环境优化
-
-- webpack dashboard
-  可视化 webpack 构建看板，清楚的了解项目启动的过程和进度。
+### 添加的 setTimeout,监听事件等要及时清除。
 
 ## 使用的一些工具
 
