@@ -43,6 +43,12 @@
 1. hash 路由：URL 中有#，即哈希值，不好看，但兼容性高,兼容 IE 8 ，不过 2021 年了基本不存在兼容性问题了。
 2. browser 路由(history 模式)：不带#，好看，但部分浏览器不支持，需要后端服务器支持。
 
+   ```nginx.conf
+   location / {
+          try_files $uri $uri/ /index.html; //解决单页面应用history 路由的问题
+   }
+   ```
+
 在 vue 和 react 中，把两种路由定义成两种模式，hash 模式与 history 模式。
 
 ### hash 原理
@@ -51,12 +57,12 @@
 
   ![location](https://i.loli.net/2021/07/16/u67A4ixONwfjKbt.png)
 
-hash 值指的 URL 中锚点，用来做页面定位，对应 DOM id，在 HTML5 的 history 特性前，都是通过监听 hash 值实现前端路由.利用 hashchange 事件,操作 dom。
+hash 值指的 URL 中锚点，用来做页面定位，对应 DOM id，在 HTML5 的 history 特性前，都是通过监听 hash 值实现前端路由。利用 hashchange 事件，操作 dom。
 
 相关特点：
 
 1. hash 值是网页的一个标志点，与 HTTP 请求无关，对后端没有影响。
-2. HTTP 请求不包含 hash, hash 改变不触发页面重载
+2. HTTP 请求不包含 hash， hash 改变不触发页面重载
 3. hash 改变会改变浏览器历史记录
 4. hash 改变会触发 window.onhashchange 事件(pushState 不会触发 hashchange)
 
@@ -66,7 +72,7 @@ hash 值指的 URL 中锚点，用来做页面定位，对应 DOM id，在 HTML5
 
 1. a 标签 `<a href="#footer"></a>`
 2. js `window.location.hash = "gg"`
-3. 浏览器的前进后退 history.back(),history.forward(),history.go(1)
+3. 浏览器的前进后退 history.back()，history.forward()，history.go(1)
 
 ### History 原理
 
@@ -115,9 +121,18 @@ window.addEventListener("popstate", function (e) {
 
 - hash，history 在浏览器中刷新页面，会不会到服务器？ 重定向怎么处理
 
-  history 路由的情况下，刷新页面，会根据实际的 URL 向服务器发请求。
+  history 路由的情况下，刷新页面，会根据实际的 URL 向服务器发请求，如果是 nginx 需要配置 try_files 指令重定向到项目首页。
 
   hash 路由，hash 值不会发送到服务器。
+
+- 实现原理总结
+
+  - hash 路由
+    监听 hashchange 事件，匹配对应组件
+  - history 路由
+    监听 popstate 事件，通过 history.pushState/replaceState 来改变 url 地址
+
+    服务器配置都返回 index.html
 
 ## Reference
 
