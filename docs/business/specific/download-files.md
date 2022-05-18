@@ -79,7 +79,7 @@ function downloadFile(path, name) {
 
 ```js
 const SIZE = 20 * 1024 * 1024; //分片大小
-const CONTENT_LENGTH = xxxxx; //从接口获取文件大小
+const CONTENT_LENGTH = xxxxx; //发一个head 请求，从接口获取文件大小
 const download = async (url, filename，poolLimit=3) => {
   let chunks = Math.ceil(CONTENT_LENGTH / SIZE); //分片个数
   let chunksArray = [...new Array(chunks).keys()];
@@ -139,6 +139,16 @@ function saveByBlob(name, blob) {
   URL.revokeObjectURL(blob);
 }
 ```
+
+关于并发下载：
+
+Chrome 在 HTTP /1.1 中单个域名的请求最大 TCP 请求并发量为 6 个。
+
+一般情况是服务器带宽大于用于带宽，且不对客户端做限制，这时候并发下载速度都会跑满客户端带宽，并不会更快。
+
+如果服务器带宽远大于用户带宽，且限制了单个 TCP 下载速度，开启多线程下载会比单线程快，比如百度云的下载。
+
+HTTP/2.0 多路复用代替 HTTP/1.x 的序列和阻塞机制，不受并发 6 个请求的限制，一个域名只有一个 TCP 链接。
 
 ## FileSaver 下载
 
@@ -282,3 +292,5 @@ Float64Array();
 - [js 一张图搞定 arrayBuffer/Blob/File/fileReader/canvas/base64 的各种转换操作,以及文件上传 - 掘金](https://juejin.cn/post/6990980826452197407#heading-1)
 - [前端二进制 ArrayBuffer、TypedArray、DataView、Blob、File、Base64、FileReader 一次性搞清楚 - 掘金](https://juejin.cn/post/7046313942938812424#heading-0)
 - [你不知道的 Blob - 掘金](https://juejin.cn/post/6844904178725158926#heading-11)
+- [⚡️ 前端多线程大文件下载实践，提速 10 倍(拿捏百度云盘) - 掘金](https://juejin.cn/post/6874991690747215880#heading-7)
+<!-- - [**从 Fetch 到 Streams —— 以流的角度处理网络请求 - 掘金**](https://juejin.cn/post/6844904029244358670#heading-13) -->
