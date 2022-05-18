@@ -154,6 +154,91 @@ function flat(arr, level = 1) {
 
 - Object.getPrototypeOf
 
+## Proxy
+
+修改某些操作的默认行为，在语言层面的修改，属于元编程。
+
+在目标对象前的拦截，可以外界访问目标对象时进行过滤或改写。支持 13 种拦截操作。
+
+- 代理属性时要考虑该属性是否 configurable ，是否 writable。
+
+Proxy.revocable() 方法返回一个对象，该对象的 proxy 属性是 Proxy 实例，revoke 属性是一个函数，可以取消 Proxy 实例。
+
+```js
+let target = {};
+let handler = {};
+
+let { proxy, revoke } = Proxy.revocable(target, handler);
+
+proxy.foo = 123;
+proxy.foo; // 123
+
+revoke();
+proxy.foo; // TypeError: Cannot perform 'get' on a proxy that has been revoked
+target; //{foo: 123}
+```
+
+[ES6 常用但被忽略的方法（第四弹 Proxy 和 Reflect） - 掘金](https://juejin.cn/post/6844904200971747335#heading-16)
+
+## Reflect
+
+Reflect 对象的方法与 Proxy 对象的方法一一对应，只要是 Proxy 对象的方法，就能在 Reflect 对象上找到对应的方法。每一个 Proxy 对象的拦截操作（get、delete、has...），内部都调用对应的 Reflect 方法。
+
+让 Object 操作都变成函数行为。
+
+```js
+// 老写法
+"assign" in Object; // true
+
+// 新写法
+Reflect.has(Object, "assign"); // true
+```
+
+## Proxy and Reflect
+
+- 代理对象的属性
+
+  ```js
+  const jay = {
+    name: "jay",
+    phone: "188888888",
+    age: "30",
+  };
+
+  const handler = {
+    get(target, key, receiver) {
+      console.log("hh", target, key, receiver);
+      if (key === "phone") {
+        return "代理的电话12222";
+      }
+      //return target[key] //有可能还是被代理了，代理陷阱
+      return Reflect.get(target, key, receiver);
+    },
+  };
+  const proxy = new Proxy(jay, handler);
+
+  proxy.phone; //代理的电话12222
+  proxy.name; // ’jay‘
+  ```
+
+- 使用 Proxy Reflect 实现通过复数数组下标访问数组元素
+
+  ```js
+  let arr = [1, 2, 3, 4];
+
+  arr = new Proxy(arr, {
+    get: function (target, key, receiver) {
+      let idx = Number(key);
+      if (key < 0) {
+        return target[target.length + idx];
+      }
+      return Reflect.get(target, key, receiver);
+    },
+  });
+
+  arr[-1];
+  ```
+
 ## Reference
 
 - [对象的新增方法 - ECMAScript 6 入门](https://es6.ruanyifeng.com/#docs/object-methods)
