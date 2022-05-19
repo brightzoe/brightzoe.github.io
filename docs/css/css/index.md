@@ -41,11 +41,14 @@ display:inline 水平方向的 margin，padding 有效，垂直方向无效。
 - `display: none` 不会渲染该元素，不占据页面空间。
 - `visibility: hidden` 会渲染，仍占据页面空间，不响应绑定的监听事件。
 - `opacity: 0` 会渲染，占据空间，响应绑定的监听事件。
+- 绝对定位到视口之外。
+
 
 ### display:none 与 visibility:hidden
 
 - 是否渲染
 - 修改是否会引发回流与重绘
+- 是否被继承。display:none 会使他以及后代在页面都不能出现，而 hidden 对于未设置 visible 的子代继承，设置了则可以显示。
 
 ## transition 与 animation
 
@@ -142,7 +145,7 @@ display:inline 水平方向的 margin，padding 有效，垂直方向无效。
 
 浮动元素可以左右移动，直到遇到另一个浮动元素或者遇到它外边缘的包含框。
 
-浮动元素会触发 BFC.
+浮动元素会触发 BFC。
 
 浮动不影响块元素，只影响行内元素。
 
@@ -157,7 +160,7 @@ display:inline 水平方向的 margin，padding 有效，垂直方向无效。
 
   都脱离普通文档流。
 
-  absolute：可以设置根元素，时相对根元素的位置。
+  absolute：可以设置根元素，是相对根元素的位置。以根元素的 padding 为标准进行位移。
 
   fixed： 相对视口的位置，不随滚动条滚动。
 

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 description: css layout
-keywords: [css,layout]
+keywords: [css, layout]
 ---
 
 # 布局
@@ -216,22 +216,116 @@ You can use Sanitize.css or Modern-normalize in non-Bootstrap projects, use the 
    ```
 
 2. 绝对定位 + margin:auto
+
+   ```css
+   .container {
+     position: relative;
+   }
+   .item {
+     position: absolute;
+     left: 0;
+     right: 0;
+     top: 0;
+     bottom: 0;
+     margin: auto;
+   }
+   ```
+
 3. flex
+
+   ```css
+   .container {
+     display: flex;
+   }
+   .item {
+     justify: center;
+     align-items: center;
+   }
+   ```
+
+   ```css
+   .box {
+     display: flex;
+   }
+
+   .item {
+     margin: auto;
+   }
+   ```
 
 4. grid
 
-   place-items: center
+   ```css
+   .container {
+     display: grid;
+   }
+   .item {
+     place-items: center;
+   }
+   ```
+
+   ```css
+   .container {
+     display: grid;
+   }
+   .item {
+     margin: auto;
+   }
+   ```
 
 5. table
 6. 行内元素： line-height=height
+
+### 水平居中
+
+行内元素
+
+```css
+.parent {
+  text-align: center;
+}
+```
+
+块级元素
+
+```css
+.item {
+  margin: 0 auto;
+}
+```
+
+### 垂直居中
+
+行内元素
+
+```css
+.item {
+  line-height: 40; /* = height  */
+}
+```
 
 ## 常见布局实现
 
 - 左侧固定，右侧自适应
 
-  左侧：flex-basis:100px;flex-grow:1
+```css
+.container {
+  display: flex;
+}
+.left {
+  flex: 0 0 200px;
+}
+.right {
+  flex: 1;
+}
+```
 
-  右侧：flex-shrink:0
+```css
+.container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+```
 
 - 假设高度已知，实现三栏布局，左右均为 300px ,中间自适应
 

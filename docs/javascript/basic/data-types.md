@@ -16,6 +16,18 @@ string,number,boolean,undefined,null,symbol,bigInt
 !![]; //true
 ```
 
+### String
+
+```js
+//一些方法
+let str = "gdagffasd";
+str.indexOf("d");
+str.lastIndexOf("g");
+
+str.split(""); //转为数组
+str.split("g"); //['', 'da', 'ffasd']
+```
+
 ### number
 
 ```js
