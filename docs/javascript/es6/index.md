@@ -154,6 +154,127 @@ function flat(arr, level = 1) {
 
 - Object.getPrototypeOf
 
+## Class
+
+```js
+//es5
+function Point(x, y) {
+  this.x = x;
+  this.y = y;
+}
+Point.prototype.toString = function () {
+  return "(" + this.x + ", " + this.y + ")";
+};
+var p = new Point(1, 2);
+
+//es6
+class Point {
+  constructor(x, y) {
+    //构造方法
+    this.x = x;
+    this.y = y;
+  }
+  toString() {
+    return "(" + this.x + ", " + this.y + ")";
+  }
+}
+const p = new Point(1, 2);
+Point === Point.prototype.constructor; // true
+p.constructor === Point.prototype.constructor; // true
+```
+
+类的底层还是通过构造函数实现的。
+
+```js
+//上面的类等同于
+Point.prototype = {
+  constructor() {},
+  toString() {},
+};
+```
+
+类的内部所有定义的方法，都是不可枚举的（non-enumerable）,而 es5 的构造函数上定义的方法可枚举。
+
+```js
+Object.keys(Point.prototype); //[]
+```
+
+### getter setter
+
+对某个属性设置存值函数和取值函数，拦截该属性的存取行为。
+
+getter setter 必须同时出现。
+
+```js
+class MyClass {
+  constructor() {
+    // ...
+  }
+  get a() {
+    return "getter";
+  }
+  set a(value) {
+    console.log("setter: " + value);
+    //  this.a = a; // 自身递归调用 ❌❌❌ 不能这样写！
+  }
+}
+
+let inst = new MyClass();
+
+inst.a = 123;
+// setter: 123
+
+inst.a;
+// 'getter'
+```
+
+### static
+
+静态方法，不能在类的实例上调用静态方法，而应该通过类本身调用，静态方法不会被实例继承。
+
+```js
+class Foo {
+  static classMethod() {
+    return "hello";
+  }
+}
+
+Foo.classMethod(); // 'hello'
+
+var foo = new Foo();
+foo.classMethod();
+// TypeError: foo.classMethod is not a function
+```
+
+如果静态方法包含 this 关键字，这个 this 指的是类，而不是实例。
+
+父类的静态方法，可以被子类继承。
+
+### extends
+
+super 用来访问和调用一个对象的父对象上的函数。
+
+super 必须在 this 关键字之前使用。
+
+```js
+class Father {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+class Child extends Father {
+  // 继承父类所有属性和方法
+  constructor(a) {
+    super(x, y);
+    this.a = a;
+  }
+}
+let test = new Child();
+```
+
+- [ES6 新特性 Class 类的全方面理解 - 掘金](https://juejin.cn/post/7021069095336411166)
+
 ## Proxy
 
 修改某些操作的默认行为，在语言层面的修改，属于元编程。
