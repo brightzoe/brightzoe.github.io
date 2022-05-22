@@ -182,7 +182,7 @@ CSSOM DOM
 - CORS 发起的跨域 HTTP 请求需要 CORS 标准
 
   - 预检请求
-    - 需预检的请求必须首先使用 OPTIONS 方法发起一个预检请求到服务器，以获知服务器是否允许该实际请求
+    - 需预检的请求必须首先使用 OPTIONS 方法发起一个预检请求到服务器，以获知服务器是否允许该实际请求。
     - 一些简单的方法不会有预检请求（get/head/post）, 因为不能破坏 Web 的兼容性。
   - 常用的 CORS 头
 
@@ -190,9 +190,9 @@ CSSOM DOM
 
     Access-Control-Allow-Origin:url/\* 服务器允许的域
 
-    Access-Control-Allow-Methods: POST, GET, OPTIONS 服务器允许使用这些方法
+    Access-Control-Allow-Methods: (POST, GET, OPTIONS) 服务器允许使用这些方法
 
-    Access-Control-Allow-Headers: X-PINGOTHER, Content-Type 服务器允许使用这些请求头
+    Access-Control-Allow-Headers: (X-PINGOTHER, Content-Type) 服务器允许使用这些请求头
 
     Access-Control-Allow-Credentials:允许带上的凭据(cookie 头)
 
@@ -211,6 +211,19 @@ CSSOM DOM
     Referer:
 
 - 代理服务器 服务器之间的通信没有跨域问题，让服务器去请求相关资源并返回给前端（可以使用 nginx 或者 nodejs 中间件做反向代理）
+
+  Nginx 相当于起了一个跳板机，这个跳板机的域名也是 client.com，让客户端首先访问 client.com/api，这当然没有跨域，然后 Nginx 服务器作为反向代理，将请求转发给 server.com，当响应返回时又将响应给到客户端。
+
+  ```conf
+  //nginx.conf
+  server {
+    listen  80;
+    server_name  client.com; //客户端域名
+    location /api {
+      proxy_pass server.com; //服务端域名
+    }
+  }
+  ```
 
 #### 代理
 

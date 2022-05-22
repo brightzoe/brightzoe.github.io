@@ -158,6 +158,7 @@ plugins: [
   }
   ```
 - 动态 import
+  返回 promise
 
 ## bundle 与 chunk
 
@@ -199,7 +200,7 @@ bundle
 - terser-webpack-plugin 打包后 js 压缩
 - tree-shaking 默认开启的，只打包有用的代码
 - source-map 方便定位代码位置，不同环境不同选项，生产环境可以不开
-- compression-webpack-plugin 将资源压缩为gzip ，配合服务端开启静态压缩
+- compression-webpack-plugin 将资源压缩为 gzip ，配合服务端开启静态压缩
 
 监控面板
 
