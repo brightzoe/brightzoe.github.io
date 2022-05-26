@@ -229,7 +229,7 @@ put 用于更新资源，具有幂等性。
 
 SSE（sever-sent events）服务器端推送事件，HTML5 新增的功能，服务器单向推送数据到客户端。
 
-EventSource 实例，对 HTTP 开启持久化连接，一直保持开启知道被要求关闭。
+EventSource 实例，对 HTTP 开启持久化连接，一直保持开启直到被要求关闭。
 
 ## Reference
 
