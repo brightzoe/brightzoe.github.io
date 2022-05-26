@@ -147,11 +147,203 @@ const p = Promise.reject("出错了");
 const p = new Promise((resolve, reject) => reject("出错了"));
 ```
 
-## api
+## API
 
-- Promise.all
-- Promise.race
-- Promise.allSettled
-- Promise.any
-- Promise.resolve
-- Promise.reject
+### Promise.resolve
+
+```js
+Promise.resolve(value);
+
+Promise.resolve(Promise.reject(1)).catch((err) => console.log(err));
+```
+
+返回一个 promise ，如果 value 为 thenable ，则跟踪这个 thenable 的状态，采用它的最终状态，否则返回一个以 value 值为结果的 promise。
+
+### Promise.reject
+
+```js
+Promise.reject(error);
+```
+
+返回一个 reject 状态的 promise，值为 error
+
+### Promise.all
+
+```js
+Promise.all(promises: Iterable<Promise>): Promise<Array>
+```
+
+接收 `Iterable<promise>` 类型，返回一个新的 promise 实例。
+
+> iterable: array, map, set 等。
+
+当所有 promise 都成功时 resolve，value 为所有 promise 的 value 数组。
+
+有一个失败时则 reject，error 为第一个 reject 的 promise 的 error。
+
+参数为空数组时，立刻 resolve。
+
+```js
+const promises = [Promise.resolve("a"), Promise.resolve("b"), Promise.reject("c")];
+Promise.all(promises)
+  .then((val) => console.log(val))
+  .catch((err) => console.log(err));
+```
+
+使用：
+
+```js
+// 结合 map
+function timesTwoAsync(x) {
+  return new Promise((resolve) => resolve(x * 2));
+}
+const arr = [1, 2, 3];
+const promiseArr = arr.map(timesTwoAsync);
+Promise.all(promiseArr).then((result) => {
+  console.log(res);
+});
+```
+
+简易实现：
+
+```js
+// 异步返回的promise 要确定所有promise都返回了才最终resolve
+// 参数可能不是promise要用promise 包一层
+function all(promises) {
+  return new Promise((resolve, reject) => {
+    const res = [];
+    let count = 0;
+    if (promises.length === 0) {
+      resolve(res);
+      return;
+    }
+    promises.forEach((p, i) => {
+      Promise.resolve(p)
+        .then((val) => {
+          res[i] = val;
+          count++;
+          if (count === promises.length) {
+            resolve(res);
+          }
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  });
+}
+```
+
+### Promise.race
+
+```js
+Promise.race(promises: Iterable<Promise>): Promise
+```
+
+返回一个 promise，是第一个结束(resolve/reject)的 promise。
+
+虽然只返回第一个结束的 promise，其他跑的慢的 promise 也都会执行。
+
+参数为空数组时，返回的 promise 的状态永远为 pending。
+
+使用：
+
+可以用于超时控制。
+
+```js
+function resolveAfter(ms, value) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(value);
+    }, ms);
+  });
+}
+
+function timeout(ms, promise) {
+  return Promise.race([promise, resolveAfter(ms, Promise.reject("(⊙o⊙)超时了"))]);
+}
+```
+
+[Promise 中的三兄弟 .all(), .race(), .allSettled() - 掘金](https://juejin.cn/post/6844903912592375821#heading-7)
+
+简易实现：
+
+```js
+function race(promises) {
+  return new Promise((resolve, reject) => {
+    promises.forEach((p) => {
+      Promise.resolve(p).then(
+        (value) => {
+          resolve(value);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
+  });
+}
+```
+
+### Promise.finally
+
+在 promise 结束时，无论成功或者失败都会执行的指定的回调函数。避免了相同的语句需要在 then()和 catch()中各写一次。
+
+### Promise.allSettled
+
+```js
+Promise.allSettled(promises: Iterable<Promise>):  Promise<Array<SettlementObject>>
+```
+
+所有 promise 都结束了，返回一个 resolve 状态的 promise，value 为 promises 的状态数组。
+
+```js
+Promise.allSettled([Promise.reject(1), Promise.resolve(2)]).then((res) => console.log(res));
+```
+
+## 请求并发
+
+### 为什么需要
+
+- 一次性发送过多请求，浏览器有请求并发控制，超出并发数，后面请求会排队等候，请求等候过久，可能会超时，或者导致浏览器卡死
+- 一次只发一个请求，则添加次数过多，效率很低
+
+### 实现
+
+```js
+function poolLimit(limit, urls, callback) {
+  //先并发limit 个请求，当有请求回来时，发送一个新的请求
+  let index = limit; //通过闭包维护添加请求的index
+  for (let i = 0; i < index; i++) {
+    addRequest(i);
+  }
+
+  // 添加第几个请求，请求完成后发起新的一个请求
+  function addRequest(i) {
+    console.log("添加任务", i);
+    request(urls[i]).then((res) => {
+      callback(res);
+      if (index < urls.length - 1) {
+        index++;
+        addRequest(index); //有完成了的，从之前添加到的索引 index 开始取新的 url 发起请求
+      }
+    });
+  }
+
+  //请求函数
+  function request(url) {
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        res(`任务${url} 完成`);
+      }, Math.random() * 2000);
+    });
+  }
+}
+
+const urls = ["bytedance.com", "tencent.com", "alibaba.com", "microsoft.com", "apple.com", "hulu.com", "amazon.com"];
+poolLimit(3, urls, (data) => console.log(data));
+```
+
+## Reference
+
+- [Promise 中的三兄弟 .all(), .race(), .allSettled() - 掘金](https://juejin.cn/post/6844903912592375821#heading-7)
