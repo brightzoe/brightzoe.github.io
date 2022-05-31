@@ -77,9 +77,26 @@ calculateHash(file, chunkSize)
 > 扩展：
 > 可以在上述逻辑中添加计算 hash 的进度：当前计算到的分片数/总分片数
 
+提升计算速度：
+
+- web worker 计算
+- 文件切分，抽样计算，但有一定概率遇到不同的文件计算 hash 值相同的情况
+
 ## 文件切片
 
 file.slice
+
+```js
+function createChunks(file, size = 5 * 1024 * 1024) {
+  const res = [];
+  let cur = 0;
+  while (cur < file.size) {
+    res.push(file.slice(cur, cur + size));
+    cur += size;
+  }
+  return res;
+}
+```
 
 ## 断点续传
 
@@ -87,7 +104,7 @@ file.slice
 
 实现方式分两种：
 
-- 服务器告知从哪里开始
+- 服务器告知从哪里开始。再次上传时，服务器返回是否上传过完整文件/切片文件，存在的切片数据。
 - 浏览器端自行处理
 
 如果上传中断了，服务器先将该文件写为临时文件，等全部上传完再重命名为正式文件。中断后再次上传，根据临时文件的大小，作为在客户端读取文件的偏移量，重新分片上传。

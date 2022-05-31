@@ -9,6 +9,7 @@
    使用参考：https://juejin.cn/post/6950855971379871757
 
    - First Contentful Paint 渲染出首个文本/首张图片的时间
+     测量**加载**性能，最好在 2.5s 内。
    - Time to Interactive 可交互时间。大部分可视区域的事件都可以操作
    - Total Blocking Time ：= TTI - FCP
    - Largest Contentful Paint 视口中可见的最大图像或文本块的渲染时间
