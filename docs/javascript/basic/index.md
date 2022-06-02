@@ -22,7 +22,9 @@ Object.is() 与比较操作符 “===”、“==”
 
 - 浅拷贝只复制对象的第一层。第一层的值如果是对象，拷贝的是对象的引用。
 
-  浅拷贝：扩展运算符，`Object.assign({}, obj)`
+  浅拷贝：扩展运算符，`Object.assign({}, obj)`。
+
+  > `Object.assign(targetObj, obj1,[obj2])` 将源对象的所有可枚举属性复制到目标对象。返回的是目标对象本身。
 
   ```js
   let outObj = {
@@ -40,8 +42,9 @@ Object.is() 与比较操作符 “===”、“==”
   console.log(outObj); // {inObj: {a: 2, b: 2}}
   ```
 
-- 深拷贝递归复制对象的所有层级
-  JSON.stringify 是深拷贝。但不能拷贝 function，不能拷贝循环引用的对象等
+- 深拷贝复制对象的所有层级。
+
+  `JSON.parse(JSON.stringify(data))` 是深拷贝。但不能拷贝 `function`，不能拷贝循环引用的对象等。
 
 ### 手写深拷贝
 

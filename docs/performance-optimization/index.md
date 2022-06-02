@@ -151,12 +151,6 @@ throttle 更适合需要实时响应的场景：拖拽进行放大缩小,滚动�
 
 ### 添加的 setTimeout,监听事件等要及时清除。
 
-## 使用的一些工具
-
-- Vercel
-  部署静态网站，运行 python/node/go/ruby 脚本，充当服务器。
-  零配置部署，访问速度快，构建快。
-
 ## Reference
 
 - [React 性能优化 | 包括原理、技巧、Demo、工具使用 - 掘金](https://juejin.cn/post/6935584878071119885#heading-10)

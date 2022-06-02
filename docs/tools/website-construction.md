@@ -153,6 +153,12 @@ DNS 解析可以配置规则，在目前国内访问国外网络存在些问题�
 
 前两天尝试将此博客，在境外解析到 github,境内解析到 CODING。这样，国内用户访问，就会访问 CODING 上部署的内容，在境外访问就会访问到 github 上部署的内容。目前取消托管到 CODING 上了，由于静态网站部署不支持选择目录，以及选择分支，更新后自动部署的设置也有些问题，暂时放弃了。
 
+## 使用的一些工具
+
+- Vercel
+  部署静态网站，运行 python/node/go/ruby 脚本，充当服务器。
+  零配置部署，访问速度快，构建快。
+
 ## Reference
 
 - [Hexo 博客 GitHub Pages + CODING 静态网站双部署 | Asurada's Zone](https://asurada.zone/post/Deploy-Hexoblog-To-Codingnet-And-GitHub/)
