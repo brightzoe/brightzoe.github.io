@@ -34,12 +34,12 @@ module.exports = {
         blog: {
           //@docusaurus/plugin-content-blog
           showReadingTime: true,
-          editUrl: "https://github.com/brightzoe/brightzoe.github.io",
+          editUrl: "https://github.com/brightzoe/brightzoe.github.io/edit/main",
           // blogSidebarTitle: '全部博文',
           blogSidebarCount: 6,
           feedOptions: {
             type: "all",
-            copyright: `版权所有 © ${new Date().getFullYear()} Facebook, Inc.`,
+            copyright: `版权所有 © ${new Date().getFullYear()} brightzoe's blog`,
           },
         },
         theme: {
@@ -158,7 +158,7 @@ module.exports = {
           },
         ],
         style: "dark",
-        copyright: `Copyright © ${new Date().getFullYear()} brightzoe's blog, Inc.`,
+        copyright: `Copyright © ${new Date().getFullYear()} brightzoe's blog`,
       },
       prism: {
         theme: lightCodeTheme,
