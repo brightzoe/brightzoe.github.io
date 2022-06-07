@@ -69,9 +69,9 @@ module.exports = {
           changefreq: "weekly",
           priority: 0.5,
         },
-        googleAnalytics: {
-          //@docusaurus/plugin-google-analytics
-          trackingID: "UA-192447848-1",
+        gtag: {
+          //@docusaurus/plugin-google-gtag
+          trackingID: "G-Y9R1END50H",
           // Optional fields.
           anonymizeIP: true, // Should IPs be anonymized?
         },
