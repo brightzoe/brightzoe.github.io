@@ -64,12 +64,12 @@ module.exports = {
           changefreq: "weekly",
           priority: 0.5,
         },
-        gtag: {
-          //@docusaurus/plugin-google-gtag
-          trackingID: "G-Y9R1END50H",
-          // Optional fields.
-          anonymizeIP: true, // Should IPs be anonymized?
-        },
+        // gtag: {
+        //   //@docusaurus/plugin-google-gtag
+        //   trackingID: "G-Y9R1END50H",
+        //   // Optional fields.
+        //   anonymizeIP: true, // Should IPs be anonymized?
+        // },
       },
     ],
   ],
