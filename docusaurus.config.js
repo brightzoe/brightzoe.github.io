@@ -101,18 +101,18 @@ module.exports = {
             position: "left",
           },
           { to: "/docs/react", label: "React", position: "left" },
-          {
-            to: "/docs/data-structure",
-            label: "数据结构与算法",
-            position: "left",
-          },
-          { to: "/docs/business", label: "业务使用", position: "left" },
+          // {
+          //   to: "/docs/data-structure",
+          //   label: "数据结构与算法",
+          //   position: "left",
+          // },
+          { to: "/docs/business", label: "业务", position: "left" },
           {
             to: "/docs/tools/chrome-devtools",
-            label: "工具技巧",
+            label: "工具",
             position: "left",
           },
-          { to: "/blog", label: "碎碎谈", position: "left" },
+          { to: "/blog", label: "Blog", position: "left" },
           {
             href: "https://github.com/brightzoe",
             label: "GitHub",
