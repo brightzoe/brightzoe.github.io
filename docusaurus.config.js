@@ -14,7 +14,23 @@ module.exports = {
   trailingSlash: false, //customize the presence/absence of a trailing slash at the end of URLs/links, and how static HTML files are generated
   organizationName: "brightzoe", // Usually your GitHub org/user name.
   projectName: "brightzoe.github.io", // Usually your repo name.
-  themes: ["@codesandbox/sandpack-docusaurus", "@docusaurus/theme-live-codeblock"],
+  themes: [
+    "@codesandbox/sandpack-docusaurus",
+    "@docusaurus/theme-live-codeblock",
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        // ... Your options.
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+        // For Docs using Chinese, The `language` is recommended to set to:
+        // ```
+        language: ["en", "zh"],
+        // ```
+        // When applying `zh` in language, please install `nodejieba` in your project.
+      },
+    ],
+  ],
 
   presets: [
     //预设:将某些插件和主题一起使用
@@ -62,22 +78,7 @@ module.exports = {
       },
     ],
   ],
-  plugins: [
-    "@docusaurus/plugin-ideal-image",
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        // ... Your options.
-        // `hashed` is recommended as long-term-cache of index file is possible.
-        hashed: true,
-        // For Docs using Chinese, The `language` is recommended to set to:
-        // ```
-        language: ["en", "zh"],
-        // ```
-        // When applying `zh` in language, please install `nodejieba` in your project.
-      },
-    ],
-  ],
+  plugins: ["@docusaurus/plugin-ideal-image"],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
