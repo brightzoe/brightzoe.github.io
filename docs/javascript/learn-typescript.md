@@ -4,7 +4,7 @@
 
 - 强类型 vs 弱类型 ：
 
-  类型安全，更强的类型约束。**强类型不允许任意隐式类型转换，弱类型允许任意类型转换。**
+  类型安全，更强的类型约束。 **强类型不允许任意隐式类型转换，弱类型允许任意类型转换。**
 
 - 静态类型语言 vs 动态类型语言：
 
@@ -128,8 +128,41 @@ function passMixed (value:any){
 `tsc hello.ts`
 以上命令可以编译 `hello.ts`文件到 js,会在同一个目录下生成同名 js 文件。
 
+`tsc xx -w ` watch mode ，内容改变则重新编译。
+
 `yarn tsc --init`
 生成`tsconfig.json`
+
+`tsc` 直接运行，使用 `tsconfig.json`配置文件，会编译当前目录所有 ts 文件。
+
+```js title='tsconfig.json'
+{
+  "include": [ //包含的文件
+    "**/*.ts"
+  ],
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "lib": [
+      "es2015",
+      "dom",
+      "es2016",
+      "es2017",
+      "esnext"
+    ],
+    "types": [
+      "node"
+    ]
+  }
+}
+```
+
+[TypeScript: Documentation - What is a tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
 
 `yarn tsc --local zh-CN`
 中文错误消息。
@@ -145,6 +178,30 @@ TypeScript 编译的时候即使报错了，还是会生成编译结果，我们
 很多第三方库原生支持 TS，在使用时就能获得代码补全和提示。
 
 而有些第三方库原生不支持 TS ，可以安装社区维护的类型声明库来获得代码补全的能力。比如使用`npm install --save-dev @types/react`安装 React 的类型声明库。 [DefinitelyTyped/DefinitelyTyped: The repository for high quality TypeScript type definitions.](https://github.com/DefinitelyTyped/DefinitelyTyped)
+
+### 类型声明
+
+没有类型声明文件的库，或者自己写类型声明对全局文件进行类型定义。
+
+```ts title="xx.d.ts"
+declare function replace(input: string): string; //如果没有类型声明，自己声明一下类型。
+declare function replace(input: number): number; //可以相同的函数名字，参数不同，函数重载
+
+// 命名空间的嵌套
+declare namespace $$ {
+  namespace hh{
+    function getName(): string;
+  }
+  namespace fn {
+    class init {}
+  }
+}
+
+//声明模块
+declare module "xx" {
+  export function getName(): string;
+}
+```
 
 ## TS 语法
 
@@ -182,8 +239,9 @@ const [age, name] = tuple;
 enum postStatus { //枚举类型
   Draft = 0, //不指定值的话，从0开始累加。只指定第一个则从指定的值开始累加。也可以使用字符串。
   Unpublished = 1,
-  Published = 2,
+  Published = 5,
 }
+console.log(postStatus[5]); //也可以通过 value 拿到 key
 const post = {
   status: postStatus.Draft,
 };
@@ -266,10 +324,50 @@ type User = {
 const num = [11, 12, 14];
 const res = num.find((i) => i > 0); //被推断为number/undefined
 
-//可以断言res一定是num。
+//可以断言res一定是number。
 const num1 = res as number;
 const num2 = <number>res; //JSX不能使用，会产生冲突
 //断言与转换的区别：断言是在编译时的概念，转换是在运行时的概念。在编译后，断言就不存在了。
+```
+
+### 类型保护
+
+```ts
+interface Bird {
+  fly: boolean;
+  sing: () => {};
+}
+interface Fish {
+  fly: boolean;
+  swim: () => {};
+}
+
+function train(animal: Bird | Fish) {
+  if (animal.fly) {
+    (animal as Bird).sing(); // 通过类型断言实现类型保护
+  } else {
+    (animal as Fish).swim();
+  }
+}
+
+function train(animal: Bird | Fish) {
+  if ("sing" in animal) {
+    //in 方法实现类型保护 animal 有 sing 方法
+    animal.sing();
+  } else {
+    animal.swim();
+  }
+}
+
+class NumberObj {
+  count: number = 1;
+}
+function add(first: object | NumberObj, second: object | NumberObj) {
+  // class 的 instanceof 语法实现类型保护
+  if (first instanceof NumberObj && second instanceof NumberObj) {
+    return { count: first.count + second.count };
+  }
+}
 ```
 
 ### 接口 interface
@@ -448,31 +546,86 @@ class Dog extends Animal {
 
 ### 泛型
 
-```ts
-//在定义函数接口或类的时候，不定义具体的类型。在使用的时候再去指定具体类型。
-//目的：更大程度地复用代码
+generic type
 
-function createNumberArray(length: number, value): number[] {
-  const arr = Array<number>(length).fill(value);
+在定义函数接口或类的时候，不定义具体的类型。在使用的时候再去指定具体类型。
+
+目的：更大程度地复用代码，提升代码灵活性。
+
+#### 函数中的泛型
+
+```ts
+function createArray<T>(length: number, value: T): T[] {
+  //T 泛型，不明确类型，把类型变成一个参数，在调用的时候传递
+  const arr = Array<T>(length).fill(value);
   return arr;
 }
-const res = createNumberArray(3, 1);
-
-function createArray<T>(length: number, value: T): T[] {
-  //T泛型，不明确类型，把类型变成一个参数，在调用的时候传递
-  const arr = Array < T > { length }.fill(value);
-}
-
 const res = createArray<string>(3, "foo"); //调用的时候明确类型
+const res = createArray<number>(3, 1);
+console.log(res);
+
+//多个泛型参数
+function join<T, P>(first: T, second: P) {
+  return `${first}${second}`;
+}
+console.log(join<number, string>(1, "gg"));
+
+//使用泛型作为函数的类型注解
+const func: <T>(params: T) => T = <T>(params: T) => {
+  return params;
+};
+console.log(func(1));
 ```
 
-### 类型声明
+#### 类中的泛型
 
 ```ts
-import { replace } from "lodash"; //没有类型声明
-//一般常用地模块都有的，可以安装对应的类型声明模块。 .d.ts  一般的模块会直接包含类型声明，含有相关类型约束。
+class DataManager<T> {
+  constructor(private data: T[]) {}
+  getData(idx: number): T {
+    return this.data[idx];
+  }
+}
+const data = new DataManager(["a", "b", "c"]);
+console.log(data.getData(0));
+```
 
-declare function replace(input: string): string; //如果没有类型声明，自己声明一下类型。
+```ts
+interface Item {
+  name: string;
+}
+class DataManager<T extends Item> {
+  //泛型继承接口
+  constructor(private data: T[]) {}
+  getData(idx: number): string {
+    return this.data[idx].name;
+  }
+}
+const data = new DataManager([{ name: "1" }, { name: "hh" }]);
+console.log(data.getData(1));
+```
+#### keyof
+
+```ts
+interface Person {
+  name: string;
+  age: number;
+  gender: string;
+}
+class Teacher {
+  constructor(private info: Person) {}
+  getInfo<T extends keyof Person>(key: T): Person[T] {// 接收Person 中的 key,返回 Person 的 value
+    return this.info[key];
+  }
+}
+const teacher = new Teacher({
+  name: "dell",
+  age: 18,
+  gender: "male",
+});
+
+const test = teacher.getInfo("gender");
+console.log(test);
 ```
 
 ## Reference
