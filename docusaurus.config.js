@@ -41,6 +41,7 @@ module.exports = {
           sidebarCollapsed: false,
           // options for remark-admonitions
           admonitions: {},
+          breadcrumbs: false,
         },
         blog: {
           //@docusaurus/plugin-content-blog
@@ -83,12 +84,18 @@ module.exports = {
         disableSwitch: false,
         respectPrefersColorScheme: false,
       },
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true,
+          hideable: true,
+        },
+      },
       tableOfContents: {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
       },
       navbar: {
-        title: "brightzoe's blog",
+        title: "brightzoe",
         logo: {
           alt: "My Site Logo",
           src: "img/logo.svg",
