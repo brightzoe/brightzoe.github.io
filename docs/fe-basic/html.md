@@ -53,7 +53,7 @@ async：加载时不阻塞后续内容解析，并行进行 HTML 解析与 scrip
 
 defer：并行进行 HTML 解析与 script 的请求，到整个 HTML 加载完成后才会进行 script 执行，且多个 defer 的执行顺序可以保证。
 
-了解更多：[**script 标签的使用**](/docs/javascript/attributes-and-usage-of-the-script-tag)
+了解更多：[**script 标签的使用**](/docs/fe-basic/attributes-and-usage-of-the-script-tag)
 
 ## img
 

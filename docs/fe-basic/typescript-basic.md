@@ -1,3 +1,6 @@
+---
+tags: [typescript,ts]
+---
 # TS 基础
 
 ## 背景

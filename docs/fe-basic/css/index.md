@@ -55,14 +55,14 @@ display:inline 水平方向的 margin，padding 有效，垂直方向无效。
 - transition 过渡效果。需要事件触发，比如 hover，focus 等，需要设置开始效果和结束效果。
 - animation 动画效果。不需要触发，设定好事件后可以自己执行。但可以设置多个关键帧（@keyframe）。
 
-了解更多：[transform,translation](/docs/css/css/simple-anime)
+了解更多：[transform,translation](/docs/fe-basic/css/simple-anime)
 
 ## transform 与绝对定位
 
 - transform：不触发浏览器回流和重绘，利用 GPU，效率高。
 - 绝对定位： 触发回流和重绘，利用 CPU，效率低。
 
-## [盒模型](/docs/css/css/box-model)
+## [盒模型](/docs/fe-basic/css/box-model)
 
 ## 图片格式
 

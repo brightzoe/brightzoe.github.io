@@ -1,4 +1,4 @@
-# basic
+# JavaScript
 
 一些问题。
 

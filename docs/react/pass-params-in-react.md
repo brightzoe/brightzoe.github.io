@@ -57,7 +57,7 @@ const To = (props)=>{
 
 - [react router 相关 api 和参考](https://zhuanlan.zhihu.com/p/101129994)
 - [pass params with history](https://stackoverflow.com/questions/44121069/how-to-pass-params-with-history-push-link-redirect-in-react-router-v4)
-- [对路由的理解和使用](/docs/javascript/how-to-understand-router)
+- [对路由的理解和使用](/docs/fe-basic/how-to-understand-router)
 - [React 中使用 react-router-dom 路由传参的三种方式详解【含 V5.x、V6.x】！！！ - 掘金](https://juejin.cn/post/7042849947451916296)
 - [React-Router v6 新特性解读及迁移指南 - 掘金](https://juejin.cn/post/6844904096059621389)
 - [react-router v6 用起来 - 掘金](https://juejin.cn/post/6978190158252212254)

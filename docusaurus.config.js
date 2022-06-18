@@ -38,7 +38,7 @@ module.exports = {
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/brightzoe/brightzoe.github.io/edit/main",
           showLastUpdateTime: true,
-          sidebarCollapsed: false,
+          sidebarCollapsed: true,
           // options for remark-admonitions
           admonitions: {},
           breadcrumbs: false,
@@ -101,12 +101,8 @@ module.exports = {
           src: "img/logo.svg",
         },
         items: [
-          { to: "/docs/css/html", label: "HTML & CSS", position: "left" },
-          {
-            to: "/docs/javascript/basic",
-            label: "JavaScript",
-            position: "left",
-          },
+          { to: "/docs/fe-basic/javascript", label: "FE Basic", position: "left" },
+
           { to: "/docs/react", label: "React", position: "left" },
           // {
           //   to: "/docs/data-structure",

@@ -142,7 +142,7 @@
 
 ### 节流，防抖
 
-[防抖和节流](/docs/javascript/debounce-and-throttle)
+[防抖和节流](/docs/fe-basic/javascript/basic/debounce-and-throttle)
 优化频繁触发的回调。
 
 input 输入搜索场景：debounce，只需响应用户的最后一次输入，无需响应用户中间输入值。
