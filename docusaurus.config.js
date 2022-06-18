@@ -99,10 +99,11 @@ module.exports = {
         logo: {
           alt: "My Site Logo",
           src: "img/logo.svg",
+          width: 40,
+          height: 40,
         },
         items: [
-          { to: "/docs/fe-basic/javascript", label: "FE Basic", position: "left" },
-
+          { to: "/docs/fe-basic/html", label: "FE Basic", position: "left" },
           { to: "/docs/react", label: "React", position: "left" },
           // {
           //   to: "/docs/data-structure",
@@ -118,7 +119,9 @@ module.exports = {
           { to: "/blog", label: "Blog", position: "left" },
           {
             href: "https://github.com/brightzoe",
-            label: "GitHub",
+            // label: "GitHub",
+            className: "header-github-link",
+            "aria-label": "GitHub repository",
             position: "right",
           },
         ],
