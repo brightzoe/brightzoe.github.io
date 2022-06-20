@@ -1,0 +1,9 @@
+{
+  "extends": "@tsconfig/docusaurus/tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "target": "es5",
+    "lib": ["DOM", "es2021"]
+  }
+}
