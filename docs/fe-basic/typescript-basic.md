@@ -1,6 +1,7 @@
 ---
-tags: [typescript,ts]
+tags: [typescript, ts]
 ---
+
 # TS 基础
 
 ## 背景
@@ -192,7 +193,7 @@ declare function replace(input: number): number; //可以相同的函数名字�
 
 // 命名空间的嵌套
 declare namespace $$ {
-  namespace hh{
+  namespace hh {
     function getName(): string;
   }
   namespace fn {
@@ -203,6 +204,18 @@ declare namespace $$ {
 //声明模块
 declare module "xx" {
   export function getName(): string;
+}
+```
+
+有类型声明的库，如果声明缺失内容不符合当前业务场景，可以扩展类型声明文件，实现类型融合的特性。
+
+```ts title='custom.d.ts'
+declare module Express {
+  export interface Request {
+    user: {
+      name: string;
+    };
+  }
 }
 ```
 
@@ -255,8 +268,13 @@ const post = {
 //如果不通过索引值的方式读取枚举类型，推荐使用常量枚举。编译后枚举类型会被移除，使用的枚举值会被替换掉，以注释的形式标注。
 const enum postStatus {}
 //...
+```
 
-//函数类型
+#### 函数
+
+函数的数据类型定义：
+
+```ts
 //函数声明式
 function func1(a: string, b?: number): string {
   //添加参数和返回值的类型注解
@@ -279,6 +297,12 @@ const func = (str: string): number => {
 const func: (str: string) => number = (str) => {
   return parseInt(str);
 };
+```
+
+函数重载
+
+```ts
+
 ```
 
 ### 作用域问题
@@ -607,6 +631,7 @@ class DataManager<T extends Item> {
 const data = new DataManager([{ name: "1" }, { name: "hh" }]);
 console.log(data.getData(1));
 ```
+
 #### keyof
 
 ```ts
@@ -617,7 +642,8 @@ interface Person {
 }
 class Teacher {
   constructor(private info: Person) {}
-  getInfo<T extends keyof Person>(key: T): Person[T] {// 接收Person 中的 key,返回 Person 的 value
+  getInfo<T extends keyof Person>(key: T): Person[T] {
+    // 接收Person 中的 key,返回 Person 的 value
     return this.info[key];
   }
 }
@@ -629,6 +655,61 @@ const teacher = new Teacher({
 
 const test = teacher.getInfo("gender");
 console.log(test);
+```
+
+### 装饰器
+
+类的装饰器：对类的修饰，在类创建时执行。接收类的 constructor
+
+简单装饰器
+
+```ts
+// 多个装饰器执行顺序：从下到上，从右到左
+function testDecoractor(constructor: any) {
+  console.log("testDecoractor");
+  // 可以拿到装饰的类的constructor
+  constructor.prototype.getName = function () {
+    console.log("get test");
+  };
+}
+
+function testDecoractor1(constructor: any) {
+  console.log("testDecoractor1");
+}
+
+@testDecoractor
+@testDecoractor1
+class Test {}
+
+const test1 = new Test();
+(test1 as any).getName();
+```
+
+复杂标准装饰器
+
+```ts
+function testDecoractor() {
+  // 工厂模式，可以接不同参数，返回一个新的类
+  return function <T extends new (...args: any[]) => any>(constructor: T) {
+    console.log("testDecoractor");
+    return class extends constructor {
+      name = "zzz";
+      getName() {
+        console.log(this.name);
+        return this.name;
+      }
+    };
+  };
+}
+
+const Test = testDecoractor()(
+  class {
+    constructor(public name: string) {}
+  }
+);
+
+const test1 = new Test("hh");
+test1.getName();
 ```
 
 ## Reference
