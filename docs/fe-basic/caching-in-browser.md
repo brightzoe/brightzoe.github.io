@@ -12,8 +12,8 @@ sessionStorage
 
 Cookie
 
-- 按 4097 字节算吧，前端可以操作（后端可以定义不可操作的数据），但是一般由后端定义，并且现在新版的浏览器在逐步的抛弃该功能。
-- 服务器生成，产生原因是HTTP 无状态，cookie 用来记录数据状态。
+- 大小 4kb，前端可以操作（后端可以定义不可操作的数据），但是一般由后端定义，并且现在新版的浏览器在逐步的抛弃该功能。
+- 服务器生成，产生原因是 HTTP 无状态，cookie 用来记录数据状态。
 
 IndexedDB
 
@@ -35,7 +35,7 @@ webStorage：
 1. 在客户端进行临时或永久性的数据存储，不直接参与服务端通信的交互，能够避免一些劫持的安全风险。
 
 2. 存储容量 5M ，满足大多数应用场景，且每个存储有对应的 key,可以独立的管理对应的数据。
-3. 只支持字符串类，需要手动JSON.stringify()。
+3. 只支持字符串类，需要手动 JSON.stringify()。
 
 ### 使用本地存储遇到的问题
 
@@ -148,7 +148,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent
 
 比如 [store2](https://www.npmjs.com/package/store2)
 
-### reference:
+## Reference
 
 - [前端数据缓存（前端数据库）的一些见解，利用内存存储帮你优化接口请求 - 掘金](https://juejin.cn/post/6955672622587707428/)
 - [【收藏就会】浏览器 WebStorage 缓存使用指南 - 掘金](https://juejin.cn/post/6984908770149138446#heading-13)
