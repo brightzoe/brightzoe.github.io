@@ -105,11 +105,11 @@ module.exports = {
         items: [
           { to: "/docs/fe-basic/html", label: "FE Basic", position: "left" },
           { to: "/docs/react", label: "React", position: "left" },
-          // {
-          //   to: "/docs/data-structure",
-          //   label: "数据结构与算法",
-          //   position: "left",
-          // },
+          {
+            to: "/docs/data-structure",
+            label: "算法",
+            position: "left",
+          },
           { to: "/docs/business", label: "业务", position: "left" },
           {
             to: "/docs/tools/chrome-devtools",
