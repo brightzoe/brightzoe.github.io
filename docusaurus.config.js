@@ -105,6 +105,7 @@ module.exports = {
         items: [
           { to: "/docs/fe-basic/html", label: "FE Basic", position: "left" },
           { to: "/docs/react", label: "React", position: "left" },
+          { to: "/docs/vue", label: "Vue", position: "left" },
           {
             to: "/docs/data-structure",
             label: "算法",
