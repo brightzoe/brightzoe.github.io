@@ -27,39 +27,59 @@ function downloadFile(url, fileName) {
 }
 ```
 
-上面的方式简单，但是如果文件地址 url 如果是不同域的，a 标签的 download 属性不生效，无法自定义文件的名字。
+注意：使用 download 属性需要添加文件扩展名。
+
+问题：
+
+- 只支持 get 请求。
+- 如果文件地址 url 如果是跨域的，a 标签的 download 属性不生效，无法自定义文件的名字。
+- 无法监听请求是否成功，文件是否正常下载。（也许可以先发一个 HEAD 请求测试一下 api 地址是否正常？
 
 ## 通过 blob 前端生成下载连接
 
 ```js
 function downloadFile(path, name) {
-  axios
-    .get({
-      url: path,
-      method: "get",
-    })
-    .then((res) => {
-      const blob = new Blob([res.data], { type: res.headers["content-type"] });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.style.display = "none";
-      a.href = url;
-      a.download = name;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    });
+  axios({
+    url: path,
+    method: "get",
+    responseType: "arraybuffer", // /blob
+  }).then((res) => {
+    const blob = new Blob([res.data], { type: res.headers["content-type"] }); //要保证文件的类型
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.style.display = "none";
+    a.href = url;
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
 }
 ```
 
+问题：
+
+- 支持不同请求方式的 api
+- 耗费浏览器内存，需要前端完全接收完文件再生成前端下载地址，速度慢且容易崩溃。
+- 对大文件下载不友好，前期接收文件流时用户无感知，以为没有进行下载，用户体验不好。
+
+:::note
 业务中遇到的是大文件下载且需要自定义文件名，服务器文件地址又是不同域的。可以用上面转成二进制流下载并重命名文件。
 
 但这样会耗费比较大的浏览器内存，需要前端完全接收完文件再生成前端下载地址，速度慢且容易崩溃。
 
-最后采取的方式是在请求接口中传递一个文件名参数给后端，后端返回使用这个文件名重命名的文件。这个文件名参数添加在了`Content-Disposition`这个响应头上，`Content-Disposition:attachment;filenamefilename=xx.tar.gz`，这样就实现了自定义文件名的需求，再配合 a 标签下载即可。
+最后采取的方式是在请求接口中传递一个文件名参数给后端，后端返回使用这个文件名重命名的文件。这个文件名参数添加在了`Content-Disposition`这个响应头上，`Content-Disposition:attachment;filename=xx.tar.gz`，这样就实现了自定义文件名的需求，再配合 a 标签下载即可。
 
 另外此处还遇到传递中文文件名，下载文件名乱码，响应头`Content-Disposition`的内容乱码，服务器端没有处理好正确解码方式的问题。
+
+** 关于自定义文件名的问题**
+
+如果在 nginx 中配置了反向代理，浏览器请求的地址是同源的，download 属性会生效。
+
+但如果请求接口的响应头也设置了 Content-Disposition 中的 filename ，此时 响应头中设置的文件名的优先级是最高的，会使在 a 标签 download 属性设置的文件名不生效。
+
+:::
 
 ## 分块范围下载 blob，前端生成下载链接
 

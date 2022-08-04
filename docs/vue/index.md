@@ -20,7 +20,7 @@
 
 vue 2.x 中组件中 style 通常使用 scope 属性，限制当前的组件的作用域为当前组件。组件内如果引用了其他组件，或者 element-ui 等组件库，是不能直接改变其他组件的样式的。如果需要做一些定制化的样式，可以使用 deep 深度选择器。
 
-- deep 　不能嵌套使用。deep 里不能再有 deep。
+- deep 不能嵌套使用。deep 里不能再有 deep。
 - less 中使用 `/deep/`,sass 中使用`:deep()`。
 
 ```vue
