@@ -55,7 +55,7 @@ CommonJS 依赖几个全局属性如 `require` 和 `module.exports`。如果想�
 
 常见的解决方案是提前把模块文件打包好，把全局属性转换为原生 JavaScript 结构，将模块代码封装在函数闭包中，最终只提供一个文件。为了以正确的顺序打包模块，需要事先生成全面的依赖图。
 
-> Node.js 是 commonJS 规范的主要实践者。 由于模块的个数往往有限，且 Node 会自动缓存已经加载的模块，再加上访问的都是本地文件，产生的 IO 开销几乎可以忽略。另外，Node 程序运行在服务器端，很少遇到需要频繁重启服务的情况，那么就算在服务启动时在加载上花点时间（几秒）也没有什么影响。
+> Node.js 是 CommonJS 规范的主要实践者。 由于模块的个数往往有限，且 Node 会自动缓存已经加载的模块，再加上访问的都是本地文件，产生的 IO 开销几乎可以忽略。另外，Node 程序运行在服务器端，很少遇到需要频繁重启服务的情况，那么就算在服务启动时在加载上花点时间（几秒）也没有什么影响。
 
 ### AMD 异步模块定义
 
@@ -202,4 +202,4 @@ ESModule 中 import 的模块会被 JS 引擎静态分析。模块代码是在�
 - [JavaScript Modularization Journey](https://huangxuan.me/js-module-7day/#/) - slides
 - [你可能不知道的 JavaScript 模块化野史 - 掘金](https://juejin.cn/post/6844904056847073293#heading-0) - 了解一下历史，有个整体的并有时间轴的认识
 - [面试官让我解释什么是前端模块化 - 掘金](https://juejin.cn/post/6844903981311852551#comment)
-<!-- - [「万字进阶」深入浅出 Commonjs 和 Es Module - 掘金](https://juejin.cn/post/6994224541312483336#heading-0) -->
+<!-- - [「万字进阶」深入浅出 CommonJS 和 Es Module - 掘金](https://juejin.cn/post/6994224541312483336#heading-0) -->

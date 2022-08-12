@@ -8,7 +8,7 @@
 
 ### Gitpod
 
-算作 GitHub 的扩展，一个线上的 IDE 编辑环境，类 VSCode 的界面与功能。
+算作 GitHub 的扩展，一个线上的 IDE 编辑环境，类 VS Code 的界面与功能。
 使用方式：在 GitHub 的一个仓库 URL 前添加`https：//gitpod.io#`即可，或者安装为 GitHub 的扩展。
 集成 GitHub,且是一个完整终端，并且可以用完即走。
 

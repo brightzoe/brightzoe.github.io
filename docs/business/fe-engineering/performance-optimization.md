@@ -85,14 +85,14 @@
 - 组件/路由懒加载，图片懒加载
 - 图片压缩，字体优化（font-display+preload）
 
-## Webpack 优化
+## webpack 优化
 
 主要分为
 
 - 构建速度 先定位哪里耗时长（speed-measure-webpack-plugin）
 - 打包体积 先定位哪里大（webpack-bundle-analyzer）
 
-[Webpack 优化](/docs/business/fe-engineering/webpack#webpack-优化)
+[webpack 优化](/docs/business/fe-engineering/webpack#webpack-优化)
 
 ## [ React 性能优化](/docs/react/design-pattern-and-best-practices#react-中的性能优化)
 
@@ -111,7 +111,7 @@
 场景：SPA 应用中， 路由跳转后的页面，或者在用户操作后才需要展示的组件，比如复杂弹窗。
 
 - React.lazy [代码分割 – React](https://zh-hans.reactjs.org/docs/code-splitting.html#reactlazy)
-- Webpack 动态导入
+- webpack 动态导入
 
 - 图片懒加载：[react-lazyload](https://www.npmjs.com/package/react-lazyload)
   ```js

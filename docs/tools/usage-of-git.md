@@ -151,7 +151,7 @@ commit-msg
 
 ### 忽略特殊文件比如明文密码
 
-.gitignore 文件 [Templates in Github](https://github.com/github/gitignore)
+.gitignore 文件 [Templates in GitHub](https://github.com/github/gitignore)
 
 ### fork 后修改，如何同步源的更新
 

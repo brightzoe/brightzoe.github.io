@@ -224,5 +224,5 @@ css-vars-ponyfill (https://jhildenbiddle.github.io/css-vars-ponyfill/#/)
 1.  `<Link>`标签 https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link
 2.  CSS 变量的用法 https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties
 3.  前端换肤的 N 种方案 https://juejin.cn/post/6844904122643120141#heading-0
-4.  Css Variable 的主题切换完美解决方案 https://zhuanlan.zhihu.com/p/149033179
+4.  CSS Variable 的主题切换完美解决方案 https://zhuanlan.zhihu.com/p/149033179
 5.  VUE 实现特定场景的主题切换 https://zhuanlan.zhihu.com/p/96939987

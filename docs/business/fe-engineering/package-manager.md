@@ -47,7 +47,7 @@ npx 功能：
 
 2. 方便切换 node 版本，临时执行一些命令。
 
-3. 可以直接执行 Github 的模块源码。（必须是包含`package.json`和入口的模块代码）
+3. 可以直接执行 GitHub 的模块源码。（必须是包含`package.json`和入口的模块代码）
    ```bash
    npx https://gist.github.com/zkat/4bc19503fe9e9309e2bfaa2c58074d32
    ```

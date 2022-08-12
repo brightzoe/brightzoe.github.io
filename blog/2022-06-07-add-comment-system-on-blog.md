@@ -83,11 +83,11 @@ disqus：第三方评论托管系统，用户量大，lazy-loaded。
 
 > [disqus/disqus-react: A React component for Disqus](https://github.com/disqus/disqus-react)
 
-gitalk： 开源，利用 Github issues，被广泛使用的。
+gitalk： 开源，利用 GitHub issues，被广泛使用的。
 
-> [gitalk/gitalk: Gitalk is a modern comment component based on Github Issue and Preact.](https://github.com/gitalk/gitalk)
+> [gitalk/gitalk: Gitalk is a modern comment component based on GitHub Issue and Preact.](https://github.com/gitalk/gitalk)
 
-giscus：开源的，利用 Github Discussions。
+giscus：开源的，利用 GitHub Discussions。
 
 > [giscus/giscus: A comment system powered by GitHub Discussions.](https://github.com/giscus/giscus)
 

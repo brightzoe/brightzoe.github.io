@@ -113,5 +113,5 @@ function createChunks(file, size = 5 * 1024 * 1024) {
 
 - [spark-md5 - npm](https://www.npmjs.com/package/spark-md5)
 - [前端通过 spark-md5.js 计算本地文件 md5 - 掘金](https://juejin.cn/post/6844903641527091208)
-- [Javascript 中的二进制数据](https://zhangkai.pro/2020/09/09/binary-data-in-javascript) ArrayBuffer with BinaryString
+- [JavaScript 中的二进制数据](https://zhangkai.pro/2020/09/09/binary-data-in-javascript) ArrayBuffer with BinaryString
 - [【文件上传那些事儿】- 03 两种计算 hash 的方式 - 掘金](https://juejin.cn/post/6919690643136577550#heading-4) 计算 hash 进一步阅读

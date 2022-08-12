@@ -5,7 +5,7 @@ tags: [reading, dev, fp]
 ---
 
 环境配置
-使用 vscode 编写 scheme ,参考: [Windows + VSCode 搭建 Scheme 开发环境 - 知乎](https://zhuanlan.zhihu.com/p/405246479)
+使用 VS Code 编写 scheme ,参考: [Windows + VS Code 搭建 Scheme 开发环境 - 知乎](https://zhuanlan.zhihu.com/p/405246479)
 
 ## 基本语法
 

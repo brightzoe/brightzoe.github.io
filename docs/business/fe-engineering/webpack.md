@@ -1,4 +1,4 @@
-# Webpack
+# webpack
 
 ## 作用
 
@@ -209,7 +209,7 @@ bundle
 
 ## Reference
 
-- [当面试官问 Webpack 的时候他想知道什么 - 掘金](https://juejin.cn/post/6943468761575849992#heading-0)
+- [当面试官问 webpack 的时候他想知道什么 - 掘金](https://juejin.cn/post/6943468761575849992#heading-0)
 - [关于 loader 和 plugins - 掘金](https://juejin.cn/post/6971220402466979848#heading-8)
 - [一套骚操作下来，webpack 项目打包速度飞升 🚀、体积骤减 ↓ - 掘金](https://juejin.cn/post/7046616302521155614#heading-1)
 - [【webpack】性能优化配置 - HMR - 缓存 -tree shaking - 代码分割 - 懒加载 - 预加载 - PWA - 多进程打包 - 掘金](https://juejin.cn/post/7017775849818554376#heading-0)

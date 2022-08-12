@@ -176,7 +176,7 @@ HTTP/2.0 多路复用代替 HTTP/1.x 的序列和阻塞机制，不受并发 6 �
 
 ```js
 import { saveAs } from 'file-saver';
-saveAs(Blob/File/Url, optional DOMString filename, optional Object { autoBom })
+saveAs(Blob/File/URL, optional DOMString filename, optional Object { autoBom })
 ```
 
 - 同域使用 a 标签的方式。
@@ -195,7 +195,7 @@ saveAs(Blob/File/Url, optional DOMString filename, optional Object { autoBom })
 
 ## 多个文件打个包下载 jszip
 
-[Stuk/jszip: Create, read and edit .zip files with Javascript](https://github.com/Stuk/jszip)
+[Stuk/jszip: Create, read and edit .zip files with JavaScript](https://github.com/Stuk/jszip)
 
 ## 补充知识
 
