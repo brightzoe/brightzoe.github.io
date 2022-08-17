@@ -4,6 +4,56 @@
 
 声明式编码 与 命令式编码相对应。
 
+## 插值
+
+```vue
+<aside>{{ notePreview }}</aside>
+```
+
+插值如果是 html 标签会被转义而不是直接注入，可以防止注入攻击(XSS)，提升安全性。
+
+可以用 v-html 做 html 插值，但不建议使用，非常危险。
+
+## 计算属性
+
+- 是函数的形式，基于他的响应式依赖进行缓存，没有必要不会重新运行。如果依赖的某个属性发生了改变，计算属性的值会根据需要自动更新。
+- 像普通属性一样使用，可以在其他计算属性中使用计算属性。
+
+```js
+computed:{
+  fullname:function(){
+    return xx
+    }
+  }
+
+```
+
+计算属性默认只有 getter，不过在需要时你也可以提供一个 setter。 [计算属性和侦听器 — Vue.js](https://v2.cn.vuejs.org/v2/guide/computed.html#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84-setter)
+
+## 侦听器
+
+[API — Vue.js](https://v2.cn.vuejs.org/v2/api/#watch)
+
+在数据变化的时候需要执行某些操作。操作是异步或开销较大时，适合使用侦听器。
+
+```js
+  watch: {
+    content(val, oldVal) {
+        console.log("new", val, "old", oldVal);
+      },
+
+  },
+```
+
+```js
+  watch: {
+    notes: {
+      handler: "saveNotes",
+      deep: true,//默认只会监听一层，修改数组或对象内元素的属性等不会触发监听，需要加上 deep 进行深度监听
+    },
+  },
+```
+
 ## nextTick
 
 [API — Vue.js](https://cn.vuejs.org/v2/api/#vm-nextTick)
