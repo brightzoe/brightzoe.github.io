@@ -1,8 +1,11 @@
 import React, { ComponentProps } from "react";
-import DocItem from "@theme-original/DocItem";
+import { HtmlClassNameProvider } from "@docusaurus/theme-common";
+import { DocProvider } from "@docusaurus/theme-common/internal";
+import DocItemMetadata from "@theme/DocItem/Metadata";
+import DocItemLayout from "@theme/DocItem/Layout";
 import type DocItemType from "@theme/DocItem";
+import type { Props } from "@theme/DocItem";
 import { DiscussionEmbed } from "disqus-react";
-
 type Props = ComponentProps<typeof DocItemType>;
 type DocProps = Props & {
   content: {
@@ -12,7 +15,9 @@ type DocProps = Props & {
   };
 };
 
-export default function DocItemWrapper(props: DocProps): JSX.Element {
+export default function DocItem(props: DocProps): JSX.Element {
+  const docHtmlClassName = `docs-doc-id-${props.content.metadata.unversionedId}`;
+  const MDXComponent = props.content;
   const {
     content: { metadata },
   } = props;
@@ -21,9 +26,12 @@ export default function DocItemWrapper(props: DocProps): JSX.Element {
   const fmtId = permalink.replace(/^\//, "").replaceAll(/[\s\/]/gi, "-");
   const disqusId = fmtId == "" ? "main" : fmtId;
   return (
-    <>
-      <DocItem {...props} />
-      {disqus && (
+    <DocProvider content={props.content}>
+      <HtmlClassNameProvider className={docHtmlClassName}>
+        <DocItemMetadata />
+        <DocItemLayout>
+          <MDXComponent />
+        </DocItemLayout>
         <DiscussionEmbed
           shortname="brightzoe"
           config={{
@@ -32,7 +40,7 @@ export default function DocItemWrapper(props: DocProps): JSX.Element {
             title: title,
           }}
         />
-      )}
-    </>
+      </HtmlClassNameProvider>
+    </DocProvider>
   );
 }
