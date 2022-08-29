@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkbrightzoe_blog=self.webpackChunkbrightzoe_blog||[]).push([[6957],{5086:function(e){e.exports=JSON.parse('{"label":"dev","permalink":"/blog/tags/dev","allTagsPath":"/blog/tags","count":1}')}}]);
