@@ -1,3 +1,7 @@
+---
+tags: [dev, usage, linux]
+---
+
 # 网站构建
 
 ## Linux 基础
@@ -8,25 +12,63 @@
     - ./ 表示当前文件夹，可忽略
   - cd 绝对路径，以 / 开头； （cd - 上一个文件夹）
 
+文件相关
+
 ```bash
-pwd # 显示目前所在的路径
-ls # 显示当前目录下的文件
+mkdir a # 创建目录，名称为a
+mkdir -p a/b # 创建目录a和子目录b
+mv a /tmp/b # 移动文件或文件夹
 cp # 复制(复制目录:cp -r )
 
-sudo -i #　使用root
+rm
 
-# 网络相关
+find xx
+ls # 当前目录的所有内容
+ls -l #当前目录内容的更多信息
+ll
+
+cd # 显示当前目录下的文件
+pwd # 显示目前所在的路径
+
+cat xx  # 查看文件内容(较大文件)
+less # 查看大文件，类似vim 方便查找
+
+mount /dev/sdb1 /mnt/usb #挂载外接设备到/mnt/usb
+
+tail -f  access.log # 滚动的方式查看日志
+tail -n100 access.log #静态查看某个文件的最后n行
+head -n100 access.log #静态查看某个文件的最前n行
+
+grep -rn --color POST access.log #查看 log 中的 post 请求。 对内容进行过滤。参数n则输出具体的行数，用来快速定位
+```
+
+网络相关
+
+```bash
 netstat -a　#列出所有端口 (包括监听和未监听的)
 netstat -lnp|grep 80 # 检查端口使用的状态
-
 netstat -ntpl # 查看所有端口状态
+```
 
-# vim 编辑文件
-vi a.js
+vim 编辑文件
+
+```bash
+vim a.js
 i #insert
 esc #退出insert
 :q #退出
 :wq #保存并退出
+```
+
+```bash
+sudo -i #　使用root
+su - mike # 切换用户，加上 - 是连环境变量一起切换
+
+service #服务管理
+service mysql restart
+systemctl #兼容service命令
+systemctl mysql restart
+ps -ef|grep nginx #查看进程/线程状态
 
 #任务管理器
 htop
@@ -40,9 +82,10 @@ exit
 CTRL + D
 
 # win /linux 传文件/复制文件
-scp -P 1007 xx.txt root@vote.brightzoe.top:~
+scp -P 1007 xx.txt root@192.168.1.1:/tmp
      #端口
 
+wget -c http://www.xxx/xxx.deb #下载文件，支持断点续传
 ```
 
 ### Ubuntu

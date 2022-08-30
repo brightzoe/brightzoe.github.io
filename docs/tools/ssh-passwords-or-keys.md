@@ -1,3 +1,8 @@
+---
+authors: [zoe]
+tags: [safety, network]
+---
+
 # SSH 连接服务器的相关知识
 
 SSH (secure shell) 是一种网络协议，用于计算机之间的加密远程登录。
