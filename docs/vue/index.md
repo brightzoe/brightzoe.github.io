@@ -54,6 +54,19 @@ computed:{
   },
 ```
 
+## v-model
+
+是语法糖，是一种便捷写法。
+
+### 是双向绑定
+
+在表单 input,select 等元素上创建双向绑定。
+
+### 是单向数据流
+
+- 数据向下，事件向上。
+  子组件不能改变父组件传递给他的 props 属性，推荐抛出事件，通知父组件自行改变绑定的值。
+
 ## nextTick
 
 [API — Vue.js](https://cn.vuejs.org/v2/api/#vm-nextTick)
