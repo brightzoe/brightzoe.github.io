@@ -192,11 +192,16 @@ lockfiles 作用：确定依赖的安装结构，在任意的机器上都能得�
 3. `yarn config set registry https://registry.npmmirror.com`
 4. `yarn config set registry http://registry.npmjs.org/`
 
+node_mirror: https://npmmirror.com/mirrors/node/
+npm_mirror: https://npmmirror.com/mirrors/npm/
+
 ### 切换 node 版本
 
 在多个项目之间切换，会遇到不同的项目所需要的 node 版本不一致，会有切换 node 版本的需求。
 
 linux/Mac OS 可以使用 n /nvm ,仅限了解。
+
+多平台使用也可以使用 [volta](https://docs.volta.sh/reference/install)。跨平台，据说很好用，但 install 没响应，有空再尝试。
 
 个人目前还是使用 windows 比较多，可以使用 nvm [coreybutler/nvm-windows: A node.js version management utility for Windows. Ironically written in Go.](https://github.com/coreybutler/nvm-windows)进行管理。但是使用 nvm 之前需要卸载电脑上已有的所有版本的 node，有点麻烦。
 
@@ -266,7 +271,8 @@ npm run [三面面试官：运行 npm run xxx 的时候发生了什么？ - 掘�
  -->
 
 ## Reference
-- [前端工程化（5）：你所需要的npm知识储备都在这了 - 掘金](https://juejin.cn/post/6844903870578032647#heading-0)
+
+- [前端工程化（5）：你所需要的 npm 知识储备都在这了 - 掘金](https://juejin.cn/post/6844903870578032647#heading-0)
 - [npx 使用教程 - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2019/02/npx.html)
 - [简单聊聊 npx 和 npm - 掘金](https://juejin.cn/post/6886818067913900046#heading-3)
 - [关于现代包管理器的深度思考——为什么现在我更推荐 pnpm 而不是 npm/yarn? - 掘金](https://juejin.cn/post/6932046455733485575#comment)
