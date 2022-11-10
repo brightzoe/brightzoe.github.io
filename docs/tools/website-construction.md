@@ -148,6 +148,55 @@ server {
 
 ```
 
+#### 实际问题
+
+做的项目要给客户演示，由于公司内网的关系，针对服务器的某一端口开通了外网映射。但项目中使用的 put/delete 请求被内网网关限制，通过外网地址访问时 使用 PUT/DELETE 请求被限制，报错：net::ERR_CONNECTION_RESET 。
+
+建立在网关规则没法修改，后端也不支持把 put/delete 请求修改为 post 的前提下，如何解决此问题？
+
+解决方案：
+
+- 前端请求根据不同方法加 header ，nginx 根据 header 中某个变量的值修改 method
+
+  在前端代码请求中，将 put/delete 请求修改为 post ，添加对应的 request header
+
+  nginx 配置
+
+  ```
+  server {
+    listen       3000;
+    server_name  your-domain.com;
+  	set $method $request_method;
+        if ($http_X_HTTP_Method_Override ~* 'DELETE') {
+          set $method DELETE;
+        }
+
+  	if ($http_X_HTTP_Method_Override ~* 'PUT') {
+          set $method PUT;
+        }
+
+        proxy_method $method;
+    location / {
+        proxy_pass http://localhost:3001;
+    }
+  }
+
+  ```
+
+  可参考 [用域名访问接口, get 和 post 请求均正常,而 put 和 delete 请求均无法正常使用\_相约黄昏后 007 的博客-CSDN 博客\_put 请求被拦截](https://blog.csdn.net/weixin_53458434/article/details/118673550)
+
+- 如果项目代码中有 node 中间层也可以用 node 来解决，目前使用了 koa
+
+  ```js
+  app.use(async (ctx, next) => {
+    //将put/delete 请求替换回来 'x-http-method-override': 'PUT'，解决内外网映射无法使用put/delete请求的问题
+    if (ctx.request.header['x-http-method-override']) {
+      ctx.request.method = ctx.request.header['x-http-method-override']
+    }
+    await next()
+  })
+  ```
+
 ### pm2
 
 ```bash
