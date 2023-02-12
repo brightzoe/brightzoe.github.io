@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkbrightzoe_blog=self.webpackChunkbrightzoe_blog||[]).push([[9059],{5758:function(t){t.exports=JSON.parse('{"label":"thought","permalink":"/blog/tags/thought","allTagsPath":"/blog/tags","count":1}')}}]);
