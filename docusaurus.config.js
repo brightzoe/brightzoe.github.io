@@ -103,21 +103,21 @@ module.exports = {
           height: 40,
         },
         items: [
-          { to: "/docs/fe-basic/html", label: "FE Basic", position: "left" },
-          { to: "/docs/react", label: "React", position: "left" },
-          { to: "/docs/vue", label: "Vue", position: "left" },
+          {to: "/docs/fe-basic/html", label: "FE Basic", position: "left"},
+          {to: "/docs/react", label: "React", position: "left"},
+          {to: "/docs/vue", label: "Vue", position: "left"},
           {
             to: "/docs/data-structure",
             label: "算法",
             position: "left",
           },
-          { to: "/docs/business", label: "业务", position: "left" },
+          {to: "/docs/business", label: "业务", position: "left"},
           {
             to: "/docs/tools/chrome-devtools",
             label: "工具",
             position: "left",
           },
-          { to: "/blog", label: "Blog", position: "left" },
+          {to: "/blog", label: "Blog", position: "left"},
           {
             href: "https://github.com/brightzoe",
             // label: "GitHub",
@@ -130,7 +130,7 @@ module.exports = {
       footer: {
         links: [
           {
-            title: "优秀博客推荐",
+            title: "博客推荐",
             items: [
               {
                 label: "Ashes Born's Blog",
@@ -147,7 +147,7 @@ module.exports = {
             items: [],
           },
           {
-            title: "优秀博客推荐",
+            title: "博客推荐",
             items: [
               {
                 label: "Ashes Born's Blog",
