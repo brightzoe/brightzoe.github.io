@@ -4,5 +4,10 @@
   "bracketSameLine": true,
   "proseWrap": "never",
   "singleQuote": false,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "jsxSingleQuote": false,
+  "quoteProps": "as-needed",
+  "semi": true,
+  "tabWidth": 2,
+  "useTabs": false
 }

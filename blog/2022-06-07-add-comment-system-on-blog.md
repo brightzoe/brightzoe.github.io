@@ -92,7 +92,7 @@ giscus：开源的，利用 GitHub Discussions。
 > [giscus/giscus: A comment system powered by GitHub Discussions.](https://github.com/giscus/giscus)
 
 ## Reference
-
+- [Swizzling | Docusaurus](https://docusaurus.io/docs/swizzling#ejecting)
 - [Add Disqus Comments to Docusaurus Blog Posts | Madrus's Webdings](https://madrus4u.com/blog/blog-comments#prepare-the-frontmatter)
 - [blog/index.js at 5d61d247e53071b399c81b3b7873023d4cb4ad76 · Chasen-Zhang/blog](https://github.com/Chasen-Zhang/blog/blob/5d61d247e53071b399c81b3b7873023d4cb4ad76/src/theme/BlogPostPage/index.js)
 - [Integrate with Disqus | kdmw](https://kdmw.dev/docusaurus/disqus-integration)

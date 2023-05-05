@@ -17,10 +17,7 @@ import { Sandpack } from "@codesandbox/sandpack-react";
 
 欢迎来到这里，如果对你有些帮助，我会很开心。有任何想说的或建议都欢迎留言。
 
-:::info
-本 blog 中技术相关的文档，有参考来自网络的很多内容，包括来自 StackOverFlow, 掘金，思否，微信公众号，知乎等等。
-我在撰写文章，参考一些优秀内容时会记得添加到 References 注明出处, 若有疏漏，或者不小心侵权了，请放心联系我，尊重所有人的版权。
-:::
+:::info 本 blog 中技术相关的文档，有参考来自网络的很多内容，包括来自 StackOverFlow, 掘金，思否，微信公众号，知乎等等。我在撰写文章，参考一些优秀内容时会记得添加到 References 注明出处, 若有疏漏，或者不小心侵权了，请放心联系我，尊重所有人的版权。 :::
 
 <!--truncate-->
 
@@ -37,6 +34,7 @@ import { Sandpack } from "@codesandbox/sandpack-react";
 1. 2021.10 添加@codesandbox/sand-pack，直接在 md 文档里放可以运行预览的代码,自定义文件内容不是詪好用，待研究。
 2. 2022.01 添加`lxgw-wenkai-screen`字体。字体文件较大，使用 github [chawyehsu/lxgw-wenkai-webfont: webfont package for the LXGW WenKai typeface](https://github.com/chawyehsu/lxgw-wenkai-webfont) 的 node 包，优化加载。
 3. 2022.06 添加 disqus 评论插件。在 blog 部分默认开启，doc 部分关闭，可以通过`disqus: true`来开启某篇文档的评论。
+4. 2023.05 添加 ts 支持，由 yarn 切换至 pnpm。
 
 ## How to use docusaurus
 
@@ -63,28 +61,17 @@ The blog supports tags as well!
 
 Use a `<!--truncate-->` comment to limit blog post size in the list view.
 
-:::note
-Some **content** with _markdown_ `syntax`.
-:::
+:::note Some **content** with _markdown_ `syntax`. :::
 
-:::info
-Some **content** with _markdown_ `syntax`.
-:::
+:::info Some **content** with _markdown_ `syntax`. :::
 
-:::caution
-Some **content** with _markdown_ `syntax`.
-:::
+:::caution Some **content** with _markdown_ `syntax`. :::
 
-:::danger
-Some **content** with _markdown_ `syntax`.
-:::
+:::danger Some **content** with _markdown_ `syntax`. :::
 
 Blog posts support [Docusaurus Markdown features](https://docusaurus.io/docs/markdown-features), such as [MDX](https://mdxjs.com/).
 
-:::tip
-Use the power of React to create interactive blog posts.
-<button onClick={() => alert('button clicked!')}>Click me!</button>
-:::
+:::tip Use the power of React to create interactive blog posts. <button onClick={() => alert('button clicked!')}>Click me!</button> :::
 
 ### Using Interactive code editor
 
