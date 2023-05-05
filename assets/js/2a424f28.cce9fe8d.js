@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbrightzoe_blog=self.webpackChunkbrightzoe_blog||[]).push([[7419],{4220:t=>{t.exports=JSON.parse('{"label":"github actions","permalink":"/blog/tags/github-actions","allTagsPath":"/blog/tags","count":1}')}}]);
