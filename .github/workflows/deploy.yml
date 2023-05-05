@@ -19,7 +19,7 @@ jobs:
         run: npm install -g pnpm
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build
         run: pnpm build
@@ -44,6 +44,6 @@ jobs:
           git config --global user.email "brightzoe.qq.com"
           git config --global user.name "brightzoe"
           npm install -g pnpm
-          pnpm install --frozen-lockfile
+          pnpm install --no-frozen-lockfile
           pnpm run build
           pnpm run deploy
