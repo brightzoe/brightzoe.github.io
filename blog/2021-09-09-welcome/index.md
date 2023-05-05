@@ -17,7 +17,11 @@ import { Sandpack } from "@codesandbox/sandpack-react";
 
 欢迎来到这里，如果对你有些帮助，我会很开心。有任何想说的或建议都欢迎留言。
 
-:::info 本 blog 中技术相关的文档，有参考来自网络的很多内容，包括来自 StackOverFlow, 掘金，思否，微信公众号，知乎等等。我在撰写文章，参考一些优秀内容时会记得添加到 References 注明出处, 若有疏漏，或者不小心侵权了，请放心联系我，尊重所有人的版权。 :::
+:::info
+
+本 blog 中技术相关的文档，有参考来自网络的很多内容，包括来自 StackOverFlow, 掘金，思否，微信公众号，知乎等等。我在撰写文章，参考一些优秀内容时会记得添加到 References 注明出处, 若有疏漏，或者不小心侵权了，请放心联系我，尊重所有人的版权。
+
+:::
 
 <!--truncate-->
 
@@ -61,13 +65,29 @@ The blog supports tags as well!
 
 Use a `<!--truncate-->` comment to limit blog post size in the list view.
 
-:::note Some **content** with _markdown_ `syntax`. :::
+:::note
 
-:::info Some **content** with _markdown_ `syntax`. :::
+Some **content** with _markdown_ `syntax`.
 
-:::caution Some **content** with _markdown_ `syntax`. :::
+:::
 
-:::danger Some **content** with _markdown_ `syntax`. :::
+:::info
+
+Some **content** with _markdown_ `syntax`.
+
+:::
+
+:::caution
+
+Some **content** with _markdown_ `syntax`.
+
+:::
+
+:::danger
+
+Some **content** with _markdown_ `syntax`.
+
+:::
 
 Blog posts support [Docusaurus Markdown features](https://docusaurus.io/docs/markdown-features), such as [MDX](https://mdxjs.com/).
 

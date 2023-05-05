@@ -31,18 +31,14 @@ const To = (props)=>{
 }
 ```
 
-> 可以传递对象,不是明文传递。但页面刷新则读不到 prop.location 上的参数，参数丢失。开始使用的这种方式，但由于刷新丢失参数的问题，选择了下一种使用 params 的方式。【哈希路由的情况下，参数丢失】
-> 在 hashRouter 情况下刷新会丢失参数，在 browerRouter 下刷新不会丢失参数。
+> 可以传递对象,不是明文传递。但页面刷新则读不到 prop.location 上的参数，参数丢失。开始使用的这种方式，但由于刷新丢失参数的问题，选择了下一种使用 params 的方式。【哈希路由的情况下，参数丢失】在 hashRouter 情况下刷新会丢失参数，在 browerRouter 下刷新不会丢失参数。
 
 ## 使用 params 传参的方式
 
 - router 设置:`<Route path="/tree/:key" component={xx} />`，与上面一致
-- 页面使用,同上用 history 或 Link，不传 treeData,只有 path
-  起始页面：` <Link to={{ pathname: "/treeStructure/" + key }}>`
-  目标页面：`const key = this.props.match.params.key`,hook 方式使用`useParams`
+- 页面使用,同上用 history 或 Link，不传 treeData,只有 path 起始页面：` <Link to={{ pathname: "/treeStructure/" + key }}>` 目标页面：`const key = this.props.match.params.key`,hook 方式使用`useParams`
 
-> 只能传递字符串，且只能放在 url 上，明文传递。页面刷新不会丢失参数。
-> 可以传多个参数，也可以使参数可选。`path="/tree/:key/:page?"`
+> 只能传递字符串，且只能放在 url 上，明文传递。页面刷新不会丢失参数。可以传多个参数，也可以使参数可选。`path="/tree/:key/:page?"`
 
 <hr/>
 

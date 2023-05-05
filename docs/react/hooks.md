@@ -4,8 +4,7 @@ sidebar_position: 2
 keywords: [React Hooks Usage]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 
 # React Hooks
 
@@ -119,7 +118,11 @@ class App extends React.Component {
     }, 3000);
   }
   render() {
-    return <button onClick={() => this.setState({ count: this.state.count + 1 })}>点击{this.state.count}次</button>;
+    return (
+      <button onClick={() => this.setState({count: this.state.count + 1})}>
+        点击{this.state.count}次
+      </button>
+    );
   }
 }
 ```
@@ -150,7 +153,7 @@ note: live-codeblock 里添加多个组件的方法：添加 noInLine, 代码最
 -->
 
 ```jsx live noInline
-function Child({ data }) {
+function Child({data}) {
   useEffect(() => {
     console.log("查询条件：", data);
   }, [data]);
@@ -174,14 +177,26 @@ function App() {
       name,
       phone,
     }),
-    [name, phone]
+    [name, phone],
   );
 
   return (
     <div className="App">
-      <input onChange={(e) => setName(e.target.value)} type="text" placeholder="请输入姓名" />
-      <input onChange={(e) => setPhone(e.target.value)} type="text" placeholder="请输入电话" />
-      <input onChange={(e) => setKw(e.target.value)} type="text" placeholder="请输入关键词" />
+      <input
+        onChange={(e) => setName(e.target.value)}
+        type="text"
+        placeholder="请输入姓名"
+      />
+      <input
+        onChange={(e) => setPhone(e.target.value)}
+        type="text"
+        placeholder="请输入电话"
+      />
+      <input
+        onChange={(e) => setKw(e.target.value)}
+        type="text"
+        placeholder="请输入关键词"
+      />
       <Child data={data} />
     </div>
   );
@@ -189,13 +204,11 @@ function App() {
 render(<App />);
 ```
 
-:::caution
-传递给 useMemo 的函数在**渲染期间运行**，注意里面的逻辑**不要再次触发渲染**，副作用应该放在 useEffect 里面。
+:::caution 传递给 useMemo 的函数在**渲染期间运行**，注意里面的逻辑**不要再次触发渲染**，副作用应该放在 useEffect 里面。
 
 如果不提供依赖数组，则会在每次渲染时都重新计算。
 
-将 useMemo 作为性能优化，而不是语义保证，因为 React 有可能在某些情况下忘掉记住的值，重新计算。
-:::
+将 useMemo 作为性能优化，而不是语义保证，因为 React 有可能在某些情况下忘掉记住的值，重新计算。 :::
 
 #### React.memo 与 useMemo
 
@@ -280,7 +293,7 @@ const ChildUseMemo = (props = {}) => {
 ### useCallback
 
 ```jsx live noInline
-function Child({ callback }) {
+function Child({callback}) {
   useEffect(() => {
     callback();
   }, [callback]);
@@ -300,9 +313,21 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <input onChange={(e) => setName(e.target.value)} type="text" placeholder="请输入姓名" />
-      <input onChange={(e) => setPhone(e.target.value)} type="text" placeholder="请输入电话" />
-      <input onChange={(e) => setKw(e.target.value)} type="text" placeholder="请输入关键词" />
+      <input
+        onChange={(e) => setName(e.target.value)}
+        type="text"
+        placeholder="请输入姓名"
+      />
+      <input
+        onChange={(e) => setPhone(e.target.value)}
+        type="text"
+        placeholder="请输入电话"
+      />
+      <input
+        onChange={(e) => setKw(e.target.value)}
+        type="text"
+        placeholder="请输入关键词"
+      />
       <Child callback={callback} />
     </div>
   );
@@ -317,7 +342,7 @@ useMemo 和 useCallback，都能为「重复渲染」这个问题，提供很好
 
 ```jsx live noInline
 //使用 React.memo 将子组件作为 pureComponent,减少不必要的渲染。useCallback 缓存 props 中的函数，减少 props 不必要的变化导致的渲染。
-const Child = React.memo(function ({ val, onChange }) {
+const Child = React.memo(function ({val, onChange}) {
   console.log("render...", val);
   return <input value={val} onChange={onChange} />;
 });
@@ -376,7 +401,7 @@ function Parent() {
   );
 }
 
-function Child({ getData }) {
+function Child({getData}) {
   useEffect(() => {
     getData();
   }, [getData]); // 函数可以作为依赖项参与到数据流中
@@ -466,16 +491,16 @@ state 逻辑处理较复杂且包含多个子值，或者下一个 state 依赖�
 每次 state 变化时，都会触发一次重新渲染。
 
 ```jsx live noInline
-const initialState = { count: 0 };
+const initialState = {count: 0};
 function reducer(state, action) {
   //接收当前 state 和 action， 并根据不同的 action 返回不同的新的 state。
   switch (action.type) {
     case "increment":
-      return { count: state.count + 1 };
+      return {count: state.count + 1};
     case "decrement":
-      return { count: state.count - 1 };
+      return {count: state.count - 1};
     case "reset":
-      return { count: 0 };
+      return {count: 0};
     default:
       return state;
   }
@@ -486,9 +511,9 @@ function Counter() {
     <>
       Count: {state.count}
       {/* dispatch 一个action */}
-      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
-      <button onClick={() => dispatch({ type: "increment" })}>+</button>
-      <button onClick={() => dispatch({ type: "reset" })}>reset</button>
+      <button onClick={() => dispatch({type: "decrement"})}>-</button>
+      <button onClick={() => dispatch({type: "increment"})}>+</button>
+      <button onClick={() => dispatch({type: "reset"})}>reset</button>
     </>
   );
 }
@@ -636,7 +661,11 @@ function Child(props, parentRef) {
   });
   return (
     <div>
-      <input type="text" ref={inputRef} onChange={(e) => setName(e.target.value)} />
+      <input
+        type="text"
+        ref={inputRef}
+        onChange={(e) => setName(e.target.value)}
+      />
     </div>
   );
 }

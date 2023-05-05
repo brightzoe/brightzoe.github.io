@@ -19,8 +19,7 @@ CSS 方案的一种方法论 [BEM — Block Element Modifier](http://getbem.com/
 
 - Blocks, Elements and Modifiers
 
-在 HTML 中添加更多的类，这样就可以直接针对它们，保持选择器的低特异性。
-![](https://s2.loli.net/2021/12/08/eibYSCRELKdt326.png)
+在 HTML 中添加更多的类，这样就可以直接针对它们，保持选择器的低特异性。 ![](https://s2.loli.net/2021/12/08/eibYSCRELKdt326.png)
 
 ## PostCSS
 
@@ -34,8 +33,7 @@ CSS 方案的一种方法论 [BEM — Block Element Modifier](http://getbem.com/
 
 ## Tailwind CSS
 
-这两年是很火的。
-一句话定义：基于 原子化（Atomic） CSS 的功能类优先的 CSS 设计系统。
+这两年是很火的。一句话定义：基于 原子化（Atomic） CSS 的功能类优先的 CSS 设计系统。
 
 :::note
 

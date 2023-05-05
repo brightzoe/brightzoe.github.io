@@ -51,8 +51,7 @@ align-items: center;
 
 > 只适用于多行的 flex-box，且 flex-container 要有高度，有多余的空间。
 
-一种特殊情况
-https://codesandbox.io/s/flex-te-shu-qing-kuang-8pkmw?file=/src/App.js
+一种特殊情况 https://codesandbox.io/s/flex-te-shu-qing-kuang-8pkmw?file=/src/App.js
 
 **`flex-wrap`** 在主轴方向上是否折行。
 

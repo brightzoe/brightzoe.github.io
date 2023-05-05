@@ -2,14 +2,11 @@
 
 最初是在看 docsify 的文档的时候，看到官方提供了几款主题可以选择，并在文档中提供了一键切换主题预览不同效果的功能。想一下一键切换主题这个需求还是经常会遇见的，一般这种需求是一键切换白天和黑夜模式，或者一键切换配色。大概是怎么实现的呢？
 
-自己的思考：
-比较复杂的实现方式，先不考虑性能消耗等各种：
-可以写不同的 css 文件，设置点击事件，head 标签里动态添加移除 link 标签实现。
+自己的思考：比较复杂的实现方式，先不考虑性能消耗等各种：可以写不同的 css 文件，设置点击事件，head 标签里动态添加移除 link 标签实现。
 
 ## 写多套不同的 css 样式实现
 
-不同的样式拆分成不同的文件，动态改变引用 css 文件的地址。
-首先创建一个空 link.
+不同的样式拆分成不同的文件，动态改变引用 css 文件的地址。首先创建一个空 link.
 
 ```js
 var createLink = (function () {
@@ -59,9 +56,7 @@ preview.onclick = function (e) {
 };
 ```
 
-在 html 中给点击切换主题的按钮设置不同的`data-theme`属性，与 css link 的`title`对应，其中`preview`为切换主题按钮的父元素。
-其中`find`，`findAll`是`docsify`自己实现的对 dom 操作的函数，不需纠结，操作 dom 可以选中对应的元素即可。
-![](https://i.loli.net/2021/06/24/dgP61nR3BSIlQKH.png)
+在 html 中给点击切换主题的按钮设置不同的`data-theme`属性，与 css link 的`title`对应，其中`preview`为切换主题按钮的父元素。其中`find`，`findAll`是`docsify`自己实现的对 dom 操作的函数，不需纠结，操作 dom 可以选中对应的元素即可。 ![](https://i.loli.net/2021/06/24/dgP61nR3BSIlQKH.png)
 
 好的，和 docsify 文档一样，我也在这里添加了切换皮肤的按钮,请点击切换：
 
@@ -125,8 +120,7 @@ preview.onclick = function (e) {
   }
 ```
 
-写一套默认的属性，在切换主题的时候，修改某属性的值（data-theme），写一套新的属性，利用 css 的后面覆盖前面的样式的特性。
-相应 demo: https://github.com/brightzoe/skin/tree/brightzoe/style-coverage
+写一套默认的属性，在切换主题的时候，修改某属性的值（data-theme），写一套新的属性，利用 css 的后面覆盖前面的样式的特性。相应 demo: https://github.com/brightzoe/skin/tree/brightzoe/style-coverage
 
 ## 使用 sass 变量
 
@@ -189,18 +183,15 @@ html {
 
 js 同上修改 data-theme 的值。
 
-这样动态修改 html 的`data-theme`属性的值,使相应的 css 变量改变，进而影响对应设置的 css。
-相应 demo: https://github.com/brightzoe/skin/tree/brightzoe/css-variables
+这样动态修改 html 的`data-theme`属性的值,使相应的 css 变量改变，进而影响对应设置的 css。相应 demo: https://github.com/brightzoe/skin/tree/brightzoe/css-variables
 
-> `:root`:根伪类,用于声明全局 CSS 变量。
-> 对于 HTML 来说，`:root` 表示 `<html> `元素，除了优先级更高之外，与 html 选择器相同。
+> `:root`:根伪类,用于声明全局 CSS 变量。对于 HTML 来说，`:root` 表示 `<html> `元素，除了优先级更高之外，与 html 选择器相同。
 
 > DOM 元素的 style 对象：`CSSStyleDeclaration`,可以用来操作 dom 改变 style 样式。 https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration 。 `document.body.style.setProperty("--primary-color", "red")` 或 `document.body.style.background="green"`
 
 ## CSS 变量兼容性
 
-考虑兼容性, 使用：
-PostCSS Custom Properties (https://www.npmjs.com/package/postcss-custom-properties)
+考虑兼容性, 使用： PostCSS Custom Properties (https://www.npmjs.com/package/postcss-custom-properties)
 
 css-vars-ponyfill (https://jhildenbiddle.github.io/css-vars-ponyfill/#/)
 

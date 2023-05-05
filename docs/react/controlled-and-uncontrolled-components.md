@@ -4,8 +4,7 @@
 
 **从 input 说起**
 
-HTML 中原生的 input，随着用户的输入可以改变 UI 的显示，内部有一个我们看不见的状态进行控制。
-如果我们要控制这个 input 的内容，可以定义一个 state：name，并在 input 的 value 设置为 this.state.name，这样 input 的内容不会随着用户的输入而改变，value 完全取决于 state，但目前 input 是只读的。
+HTML 中原生的 input，随着用户的输入可以改变 UI 的显示，内部有一个我们看不见的状态进行控制。如果我们要控制这个 input 的内容，可以定义一个 state：name，并在 input 的 value 设置为 this.state.name，这样 input 的内容不会随着用户的输入而改变，value 完全取决于 state，但目前 input 是只读的。
 
 现在要控制 input，可以设置一个 onChange 事件，通过 onChange 事件监听输入内容，并 setState 更新 state。
 
@@ -23,7 +22,7 @@ HTML 中原生的 input，随着用户的输入可以改变 UI 的显示，内�
 
 ```jsx live noInline
 // 组件提供方
-function Input({ defaultValue }) {
+function Input({defaultValue}) {
   const [value, setValue] = React.useState(defaultValue);
   return <input value={value} onChange={(e) => setValue(e.target.value)} />;
 }
@@ -41,7 +40,7 @@ render(<Demo />);
 
 ```jsx live noInline
 // 组件提供方
-function Input({ value, onChange }) {
+function Input({value, onChange}) {
   return <input value={value} onChange={onChange} />;
 }
 

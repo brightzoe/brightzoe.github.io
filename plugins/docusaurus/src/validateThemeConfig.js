@@ -1,4 +1,4 @@
-const { Joi } = require("@docusaurus/utils-validation");
+const {Joi} = require("@docusaurus/utils-validation");
 
 const DEFAULT_CONFIG = {
   theme: "codesandbox-light",
@@ -14,7 +14,7 @@ const Schema = Joi.object({
         "night-owl",
         "aqua-blue",
         "github-light",
-        "monokai-pro"
+        "monokai-pro",
       )
       .default(DEFAULT_CONFIG.theme),
   })
@@ -23,6 +23,6 @@ const Schema = Joi.object({
 });
 exports.Schema = Schema;
 
-exports.validateThemeConfig = function ({ validate, themeConfig }) {
+exports.validateThemeConfig = function ({validate, themeConfig}) {
   return validate(Schema, themeConfig);
 };

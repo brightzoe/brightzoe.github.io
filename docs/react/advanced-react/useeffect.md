@@ -1,5 +1,4 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 
 # useEffect
 
@@ -139,7 +138,7 @@ function Counter() {
     () => {
       setCount(count + 1);
     },
-    paused ? null : 1000
+    paused ? null : 1000,
   );
   const handlePause = (e) => {
     setPaused(!paused);
@@ -173,8 +172,7 @@ render(<Counter />);
 
 **useLayloutEffect**
 
-useLayoutEffect 会在所有 dom 变更之后同步调用 effect，适合用来读取 dom 布局并同步触发重渲染。在浏览器执行绘制之前，useLayoutEffect 内部的更新计划将被同步刷新。
-:::
+useLayoutEffect 会在所有 dom 变更之后同步调用 effect，适合用来读取 dom 布局并同步触发重渲染。在浏览器执行绘制之前，useLayoutEffect 内部的更新计划将被同步刷新。 :::
 
 执行顺序见下面的栗子：
 

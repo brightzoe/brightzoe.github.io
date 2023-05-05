@@ -9,11 +9,13 @@ echarts 默认支持线性渐变与径向渐变，不支持环形渐变，如果
 ![环形渐变](https://i.loli.net/2021/09/23/9RlInTuGh5JeocW.png)
 
 :::note
+
 线性渐变(linear-gradient)就是沿着一根轴线（水平、垂直或某个角度）改变颜色，从起点到终点颜色进行顺序渐变。
 
 径向渐变指从一个中心开始向远处渐变的效果，可以指定渐变的中心、形状（圆形或椭圆形）、大小。
 
 CSS 的`background`也是支持这两种渐变方式。
+
 :::
 
 上面环形渐变的效果该如何实现呢？
@@ -22,9 +24,9 @@ CSS 的`background`也是支持这两种渐变方式。
 
 ```js
 const data = [
-  { name: "data1", value: 100 },
-  { name: "data2", value: 40 },
-  { name: "data3", value: 60 },
+  {name: "data1", value: 100},
+  {name: "data2", value: 40},
+  {name: "data3", value: 60},
 ];
 
 // 计算每部分比例，以及开始角度，结束角度
@@ -72,7 +74,12 @@ const color = [
  */
 function getCoordinates(startArc, endArc) {
   // 这里计算扇形最外层的x,y坐标
-  const position = [Math.sin(startArc), -Math.cos(startArc), Math.sin(endArc), -Math.cos(endArc)];
+  const position = [
+    Math.sin(startArc),
+    -Math.cos(startArc),
+    Math.sin(endArc),
+    -Math.cos(endArc),
+  ];
   // 这里求得了最外层两个顶点坐标的差值。
   const dx = position[2] - position[0];
   const dy = position[3] - position[1];
@@ -114,7 +121,12 @@ function getLocation(dx, dy) {
  * @param {*} endOpacity 结束颜色透的明度
  * @returns 带样式的数据
  */
-function setGradientColorInItemStyle(data, colorlist, startOpacity = 1, endOpacity = 0) {
+function setGradientColorInItemStyle(
+  data,
+  colorlist,
+  startOpacity = 1,
+  endOpacity = 0,
+) {
   for (let i = 0; i < data.length; i++) {
     const color = colorlist[i];
     const startAngle = data[i].startAngle;
@@ -158,9 +170,7 @@ const option = {
 };
 ```
 
-:::caution
-根据以上的方法，在 echarts 中我实现了在图上的环形渐变，但是图例的渐变方向也跟着跑偏了。图例如何分别自定义样式呢？
-![渐变方向跟着跑走的图例](https://i.loli.net/2021/09/23/6EhBrMzVTYq5ixZ.png)
+:::caution 根据以上的方法，在 echarts 中我实现了在图上的环形渐变，但是图例的渐变方向也跟着跑偏了。图例如何分别自定义样式呢？ ![渐变方向跟着跑走的图例](https://i.loli.net/2021/09/23/6EhBrMzVTYq5ixZ.png)
 
 echarts 图例也可以单独的自定义：
 
@@ -195,9 +205,11 @@ echarts 图例也可以单独的自定义：
 :::
 
 :::info
+
 D3.js，D3(Data-Driven Documents),基于数据生成 SVG 路径以及通过数据和方法在 DOM 中创建数据可视化元素（如轴）。相对于 ECharts 等开箱即用的可视化框架，D3 更接近于底层，直接控制原生 SVG，不直接提供任何一种现成的可视化图表，可视化定制能力强。
 
 D3 没有引入新的图形元素，它遵循了 web 标准（HTML, CSS, SVG 以及 Canvas ）来展示数据 ，所以它可以不需要依赖其他框架独立运行在现代浏览器中。
+
 :::
 
 ## Reference

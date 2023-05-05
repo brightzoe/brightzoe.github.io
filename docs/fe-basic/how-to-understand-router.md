@@ -167,10 +167,8 @@ window.addEventListener("popstate", function (e) {
 
 - 实现原理总结
 
-  - hash 路由
-    监听 hashchange 事件，匹配对应组件
-  - history 路由
-    监听 popstate 事件，通过 history.pushState/replaceState 来改变 url 地址
+  - hash 路由监听 hashchange 事件，匹配对应组件
+  - history 路由监听 popstate 事件，通过 history.pushState/replaceState 来改变 url 地址
 
     服务器配置都返回 index.html
 

@@ -3,25 +3,25 @@
  * and scoped locally.
  */
 .layout {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .layout main {
-	flex: 1;
-	display: flex;
+  flex: 1;
+  display: flex;
 }
 .layout main > div {
-	flex: 1;
+  flex: 1;
 }
 .heroBanner {
-	padding: 4rem 0;
-	text-align: center;
-	position: relative;
-	overflow: hidden;
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 966px) {
-	.heroBanner {
-		padding: 2rem;
-	}
+  .heroBanner {
+    padding: 2rem;
+  }
 }

@@ -40,13 +40,11 @@ p.then(
   },
   (reason) => {
     console.log(reason); // p 的状态为 rejected 时执行
-  }
+  },
 );
 ```
 
-前面 promise 的状态不改变，后面的 then 方法就不会执行。
-在 then 方法中，通过 return 将返回的 promise 实例改为 fulfilled 状态。
-如果在 then 方法中出现错误，会将返回的 promise 实例改为 rejected 状态。
+前面 promise 的状态不改变，后面的 then 方法就不会执行。在 then 方法中，通过 return 将返回的 promise 实例改为 fulfilled 状态。如果在 then 方法中出现错误，会将返回的 promise 实例改为 rejected 状态。
 
 ```js
 new Promise((resolve, reject) => {
@@ -60,7 +58,7 @@ new Promise((resolve, reject) => {
     },
     (error) => {
       console.log(error);
-    }
+    },
   )
   .then(
     (value) => {
@@ -68,7 +66,7 @@ new Promise((resolve, reject) => {
     },
     (error) => {
       console.log(error);
-    }
+    },
   );
 ```
 
@@ -184,7 +182,11 @@ Promise.all(promises: Iterable<Promise>): Promise<Array>
 参数为空数组时，立刻 resolve。
 
 ```js
-const promises = [Promise.resolve("a"), Promise.resolve("b"), Promise.reject("c")];
+const promises = [
+  Promise.resolve("a"),
+  Promise.resolve("b"),
+  Promise.reject("c"),
+];
 Promise.all(promises)
   .then((val) => console.log(val))
   .catch((err) => console.log(err));
@@ -260,7 +262,10 @@ function resolveAfter(ms, value) {
 }
 
 function timeout(ms, promise) {
-  return Promise.race([promise, resolveAfter(ms, Promise.reject("(⊙o⊙)超时了"))]);
+  return Promise.race([
+    promise,
+    resolveAfter(ms, Promise.reject("(⊙o⊙)超时了")),
+  ]);
 }
 ```
 
@@ -278,7 +283,7 @@ function race(promises) {
         },
         (error) => {
           reject(error);
-        }
+        },
       );
     });
   });
@@ -298,7 +303,9 @@ Promise.allSettled(promises: Iterable<Promise>):  Promise<Array<SettlementObject
 所有 promise 都结束了，返回一个 resolve 状态的 promise，value 为 promises 的状态数组。
 
 ```js
-Promise.allSettled([Promise.reject(1), Promise.resolve(2)]).then((res) => console.log(res));
+Promise.allSettled([Promise.reject(1), Promise.resolve(2)]).then((res) =>
+  console.log(res),
+);
 ```
 
 ## 请求并发
@@ -340,7 +347,15 @@ function poolLimit(limit, urls, callback) {
   }
 }
 
-const urls = ["bytedance.com", "tencent.com", "alibaba.com", "microsoft.com", "apple.com", "hulu.com", "amazon.com"];
+const urls = [
+  "bytedance.com",
+  "tencent.com",
+  "alibaba.com",
+  "microsoft.com",
+  "apple.com",
+  "hulu.com",
+  "amazon.com",
+];
 poolLimit(3, urls, (data) => console.log(data));
 ```
 

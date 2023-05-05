@@ -16,8 +16,7 @@ keywords: [upload files 文件上传 分片上传]
 
 - 为什么需要计算文件哈希值？
 
-  相同文件不重复上传，节省数据库资源，以及重复上传时节省时间。
-  文件的 hash 可以理解为一个文件的指纹。后端存储文件使用文件名或文件的大小等都不科学，容易产生同名覆盖或多次存储相同的文件浪费资源的问题。所以在文件上传时，需要先计算文件的 hash，判断后台是否已经存在此文件，如果不存在再重新上传，存在的此文件时直接提示秒传成功。
+  相同文件不重复上传，节省数据库资源，以及重复上传时节省时间。文件的 hash 可以理解为一个文件的指纹。后端存储文件使用文件名或文件的大小等都不科学，容易产生同名覆盖或多次存储相同的文件浪费资源的问题。所以在文件上传时，需要先计算文件的 hash，判断后台是否已经存在此文件，如果不存在再重新上传，存在的此文件时直接提示秒传成功。
 
 ### 使用`spark-md5`计算一个文件的 hash
 
@@ -31,7 +30,10 @@ import SparkMd5 from "spark-md5";
 // 增量计算 hash
 const calculateHash = (file, chunkSize) =>
   new Promise((resolve, reject) => {
-    let blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice,
+    let blobSlice =
+        File.prototype.slice ||
+        File.prototype.mozSlice ||
+        File.prototype.webkitSlice,
       chunks = Math.ceil(file.size / chunkSize),
       currentChunk = 0,
       spark = new SparkMd5.ArrayBuffer(),
@@ -74,8 +76,7 @@ calculateHash(file, chunkSize)
   });
 ```
 
-> 扩展：
-> 可以在上述逻辑中添加计算 hash 的进度：当前计算到的分片数/总分片数
+> 扩展：可以在上述逻辑中添加计算 hash 的进度：当前计算到的分片数/总分片数
 
 提升计算速度：
 

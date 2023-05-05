@@ -14,17 +14,17 @@
 拷贝可遍历的属性，浅拷贝。
 
 ```js
-let bar = { a: 1, b: 2 };
-let baz = { ...bar }; // { a: 1, b: 2 } 与Object.assign 一致
+let bar = {a: 1, b: 2};
+let baz = {...bar}; // { a: 1, b: 2 } 与Object.assign 一致
 ```
 
 ## 解构赋值
 
 ```js
-const { a, b: y } = { a: 3, b: 4 };
+const {a, b: y} = {a: 3, b: 4};
 //a :3 y:4  y 是对 b 的重命名。外边声明的是y，取值取 b 的值。
 
-let { foo, bar } = { foo: "aaa", bar: "bbb" };
+let {foo, bar} = {foo: "aaa", bar: "bbb"};
 foo; // "aaa"
 bar; // "bbb"
 ```
@@ -43,7 +43,7 @@ const school = {
 
 const {
   classes: {
-    stu: { name },
+    stu: {name},
   },
 } = school;
 console.log(name); // 'Bob'
@@ -72,7 +72,11 @@ console.log(name); // 'Bob'
 ```js
 //flat 实现 不带层级
 function flatDeep(arr) {
-  return arr.reduce((acc, curr) => (Array.isArray(curr) ? [...acc, ...flatDeep(curr)] : [...acc, curr]), []);
+  return arr.reduce(
+    (acc, curr) =>
+      Array.isArray(curr) ? [...acc, ...flatDeep(curr)] : [...acc, curr],
+    [],
+  );
 }
 
 //flat 带层级展开
@@ -95,8 +99,11 @@ console.log(flat([1, 2, 3, [1, 2, [1, 2, 3]]], 2));
 //2 reduce 递归
 function flat(arr, level = 1) {
   return arr.reduce(
-    (acc, curr) => (Array.isArray(curr) && level > 0 ? [...acc, ...flat(curr, level - 1)] : [...acc, curr]),
-    []
+    (acc, curr) =>
+      Array.isArray(curr) && level > 0
+        ? [...acc, ...flat(curr, level - 1)]
+        : [...acc, curr],
+    [],
   );
 }
 ```
@@ -125,23 +132,22 @@ function flat(arr, level = 1) {
   对象合并，将源对象的所有可枚举属性复制到目标对象。返回的是目标对象本身。
 
   ```js
-  const target = { a: 1 };
+  const target = {a: 1};
 
-  const source1 = { b: 2 };
-  const source2 = { c: 3 };
+  const source1 = {b: 2};
+  const source2 = {c: 3};
 
   Object.assign(target, source1, source2);
   ```
 
   > 该方法是浅拷贝。复制到目标对象上的属性如果是一个对象，是对原来对象的引用。
 
-- 遍历相关
-  Object.keys，Object.values ，Object.entries
+- 遍历相关 Object.keys，Object.values ，Object.entries
 
   以上都是遍历对象自身（不含继承的），所有可遍历属性。
 
   ```js
-  const obj = { foo: "bar", baz: 42 };
+  const obj = {foo: "bar", baz: 42};
   Object.entries(obj);
   // [ ["foo", "bar"], ["baz", 42] ]
   ```
@@ -289,7 +295,7 @@ Proxy.revocable() 方法返回一个对象，该对象的 proxy 属性是 Proxy 
 let target = {};
 let handler = {};
 
-let { proxy, revoke } = Proxy.revocable(target, handler);
+let {proxy, revoke} = Proxy.revocable(target, handler);
 
 proxy.foo = 123;
 proxy.foo; // 123

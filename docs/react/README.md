@@ -101,23 +101,17 @@ react 组件可以用 jsx 创建，（jsx 是`React.createElement`的简写）�
 
 挂载阶段
 
-1. constructor
-   初始化 state，进行方法绑定
-2. static getDerivedStateFormProps
-   在初始挂载及后续更新都会被调用，返回一个对象来更新 state，state 的值在任何时候都取决于 props, 如果返回 null 则不更新任何内容。
-3. render
-   渲染组件
-4. componentDidMount
-   在组件第一次挂载完成（渲染到 DOM）后调用，只会被调用一次
+1. constructor 初始化 state，进行方法绑定
+2. static getDerivedStateFormProps 在初始挂载及后续更新都会被调用，返回一个对象来更新 state，state 的值在任何时候都取决于 props, 如果返回 null 则不更新任何内容。
+3. render 渲染组件
+4. componentDidMount 在组件第一次挂载完成（渲染到 DOM）后调用，只会被调用一次
 
 更新阶段
 
 1. static getDerivedStateFromProps
-2. shouldComponentUpdate(nextProps,nextState)
-   根据返回值决定是否更新，返回 true 时才会调用 render，返回 false 时不会调用 render。默认行为是返回 true ，每次 props 或 state 发生变化都会调用。
+2. shouldComponentUpdate(nextProps,nextState) 根据返回值决定是否更新，返回 true 时才会调用 render，返回 false 时不会调用 render。默认行为是返回 true ，每次 props 或 state 发生变化都会调用。
 3. render()
-4. getSnapshotBeforeUpdate(prevProps, prevState)
-   在组件被更新之前调用，返回值会作为 componentDidUpdate 的第三个参数。
+4. getSnapshotBeforeUpdate(prevProps, prevState) 在组件被更新之前调用，返回值会作为 componentDidUpdate 的第三个参数。
 
    在最近一次渲染输出（提交到 DOM 节点）之前调用，这个函数运行完真实 DOM 会被渲染。它使得组件能在发生更改之前从 DOM 中捕获一些信息（例如，滚动位置）
 
@@ -170,16 +164,16 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    this.setState({ count: this.state.count + 1 });
+    this.setState({count: this.state.count + 1});
     console.log("1", this.state.count);
-    this.setState({ count: this.state.count + 1 });
+    this.setState({count: this.state.count + 1});
     console.log("2", this.state.count);
     setTimeout(() => {
-      this.setState({ count: this.state.count + 1 });
+      this.setState({count: this.state.count + 1});
       console.log("3", this.state.count);
     });
     setTimeout(() => {
-      this.setState({ count: this.state.count + 1 });
+      this.setState({count: this.state.count + 1});
       console.log("4", this.state.count);
     });
   }
@@ -201,8 +195,7 @@ class App extends React.Component {
 
 ### Refs
 
-用于父元素访问子元素的方法。
-也可以用于缓存一个值。
+用于父元素访问子元素的方法。也可以用于缓存一个值。
 
 ### Context
 
@@ -395,7 +388,7 @@ function withPersistentData(WrappedComponent) {
   return class extends Component {
     componentDidMount() {
       let data = localStorage.getItem("data");
-      this.setState({ data });
+      this.setState({data});
     }
     render() {
       // 通过{...this.props} 把传递给当前组件的属性继续传递给被包装的组件WrappedComponent
@@ -477,8 +470,7 @@ export default function emailReducer(state = [], action){
 
 常用中间件：
 
-- redux-thunk
-  处理异步请求
+- redux-thunk 处理异步请求
 - redux-saga
 - redux-actions
 

@@ -4,8 +4,7 @@ authors: [zoe]
 tags: [reading, dev, fp]
 ---
 
-环境配置
-使用 VS Code 编写 scheme ,参考: [Windows + VS Code 搭建 Scheme 开发环境 - 知乎](https://zhuanlan.zhihu.com/p/405246479)
+环境配置使用 VS Code 编写 scheme ,参考: [Windows + VS Code 搭建 Scheme 开发环境 - 知乎](https://zhuanlan.zhihu.com/p/405246479)
 
 ## 基本语法
 
@@ -33,5 +32,4 @@ tags: [reading, dev, fp]
 
 `( eq? a1 a2)` 这两个`atom`相等吗? Eq takes two arguments. Both of them must be non-numeric atoms.
 
-----------------第一章 end
-`(lat? l)` 是全为`atom`的`list`吗? Every lat is a list of atoms.
+----------------第一章 end `(lat? l)` 是全为`atom`的`list`吗? Every lat is a list of atoms.

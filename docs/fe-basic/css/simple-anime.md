@@ -96,8 +96,7 @@ transform: translate(10px, 10px) rotate(10deg);//给一个元素配置多个转�
 
 一些好用的动画:
 
-1. 卡片聚焦的效果：
-   ![](https://i.loli.net/2021/08/02/JjqbUf2lTtm7YSw.gif)
+1. 卡片聚焦的效果： ![](https://i.loli.net/2021/08/02/JjqbUf2lTtm7YSw.gif)
 
    ```css
    .wrapper {
@@ -108,13 +107,11 @@ transform: translate(10px, 10px) rotate(10deg);//给一个元素配置多个转�
    }
    ```
 
-2. 向往外面的图片，不能出圈圈。效果展示：
-   ![](https://i.loli.net/2021/08/02/PETa1dcnrYyAitS.gif)
+2. 向往外面的图片，不能出圈圈。效果展示： ![](https://i.loli.net/2021/08/02/PETa1dcnrYyAitS.gif)
 
    - [外框不变，里面动画 demo](https://codepen.io/brightzoe/pen/dyWOEBp)
 
-   核心是：
-   里面的元素`transition: all 0.4s ease-in-out;`,设定动画效果。
+   核心是：里面的元素`transition: all 0.4s ease-in-out;`,设定动画效果。
 
    外面的 hover 时，里面`transform: scale(1.1, 1.1);`,变换成什么样子。
 

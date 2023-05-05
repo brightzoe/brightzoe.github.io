@@ -41,8 +41,7 @@ webStorage：
 
 目前在实际项目中，很容易出现，需要存储什么，就直接存储到 localStorage/sessionStorage 里。哪里需要就添加一个，随着项目复杂度提升，已经不记得写了多少个存储的 value,也容易出现顶掉前面设置的 key,从而导致一些 bug。项目变大后，后期不好维护整体的存储状态。需要统一管理存储。
 
-- 可以给使用的本地存储添加前缀，项目前缀或作者等，对使用本地存储做一层封装，统一管理本地存储。
-  在 config 统一注册需要存储的 key,只有注册了才能操作，没注册的提醒先去注册再进行存取删的操作。config 中规范所有本地存储中的值，分别代表什么。
+- 可以给使用的本地存储添加前缀，项目前缀或作者等，对使用本地存储做一层封装，统一管理本地存储。在 config 统一注册需要存储的 key,只有注册了才能操作，没注册的提醒先去注册再进行存取删的操作。config 中规范所有本地存储中的值，分别代表什么。
 
   这个思路不错，来源于：[项目优化——localStorage|sessionStorage 统一管理方案 - 掘金](https://juejin.cn/post/6919376014867070989#heading-0)
 
@@ -131,8 +130,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent
    });
    ```
 
-   > 需要在 https 且浏览器支持的情况下，存在兼容性问题。
-   > https://developer.mozilla.org/zh-CN/docs/Web/API/StorageManager
+   > 需要在 https 且浏览器支持的情况下，存在兼容性问题。 https://developer.mozilla.org/zh-CN/docs/Web/API/StorageManager
 
 如果濒临溢出，可以对存储时间戳进行排序，把旧的清除掉。
 

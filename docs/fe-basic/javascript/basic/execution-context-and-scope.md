@@ -79,8 +79,7 @@ bar(); //2 执行的foo 作用域在全局，则a 为全局的a
 
 ### 作用域嵌套
 
-![作用域嵌套](https://i.loli.net/2021/10/22/YT4vOU6dL9QgCi3.png)
-用图片表示，上述代码一共有三层作用域嵌套，分别是：
+![作用域嵌套](https://i.loli.net/2021/10/22/YT4vOU6dL9QgCi3.png) 用图片表示，上述代码一共有三层作用域嵌套，分别是：
 
 1. 全局作用域
 2. foo 作用域
@@ -174,15 +173,16 @@ for (var i = 0; i < divs.length; i++) {
       return function () {
         console.log(frozenCounter);
       };
-    })(i)
+    })(i),
   );
 }
 ```
 
-> 延申： [闭包 - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures) 提供了更多解决遍历问题的方式。
-> 可以使用 forEach
+> 延申： [闭包 - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures) 提供了更多解决遍历问题的方式。可以使用 forEach
 
-:::note 通过 IIFE 实现 UMD 模块化
+:::note
+
+通过 IIFE 实现 UMD 模块化
 
 1. 使用 IIFE 完成封装，解决了模块名污染全局作用域的问题。
 2. 赋予选择的权力，根据不同的环境条件选择不同的执行
@@ -241,8 +241,7 @@ console.log(i); // 抛出错误
 
 ### 作用域的应用场景
 
-模块化。
-[面试官：说说作用域和闭包吧 - 掘金](https://juejin.cn/post/6844904165672484871#heading-8)
+模块化。 [面试官：说说作用域和闭包吧 - 掘金](https://juejin.cn/post/6844904165672484871#heading-8)
 
 ## 一些问题
 
@@ -315,8 +314,7 @@ const a; //Uncaught SyntaxError: Missing initializer in const declaration,定义
 
 全局变量 global，var/let 不一致，let 声明的变量是放在全局的 Scope 中。
 
-> 栈： 先进后出，占用空间小，读取速度快。
-> 堆： 占用空间大，大小不固定。
+> 栈： 先进后出，占用空间小，读取速度快。堆： 占用空间大，大小不固定。
 
 了解更多： [JS 变量存储？栈 & 堆？NONONO! - 掘金](https://juejin.cn/post/6844903997615128583#heading-0)
 

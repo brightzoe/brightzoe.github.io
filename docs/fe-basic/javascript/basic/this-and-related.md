@@ -18,15 +18,14 @@
 - 箭头函数不会创建自己的 `this`, 它只会继承自己的作用域链的上一层作用域的 `this` 对象。
 
 :::note
+
 `this` 永远不能被赋值，即 `this` 不能写在等号左边。
 
 `this` 永远指向一个对象，如果指向了一个原始数据类型会将原始数据类型包装成对象。
 
-this 的丢失问题：`this` 指向调用的对象与函数声明的位置无关，只与调用位置有关，如果在调用位置还使用声明位置的 `this`，`this` 会丢失；
-解决方法通过 `bind` 绑定 `this` 或者通过箭头函数。
+this 的丢失问题：`this` 指向调用的对象与函数声明的位置无关，只与调用位置有关，如果在调用位置还使用声明位置的 `this`，`this` 会丢失；解决方法通过 `bind` 绑定 `this` 或者通过箭头函数。
 
-箭头函数的 `this` ，总是继承外层函数的对象，在定义时就确定，与调用无关。
-:::
+箭头函数的 `this` ，总是继承外层函数的对象，在定义时就确定，与调用无关。 :::
 
 理解 this 的很多栗子：[this、apply、call、bind - 掘金](https://juejin.cn/post/6844903496253177863#heading-0)
 
@@ -83,7 +82,9 @@ Function.prototype.myApply = function (context = window) {
 //fn.bind(context,...args) 绑定this,固定部分参数
 Function.prototype.bind1 = function (context = window) {
   if (typeof this !== "function") {
-    throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
+    throw new Error(
+      "Function.prototype.bind - what is trying to be bound is not callable",
+    );
   }
   const _this = this;
   const args = [...arguments].slice(1); //bind 的参数
@@ -95,7 +96,9 @@ Function.prototype.bind1 = function (context = window) {
 //fn.bind(context,...args)
 Function.prototype.myBind = function (context = window) {
   if (typeof this !== "function") {
-    throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
+    throw new Error(
+      "Function.prototype.bind - what is trying to be bound is not callable",
+    );
   }
   var _this = this;
   var args = [...arguments].slice(1);

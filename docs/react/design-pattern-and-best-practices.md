@@ -16,15 +16,20 @@
 
 ## create-react-app
 
-webpack 配置：
-sass: cra 已内置 sass-loader,只需安装 node-sass/sass(dart-sass)
+webpack 配置： sass: cra 已内置 sass-loader,只需安装 node-sass/sass(dart-sass)
 
 修改其他配置，不 eject 的方式：
 
 - 需要安装：react-app-rewired customize-cra
 
   ```js title='config-overrides.js'
-  const { override, addBabelPlugin, addBabelPreset, addWebpackAlias, adjustStyleLoaders } = require("customize-cra");
+  const {
+    override,
+    addBabelPlugin,
+    addBabelPreset,
+    addWebpackAlias,
+    adjustStyleLoaders,
+  } = require("customize-cra");
   const path = require("path");
   module.exports = override(
     //写样式的方式
@@ -45,7 +50,7 @@ sass: cra 已内置 sass-loader,只需安装 node-sass/sass(dart-sass)
           },
         });
       }
-    })
+    }),
   );
   ```
 
@@ -107,7 +112,12 @@ function shallowEqual(objA: mixed, objB: mixed): boolean {
     return true;
   }
 
-  if (typeof objA !== "object" || objA === null || typeof objB !== "object" || objB === null) {
+  if (
+    typeof objA !== "object" ||
+    objA === null ||
+    typeof objB !== "object" ||
+    objB === null
+  ) {
     return false;
   }
 
@@ -121,7 +131,10 @@ function shallowEqual(objA: mixed, objB: mixed): boolean {
 
   // key相等的情况下，再去循环比较
   for (let i = 0; i < keysA.length; i++) {
-    if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
+    if (
+      !hasOwnProperty.call(objB, keysA[i]) ||
+      !is(objA[keysA[i]], objB[keysA[i]])
+    ) {
       return false;
     }
   }
@@ -188,10 +201,11 @@ https://juejin.cn/post/6935584878071119885#heading-10
 详细使用方法，见上面链接。
 
 ### 添加 key , 使用数据的 ID 作为 key ,尽量不使用索引。
+
 ## Reference
 
 - [React 实战：设计模式和最佳实践 - 程墨 - 掘金课程](https://juejin.cn/book/6844733754326401038)
 - [React 前端渲染优化——父组件导致子组件重复渲染\_DominicElvira 的博客-CSDN 博客\_react 父组件渲染为什么会导致子组件渲染](https://blog.csdn.net/hello__word__/article/details/108198812)
 - [性能！！让你的 React 组件跑得再快一点 - 政采云前端团队](https://www.zoo.team/article/react-render)
 - [React 性能优化 | 包括原理、技巧、Demo、工具使用 - 掘金](https://juejin.cn/post/6935584878071119885#heading-1)
-- [我在工作中写React，学到了什么？性能优化篇 - 掘金](https://juejin.cn/post/6889247428797530126#heading-1)
+- [我在工作中写 React，学到了什么？性能优化篇 - 掘金](https://juejin.cn/post/6889247428797530126#heading-1)

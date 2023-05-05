@@ -18,15 +18,11 @@ tags: [typescript, ts]
 
 > JS：动态类型语言，弱类型。 被设计时，小规模脚本，且不需要编译。TS 也是弱类型，不会修改 JS 运行时的特性。
 
-强类型：
-错误更早暴露。
-代码更智能。
-重构更牢靠。
+强类型：错误更早暴露。代码更智能。重构更牢靠。
 
 ## TS 特性
 
-- 类型系统是核心特性。
-  类型安全，定义了类型后的方法提示。
+- 类型系统是核心特性。类型安全，定义了类型后的方法提示。
 - 静态类型的弱类型。
 
 ## Flow
@@ -129,13 +125,11 @@ function passMixed (value:any){
 
 `.ts`文件不能直接在 node/浏览器环境中执行，需要先编译为 js 文件。如果希望在 node 环境直接运行 ts ，可以使用[`ts-node`](https://www.npmjs.com/package/ts-node)包 ，全局安装后，命令行使用`ts-node hello.ts`。
 
-`tsc hello.ts`
-以上命令可以编译 `hello.ts`文件到 js,会在同一个目录下生成同名 js 文件。
+`tsc hello.ts` 以上命令可以编译 `hello.ts`文件到 js,会在同一个目录下生成同名 js 文件。
 
 `tsc xx -w ` watch mode ，内容改变则重新编译。
 
-`yarn tsc --init`
-生成`tsconfig.json`
+`yarn tsc --init` 生成`tsconfig.json`
 
 `tsc` 直接运行，使用 `tsconfig.json`配置文件，会编译当前目录所有 ts 文件。
 
@@ -168,8 +162,7 @@ function passMixed (value:any){
 
 [TypeScript: Documentation - What is a tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
 
-`yarn tsc --local zh-CN`
-中文错误消息。
+`yarn tsc --local zh-CN` 中文错误消息。
 
 TypeScript 只会在编译时对类型进行静态检查，如果发现有错误，编译的时候就会报错。而在运行时，与普通的 JavaScript 文件一样，不会对类型进行检查。
 
@@ -237,7 +230,7 @@ myFavoriteNumber = 7;
 
 //Object
 const foo: object = function () {}; // 也可以是[] // {}
-const obj: { foo: number; bar: string } = { foo: 123, bar: "foo" }; //定义普通的对象,key要完全一致,不能多也不能少
+const obj: {foo: number; bar: string} = {foo: 123, bar: "foo"}; //定义普通的对象,key要完全一致,不能多也不能少
 
 //Array
 const arr1: Array<number> = [1, 2];
@@ -392,7 +385,7 @@ class NumberObj {
 function add(first: object | NumberObj, second: object | NumberObj) {
   // class 的 instanceof 语法实现类型保护
   if (first instanceof NumberObj && second instanceof NumberObj) {
-    return { count: first.count + second.count };
+    return {count: first.count + second.count};
   }
 }
 ```
@@ -412,10 +405,10 @@ interface Person {
 function getName(person: Person): string {
   return person.name;
 }
-const lily = { name: "lily", gender: "female" };
+const lily = {name: "lily", gender: "female"};
 console.log(getName(lily)); //不会报错，有多的属性也可以，弱校验
 
-console.log(getName({ name: "hh", gender: "female" })); //会报错，对象字面量是强校验，必须完全符合
+console.log(getName({name: "hh", gender: "female"})); //会报错，对象字面量是强校验，必须完全符合
 
 interface Post {
   title: string;
@@ -628,7 +621,7 @@ class DataManager<T extends Item> {
     return this.data[idx].name;
   }
 }
-const data = new DataManager([{ name: "1" }, { name: "hh" }]);
+const data = new DataManager([{name: "1"}, {name: "hh"}]);
 console.log(data.getData(1));
 ```
 
@@ -705,7 +698,7 @@ function testDecoractor() {
 const Test = testDecoractor()(
   class {
     constructor(public name: string) {}
-  }
+  },
 );
 
 const test1 = new Test("hh");

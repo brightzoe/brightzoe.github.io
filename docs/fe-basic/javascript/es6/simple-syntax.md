@@ -42,8 +42,7 @@
    "" || "default"; //'default
    ```
 
-2. 相同的短路特性。
-   若左边不为 `undefined`/`null` ，右侧不会被执行
+2. 相同的短路特性。若左边不为 `undefined`/`null` ，右侧不会被执行
 
 **注意事项**
 
@@ -63,8 +62,8 @@ true || undefined ?? "foo"; // 抛出 SyntaxError
 
 ```js
 const [a, b] = [1, 2]; //变量声明，并解构数组后赋值给变量
-const { a, b, c, d, e } = obj;
-const { a: a1 } = obj; // 提取变量a 并赋值给a1：a1 对应obj.a
+const {a, b, c, d, e} = obj;
+const {a: a1} = obj; // 提取变量a 并赋值给a1：a1 对应obj.a
 
 [a, b] = [b, a]; //交换两个变量的值
 ```
@@ -74,14 +73,14 @@ const { a: a1 } = obj; // 提取变量a 并赋值给a1：a1 对应obj.a
 1. 要注意解构的对象不能为 undefined、null.
 
    ```js
-   const { a, b, c, d, e } = obj || {};
+   const {a, b, c, d, e} = obj || {};
    ```
 
 2. 解构时赋予默认值.防止取出 undefined 的对象.
 
    ```js
    const [a = 5, b = 7] = [1];
-   const { a = 10, b = 5 } = { a: 3 };
+   const {a = 10, b = 5} = {a: 3};
    ```
 
 3. 同 2 在赋值时两边长度不相等，也可以忽略某些值。
@@ -112,7 +111,7 @@ const { a: a1 } = obj; // 提取变量a 并赋值给a1：a1 对应obj.a
    const obj2 = {
      b: 1,
    };
-   const obj = { ...obj1, ...obj2 }; //{a:1,b:1}
+   const obj = {...obj1, ...obj2}; //{a:1,b:1}
    ```
 
 2. 数组/对象拷贝。
@@ -129,9 +128,9 @@ const { a: a1 } = obj; // 提取变量a 并赋值给a1：a1 对应obj.a
 **注意事项**
 
 ```js
-var obj1 = { foo: "bar", x: 42 };
-var obj2 = { foo: "baz", y: 13 };
-const merge = (...objects) => ({ ...objects }); //这里按照剩余参数解析，和预期的展开操作行为不一致
+var obj1 = {foo: "bar", x: 42};
+var obj2 = {foo: "baz", y: 13};
+const merge = (...objects) => ({...objects}); //这里按照剩余参数解析，和预期的展开操作行为不一致
 
 var mergedObj = merge(obj1, obj2);
 // Object { 0: { foo: 'bar', x: 42 }, 1: { foo: 'baz', y: 13 } }
@@ -174,10 +173,16 @@ function(a, b, ...[c,d]) {
    const name = "小明";
    const score = 59;
    // 模板字符串里可以插入任意的js 表达式
-   const result = `${name}${score > 60 ? "的考试成绩及格" : "的考试成绩不及格"}`;
+   const result = `${name}${
+     score > 60 ? "的考试成绩及格" : "的考试成绩不及格"
+   }`;
 
    //可以在模板字符串的占位符内继续嵌套模板
-   const classes = `header ${isLargeScreen() ? "" : `icon-${item.isCollapsed ? "expander" : "collapser"}`}`;
+   const classes = `header ${
+     isLargeScreen()
+       ? ""
+       : `icon-${item.isCollapsed ? "expander" : "collapser"}`
+   }`;
    ```
 
 2. 多行字符串.在新行中插入的任何字符都是模板字符串中的一部分.
@@ -220,8 +225,7 @@ find 方法中找到符合条件的项，就不会继续遍历数组。
 
 ## Array.prototype.flat()
 
-按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。
-语法：`arr.flat([depth=1])`
+按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。语法：`arr.flat([depth=1])`
 
 ```js
 //使用 Infinity，可展开任意深度的嵌套数组
@@ -229,8 +233,7 @@ var arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
 arr4.flat(Infinity);
 ```
 
-> //TODO:如何用不同的方法拍平数组？（扁平化嵌套数组）
-> [Array.prototype.flat() - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)
+> //TODO:如何用不同的方法拍平数组？（扁平化嵌套数组） [Array.prototype.flat() - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)
 
 ## 对象属性名可以使用表达式
 

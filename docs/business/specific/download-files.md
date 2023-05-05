@@ -44,7 +44,7 @@ function downloadFile(path, name) {
     method: "get",
     responseType: "arraybuffer", // /blob
   }).then((res) => {
-    const blob = new Blob([res.data], { type: res.headers["content-type"] }); //要保证文件的类型
+    const blob = new Blob([res.data], {type: res.headers["content-type"]}); //要保证文件的类型
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.style.display = "none";
@@ -65,6 +65,7 @@ function downloadFile(path, name) {
 - 对大文件下载不友好，前期接收文件流时用户无感知，以为没有进行下载，用户体验不好。
 
 :::note
+
 业务中遇到的是大文件下载且需要自定义文件名，服务器文件地址又是不同域的。可以用上面转成二进制流下载并重命名文件。
 
 但这样会耗费比较大的浏览器内存，需要前端完全接收完文件再生成前端下载地址，速度慢且容易崩溃。
@@ -227,7 +228,7 @@ function previewFile() {
     function () {
       preview.src = reader.result;
     },
-    false
+    false,
   );
 
   if (file) {

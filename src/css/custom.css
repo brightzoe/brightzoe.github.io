@@ -27,9 +27,11 @@
   --ifm-leading: 0.7rem;
   --ifm-list-paragraph-margin: 0.6rem;
   --ifm-paragraph-margin-bottom: 0.6rem;
-  --ifm-font-family-base: "LXGW WenKai Screen", FiraCode-Regular, avenir, "helvetica neue", helvetica, ubuntu, roboto,
-    noto, "segoe ui", arial, sans-serif;
-  --ifm-font-family-monospace: FiraCode-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --ifm-font-family-base: "LXGW WenKai Screen", FiraCode-Regular, avenir,
+    "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial,
+    sans-serif;
+  --ifm-font-family-monospace: FiraCode-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 .docusaurus-highlight-code-line {

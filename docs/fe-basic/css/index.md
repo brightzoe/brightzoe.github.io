@@ -43,7 +43,6 @@ display:inline 水平方向的 margin，padding 有效，垂直方向无效。
 - `opacity: 0` 会渲染，占据空间，响应绑定的监听事件。
 - 绝对定位到视口之外。
 
-
 ### display:none 与 visibility:hidden
 
 - 是否渲染
@@ -149,8 +148,7 @@ display:inline 水平方向的 margin，padding 有效，垂直方向无效。
 
 浮动不影响块元素，只影响行内元素。
 
-- 清除浮动
-  clear:left/right/both，用于块元素，使其下移到两边没有浮动元素。块元素的 border box 和浮动元素的 margin box 紧挨着。
+- 清除浮动 clear:left/right/both，用于块元素，使其下移到两边没有浮动元素。块元素的 border box 和浮动元素的 margin box 紧挨着。
 
 - [float - CSS（层叠样式表） | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/float)
 

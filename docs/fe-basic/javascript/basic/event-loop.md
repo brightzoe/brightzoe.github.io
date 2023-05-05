@@ -132,8 +132,7 @@ Node 中的事件循环也是循环＋任务队列的流程，以及微任务优
 - check 检测阶段。 执行 setImmediate 回调。
 - close callback 关闭的回调函数阶段。关闭回调执行。`socket.on('close', ...)`
 
-上面每个阶段都会执行完当前阶段的任务队列，然后执行当前阶段的微任务队列，当前阶段的微任务都执行完才会进入下一个阶段。
-![](https://s2.loli.net/2022/05/11/n4XrUmpL6uPckVF.jpg)
+上面每个阶段都会执行完当前阶段的任务队列，然后执行当前阶段的微任务队列，当前阶段的微任务都执行完才会进入下一个阶段。 ![](https://s2.loli.net/2022/05/11/n4XrUmpL6uPckVF.jpg)
 
 - [Node.js 事件循环，定时器和 process.nextTick() | Node.js](https://nodejs.org/zh-cn/docs/guides/event-loop-timers-and-nexttick/)
 

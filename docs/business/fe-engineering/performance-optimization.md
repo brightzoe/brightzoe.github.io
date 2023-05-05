@@ -5,15 +5,17 @@
 ## 如何衡量一个项目/网站的性能
 
 1. Google Lighthouse 工具。
-   Lighthouse 是一个开源的自动化工具，用于改进网络应用的质量。有对应 chrome extension
-   使用参考：https://juejin.cn/post/6950855971379871757
 
-   - First Contentful Paint 渲染出首个文本/首张图片的时间
-     测量**加载**性能，最好在 2.5s 内。
-   - Time to Interactive 可交互时间。大部分可视区域的事件都可以操作
-   - Total Blocking Time ：= TTI - FCP
-   - Largest Contentful Paint 视口中可见的最大图像或文本块的渲染时间
-   - Cumulative Layout Shift 布局偏移分数
+Lighthouse 是一个开源的自动化工具，用于改进网络应用的质量。有对应 chrome extension 使用参考：https://juejin.cn/post/6950855971379871757
+
+- First Contentful Paint 渲染出首个文本/首张图片的时间
+
+  测量**加载**性能，最好在 2.5s 内。
+
+- Time to Interactive 可交互时间。大部分可视区域的事件都可以操作
+- Total Blocking Time ：= TTI - FCP
+- Largest Contentful Paint 视口中可见的最大图像或文本块的渲染时间
+- Cumulative Layout Shift 布局偏移分数
 
 [如何使用 Lighthouse 性能检测工具 - 掘金](https://juejin.cn/post/6950855971379871757#heading-6)
 
@@ -115,8 +117,21 @@
 
 - 图片懒加载：[react-lazyload](https://www.npmjs.com/package/react-lazyload)
   ```js
-  <LazyLoad placeholder={<img width="100%" height="100%" src={require("./music.png").default} alt="music" />}>
-    <img src={item.picUrl + "?param=300x300"} width="100%" height="100%" alt="music" />
+  <LazyLoad
+    placeholder={
+      <img
+        width="100%"
+        height="100%"
+        src={require("./music.png").default}
+        alt="music"
+      />
+    }>
+    <img
+      src={item.picUrl + "?param=300x300"}
+      width="100%"
+      height="100%"
+      alt="music"
+    />
   </LazyLoad>
   ```
 
@@ -142,8 +157,7 @@
 
 ### 节流，防抖
 
-[防抖和节流](/docs/fe-basic/javascript/basic/debounce-and-throttle)
-优化频繁触发的回调。
+[防抖和节流](/docs/fe-basic/javascript/basic/debounce-and-throttle) 优化频繁触发的回调。
 
 input 输入搜索场景：debounce，只需响应用户的最后一次输入，无需响应用户中间输入值。
 

@@ -173,7 +173,6 @@ session
 
 应用部署时的运行环境安全。主要关注自身是否安全，以及是否提供了可使用的安全功能。
 
-
 ## 安全开发流程
 
 - SDL Security Development Lifecycle

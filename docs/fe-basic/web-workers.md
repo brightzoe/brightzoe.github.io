@@ -13,7 +13,7 @@
 ```js
 //index.js
 const worker = new Worker("./worker.js"); //必须与创建者同源
-worker.postMessage({ type: "start", payload: { count: 666 } }); // 发送信息给worker
+worker.postMessage({type: "start", payload: {count: 666}}); // 发送信息给worker
 worker.onmessage = function (messageEvent) {
   //监听 worker message
   console.log(messageEvent);
@@ -27,7 +27,7 @@ worker.terminate(); //终止 Worker 的运行
 //worker.js
 importScripts("./foo.js"); //引入脚本，只能是同源的
 self.onmessage = (messageEvent) => {
-  const { type, payload } = messageEvent.data;
+  const {type, payload} = messageEvent.data;
   switch (type) {
     case "start":
       // 通过 type 去区分不同的业务逻辑，payload 是传过来的数据
@@ -63,7 +63,7 @@ self.onmessage = (messageEvent) => {
 //index.js
 const sharedWorker = new SharedWorker("./sharedWorker.js"); // 参数是url，这个url必须与创建者同源
 sharedWorker.port.start(); //主线程通过此方法开启 SharedWorker 之间的通信
-sharedWorker.port.postMessage({ type: "increase", payload: { count: 666 } }); //主线程给worker 发送信息
+sharedWorker.port.postMessage({type: "increase", payload: {count: 666}}); //主线程给worker 发送信息
 
 sharedWorker.port.onmessage = function (messageEvent) {
   console.log(messageEvent); //SharedWorker 的方法都在 port 上
@@ -76,7 +76,7 @@ let count = 666;
 importScripts("./foo.js"); //引入脚本，只能是同源的
 
 port.onmessage = (messageEvent) => {
-  const { type, payload } = messageEvent.data;
+  const {type, payload} = messageEvent.data;
 
   switch (type) {
     case "increase":
@@ -103,17 +103,17 @@ port.onmessage = (messageEvent) => {
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function () {
     navigator.serviceWorker
-      .register("./serviceWorker.js", { scope: "/page/" })
+      .register("./serviceWorker.js", {scope: "/page/"})
       .then(
         function (registration) {
           console.log(
             "ServiceWorker registration successful with scope: ",
-            registration.scope
+            registration.scope,
           );
         },
         function (err) {
           console.log("ServiceWorker registration failed: ", err);
-        }
+        },
       );
   });
 }
@@ -135,7 +135,7 @@ self.oninstall = (event) => {
       .open(CACHE_NAME) // 这返回的是promise
       .then(function (cache) {
         return cache.addAll(urlsToCache); // 这返回的是promise
-      })
+      }),
   );
 };
 ```

@@ -74,10 +74,11 @@ function myNew(Fn, ...args) {
 }
 ```
 
-:::note 构造函数与普通的函数有什么不同？
+:::note
 
-唯一区别是调用方式不同，除此之外，构造函数就是函数。
-并没有把某个函数定义为构造函数的特殊语法。任何函数只要使用 new 操作符调用就是构造函数。(除了箭头函数，箭头函数不能用作构造器，使用 new 会抛出错误。)
+构造函数与普通的函数有什么不同？
+
+唯一区别是调用方式不同，除此之外，构造函数就是函数。并没有把某个函数定义为构造函数的特殊语法。任何函数只要使用 new 操作符调用就是构造函数。(除了箭头函数，箭头函数不能用作构造器，使用 new 会抛出错误。)
 
 构造函数首字母通常大写，也可以算一个区别吧。
 
@@ -97,7 +98,14 @@ js 的继承基于原型链实现，instanceof 用来判断该实例的构造函
 // 变量R的原型 存在于 变量L的原型链上
 function myInstanceof(left, right) {
   //基本数据类型肯定不是
-  const basicTypes = ["string", "number", "boolean", "undefined", "symbol", "bigint"];
+  const basicTypes = [
+    "string",
+    "number",
+    "boolean",
+    "undefined",
+    "symbol",
+    "bigint",
+  ];
   if (basicTypes.includes(typeof left)) {
     //typeof 判断不了array,null,其他都可以
     return false;
@@ -149,8 +157,7 @@ a.b(); //b
 
    但不完全可靠，用 Person.call()/apply() 也可以得到 Person 的实例。
 
-2. 当调用函数的 constructor 方法时，new.target 被赋值给构造函数名(===Person)。如果不是通过构造函数调用，new.target===undefined。
-   很可靠。在函数外使用 new.target 是语法错误。
+2. 当调用函数的 constructor 方法时，new.target 被赋值给构造函数名(===Person)。如果不是通过构造函数调用，new.target===undefined。很可靠。在函数外使用 new.target 是语法错误。
 3. 用 class 声明的函数必须被 new 调用，不然会报错，就规定了这一种方法。
 
 ## Reference

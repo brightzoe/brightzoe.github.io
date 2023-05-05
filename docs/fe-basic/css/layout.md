@@ -76,8 +76,7 @@ body {
 
 宽度上尽量不要使用 100vw,由于高度上出现超过 100vh 的内容，产生纵向滚动条占了 8px 宽度。如果里面的元素写了 100vw ,会导致横向滚动条的出现。
 
-If you set the width to 100% on the body element you will have a full page width. This is essentially equivalent to not setting a width value and allowing the default.
-:::
+If you set the width to 100% on the body element you will have a full page width. This is essentially equivalent to not setting a width value and allowing the default. :::
 
 ### 重置浏览器的布局默认值
 
@@ -90,7 +89,9 @@ If you set the width to 100% on the body element you will have a full page width
 
 此方法使用通用选择器，`*`导致 CSS 渲染引擎在渲染 CSS 时遍历整个 DOM 树，影响渲染性能，同时会重置一些没必要的值，不推荐。
 
-:::info 一些重置浏览器默认布局的库
+:::info
+
+一些重置浏览器默认布局的库
 
 - Sanitize.css (https://github.com/csstools/sanitize.css)
 - Modern-normalize (https://github.com/sindresorhus/modern-normalize) - used by tailwind (https://tailwindcss.com/docs/preflight)
@@ -104,21 +105,17 @@ You can use Sanitize.css or Modern-normalize in non-Bootstrap projects, use the 
 
 ### 浏览器如何计算高度和宽度
 
-- 宽度
-  对于一个块级元素，浏览器计算的有效宽度，会考虑浏览器窗口的打开宽度，如果不设置宽度，浏览器会自动将该元素平铺填满整个横向宽度。
+- 宽度对于一个块级元素，浏览器计算的有效宽度，会考虑浏览器窗口的打开宽度，如果不设置宽度，浏览器会自动将该元素平铺填满整个横向宽度。
 
-- 高度
-  浏览器对于高度的计算方式与宽度完全不一样。事实上，浏览器根本不计算内容的高度，除非内容超出了视窗的范围，导致出现滚动条。或者你给页面设置一个绝对高度，那么浏览器会根据 css 设置这个元素的高度。否则，浏览器的行为只会简单的让内容向下堆砌，页面的高度不会被考虑。
+- 高度浏览器对于高度的计算方式与宽度完全不一样。事实上，浏览器根本不计算内容的高度，除非内容超出了视窗的范围，导致出现滚动条。或者你给页面设置一个绝对高度，那么浏览器会根据 css 设置这个元素的高度。否则，浏览器的行为只会简单的让内容向下堆砌，页面的高度不会被考虑。
 
   如果你给一个块级元素的高度设定为百分比高度，他的百分比是根据父元素高度来计算的。如果父元素元素没有一个绝对高度（固定高度或有效的百分比高度），那么无法获取父元素的高度，自然无法计算自己的高度。
 
   各个浏览器对于 CSS 宽高的解析不完全相同。
 
-  :::caution
-  `min-height` 不是一个有效的高度值：高度不明确。
+  :::caution `min-height` 不是一个有效的高度值：高度不明确。
 
-  :::
-  特殊的`min-height`为父元素的百分比生效的现象：
+  ::: 特殊的`min-height`为父元素的百分比生效的现象：
 
   //todo:why?
 
@@ -334,6 +331,7 @@ You can use Sanitize.css or Modern-normalize in non-Bootstrap projects, use the 
   https://codepen.io/brightzoe/pen/NWvPmJe
 
   :::note
+
   如何抉择：
 
   浮动： 清除浮动的问题，兼容性好。

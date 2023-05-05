@@ -190,11 +190,11 @@ server {
   ```js
   app.use(async (ctx, next) => {
     //将put/delete 请求替换回来 'x-http-method-override': 'PUT'，解决内外网映射无法使用put/delete请求的问题
-    if (ctx.request.header['x-http-method-override']) {
-      ctx.request.method = ctx.request.header['x-http-method-override']
+    if (ctx.request.header["x-http-method-override"]) {
+      ctx.request.method = ctx.request.header["x-http-method-override"];
     }
-    await next()
-  })
+    await next();
+  });
   ```
 
 ### pm2
@@ -247,9 +247,7 @@ DNS 解析可以配置规则，在目前国内访问国外网络存在些问题�
 
 ## 使用的一些工具
 
-- Vercel
-  部署静态网站，运行 python/node/go/ruby 脚本，充当服务器。
-  零配置部署，访问速度快，构建快。
+- Vercel 部署静态网站，运行 python/node/go/ruby 脚本，充当服务器。零配置部署，访问速度快，构建快。
 
 ## Reference
 

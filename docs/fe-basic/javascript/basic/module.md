@@ -145,10 +145,10 @@ var basicNum = 0;
 var add = function (a, b) {
   return a + b;
 };
-export { basicNum, add };
+export {basicNum, add};
 
 /** 引用模块 **/
-import { basicNum, add } from "./math";
+import {basicNum, add} from "./math";
 function test(ele) {
   ele.textContent = add(99 + basicNum);
 }
@@ -169,7 +169,7 @@ ESModule 中 import 的模块会被 JS 引擎静态分析。模块代码是在�
     };
     let fun = function () {
       console.log("modules obj", object);
-      object = { age: 99 };
+      object = {age: 99};
     };
     module.exports = {
       fun,
@@ -177,7 +177,7 @@ ESModule 中 import 的模块会被 JS 引擎静态分析。模块代码是在�
     };
 
     // index.js
-    var { name, fun, object } = require("./util/index.js");
+    var {name, fun, object} = require("./util/index.js");
     console.log("before fun", object);
     fun();
     console.log("end fun", object); // 还是前面的10 而不是99

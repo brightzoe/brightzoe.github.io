@@ -154,9 +154,13 @@ node_modules
 
 1. 包安装速度快。
 2. 磁盘空间利用非常高效。
+
    不会重复安装同一个包，即使有一个包的不同版本，pnpm 也会极大程度地复用之前版本的代码。
+
 3. 支持 monorepo。
+
    > pnpm workspace，yarn workspace，lerna 等多种 monorepo 策略。
+
 4. 继承了 npm 与 yarn 的其他优势，比如安装确定性与离线模式。
 5. 安全性高，可以规避非法访问依赖的风险，比如幽灵依赖。
 
@@ -192,8 +196,7 @@ lockfiles 作用：确定依赖的安装结构，在任意的机器上都能得�
 3. `yarn config set registry https://registry.npmmirror.com`
 4. `yarn config set registry http://registry.npmjs.org/`
 
-node_mirror: https://npmmirror.com/mirrors/node/
-npm_mirror: https://npmmirror.com/mirrors/npm/
+node_mirror: https://npmmirror.com/mirrors/node/ npm_mirror: https://npmmirror.com/mirrors/npm/
 
 ### 切换 node 版本
 
@@ -220,9 +223,13 @@ linux/Mac OS 可以使用 n /nvm ,仅限了解。
 - 如果 X 是路径，直接加载对应路径的文件
 
   - 在当前文件夹的 node_modules 文件夹里面找到名为 X 的文件
+
     如果此文件夹里面有 package.json, 则加载 main 字段指向的文件
+
     如果此文件夹里面没有 package.json，则加载此文件夹里面的 index.js 文件
+
     在当前文件夹的 node_modules 文件夹里面找不到名为 X 的文件
+
     则往其父文件夹找 node_modules, 顺着往上找，像原型链的查找
 
 > [Modules: CommonJS modules | Node.js v18.0.0 Documentation](https://nodejs.org/api/modules.html#all-together)

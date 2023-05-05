@@ -194,8 +194,7 @@ put 用于更新资源，具有幂等性。
 
 ### TCP 三次握手四次挥手
 
-至少要建立三次成功的单向通信才能确定双方都能收发信息。
-![TCP模型](https://i.loli.net/2020/07/14/ipW1aTYRJcryvnH.png)
+至少要建立三次成功的单向通信才能确定双方都能收发信息。 ![TCP模型](https://i.loli.net/2020/07/14/ipW1aTYRJcryvnH.png)
 
 四次挥手，在特定情况下可以是三次。
 
