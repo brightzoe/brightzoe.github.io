@@ -33,13 +33,6 @@ import { Sandpack } from "@codesandbox/sandpack-react";
 
 > 近期阅读参考‘掘金’比较多。 2021-10
 
-## ChangeLog
-
-1. 2021.10 添加@codesandbox/sand-pack，直接在 md 文档里放可以运行预览的代码,自定义文件内容不是詪好用，待研究。
-2. 2022.01 添加`lxgw-wenkai-screen`字体。字体文件较大，使用 github [chawyehsu/lxgw-wenkai-webfont: webfont package for the LXGW WenKai typeface](https://github.com/chawyehsu/lxgw-wenkai-webfont) 的 node 包，优化加载。
-3. 2022.06 添加 disqus 评论插件。在 blog 部分默认开启，doc 部分关闭，可以通过`disqus: true`来开启某篇文档的评论。
-4. 2023.05 添加 ts 支持，由 yarn 切换至 pnpm。
-
 ## How to use docusaurus
 
 以下为个人使用 docusaurus 的 doc 参考，更多请直接参考官方文档。
@@ -127,6 +120,15 @@ function Clock(props) {
 <Sandpack
 template="react"
 />
+
+## ChangeLog
+
+1. 2021.10 添加@codesandbox/sand-pack，直接在 md 文档里放可以运行预览的代码,自定义文件内容不是詪好用，待研究。
+2. 2022.01 添加`lxgw-wenkai-screen`字体。字体文件较大，使用 github [chawyehsu/lxgw-wenkai-webfont: webfont package for the LXGW WenKai typeface](https://github.com/chawyehsu/lxgw-wenkai-webfont) 的 node 包，优化加载。
+3. 2022.06 添加 disqus 评论插件。在 blog 部分默认开启，doc 部分关闭，可以通过`disqus: true`来开启某篇文档的评论。
+4. 2023.05 添加 ts 支持，由 yarn 切换至 pnpm。
+
+   依赖升级至 react18, 遇到 react 版本不兼容的问题，添加了`.npmrc`文件解决。 [Migrate to React 18 · Issue #7264 · facebook/docusaurus](https://github.com/facebook/docusaurus/issues/7264)
 
 ## Reference
 
