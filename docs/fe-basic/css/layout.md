@@ -76,7 +76,9 @@ body {
 
 宽度上尽量不要使用 100vw,由于高度上出现超过 100vh 的内容，产生纵向滚动条占了 8px 宽度。如果里面的元素写了 100vw ,会导致横向滚动条的出现。
 
-If you set the width to 100% on the body element you will have a full page width. This is essentially equivalent to not setting a width value and allowing the default. :::
+If you set the width to 100% on the body element you will have a full page width. This is essentially equivalent to not setting a width value and allowing the default.
+
+:::
 
 ### 重置浏览器的布局默认值
 

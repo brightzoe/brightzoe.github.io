@@ -37,7 +37,9 @@ alert(timerId); // 还是这个标识符（并没有因为调度被取消了而�
    setInterval(target, 1000);
    ```
 
-   :::tip 可以封装一下，在调用之前判断是否已经调用过，已经调用过先清除，再重新调用。
+   :::tip
+
+   可以封装一下，在调用之前判断是否已经调用过，已经调用过先清除，再重新调用。
 
    ```js
    const setIntervalImmediately = (func, interval) => {
@@ -101,9 +103,11 @@ alert(timerId); // 还是这个标识符（并没有因为调度被取消了而�
 
 > 每个 setTimeout 产生的任务会直接 push 到任务队列中；而 setInterval 在每次把任务 push 到任务队列前，都要进行一下判断(看上次的任务是否仍在队列中，如果有则不添加，没有则添加)。
 
-:::tip 嵌套的 setTimeout 比 setInterval 使用范围更广，尤其是在异步操作，涉及 ajax 时（不考虑 websocket），无法预知多久才能有返回结果。
+::: tip 嵌套的 setTimeout 比 setInterval 使用范围更广，尤其是在异步操作，涉及 ajax 时（不考虑 websocket），无法预知多久才能有返回结果。
 
-如果确实要保证事件“匀速”被触发，那可以用希望的延迟减去上次调用所花时间，然后将得到的差值作为延迟动态指定给 setTimeout。 :::
+如果确实要保证事件“匀速”被触发，那可以用希望的延迟减去上次调用所花时间，然后将得到的差值作为延迟动态指定给 setTimeout。
+
+:::
 
 ## 定时器是准时的吗？
 
