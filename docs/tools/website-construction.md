@@ -148,6 +148,71 @@ server {
 
 ```
 
+#### nginx CORS
+
+````conf
+#
+# Wide-open CORS config for nginx
+#
+
+server{
+      add_header 'Access-Control-Allow-Origin' '*';
+      add_header 'Access-Control-Allow-Credentials' 'true';
+      add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS';
+      add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+      location /api/{
+              if ($request_method = 'OPTIONS') {
+                  add_header 'Access-Control-Allow-Origin' '$http_origin';
+                  #
+                  # Om nom nom cookies
+                  #
+                  add_header 'Access-Control-Allow-Credentials' 'true';
+                  add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS';
+
+                  #
+                  # Custom headers and headers various browsers *should* be OK with but aren't
+                  #
+                  add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+
+                  #
+                  # Tell client that this pre-flight info is valid for 20 days
+                  #
+                  add_header 'Access-Control-Max-Age' 1728000;
+                  add_header 'Content-Type' 'text/plain charset=UTF-8';
+                  add_header 'Content-Length' 0;
+                  return 204;
+              }
+      }
+
+}
+
+```
+
+
+也可以抽出单独文件并include进来。
+```conf
+  location / {
+      root      /var/html;
+      # preflight対応
+      include conf.d/pf.conf;
+  }
+```
+```pf.conf
+  if ($request_method = 'OPTIONS') {
+  add_header 'Access-Control-Allow-Origin' '*';
+  add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS';
+  add_header 'Access-Control-Allow-Credentials' 'true';
+  add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+  add_header 'Access-Control-Max-Age' 1728000;
+  add_header Content-Type 'text/plain charset=UTF-8';
+  add_header Content-Length 0;
+  return 204;
+}
+```
+
+- [Wide open nginx CORS configuration :: Michiel Kalkman  — Software | Security | Product | Design](https://michielkalkman.com/snippets/nginx-cors-open-configuration/)
+- [【覚書】Nginxで複数のCORSとpreflightに対応する - Qiita](https://qiita.com/Toshinori_Hayashi/items/851f795b10e7cdcc202a)
+
 #### 实际问题
 
 做的项目要给客户演示，由于公司内网的关系，针对服务器的某一端口开通了外网映射。但项目中使用的 put/delete 请求被内网网关限制，通过外网地址访问时 使用 PUT/DELETE 请求被限制，报错：net::ERR_CONNECTION_RESET 。
@@ -255,3 +320,4 @@ DNS 解析可以配置规则，在目前国内访问国外网络存在些问题�
 - [Nginx 从入门到实践，万字详解！ - 掘金](https://juejin.cn/post/6844904144235413512#heading-0)
 - [半小时搞会 CentOS 入门必备基础知识 - 掘金](https://juejin.cn/post/6844904080972709901#heading-0)
 - [Linux 基础 — Linux Tools Quick Tutorial](https://linuxtools-rst.readthedocs.io/zh_CN/latest/base/index.html)
+````

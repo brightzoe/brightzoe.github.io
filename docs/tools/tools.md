@@ -86,6 +86,7 @@ Floccus 插件 + 坚果云 webDev。
   > - 那如果你的项目是开源项目，当有其他的人了解到你的项目想要运行该怎么办呢？我们需要在自己的项目目录里建立一个配置模板文件，这里我叫他`configTemplate.js`。在这个文件里，我们把个人配置里的字段做一个模板，并做好每个字段的注释，用于方便其他人的使用。
   > - 然后在 readme 里标明，运行本项目，需要配置 xx 等个人账号信息，你需要在`configTemplate.js`中配置自己的信息，并将其重命名为`personalConfig.js`即可。这样就完成了对其他用户使用本项目的配置指导，同时也保护了自己的隐私安全。( •̀ ω •́ )y(写的好像有点啰嗦嗷)
 
-## 开发中看到的一些特殊功能的库，也许会用到？
+## 前端工具
 
 - [reset-css - npm](https://www.npmjs.com/package/reset-css) 解决各个浏览器有一些预置的渲染方式的问题，全部把样式 reset 掉。
+- [NGINXConfig | DigitalOcean](https://www.digitalocean.com/community/tools/nginx?domains.0.php.php=false&domains.0.routing.index=index.html&domains.0.routing.fallbackHtml=true&global.app.lang=zhCN) 可视化生成 nginx 配置文件。
