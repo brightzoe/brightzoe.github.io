@@ -350,6 +350,14 @@ const num2 = <number>res; //JSX不能使用，会产生冲突
 //断言与转换的区别：断言是在编译时的概念，转换是在运行时的概念。在编译后，断言就不存在了。
 ```
 
+### 非空断言
+
+t tells the TypeScript compiler to assume that the value before the operator is not null or undefined。
+
+```ts
+dragObj!;
+```
+
 ### 类型保护
 
 ```ts
