@@ -150,7 +150,7 @@ server {
 
 #### nginx CORS
 
-````conf
+```conf
 #
 # Wide-open CORS config for nginx
 #
