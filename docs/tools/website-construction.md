@@ -150,7 +150,7 @@ server {
 
 #### nginx CORS
 
-````conf
+```nginx.conf
 #
 # Wide-open CORS config for nginx
 #
@@ -188,8 +188,9 @@ server{
 
 ```
 
-
 也可以抽出单独文件并include进来。
+
+
 ```conf
   location / {
       root      /var/html;
