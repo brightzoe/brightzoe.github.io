@@ -90,3 +90,9 @@ Floccus 插件 + 坚果云 webDev。
 
 - [reset-css - npm](https://www.npmjs.com/package/reset-css) 解决各个浏览器有一些预置的渲染方式的问题，全部把样式 reset 掉。
 - [NGINXConfig | DigitalOcean](https://www.digitalocean.com/community/tools/nginx?domains.0.php.php=false&domains.0.routing.index=index.html&domains.0.routing.fallbackHtml=true&global.app.lang=zhCN) 可视化生成 nginx 配置文件。
+
+### 图标
+
+-[lucide-icons/lucide: Beautiful & consistent icon toolkit made by the community. Open-source project and a fork of Feather Icons. --- lucide-icons/lucide：由社区制作的美丽且一致的图标工具包。开源项目和 Feather Icons 的一个分支。](https://github.com/lucide-icons/lucide)
+
+- [Heroicons --- 英雄图标](https://heroicons.com/)
