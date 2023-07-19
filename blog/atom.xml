@@ -53,18 +53,18 @@
         <summary type="html"><![CDATA[为本博客（docusaurus）添加 disqus 评论系统。]]></summary>
         <content type="html"><![CDATA[<p>为本博客（docusaurus）添加 disqus 评论系统。</p><p>首先需要在 disqus 有一个账号，没有需要先<a href="https://disqus.com/">注册</a>。选择 "get started" =&gt;" I want to install Disqus on my site" 。在 disqus 上配置对应的网站信息，配置的 Website Name 就是后面组件中要用到的 shortname。</p><p><img src="https://s2.loli.net/2022/06/20/kTYx62bD4oc5KaP.png"></p><p>disqus 准备好，接下来我们就要在 docusaurus 中去使用了 🐾~</p><h2 id="暴露出要添加部分的组件代码">暴露出要添加部分的组件代码</h2><p>为 blog 功能添加评论，docusaurus 中对应的组件名是 <code>BlogPostPage</code>，我们将它 <code>swizzle</code> 出来。</p><pre><code class="language-bash">yarn swizzle @docusaurus/theme-classic BlogPostPage  --danger
 </code></pre><blockquote><p>如果需要 typescript，在 <code>--danger</code> 后面加上 <code>--typescript</code>。</p></blockquote><p><code>swizzle</code> 命令会把当前 theme 的组件代码暴露出来，然后把它们替换到当前项目的目录下。<code>swizzle</code> 命令是有一定风险的，使用前先阅读文档。 <a href="https://docusaurus.io/docs/next/swizzling">Swizzling | Docusaurus</a></p><p><code>swizzle</code> 有两个选项，一个是<code>wrap</code>，一个是<code>eject</code>。<code>wrap</code>是包裹当前的组件，添加一些内容。<code>eject</code>是暴露出当前组件的所有结构，进行一些修改，暴露更彻底，风险更大，如果<code>wrap</code>能满足要求则不必使用<code>eject</code>。</p><p>这里为了调整评论组件的位置，我选择了<code>eject</code> 选项。</p><h2 id="添加对应评论组件">添加对应评论组件</h2><p>当 <code>swizzle</code> 命令执行完毕后，在<code>src/theme/</code>下会多出一个文件名为<code>BlogPostPage</code>。</p><p>需要安装 disqus 对应组件包 <code>disqus-react</code></p><pre><code class="language-bash">yarn add disqus-react
-</code></pre><p>在<code>src/theme/BlogPostPage</code>文件中添加如下代码：</p><pre><code class="language-tsx">import {DiscussionEmbed} from "disqus-react";
+</code></pre><p>在<code>src/theme/BlogPostPage</code>文件中添加如下代码：</p><pre><code class="language-tsx">import { DiscussionEmbed } from 'disqus-react';
 
 // BlogPostPageContent 组件中
-const {title, description, tags, permalink} = metadata; //docusaurus 暴露出来的
-const fmtId = permalink.replace(/^\//, "").replaceAll(/[\s\/]/gi, "-");
-const disqusId = fmtId == "" ? "main" : fmtId;
+const { title, description, tags, permalink } = metadata; //docusaurus 暴露出来的
+const fmtId = permalink.replace(/^\//, '').replaceAll(/[\s\/]/gi, '-');
+const disqusId = fmtId == '' ? 'main' : fmtId;
 
 // 在想放置的位置添加DiscussionEmbed组件。一般放在nextItem/prevItem之后。
 &lt;DiscussionEmbed
   shortname="yourshortname" //在disqus 配置的
   config={{
-    url: "https://brightzoe.top" + permalink, //完整网址
+    url: 'https://brightzoe.top' + permalink, //完整网址
     identifier: disqusId, //识别符
     title: title,
   }}

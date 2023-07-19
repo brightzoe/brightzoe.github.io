@@ -6,8 +6,8 @@
 <title data-rh="true">TS 基础 | brightzoe&#x27;s blog</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://brightzoe.top/docs/fe-basic/typescript-basic"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="TS 基础 | brightzoe&#x27;s blog"><meta data-rh="true" name="description" content="背景"><meta data-rh="true" property="og:description" content="背景"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://brightzoe.top/docs/fe-basic/typescript-basic"><link data-rh="true" rel="alternate" href="https://brightzoe.top/docs/fe-basic/typescript-basic" hreflang="en"><link data-rh="true" rel="alternate" href="https://brightzoe.top/docs/fe-basic/typescript-basic" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="brightzoe&#39;s blog RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="brightzoe&#39;s blog Atom Feed">
 <link rel="alternate" type="application/json" href="/blog/feed.json" title="brightzoe&#39;s blog JSON Feed"><link rel="stylesheet" href="/assets/css/styles.55dff740.css">
-<link rel="preload" href="/assets/js/runtime~main.f73c6f9f.js" as="script">
-<link rel="preload" href="/assets/js/main.5faf1ff3.js" as="script">
+<link rel="preload" href="/assets/js/runtime~main.1a0f46ec.js" as="script">
+<link rel="preload" href="/assets/js/main.5076ce2a.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}return t}()||function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
@@ -105,7 +105,7 @@ declare namespace $$ {
 }
 
 //声明模块
-declare module &quot;xx&quot; {
+declare module &#x27;xx&#x27; {
   export function getName(): string;
 }
 </code></pre><p>有类型声明的库，如果声明缺失内容不符合当前业务场景，可以扩展类型声明文件，实现类型融合的特性。</p><pre><code class="language-ts" metastring="title=&#x27;custom.d.ts&#x27;" title="&#x27;custom.d.ts&#x27;">declare module Express {
@@ -115,7 +115,7 @@ declare module &quot;xx&quot; {
     };
   }
 }
-</code></pre><h2 id="ts-语法">TS 语法</h2><h3 id="数据类型">数据类型</h3><pre><code class="language-ts">const a: string = &quot;foo&quot;;
+</code></pre><h2 id="ts-语法">TS 语法</h2><h3 id="数据类型">数据类型</h3><pre><code class="language-ts">const a: string = &#x27;foo&#x27;;
 const b: number = 100; //NaN,Infinity
 const c: boolean = true;
 const d: string = null; //严格模型不行
@@ -123,21 +123,21 @@ const e: void = undefined; //null/undefined
 const f: null = null;
 const g: undefined = undefined;
 const h: symbol = Symbol();
-let myFavoriteNumber: any = &quot;seven&quot;; //任意类型的值并且可以改变，一般不要使用，兼容老代码使用。
+let myFavoriteNumber: any = &#x27;seven&#x27;; //任意类型的值并且可以改变，一般不要使用，兼容老代码使用。
 myFavoriteNumber = 7;
 
 //Object
 const foo: object = function () {}; // 也可以是[] // {}
-const obj: {foo: number; bar: string} = {foo: 123, bar: &quot;foo&quot;}; //定义普通的对象,key要完全一致,不能多也不能少
+const obj: { foo: number; bar: string } = { foo: 123, bar: &#x27;foo&#x27; }; //定义普通的对象,key要完全一致,不能多也不能少
 
 //Array
 const arr1: Array&lt;number&gt; = [1, 2];
 const arr2: number[] = [1, 2];
-const arr3: (string | number)[] = [1, &quot;2&quot;];
+const arr3: (string | number)[] = [1, &#x27;2&#x27;];
 
 //Tuple 元组类型：固定长度，固定类型的数组
 //应用： React的useState, es2017的Object.entries({foo:123})
-const tuple: [number, string] = [18, &quot;foo&quot;];
+const tuple: [number, string] = [18, &#x27;foo&#x27;];
 const age = tuple[0];
 const [age, name] = tuple;
 
@@ -165,7 +165,7 @@ function func1(a: string, b?: number): string {
   //参数个数也必须一致，不能多或少。
   //可选参数：添加问号或者使用参数默认值，必须在参数的最后一位
   //不限制参数个数 ：...rest:number
-  return &quot;foo&quot;;
+  return &#x27;foo&#x27;;
 }
 
 //有什么好处？
@@ -188,13 +188,13 @@ const a = 123;
 count = 123;
 
 let age = 18;
-age = &quot;foo&quot;; //报错,被推断为number
+age = &#x27;foo&#x27;; //报错,被推断为number
 
 let foo; //被推断为any
 foo = 100;
-foo = &quot;foo&quot;;
+foo = &#x27;foo&#x27;;
 </code></pre><h3 id="类型别名">类型别名</h3><pre><code class="language-ts">//顾名思义就是自定义一个类型，一般用于联合类型，给你想要的类型取一个别名
-type person = &quot;man&quot; | &quot;woman&quot;;
+type person = &#x27;man&#x27; | &#x27;woman&#x27;;
 type TUser = string | number;
 type User = {
   number: string;
@@ -226,7 +226,7 @@ function train(animal: Bird | Fish) {
 }
 
 function train(animal: Bird | Fish) {
-  if (&quot;sing&quot; in animal) {
+  if (&#x27;sing&#x27; in animal) {
     //in 方法实现类型保护 animal 有 sing 方法
     animal.sing();
   } else {
@@ -240,7 +240,7 @@ class NumberObj {
 function add(first: object | NumberObj, second: object | NumberObj) {
   // class 的 instanceof 语法实现类型保护
   if (first instanceof NumberObj &amp;&amp; second instanceof NumberObj) {
-    return {count: first.count + second.count};
+    return { count: first.count + second.count };
   }
 }
 </code></pre><h3 id="接口-interface">接口 interface</h3><p>约定一个对象的结构。</p><p>为有结构的数据进行类型约束，<strong>编译后就没有了</strong>。在运行阶段没有意义。</p><pre><code class="language-ts">interface Person {
@@ -251,10 +251,10 @@ function add(first: object | NumberObj, second: object | NumberObj) {
 function getName(person: Person): string {
   return person.name;
 }
-const lily = {name: &quot;lily&quot;, gender: &quot;female&quot;};
+const lily = { name: &#x27;lily&#x27;, gender: &#x27;female&#x27; };
 console.log(getName(lily)); //不会报错，有多的属性也可以，弱校验
 
-console.log(getName({name: &quot;hh&quot;, gender: &quot;female&quot;})); //会报错，对象字面量是强校验，必须完全符合
+console.log(getName({ name: &#x27;hh&#x27;, gender: &#x27;female&#x27; })); //会报错，对象字面量是强校验，必须完全符合
 
 interface Post {
   title: string;
@@ -292,7 +292,7 @@ const funcSay: SayHi = (word) =&gt; {
   // protected 只能在类内部/继承的子类中访问
   // readonly 不能再修改
 
-  constructor(public name: string = &quot;init&quot;, private age: number) {
+  constructor(public name: string = &#x27;init&#x27;, private age: number) {
     this.name = name;
     this.age = age;
   }
@@ -303,12 +303,12 @@ const funcSay: SayHi = (word) =&gt; {
     console.log(`I am ${this.name},${msg}`);
   }
 }
-const person = new Person(&quot;lily&quot;, 18);
+const person = new Person(&#x27;lily&#x27;, 18);
 // person.age = 20 //×××外部不能访问
 
 class Teacher extends Person {
   constructor(public gender: string) {
-    super(&quot;tea&quot;, 25); // 调用父类构造函数。子类有 constructor 则必须调用super
+    super(&#x27;tea&#x27;, 25); // 调用父类构造函数。子类有 constructor 则必须调用super
   }
 
   sayHi(msg: string) {
@@ -316,7 +316,7 @@ class Teacher extends Person {
     return super.getName() + msg; // 调用父类方法
   }
 }
-const teacher = new Teacher(&quot;male&quot;);
+const teacher = new Teacher(&#x27;male&#x27;);
 console.log(teacher.name, teacher.gender);
 </code></pre><h4 id="单例模式">单例模式</h4><p>当前类只能有一个类的实例。</p><p>利用静态属性以及 private 修饰构造函数实现单例模式。</p><pre><code class="language-ts">class Demo {
   private static instance: Demo; // 缓存创建的实例
@@ -333,8 +333,8 @@ console.log(teacher.name, teacher.gender);
   }
 }
 
-const demo1 = Demo.create(&quot;danny&quot;);
-const demo2 = Demo.create(&quot;jan&quot;);
+const demo1 = Demo.create(&#x27;danny&#x27;);
+const demo2 = Demo.create(&#x27;jan&#x27;);
 console.log(demo1.name, demo2.name, demo1 === demo2);
 </code></pre><h3 id="类与接口">类与接口</h3><pre><code class="language-ts">interface EatAndRun {
   //都有这些能力
@@ -377,7 +377,7 @@ abstract class Animal {
 class Dog extends Animal {
   run(distance: number): void {
     //必须在子类实现抽象方法
-    console.log(&quot;...&quot;);
+    console.log(&#x27;...&#x27;);
   }
 }
 </code></pre><h3 id="泛型">泛型</h3><p>generic type</p><p>在定义函数接口或类的时候，不定义具体的类型。在使用的时候再去指定具体类型。</p><p>目的：更大程度地复用代码，提升代码灵活性。</p><h4 id="函数中的泛型">函数中的泛型</h4><pre><code class="language-ts">function createArray&lt;T&gt;(length: number, value: T): T[] {
@@ -385,7 +385,7 @@ class Dog extends Animal {
   const arr = Array&lt;T&gt;(length).fill(value);
   return arr;
 }
-const res = createArray&lt;string&gt;(3, &quot;foo&quot;); //调用的时候明确类型
+const res = createArray&lt;string&gt;(3, &#x27;foo&#x27;); //调用的时候明确类型
 const res = createArray&lt;number&gt;(3, 1);
 console.log(res);
 
@@ -393,7 +393,7 @@ console.log(res);
 function join&lt;T, P&gt;(first: T, second: P) {
   return `${first}${second}`;
 }
-console.log(join&lt;number, string&gt;(1, &quot;gg&quot;));
+console.log(join&lt;number, string&gt;(1, &#x27;gg&#x27;));
 
 //使用泛型作为函数的类型注解
 const func: &lt;T&gt;(params: T) =&gt; T = &lt;T&gt;(params: T) =&gt; {
@@ -406,7 +406,7 @@ console.log(func(1));
     return this.data[idx];
   }
 }
-const data = new DataManager([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]);
+const data = new DataManager([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
 console.log(data.getData(0));
 </code></pre><pre><code class="language-ts">interface Item {
   name: string;
@@ -418,7 +418,7 @@ class DataManager&lt;T extends Item&gt; {
     return this.data[idx].name;
   }
 }
-const data = new DataManager([{name: &quot;1&quot;}, {name: &quot;hh&quot;}]);
+const data = new DataManager([{ name: &#x27;1&#x27; }, { name: &#x27;hh&#x27; }]);
 console.log(data.getData(1));
 </code></pre><h4 id="keyof">keyof</h4><pre><code class="language-ts">interface Person {
   name: string;
@@ -433,24 +433,24 @@ class Teacher {
   }
 }
 const teacher = new Teacher({
-  name: &quot;dell&quot;,
+  name: &#x27;dell&#x27;,
   age: 18,
-  gender: &quot;male&quot;,
+  gender: &#x27;male&#x27;,
 });
 
-const test = teacher.getInfo(&quot;gender&quot;);
+const test = teacher.getInfo(&#x27;gender&#x27;);
 console.log(test);
 </code></pre><h3 id="装饰器">装饰器</h3><p>类的装饰器：对类的修饰，在类创建时执行。接收类的 constructor</p><p>简单装饰器</p><pre><code class="language-ts">// 多个装饰器执行顺序：从下到上，从右到左
 function testDecoractor(constructor: any) {
-  console.log(&quot;testDecoractor&quot;);
+  console.log(&#x27;testDecoractor&#x27;);
   // 可以拿到装饰的类的constructor
   constructor.prototype.getName = function () {
-    console.log(&quot;get test&quot;);
+    console.log(&#x27;get test&#x27;);
   };
 }
 
 function testDecoractor1(constructor: any) {
-  console.log(&quot;testDecoractor1&quot;);
+  console.log(&#x27;testDecoractor1&#x27;);
 }
 
 @testDecoractor
@@ -462,9 +462,9 @@ const test1 = new Test();
 </code></pre><p>复杂标准装饰器</p><pre><code class="language-ts">function testDecoractor() {
   // 工厂模式，可以接不同参数，返回一个新的类
   return function &lt;T extends new (...args: any[]) =&gt; any&gt;(constructor: T) {
-    console.log(&quot;testDecoractor&quot;);
+    console.log(&#x27;testDecoractor&#x27;);
     return class extends constructor {
-      name = &quot;zzz&quot;;
+      name = &#x27;zzz&#x27;;
       getName() {
         console.log(this.name);
         return this.name;
@@ -479,10 +479,10 @@ const Test = testDecoractor()(
   },
 );
 
-const test1 = new Test(&quot;hh&quot;);
+const test1 = new Test(&#x27;hh&#x27;);
 test1.getName();
-</code></pre><h2 id="reference">Reference</h2><ul><li><a href="https://ts.xcatliu.com/">ts 入门教程</a></li><li><a href="https://flow.org/en/docs/usage/">flow</a></li><li><a href="https://fettblog.eu/typescript-react/hooks/#useref">TypeScript and React: Hooks</a></li></ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-tags-row row margin-bottom--sm"><div class="col"><b>Tags:</b><ul class="tags_pJkg padding--none margin-left--sm"><li class="tag_FYRy"><a class="tag_s1aZ tagRegular_uylV" href="/docs/tags/typescript">typescript</a></li><li class="tag_FYRy"><a class="tag_s1aZ tagRegular_uylV" href="/docs/tags/ts">ts</a></li></ul></div></div><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/brightzoe/brightzoe.github.io/edit/main/docs/fe-basic/typescript-basic.md" target="_blank" rel="noreferrer noopener" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_qT5X" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated__3SG"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2023-07-16T03:40:44.000Z">Jul 16, 2023</time></b></span></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/fe-basic/network"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">网络</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/fe-basic/web-workers"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Web workers</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_saGL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#背景" class="table-of-contents__link toc-highlight">背景</a></li><li><a href="#ts-特性" class="table-of-contents__link toc-highlight">TS 特性</a></li><li><a href="#flow" class="table-of-contents__link toc-highlight">Flow</a></li><li><a href="#tsc-命令" class="table-of-contents__link toc-highlight">tsc 命令</a></li><li><a href="#使用第三方库" class="table-of-contents__link toc-highlight">使用第三方库</a><ul><li><a href="#类型声明" class="table-of-contents__link toc-highlight">类型声明</a></li></ul></li><li><a href="#ts-语法" class="table-of-contents__link toc-highlight">TS 语法</a><ul><li><a href="#数据类型" class="table-of-contents__link toc-highlight">数据类型</a><ul><li><a href="#函数" class="table-of-contents__link toc-highlight">函数</a></li></ul></li><li><a href="#作用域问题" class="table-of-contents__link toc-highlight">作用域问题</a></li><li><a href="#类型注解与类型推断" class="table-of-contents__link toc-highlight">类型注解与类型推断</a></li><li><a href="#类型别名" class="table-of-contents__link toc-highlight">类型别名</a></li><li><a href="#类型断言" class="table-of-contents__link toc-highlight">类型断言</a></li><li><a href="#非空断言" class="table-of-contents__link toc-highlight">非空断言</a></li><li><a href="#类型保护" class="table-of-contents__link toc-highlight">类型保护</a></li><li><a href="#接口-interface" class="table-of-contents__link toc-highlight">接口 interface</a></li><li><a href="#类" class="table-of-contents__link toc-highlight">类</a><ul><li><a href="#单例模式" class="table-of-contents__link toc-highlight">单例模式</a></li></ul></li><li><a href="#类与接口" class="table-of-contents__link toc-highlight">类与接口</a></li><li><a href="#抽象类" class="table-of-contents__link toc-highlight">抽象类</a></li><li><a href="#泛型" class="table-of-contents__link toc-highlight">泛型</a><ul><li><a href="#函数中的泛型" class="table-of-contents__link toc-highlight">函数中的泛型</a></li><li><a href="#类中的泛型" class="table-of-contents__link toc-highlight">类中的泛型</a></li><li><a href="#keyof" class="table-of-contents__link toc-highlight">keyof</a></li></ul></li><li><a href="#装饰器" class="table-of-contents__link toc-highlight">装饰器</a></li></ul></li><li><a href="#reference" class="table-of-contents__link toc-highlight">Reference</a></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">博客推荐</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://sadofriod.github.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Ashes Born&#x27;s Blog<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_o1MT"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://overreacted.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Overreacted - Dan Abramov<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_o1MT"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">  </div><ul class="footer__items clean-list"></ul></div><div class="col footer__col"><div class="footer__title">博客推荐</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://sadofriod.github.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Ashes Born&#x27;s Blog<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_o1MT"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://overreacted.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Overreacted - Dan Abramov<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_o1MT"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 brightzoe's blog</div></div></div></footer></div>
-<script src="/assets/js/runtime~main.f73c6f9f.js"></script>
-<script src="/assets/js/main.5faf1ff3.js"></script>
+</code></pre><h2 id="reference">Reference</h2><ul><li><a href="https://ts.xcatliu.com/">ts 入门教程</a></li><li><a href="https://flow.org/en/docs/usage/">flow</a></li><li><a href="https://fettblog.eu/typescript-react/hooks/#useref">TypeScript and React: Hooks</a></li></ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-tags-row row margin-bottom--sm"><div class="col"><b>Tags:</b><ul class="tags_pJkg padding--none margin-left--sm"><li class="tag_FYRy"><a class="tag_s1aZ tagRegular_uylV" href="/docs/tags/typescript">typescript</a></li><li class="tag_FYRy"><a class="tag_s1aZ tagRegular_uylV" href="/docs/tags/ts">ts</a></li></ul></div></div><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/brightzoe/brightzoe.github.io/edit/main/docs/fe-basic/typescript-basic.md" target="_blank" rel="noreferrer noopener" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_qT5X" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated__3SG"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2023-07-19T02:05:00.000Z">Jul 19, 2023</time></b></span></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/fe-basic/network"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">网络</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/fe-basic/web-workers"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Web workers</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_saGL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#背景" class="table-of-contents__link toc-highlight">背景</a></li><li><a href="#ts-特性" class="table-of-contents__link toc-highlight">TS 特性</a></li><li><a href="#flow" class="table-of-contents__link toc-highlight">Flow</a></li><li><a href="#tsc-命令" class="table-of-contents__link toc-highlight">tsc 命令</a></li><li><a href="#使用第三方库" class="table-of-contents__link toc-highlight">使用第三方库</a><ul><li><a href="#类型声明" class="table-of-contents__link toc-highlight">类型声明</a></li></ul></li><li><a href="#ts-语法" class="table-of-contents__link toc-highlight">TS 语法</a><ul><li><a href="#数据类型" class="table-of-contents__link toc-highlight">数据类型</a><ul><li><a href="#函数" class="table-of-contents__link toc-highlight">函数</a></li></ul></li><li><a href="#作用域问题" class="table-of-contents__link toc-highlight">作用域问题</a></li><li><a href="#类型注解与类型推断" class="table-of-contents__link toc-highlight">类型注解与类型推断</a></li><li><a href="#类型别名" class="table-of-contents__link toc-highlight">类型别名</a></li><li><a href="#类型断言" class="table-of-contents__link toc-highlight">类型断言</a></li><li><a href="#非空断言" class="table-of-contents__link toc-highlight">非空断言</a></li><li><a href="#类型保护" class="table-of-contents__link toc-highlight">类型保护</a></li><li><a href="#接口-interface" class="table-of-contents__link toc-highlight">接口 interface</a></li><li><a href="#类" class="table-of-contents__link toc-highlight">类</a><ul><li><a href="#单例模式" class="table-of-contents__link toc-highlight">单例模式</a></li></ul></li><li><a href="#类与接口" class="table-of-contents__link toc-highlight">类与接口</a></li><li><a href="#抽象类" class="table-of-contents__link toc-highlight">抽象类</a></li><li><a href="#泛型" class="table-of-contents__link toc-highlight">泛型</a><ul><li><a href="#函数中的泛型" class="table-of-contents__link toc-highlight">函数中的泛型</a></li><li><a href="#类中的泛型" class="table-of-contents__link toc-highlight">类中的泛型</a></li><li><a href="#keyof" class="table-of-contents__link toc-highlight">keyof</a></li></ul></li><li><a href="#装饰器" class="table-of-contents__link toc-highlight">装饰器</a></li></ul></li><li><a href="#reference" class="table-of-contents__link toc-highlight">Reference</a></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">博客推荐</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://sadofriod.github.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Ashes Born&#x27;s Blog<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_o1MT"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://overreacted.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Overreacted - Dan Abramov<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_o1MT"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">  </div><ul class="footer__items clean-list"></ul></div><div class="col footer__col"><div class="footer__title">博客推荐</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://sadofriod.github.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Ashes Born&#x27;s Blog<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_o1MT"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://overreacted.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Overreacted - Dan Abramov<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_o1MT"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 brightzoe's blog</div></div></div></footer></div>
+<script src="/assets/js/runtime~main.1a0f46ec.js"></script>
+<script src="/assets/js/main.5076ce2a.js"></script>
 </body>
 </html>
