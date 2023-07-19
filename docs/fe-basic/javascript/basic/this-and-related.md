@@ -81,9 +81,9 @@ Function.prototype.myApply = function (context = window) {
 //bind
 //fn.bind(context,...args) 绑定this,固定部分参数
 Function.prototype.bind1 = function (context = window) {
-  if (typeof this !== "function") {
+  if (typeof this !== 'function') {
     throw new Error(
-      "Function.prototype.bind - what is trying to be bound is not callable",
+      'Function.prototype.bind - what is trying to be bound is not callable',
     );
   }
   const _this = this;
@@ -95,9 +95,9 @@ Function.prototype.bind1 = function (context = window) {
 //bind 完整版
 //fn.bind(context,...args)
 Function.prototype.myBind = function (context = window) {
-  if (typeof this !== "function") {
+  if (typeof this !== 'function') {
     throw new Error(
-      "Function.prototype.bind - what is trying to be bound is not callable",
+      'Function.prototype.bind - what is trying to be bound is not callable',
     );
   }
   var _this = this;
@@ -117,7 +117,7 @@ Function.prototype.myBind = function (context = window) {
 
 ```js
 const zhangsan = {
-  name: "zhangsan",
+  name: 'zhangsan',
   sayHi() {
     console.log(this); //当前对象
   },
@@ -131,7 +131,7 @@ const zhangsan = {
 
 ```js
 const zhangsan2 = {
-  name: "zhangsan",
+  name: 'zhangsan',
   sayHi() {
     console.log(this); //当前对象
   },

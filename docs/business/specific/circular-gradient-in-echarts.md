@@ -24,9 +24,9 @@ CSS 的`background`也是支持这两种渐变方式。
 
 ```js
 const data = [
-  {name: "data1", value: 100},
-  {name: "data2", value: 40},
-  {name: "data3", value: 60},
+  { name: 'data1', value: 100 },
+  { name: 'data2', value: 40 },
+  { name: 'data3', value: 60 },
 ];
 
 // 计算每部分比例，以及开始角度，结束角度
@@ -103,7 +103,7 @@ function getLocation(dx, dy) {
   // 这里给纵向渐变还是横向渐变赋值、即group中的第三项和第四项的值
   const group2 = sign > 0 ? [0, 1] : [1, 0];
   const group = [...group1, ...group2];
-  const keys = directSign ? ["x", "x2", "y", "y2"] : ["y", "y2", "x", "x2"];
+  const keys = directSign ? ['x', 'x2', 'y', 'y2'] : ['y', 'y2', 'x', 'x2'];
 
   const res = {};
   keys.forEach((k, idx) => {
@@ -137,7 +137,7 @@ function setGradientColorInItemStyle(
     data[i].itemStyle = {
       color: {
         ...coordinates,
-        type: "linear",
+        type: 'linear',
         global: false,
         colorStops: [
           {
@@ -162,8 +162,8 @@ function setGradientColorInItemStyle(
 const option = {
   series: [
     {
-      name: "",
-      type: "pie",
+      name: '',
+      type: 'pie',
       data: setGradientColorInItemStyle(data, color),
     },
   ],

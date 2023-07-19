@@ -15,8 +15,8 @@ sidebar_position: 1
 `react-dom` package serves as the entry point to the DOM and server renderers for React.
 
 ```js
-import ReactDOM from "react-dom";
-ReactDOM.render(<App />, document.getElementById("root"));
+import ReactDOM from 'react-dom';
+ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
 ## `react-router` 与 `react-router-dom`库
@@ -164,17 +164,17 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    this.setState({count: this.state.count + 1});
-    console.log("1", this.state.count);
-    this.setState({count: this.state.count + 1});
-    console.log("2", this.state.count);
+    this.setState({ count: this.state.count + 1 });
+    console.log('1', this.state.count);
+    this.setState({ count: this.state.count + 1 });
+    console.log('2', this.state.count);
     setTimeout(() => {
-      this.setState({count: this.state.count + 1});
-      console.log("3", this.state.count);
+      this.setState({ count: this.state.count + 1 });
+      console.log('3', this.state.count);
     });
     setTimeout(() => {
-      this.setState({count: this.state.count + 1});
-      console.log("4", this.state.count);
+      this.setState({ count: this.state.count + 1 });
+      console.log('4', this.state.count);
     });
   }
   render() {
@@ -299,7 +299,7 @@ requestIdleCallback
 
 ```jsx live
 function Button() {
-  const handleClick = (e) => console.log("e", e.nativeEvent); //e.nativeEvent 上为对应原生事件
+  const handleClick = (e) => console.log('e', e.nativeEvent); //e.nativeEvent 上为对应原生事件
   return <button onClick={handleClick}>click</button>;
 }
 ```
@@ -309,32 +309,32 @@ function EventOrder() {
   const parentRef = useRef();
   const childRef = useRef();
   useEffect(() => {
-    console.log("开始挂载");
+    console.log('开始挂载');
     const parentDom = parentRef.current;
     const childDom = childRef.current;
     function parentClick() {
-      console.log("原生事件：parent");
+      console.log('原生事件：parent');
     }
     function childClick() {
-      console.log("原生事件：child");
+      console.log('原生事件：child');
     }
     function documentClick(e) {
-      console.log("原生事件：document", e);
+      console.log('原生事件：document', e);
     }
-    parentDom.addEventListener("click", parentClick);
-    parentDom.addEventListener("click", childClick);
-    document.addEventListener("click", documentClick);
+    parentDom.addEventListener('click', parentClick);
+    parentDom.addEventListener('click', childClick);
+    document.addEventListener('click', documentClick);
     return () => {
-      parentDom && parentDom.removeEventListener("click", parentClick);
-      childDom && childDom.removeEventListener("click", childClick);
-      document.removeEventListener("click", documentClick);
+      parentDom && parentDom.removeEventListener('click', parentClick);
+      childDom && childDom.removeEventListener('click', childClick);
+      document.removeEventListener('click', documentClick);
     };
   }, []);
   const handleParentClick = () => {
-    console.log("React 事件：parent");
+    console.log('React 事件：parent');
   };
   const handleChildClick = () => {
-    console.log("React 事件： child");
+    console.log('React 事件： child');
   };
   return (
     <div ref={parentRef} onClick={handleParentClick}>
@@ -387,8 +387,8 @@ React 事件：parent
 function withPersistentData(WrappedComponent) {
   return class extends Component {
     componentDidMount() {
-      let data = localStorage.getItem("data");
-      this.setState({data});
+      let data = localStorage.getItem('data');
+      this.setState({ data });
     }
     render() {
       // 通过{...this.props} 把传递给当前组件的属性继续传递给被包装的组件WrappedComponent

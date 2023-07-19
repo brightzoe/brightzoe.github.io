@@ -13,7 +13,7 @@
 利用闭包封装简易 useState 雏形：
 
 ```ts
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 function render() {
   root.render(<App />);

@@ -1,9 +1,9 @@
-import React from "react";
-import styles from "./HomepageContent.module.css";
-import DocusaurusMountain from "@site/static/img/undraw_docusaurus_mountain.svg";
+import React from 'react';
+import styles from './HomepageContent.module.css';
+import DocusaurusMountain from '@site/static/img/undraw_docusaurus_mountain.svg';
 
 const ContentProps = {
-  title: "Hello from here",
+  title: 'Hello from here',
   Svg: DocusaurusMountain,
   description: (
     <>
@@ -16,7 +16,7 @@ const ContentProps = {
   ),
 };
 
-function Content({Svg, title, description}) {
+function Content({ Svg, title, description }) {
   return (
     <div className={styles.flexMain}>
       <div className="text--center">

@@ -11,7 +11,7 @@
 `setInterval` 返回一个时间间隔 ID，该 ID 唯一地标识时间间隔，稍后可以通过 `clearInterval(ID)` 来清除，返回的 intervalID 是一个非零数值。
 
 ```js
-let timerId = setTimeout(() => alert("never happens"), 1000);
+let timerId = setTimeout(() => alert('never happens'), 1000);
 alert(timerId); // 定时器标识符
 
 clearTimeout(timerId); // 在运行前取消了定时器
@@ -30,7 +30,7 @@ alert(timerId); // 还是这个标识符（并没有因为调度被取消了而�
 
    ```js
    const target = () => {
-     console.log("Do something...");
+     console.log('Do something...');
    };
 
    target(); //先调用一次然后再setInterval
@@ -59,7 +59,7 @@ alert(timerId); // 还是这个标识符（并没有因为调度被取消了而�
 
    ```js
    const target = () => {
-     console.log("Do something...");
+     console.log('Do something...');
      return target;
    };
 
@@ -83,7 +83,7 @@ alert(timerId); // 还是这个标识符（并没有因为调度被取消了而�
 
    ```js
    let timerId = setTimeout(function tick() {
-     alert("tick");
+     alert('tick');
      timerId = setTimeout(tick, 2000); //第一次执行了tick 之后又挂上了第二次
    }, 2000);
    ```

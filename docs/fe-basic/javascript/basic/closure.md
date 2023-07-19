@@ -34,7 +34,7 @@ const increment = createCounter();
 const c1 = increment(); //这行执行完后，闭包的counter=1，这个increment函数被销毁，但下面还存在对increment 的引用，counter 还在不被销毁，下面使用的counter 初始值为1
 const c2 = increment();
 const c3 = increment();
-console.log("example increment", c1, c2, c3); //example increment 1 2 3
+console.log('example increment', c1, c2, c3); //example increment 1 2 3
 ```
 
 是否任何函数都具有闭包，甚至是在全局范围内创建的函数？

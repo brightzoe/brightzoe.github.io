@@ -26,7 +26,7 @@ const p = new Promise((resolve, reject) => {
 });
 
 const p = new Promise((resolve, reject) => {
-  resolve("成功的结果"); //改变当前 promise 对象的结果
+  resolve('成功的结果'); //改变当前 promise 对象的结果
   //reject("失败的结果");
 });
 ```
@@ -48,12 +48,12 @@ p.then(
 
 ```js
 new Promise((resolve, reject) => {
-  resolve("给then 的参数");
+  resolve('给then 的参数');
 })
   .then(
     (value) => {
       console.log(value);
-      return "123"; //改变这个 promise 的状态为fulfilled，给下一个promise 的参数
+      return '123'; //改变这个 promise 的状态为fulfilled，给下一个promise 的参数
       // throw error 如果这里的代码出错，当前 promise 的状态就变为 rejected
     },
     (error) => {
@@ -121,12 +121,12 @@ function request(method, url, data) {
   });
 }
 
-request("GET", "../data.json")
+request('GET', '../data.json')
   .then((val) => {
-    return request("GET", `../data.json`, val);
+    return request('GET', `../data.json`, val);
   })
   .then((val) => {
-    return request("GET", `../data.json`, val);
+    return request('GET', `../data.json`, val);
   })
   .then((val) => {
     console.log(val);
@@ -136,13 +136,13 @@ request("GET", "../data.json")
 将现有对象转为 promise
 
 ```js
-const a = Promise.resolve("foo");
+const a = Promise.resolve('foo');
 // 等同于
-const a = new Promise((resolve) => resolve("foo"));
+const a = new Promise((resolve) => resolve('foo'));
 
-const p = Promise.reject("出错了");
+const p = Promise.reject('出错了');
 // 等同于
-const p = new Promise((resolve, reject) => reject("出错了"));
+const p = new Promise((resolve, reject) => reject('出错了'));
 ```
 
 ## API
@@ -183,9 +183,9 @@ Promise.all(promises: Iterable<Promise>): Promise<Array>
 
 ```js
 const promises = [
-  Promise.resolve("a"),
-  Promise.resolve("b"),
-  Promise.reject("c"),
+  Promise.resolve('a'),
+  Promise.resolve('b'),
+  Promise.reject('c'),
 ];
 Promise.all(promises)
   .then((val) => console.log(val))
@@ -264,7 +264,7 @@ function resolveAfter(ms, value) {
 function timeout(ms, promise) {
   return Promise.race([
     promise,
-    resolveAfter(ms, Promise.reject("(⊙o⊙)超时了")),
+    resolveAfter(ms, Promise.reject('(⊙o⊙)超时了')),
   ]);
 }
 ```
@@ -327,7 +327,7 @@ function poolLimit(limit, urls, callback) {
 
   // 添加第几个请求，请求完成后发起新的一个请求
   function addRequest(i) {
-    console.log("添加任务", i);
+    console.log('添加任务', i);
     request(urls[i]).then((res) => {
       callback(res);
       if (index < urls.length - 1) {
@@ -348,13 +348,13 @@ function poolLimit(limit, urls, callback) {
 }
 
 const urls = [
-  "bytedance.com",
-  "tencent.com",
-  "alibaba.com",
-  "microsoft.com",
-  "apple.com",
-  "hulu.com",
-  "amazon.com",
+  'bytedance.com',
+  'tencent.com',
+  'alibaba.com',
+  'microsoft.com',
+  'apple.com',
+  'hulu.com',
+  'amazon.com',
 ];
 poolLimit(3, urls, (data) => console.log(data));
 ```

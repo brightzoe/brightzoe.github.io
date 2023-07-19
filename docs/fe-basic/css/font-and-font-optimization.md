@@ -18,12 +18,12 @@
 
    ```css
    @font-face {
-     font-family: "Raleway";
+     font-family: 'Raleway';
      font-style: normal;
      font-weight: 500;
      /* 指定项目内部或网络字体，比如Google Fonts */
-     src: url(/fonts/raleway.woff2) format("woff2"), url(/fonts/raleway.woff)
-         format("woff");
+     src: url(/fonts/raleway.woff2) format('woff2'), url(/fonts/raleway.woff)
+         format('woff');
      /*解决可能的兼容性问题，使用woff兜底*/
      /*字体不大的情况下也可以直接base64，提升加载体验*/
      font-dispaly: swap; /* 控制字体的加载方式 */
@@ -61,15 +61,16 @@
    ```html
    <link
      href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
-     rel="stylesheet" />
+     rel="stylesheet"
+   />
    ```
 
 2. 直接在`@font-face` 中使用：
 
    ```css
    @font-face {
-     font-family: "Raleway";
-     src: url(/fonts/raleway.woff2) format("woff2");
+     font-family: 'Raleway';
+     src: url(/fonts/raleway.woff2) format('woff2');
      /* 控制字体的加载方式 */
      font-dispaly: swap;
    }
@@ -112,9 +113,9 @@ woff，woff2 是进行过内部压缩的，尤其是 woff2 字体的体积小。
 - 内联字体，将字体文件直接变成 base64 编码，可以避免异步加载字体时的 FOIT ，FOUT 。
   ```css
   @font-face {
-    font-family: "Samplefont";
-    src: url("data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAHyoABMAAAAA4XQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABG…")
-      format("woff2");
+    font-family: 'Samplefont';
+    src: url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAHyoABMAAAAA4XQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABG…')
+      format('woff2');
   }
   ```
 - 使用 Service Worker 进行缓存字体。 Service Worker 是浏览器在后台独立于网页运行的、用 JavaScript 编写的脚本。一般与 PWA 一起提起。暂未深入了解。

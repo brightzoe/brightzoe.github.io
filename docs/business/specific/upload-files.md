@@ -25,7 +25,7 @@ keywords: [upload files 文件上传 分片上传]
 可以使用`SparkMD5.hashBinary(str, raw)`直接对文件的二进制字符串计算 hash ,但在文件体积比较大时，存在卡顿等问题。一般采用对文件进行分片，然后进行增量计算 hash，相对稳定，同时可以统计当前计算 hash 的进度。
 
 ```js
-import SparkMd5 from "spark-md5";
+import SparkMd5 from 'spark-md5';
 //[spark-md5 - npm](https://www.npmjs.com/package/spark-md5)
 // 增量计算 hash
 const calculateHash = (file, chunkSize) =>
@@ -41,7 +41,7 @@ const calculateHash = (file, chunkSize) =>
 
     fileReader.onload = function (e) {
       spark.append(e.target.result); // Append array buffer
-      console.log("current chunk index", currentChunk);
+      console.log('current chunk index', currentChunk);
       currentChunk++;
       if (currentChunk < chunks) {
         loadNext();
@@ -69,7 +69,7 @@ const calculateHash = (file, chunkSize) =>
 //chunkSize = 2097152, // Read in chunks of 2MB
 calculateHash(file, chunkSize)
   .then((res) => {
-    console.log("computed hash", res);
+    console.log('computed hash', res);
   })
   .catch((e) => {
     console.log(e);

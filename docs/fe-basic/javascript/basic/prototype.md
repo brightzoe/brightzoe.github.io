@@ -42,7 +42,7 @@ function myFunction(arg1, arg2) {
 }
 
 // This  creates a new object
-var a = new myFunction("Li", "Cherry");
+var a = new myFunction('Li', 'Cherry');
 a.firstName; //li
 a.lastName; //Cherry
 ```
@@ -61,9 +61,9 @@ a.lastName; //Cherry
 
 ```js
 function myNew(Fn, ...args) {
-  if (typeof Fn !== "function") {
+  if (typeof Fn !== 'function') {
     //要被new 的构造函数必须是函数
-    throw new Error("constructor must be a function");
+    throw new Error('constructor must be a function');
   }
   // const obj = {}; //创建新对象
   // obj.__proto__ = Fn.prototype; // 新对象的隐式原型指向构造函数的显式原型
@@ -99,12 +99,12 @@ js 的继承基于原型链实现，instanceof 用来判断该实例的构造函
 function myInstanceof(left, right) {
   //基本数据类型肯定不是
   const basicTypes = [
-    "string",
-    "number",
-    "boolean",
-    "undefined",
-    "symbol",
-    "bigint",
+    'string',
+    'number',
+    'boolean',
+    'undefined',
+    'symbol',
+    'bigint',
   ];
   if (basicTypes.includes(typeof left)) {
     //typeof 判断不了array,null,其他都可以
@@ -132,8 +132,8 @@ function myInstanceof(left, right) {
 // 1
 var foo = {};
 var F = function () {};
-Object.prototype.a = "value a";
-Function.prototype.b = "value b";
+Object.prototype.a = 'value a';
+Function.prototype.b = 'value b';
 
 console.log(foo.a); //value a
 console.log(foo.b); //undefined
@@ -141,8 +141,8 @@ console.log(F.a); //value a
 console.log(F.b); //value b
 
 // 2
-Function.prototype.a = () => alert("a");
-Object.prototype.b = () => alert("b");
+Function.prototype.a = () => alert('a');
+Object.prototype.b = () => alert('b');
 function A() {}
 const a = new A();
 

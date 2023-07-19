@@ -22,13 +22,13 @@
 var 和 function 声明创建的变量和函数在全局对象中（浏览器环境是 window 对象），而 let,const,class 声明的变量创建在全局 scope 中。
 
 ```js
-let a = "a";
+let a = 'a';
 console.log(a);
 console.log(window.a); //没有
 ```
 
 ```js
-var a = "a";
+var a = 'a';
 console.log(a);
 console.log(window.a); //a
 ```
@@ -42,7 +42,7 @@ console.log(window.a); //a
 ![暂时性死区](https://i.loli.net/2021/09/26/tRu9X2mKk4HpFNq.png)
 
 ```js
-var a = "123";
+var a = '123';
 function foo() {
   console.log(a);
   let a;
@@ -165,10 +165,10 @@ ES5 使用 IIFE 可以模拟块级作用域，即在一个函数表达式内部�
 模拟块级作用域锁定值（闭包+IIFE）：
 
 ```js
-let divs = document.querySelectorAll("div");
+let divs = document.querySelectorAll('div');
 for (var i = 0; i < divs.length; i++) {
   divs[i].addEventListener(
-    "click",
+    'click',
     (function (frozenCounter) {
       return function () {
         console.log(frozenCounter);
@@ -190,12 +190,12 @@ for (var i = 0; i < divs.length; i++) {
 ```js
 // UMD 模块化
 (function (root, factory) {
-  if (typeof define === "function" && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
-    define(["jquery"], factory);
-  } else if (typeof exports === "object") {
+    define(['jquery'], factory);
+  } else if (typeof exports === 'object') {
     // Node, CommonJS-like
-    module.exports = factory(require("jquery"));
+    module.exports = factory(require('jquery'));
   } else {
     // Browser globals (root is window)
     root.returnExports = factory(root.jQuery);

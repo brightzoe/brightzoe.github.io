@@ -20,7 +20,8 @@ HTML 中的文档类型声明，告诉浏览器应该以什么样（html 或 xht
 <!-- HTML 文档的编码类型 -->
 <meta
   name="viewport"
-  content="width=device-width, initial-scale=1, maximum-scale=1" />
+  content="width=device-width, initial-scale=1, maximum-scale=1"
+/>
 <!--页面以多宽尺寸渲染，控制视口大小和比例-->
 <meta name="keywords" content="关键词" />
 <meta name="description" content="页面描述" />
@@ -67,7 +68,8 @@ defer：并行进行 HTML 解析与 script 的请求，到整个 HTML 加载完�
 <img
   src="image-128.png"
   srcset="image-128.png 128w, image-256.png 256w, image-512.png 512w"
-  sizes="(max-width: 360px) 340px, 128px" />
+  sizes="(max-width: 360px) 340px, 128px"
+/>
 ```
 
 ## SVG 与 Canvas

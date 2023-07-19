@@ -19,11 +19,11 @@ console.log(result); // 30
 ```js
 //对象也是按值传递的
 function setName(obj) {
-  obj.name = "Nicholas";
-  obj = {name: "Greg"}; //obj指向了新对象，已经不指向person了。
+  obj.name = 'Nicholas';
+  obj = { name: 'Greg' }; //obj指向了新对象，已经不指向person了。
   //如果是按对person的引用传递，这里也会把person改为{ name: "Greg" }，而这里实际是把person的引用当作值给了obj,然后把新的对象给了obj,扔了person的引用 不要了，值变成了一个新对象的引用，而person 是不变的
 }
-let person = {name: "alan"};
+let person = { name: 'alan' };
 setName(person);
 console.log(person.name); // "Nicholas"
 ```

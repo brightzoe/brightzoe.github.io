@@ -39,11 +39,11 @@ monorepo 适用于几个项目互相依赖，共同开发的场景，解决不�
 ```yaml title='pnpm-workspace.yaml'
 packages:
   # root directory
-  - "."
+  - '.'
   # all packages in subdirs of packages/
-  - "packages/**"
+  - 'packages/**'
   # exclude packages that are inside test/ directories
-  - "!**/test/**" # '!' means exclude
+  - '!**/test/**' # '!' means exclude
 ```
 
 执行`pnpm install` 将下载所有的依赖，包括子包的依赖。

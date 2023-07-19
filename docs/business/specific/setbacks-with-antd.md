@@ -15,7 +15,7 @@
 ```js
 <TabPane tab="tab1" key="1">
   {/*加三元表达式判断:清除Tabs组件默认的缓存机制*/}
-  {activeTabKey === "1" ? <TabContent /> : null}
+  {activeTabKey === '1' ? <TabContent /> : null}
 </TabPane>
 ```
 

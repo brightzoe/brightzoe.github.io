@@ -18,7 +18,7 @@ keywords: [download files 文件下载]
 ```js
 //根据后端提供的文件接口地址，实现文件下载的功能：
 function downloadFile(url, fileName) {
-  const a = document.createElement("a");
+  const a = document.createElement('a');
   a.href = url;
   a.download = fileName;
   document.body.appendChild(a);
@@ -41,13 +41,13 @@ function downloadFile(url, fileName) {
 function downloadFile(path, name) {
   axios({
     url: path,
-    method: "get",
-    responseType: "arraybuffer", // /blob
+    method: 'get',
+    responseType: 'arraybuffer', // /blob
   }).then((res) => {
-    const blob = new Blob([res.data], {type: res.headers["content-type"]}); //要保证文件的类型
+    const blob = new Blob([res.data], { type: res.headers['content-type'] }); //要保证文件的类型
     const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.style.display = "none";
+    const a = document.createElement('a');
+    a.style.display = 'none';
     a.href = url;
     a.download = name;
     document.body.appendChild(a);
@@ -219,12 +219,12 @@ FileReader 对象可以读取 File 对象的内容，异步方式，不阻碍 UI
 
 ```js
 function previewFile() {
-  const preview = document.querySelector("img");
-  const file = document.querySelector("input[type=file]").files[0];
+  const preview = document.querySelector('img');
+  const file = document.querySelector('input[type=file]').files[0];
   const reader = new FileReader();
 
   reader.addEventListener(
-    "load",
+    'load',
     function () {
       preview.src = reader.result;
     },

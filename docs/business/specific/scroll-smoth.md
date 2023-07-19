@@ -30,7 +30,7 @@ window.scrollTo(x, y);
 window.scrollTo({
   top: 1000,
   left: 0,
-  behavior: "smooth",
+  behavior: 'smooth',
 });
 ```
 
@@ -42,7 +42,7 @@ window.scrollTo({
 
 ```js
 target.scrollIntoView({
-  behavior: "smooth",
+  behavior: 'smooth',
 });
 ```
 
@@ -142,7 +142,7 @@ function scroll() {
     };
     requestAnimationFrame(cb);
   }).then((data) => {
-    console.log(data[1] - data[0], " ms");
+    console.log(data[1] - data[0], ' ms');
   });
 }
 scroll();

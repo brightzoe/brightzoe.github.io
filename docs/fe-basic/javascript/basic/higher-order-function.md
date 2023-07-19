@@ -34,11 +34,11 @@ forEach、filter、map、some、every、find、findIndex、reduce 等。
 
 ```js
 Array.prototype._forEach = function (callback, thisArg) {
-  if (typeof callback !== "function") {
-    throw "参数必须为函数";
+  if (typeof callback !== 'function') {
+    throw '参数必须为函数';
   }
   if (!Array.isArray(this)) {
-    throw "只能对数组应用此方法";
+    throw '只能对数组应用此方法';
   }
   if (!thisArg) thisArg = this;
   for (let i = 0; i < this.length; i++) {
@@ -101,7 +101,7 @@ fn();
 async function fn() {
   for (let i = 0; i < list.length; i++) {
     const n = await api(list[i]);
-    console.log("for--------", n, i);
+    console.log('for--------', n, i);
   }
 }
 fn();

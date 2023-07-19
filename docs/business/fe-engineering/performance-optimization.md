@@ -47,14 +47,14 @@ Lighthouse 是一个开源的自动化工具，用于改进网络应用的质量
     使用 performance.mark 打点测量时间
 
     ```js
-    performance.mark("cal-start");
+    performance.mark('cal-start');
     // 模拟耗时任务
     for (let i = 0; i < 1000000; i++) {}
-    performance.mark("cal-end");
+    performance.mark('cal-end');
     // 该 measure 的名字：my-cal
     // measure 开始的时间点：cal-start
     // measure 结束的时间点：cal-end
-    performance.measure("my-cal", "cal-start", "cal-end");
+    performance.measure('my-cal', 'cal-start', 'cal-end');
     ```
 
     [你的页面为什么慢，Performance Timeline 简介 - 掘金](https://juejin.cn/post/6844904020109164552#heading-5)
@@ -122,12 +122,13 @@ Lighthouse 是一个开源的自动化工具，用于改进网络应用的质量
       <img
         width="100%"
         height="100%"
-        src={require("./music.png").default}
+        src={require('./music.png').default}
         alt="music"
       />
-    }>
+    }
+  >
     <img
-      src={item.picUrl + "?param=300x300"}
+      src={item.picUrl + '?param=300x300'}
       width="100%"
       height="100%"
       alt="music"

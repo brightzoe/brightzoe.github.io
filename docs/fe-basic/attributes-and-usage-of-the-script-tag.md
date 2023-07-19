@@ -79,17 +79,17 @@ defer: 并行请求，等 HTML 加载完再执行。
 
 #### 总结
 
-| script 标签 | JS 执行顺序 | 是否阻塞解析 HTML |
-| --- | --- | --- |
-| `<script>` | 在 HTML 中的顺序 | 阻塞(加载与执行均阻塞) |
+| script 标签      | JS 执行顺序      | 是否阻塞解析 HTML                          |
+| ---------------- | ---------------- | ------------------------------------------ |
+| `<script>`       | 在 HTML 中的顺序 | 阻塞(加载与执行均阻塞)                     |
 | `<script async>` | 网络请求返回顺序 | 可能阻塞，也可能不阻塞(并行加载，执行阻塞) |
-| `<script defer>` | 在 HTML 中的顺序 | 不阻塞(并行加载，延迟执行) |
+| `<script defer>` | 在 HTML 中的顺序 | 不阻塞(并行加载，延迟执行)                 |
 
 ### 动态加载脚本
 
 ```js
-let script = document.createElement("script");
-script.src = "lodash.js";
+let script = document.createElement('script');
+script.src = 'lodash.js';
 document.body.append(script);
 ```
 

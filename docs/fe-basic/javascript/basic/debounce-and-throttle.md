@@ -79,7 +79,7 @@ function throttle(fn, delay) {
       fn.call(context, _args);
       last = now;
     } else {
-      console.log("时间差不满足要求,不执行");
+      console.log('时间差不满足要求,不执行');
     }
   };
 }

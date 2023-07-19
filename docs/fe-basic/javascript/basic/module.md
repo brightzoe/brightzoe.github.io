@@ -40,14 +40,14 @@ CommonJS 模块定义需要使用 require() 指定依赖，而使用 exports 对
 
 ```js
 //moduleA.js
-var moduleB = require("./moduleB");
+var moduleB = require('./moduleB');
 module.exports = {
   stuff: moduleB.doStuff(),
 };
 
 //可以支持动态依赖
 if (condition) {
-  var A = require("./moduleA");
+  var A = require('./moduleA');
 }
 ```
 
@@ -68,7 +68,7 @@ CommonJS 依赖几个全局属性如 `require` 和 `module.exports`。如果想�
 ```js
 //moduleA.js
 //我的名字叫moduleA,我依赖moduleB，ModuleC,赶紧去加载，执行依赖。 异步加载依赖，不影响后面的语句
-define("moduleA", ["moduleB", "moduleC"], function (moduleB) {
+define('moduleA', ['moduleB', 'moduleC'], function (moduleB) {
   return {
     stuff: moduleB.doStuff(),
   };
@@ -78,16 +78,16 @@ define("moduleA", ["moduleB", "moduleC"], function (moduleB) {
 在 AMD 模块的工厂函数内部可以定义 CommonJS 风格的模块，可以像请求模块一样请求他们。
 
 ```js
-define("moduleA", ["require", "exports"], function (require, exports) {
-  var moduleB = require("moduleB");
+define('moduleA', ['require', 'exports'], function (require, exports) {
+  var moduleB = require('moduleB');
   exports.stuff = moduleB.doStuff();
 });
 
 //也可以支持动态依赖
-define("moduleA", ["require", "exports"], function (require, exports) {
+define('moduleA', ['require', 'exports'], function (require, exports) {
   if (condition) {
     //里面使用require 实现延迟加载
-    var moduleB = require("moduleB");
+    var moduleB = require('moduleB');
   }
 });
 ```
@@ -145,10 +145,10 @@ var basicNum = 0;
 var add = function (a, b) {
   return a + b;
 };
-export {basicNum, add};
+export { basicNum, add };
 
 /** 引用模块 **/
-import {basicNum, add} from "./math";
+import { basicNum, add } from './math';
 function test(ele) {
   ele.textContent = add(99 + basicNum);
 }
@@ -168,8 +168,8 @@ ESModule 中 import 的模块会被 JS 引擎静态分析。模块代码是在�
       age: 10,
     };
     let fun = function () {
-      console.log("modules obj", object);
-      object = {age: 99};
+      console.log('modules obj', object);
+      object = { age: 99 };
     };
     module.exports = {
       fun,
@@ -177,10 +177,10 @@ ESModule 中 import 的模块会被 JS 引擎静态分析。模块代码是在�
     };
 
     // index.js
-    var {name, fun, object} = require("./util/index.js");
-    console.log("before fun", object);
+    var { name, fun, object } = require('./util/index.js');
+    console.log('before fun', object);
     fun();
-    console.log("end fun", object); // 还是前面的10 而不是99
+    console.log('end fun', object); // 还是前面的10 而不是99
     ```
 
     ESModule 在 JS 引擎对脚本静态分析时，遇到`import`模块，就会生成一个只读引用，会指向模块里对应的变量，是动态引用，并不会缓存模块里的值。

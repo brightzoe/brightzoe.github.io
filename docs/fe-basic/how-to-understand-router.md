@@ -141,14 +141,14 @@ hash 值指的 URL 中锚点，用来做页面定位，对应 DOM id，在 HTML5
 
 ```js
 //hashchange:只能监听 url hash 的变化 location.hash
-window.addEventListener("hashchange", function (e) {
+window.addEventListener('hashchange', function (e) {
   console.log(e);
 });
 
 //popstate:
 //监听点击浏览器的前进后退，以及 history.back()/go()/forward()
 //监听不到: history.pushState() 和 history.replaceState()
-window.addEventListener("popstate", function (e) {
+window.addEventListener('popstate', function (e) {
   console.log(e);
 });
 ```

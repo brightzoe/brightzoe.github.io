@@ -29,24 +29,24 @@ webpack 配置： sass: cra 已内置 sass-loader,只需安装 node-sass/sass(da
     addBabelPreset,
     addWebpackAlias,
     adjustStyleLoaders,
-  } = require("customize-cra");
-  const path = require("path");
+  } = require('customize-cra');
+  const path = require('path');
   module.exports = override(
     //写样式的方式
-    addBabelPlugin("styled-jsx/babel"),
+    addBabelPlugin('styled-jsx/babel'),
 
     //别名
     addWebpackAlias({
-      "@": path.resolve(__dirname, ".", "src"),
+      '@': path.resolve(__dirname, '.', 'src'),
     }),
 
     //sass-resources-loader共享公共样式文件
     adjustStyleLoaders((rule) => {
-      if (rule.test.toString().includes("scss")) {
+      if (rule.test.toString().includes('scss')) {
         rule.use.push({
-          loader: require.resolve("sass-resources-loader"),
+          loader: require.resolve('sass-resources-loader'),
           options: {
-            resources: "./src/styles/shared.scss", //地址
+            resources: './src/styles/shared.scss', //地址
           },
         });
       }
@@ -113,9 +113,9 @@ function shallowEqual(objA: mixed, objB: mixed): boolean {
   }
 
   if (
-    typeof objA !== "object" ||
+    typeof objA !== 'object' ||
     objA === null ||
-    typeof objB !== "object" ||
+    typeof objB !== 'object' ||
     objB === null
   ) {
     return false;

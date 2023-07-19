@@ -10,13 +10,13 @@
 
 ```css
 .prev {
-  background: no-repeat url("https://i.loli.net/2021/08/24/kglaB1zyCs5ZvJw.png");
+  background: no-repeat url('https://i.loli.net/2021/08/24/kglaB1zyCs5ZvJw.png');
 }
 /* 第一次页面加载，hover上去会闪烁，因为下面的图片地址会在hover的时候才加载
   解决方式： 可以现在页面实例化这个图片
   */
 .prev:hover {
-  background: no-repeat url("https://i.loli.net/2021/08/24/PucWs9XmoknV7yF.png");
+  background: no-repeat url('https://i.loli.net/2021/08/24/PucWs9XmoknV7yF.png');
 }
 ```
 
@@ -36,7 +36,7 @@
    ```js
    //https://codesandbox.io/s/hover-backgroundshan-shuo-de-wen-ti-11yv5?file=/index.js
    let img = new Image();
-   img.src = "https://i.loli.net/2021/08/24/PucWs9XmoknV7yF.png";
+   img.src = 'https://i.loli.net/2021/08/24/PucWs9XmoknV7yF.png';
    ```
 
 ## transform,translation,translate 的区别

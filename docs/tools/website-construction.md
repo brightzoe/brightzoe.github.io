@@ -188,8 +188,7 @@ server{
 
 ```
 
-也可以抽出单独文件并include进来。
-
+也可以抽出单独文件并 include 进来。
 
 ```conf
   location / {
@@ -198,6 +197,7 @@ server{
       include conf.d/pf.conf;
   }
 ```
+
 ```pf.conf
   if ($request_method = 'OPTIONS') {
   add_header 'Access-Control-Allow-Origin' '*';
@@ -211,8 +211,8 @@ server{
 }
 ```
 
-- [Wide open nginx CORS configuration :: Michiel Kalkman  — Software | Security | Product | Design](https://michielkalkman.com/snippets/nginx-cors-open-configuration/)
-- [【覚書】Nginxで複数のCORSとpreflightに対応する - Qiita](https://qiita.com/Toshinori_Hayashi/items/851f795b10e7cdcc202a)
+- [Wide open nginx CORS configuration :: Michiel Kalkman — Software | Security | Product | Design](https://michielkalkman.com/snippets/nginx-cors-open-configuration/)
+- [【覚書】Nginx で複数の CORS と preflight に対応する - Qiita](https://qiita.com/Toshinori_Hayashi/items/851f795b10e7cdcc202a)
 
 #### 实际问题
 
@@ -256,8 +256,8 @@ server{
   ```js
   app.use(async (ctx, next) => {
     //将put/delete 请求替换回来 'x-http-method-override': 'PUT'，解决内外网映射无法使用put/delete请求的问题
-    if (ctx.request.header["x-http-method-override"]) {
-      ctx.request.method = ctx.request.header["x-http-method-override"];
+    if (ctx.request.header['x-http-method-override']) {
+      ctx.request.method = ctx.request.header['x-http-method-override'];
     }
     await next();
   });
@@ -321,4 +321,7 @@ DNS 解析可以配置规则，在目前国内访问国外网络存在些问题�
 - [Nginx 从入门到实践，万字详解！ - 掘金](https://juejin.cn/post/6844904144235413512#heading-0)
 - [半小时搞会 CentOS 入门必备基础知识 - 掘金](https://juejin.cn/post/6844904080972709901#heading-0)
 - [Linux 基础 — Linux Tools Quick Tutorial](https://linuxtools-rst.readthedocs.io/zh_CN/latest/base/index.html)
-````
+
+```
+
+```

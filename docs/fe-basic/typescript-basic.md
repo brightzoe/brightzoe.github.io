@@ -14,7 +14,7 @@ tags: [typescript, ts]
 
   类型检查的时机不同。静态类型在编译阶段就确定每个变量的类型，而动态类型在运行阶段才确定每个变量的类型。
 
-  ![](https://i.loli.net/2021/07/23/NdEFO2ryn5ReHic.png ":size=50%")
+  ![](https://i.loli.net/2021/07/23/NdEFO2ryn5ReHic.png ':size=50%')
 
 > JS：动态类型语言，弱类型。 被设计时，小规模脚本，且不需要编译。TS 也是弱类型，不会修改 JS 运行时的特性。
 
@@ -195,7 +195,7 @@ declare namespace $$ {
 }
 
 //声明模块
-declare module "xx" {
+declare module 'xx' {
   export function getName(): string;
 }
 ```
@@ -217,7 +217,7 @@ declare module Express {
 ### 数据类型
 
 ```ts
-const a: string = "foo";
+const a: string = 'foo';
 const b: number = 100; //NaN,Infinity
 const c: boolean = true;
 const d: string = null; //严格模型不行
@@ -225,21 +225,21 @@ const e: void = undefined; //null/undefined
 const f: null = null;
 const g: undefined = undefined;
 const h: symbol = Symbol();
-let myFavoriteNumber: any = "seven"; //任意类型的值并且可以改变，一般不要使用，兼容老代码使用。
+let myFavoriteNumber: any = 'seven'; //任意类型的值并且可以改变，一般不要使用，兼容老代码使用。
 myFavoriteNumber = 7;
 
 //Object
 const foo: object = function () {}; // 也可以是[] // {}
-const obj: {foo: number; bar: string} = {foo: 123, bar: "foo"}; //定义普通的对象,key要完全一致,不能多也不能少
+const obj: { foo: number; bar: string } = { foo: 123, bar: 'foo' }; //定义普通的对象,key要完全一致,不能多也不能少
 
 //Array
 const arr1: Array<number> = [1, 2];
 const arr2: number[] = [1, 2];
-const arr3: (string | number)[] = [1, "2"];
+const arr3: (string | number)[] = [1, '2'];
 
 //Tuple 元组类型：固定长度，固定类型的数组
 //应用： React的useState, es2017的Object.entries({foo:123})
-const tuple: [number, string] = [18, "foo"];
+const tuple: [number, string] = [18, 'foo'];
 const age = tuple[0];
 const [age, name] = tuple;
 
@@ -274,7 +274,7 @@ function func1(a: string, b?: number): string {
   //参数个数也必须一致，不能多或少。
   //可选参数：添加问号或者使用参数默认值，必须在参数的最后一位
   //不限制参数个数 ：...rest:number
-  return "foo";
+  return 'foo';
 }
 
 //有什么好处？
@@ -319,18 +319,18 @@ let count: number; //类型注解
 count = 123;
 
 let age = 18;
-age = "foo"; //报错,被推断为number
+age = 'foo'; //报错,被推断为number
 
 let foo; //被推断为any
 foo = 100;
-foo = "foo";
+foo = 'foo';
 ```
 
 ### 类型别名
 
 ```ts
 //顾名思义就是自定义一个类型，一般用于联合类型，给你想要的类型取一个别名
-type person = "man" | "woman";
+type person = 'man' | 'woman';
 type TUser = string | number;
 type User = {
   number: string;
@@ -379,7 +379,7 @@ function train(animal: Bird | Fish) {
 }
 
 function train(animal: Bird | Fish) {
-  if ("sing" in animal) {
+  if ('sing' in animal) {
     //in 方法实现类型保护 animal 有 sing 方法
     animal.sing();
   } else {
@@ -393,7 +393,7 @@ class NumberObj {
 function add(first: object | NumberObj, second: object | NumberObj) {
   // class 的 instanceof 语法实现类型保护
   if (first instanceof NumberObj && second instanceof NumberObj) {
-    return {count: first.count + second.count};
+    return { count: first.count + second.count };
   }
 }
 ```
@@ -413,10 +413,10 @@ interface Person {
 function getName(person: Person): string {
   return person.name;
 }
-const lily = {name: "lily", gender: "female"};
+const lily = { name: 'lily', gender: 'female' };
 console.log(getName(lily)); //不会报错，有多的属性也可以，弱校验
 
-console.log(getName({name: "hh", gender: "female"})); //会报错，对象字面量是强校验，必须完全符合
+console.log(getName({ name: 'hh', gender: 'female' })); //会报错，对象字面量是强校验，必须完全符合
 
 interface Post {
   title: string;
@@ -459,7 +459,7 @@ class Person {
   // protected 只能在类内部/继承的子类中访问
   // readonly 不能再修改
 
-  constructor(public name: string = "init", private age: number) {
+  constructor(public name: string = 'init', private age: number) {
     this.name = name;
     this.age = age;
   }
@@ -470,12 +470,12 @@ class Person {
     console.log(`I am ${this.name},${msg}`);
   }
 }
-const person = new Person("lily", 18);
+const person = new Person('lily', 18);
 // person.age = 20 //×××外部不能访问
 
 class Teacher extends Person {
   constructor(public gender: string) {
-    super("tea", 25); // 调用父类构造函数。子类有 constructor 则必须调用super
+    super('tea', 25); // 调用父类构造函数。子类有 constructor 则必须调用super
   }
 
   sayHi(msg: string) {
@@ -483,7 +483,7 @@ class Teacher extends Person {
     return super.getName() + msg; // 调用父类方法
   }
 }
-const teacher = new Teacher("male");
+const teacher = new Teacher('male');
 console.log(teacher.name, teacher.gender);
 ```
 
@@ -509,8 +509,8 @@ class Demo {
   }
 }
 
-const demo1 = Demo.create("danny");
-const demo2 = Demo.create("jan");
+const demo1 = Demo.create('danny');
+const demo2 = Demo.create('jan');
 console.log(demo1.name, demo2.name, demo1 === demo2);
 ```
 
@@ -567,7 +567,7 @@ abstract class Animal {
 class Dog extends Animal {
   run(distance: number): void {
     //必须在子类实现抽象方法
-    console.log("...");
+    console.log('...');
   }
 }
 ```
@@ -588,7 +588,7 @@ function createArray<T>(length: number, value: T): T[] {
   const arr = Array<T>(length).fill(value);
   return arr;
 }
-const res = createArray<string>(3, "foo"); //调用的时候明确类型
+const res = createArray<string>(3, 'foo'); //调用的时候明确类型
 const res = createArray<number>(3, 1);
 console.log(res);
 
@@ -596,7 +596,7 @@ console.log(res);
 function join<T, P>(first: T, second: P) {
   return `${first}${second}`;
 }
-console.log(join<number, string>(1, "gg"));
+console.log(join<number, string>(1, 'gg'));
 
 //使用泛型作为函数的类型注解
 const func: <T>(params: T) => T = <T>(params: T) => {
@@ -614,7 +614,7 @@ class DataManager<T> {
     return this.data[idx];
   }
 }
-const data = new DataManager(["a", "b", "c"]);
+const data = new DataManager(['a', 'b', 'c']);
 console.log(data.getData(0));
 ```
 
@@ -629,7 +629,7 @@ class DataManager<T extends Item> {
     return this.data[idx].name;
   }
 }
-const data = new DataManager([{name: "1"}, {name: "hh"}]);
+const data = new DataManager([{ name: '1' }, { name: 'hh' }]);
 console.log(data.getData(1));
 ```
 
@@ -649,12 +649,12 @@ class Teacher {
   }
 }
 const teacher = new Teacher({
-  name: "dell",
+  name: 'dell',
   age: 18,
-  gender: "male",
+  gender: 'male',
 });
 
-const test = teacher.getInfo("gender");
+const test = teacher.getInfo('gender');
 console.log(test);
 ```
 
@@ -667,15 +667,15 @@ console.log(test);
 ```ts
 // 多个装饰器执行顺序：从下到上，从右到左
 function testDecoractor(constructor: any) {
-  console.log("testDecoractor");
+  console.log('testDecoractor');
   // 可以拿到装饰的类的constructor
   constructor.prototype.getName = function () {
-    console.log("get test");
+    console.log('get test');
   };
 }
 
 function testDecoractor1(constructor: any) {
-  console.log("testDecoractor1");
+  console.log('testDecoractor1');
 }
 
 @testDecoractor
@@ -692,9 +692,9 @@ const test1 = new Test();
 function testDecoractor() {
   // 工厂模式，可以接不同参数，返回一个新的类
   return function <T extends new (...args: any[]) => any>(constructor: T) {
-    console.log("testDecoractor");
+    console.log('testDecoractor');
     return class extends constructor {
-      name = "zzz";
+      name = 'zzz';
       getName() {
         console.log(this.name);
         return this.name;
@@ -709,7 +709,7 @@ const Test = testDecoractor()(
   },
 );
 
-const test1 = new Test("hh");
+const test1 = new Test('hh');
 test1.getName();
 ```
 

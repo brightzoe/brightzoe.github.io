@@ -14,17 +14,17 @@
 拷贝可遍历的属性，浅拷贝。
 
 ```js
-let bar = {a: 1, b: 2};
-let baz = {...bar}; // { a: 1, b: 2 } 与Object.assign 一致
+let bar = { a: 1, b: 2 };
+let baz = { ...bar }; // { a: 1, b: 2 } 与Object.assign 一致
 ```
 
 ## 解构赋值
 
 ```js
-const {a, b: y} = {a: 3, b: 4};
+const { a, b: y } = { a: 3, b: 4 };
 //a :3 y:4  y 是对 b 的重命名。外边声明的是y，取值取 b 的值。
 
-let {foo, bar} = {foo: "aaa", bar: "bbb"};
+let { foo, bar } = { foo: 'aaa', bar: 'bbb' };
 foo; // "aaa"
 bar; // "bbb"
 ```
@@ -35,7 +35,7 @@ bar; // "bbb"
 const school = {
   classes: {
     stu: {
-      name: "Bob",
+      name: 'Bob',
       age: 24,
     },
   },
@@ -43,7 +43,7 @@ const school = {
 
 const {
   classes: {
-    stu: {name},
+    stu: { name },
   },
 } = school;
 console.log(name); // 'Bob'
@@ -119,7 +119,7 @@ function flat(arr, level = 1) {
   使用同值相等的算法。基本与严格相等`===`一致。
 
   ```js
-  Object.is("foo", "foo"); //true
+  Object.is('foo', 'foo'); //true
   Object.is({}, {}); //false
 
   //与严格相等不同：
@@ -132,10 +132,10 @@ function flat(arr, level = 1) {
   对象合并，将源对象的所有可枚举属性复制到目标对象。返回的是目标对象本身。
 
   ```js
-  const target = {a: 1};
+  const target = { a: 1 };
 
-  const source1 = {b: 2};
-  const source2 = {c: 3};
+  const source1 = { b: 2 };
+  const source2 = { c: 3 };
 
   Object.assign(target, source1, source2);
   ```
@@ -147,7 +147,7 @@ function flat(arr, level = 1) {
   以上都是遍历对象自身（不含继承的），所有可遍历属性。
 
   ```js
-  const obj = {foo: "bar", baz: 42};
+  const obj = { foo: 'bar', baz: 42 };
   Object.entries(obj);
   // [ ["foo", "bar"], ["baz", 42] ]
   ```
@@ -169,7 +169,7 @@ function Point(x, y) {
   this.y = y;
 }
 Point.prototype.toString = function () {
-  return "(" + this.x + ", " + this.y + ")";
+  return '(' + this.x + ', ' + this.y + ')';
 };
 var p = new Point(1, 2);
 
@@ -181,7 +181,7 @@ class Point {
     this.y = y;
   }
   toString() {
-    return "(" + this.x + ", " + this.y + ")";
+    return '(' + this.x + ', ' + this.y + ')';
   }
 }
 const p = new Point(1, 2);
@@ -217,10 +217,10 @@ class MyClass {
     // ...
   }
   get a() {
-    return "getter";
+    return 'getter';
   }
   set a(value) {
-    console.log("setter: " + value);
+    console.log('setter: ' + value);
     //  this.a = a; // 自身递归调用 ❌❌❌ 不能这样写！
   }
 }
@@ -241,7 +241,7 @@ inst.a;
 ```js
 class Foo {
   static classMethod() {
-    return "hello";
+    return 'hello';
   }
 }
 
@@ -295,7 +295,7 @@ Proxy.revocable() 方法返回一个对象，该对象的 proxy 属性是 Proxy 
 let target = {};
 let handler = {};
 
-let {proxy, revoke} = Proxy.revocable(target, handler);
+let { proxy, revoke } = Proxy.revocable(target, handler);
 
 proxy.foo = 123;
 proxy.foo; // 123
@@ -315,10 +315,10 @@ Reflect 对象的方法与 Proxy 对象的方法一一对应，只要是 Proxy �
 
 ```js
 // 老写法
-"assign" in Object; // true
+'assign' in Object; // true
 
 // 新写法
-Reflect.has(Object, "assign"); // true
+Reflect.has(Object, 'assign'); // true
 ```
 
 ## Proxy and Reflect
@@ -327,16 +327,16 @@ Reflect.has(Object, "assign"); // true
 
   ```js
   const jay = {
-    name: "jay",
-    phone: "188888888",
-    age: "30",
+    name: 'jay',
+    phone: '188888888',
+    age: '30',
   };
 
   const handler = {
     get(target, key, receiver) {
-      console.log("hh", target, key, receiver);
-      if (key === "phone") {
-        return "代理的电话12222";
+      console.log('hh', target, key, receiver);
+      if (key === 'phone') {
+        return '代理的电话12222';
       }
       //return target[key] //有可能还是被代理了，代理陷阱
       return Reflect.get(target, key, receiver);

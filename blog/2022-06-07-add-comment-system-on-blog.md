@@ -43,18 +43,18 @@ yarn add disqus-react
 在`src/theme/BlogPostPage`文件中添加如下代码：
 
 ```tsx
-import {DiscussionEmbed} from "disqus-react";
+import { DiscussionEmbed } from 'disqus-react';
 
 // BlogPostPageContent 组件中
-const {title, description, tags, permalink} = metadata; //docusaurus 暴露出来的
-const fmtId = permalink.replace(/^\//, "").replaceAll(/[\s\/]/gi, "-");
-const disqusId = fmtId == "" ? "main" : fmtId;
+const { title, description, tags, permalink } = metadata; //docusaurus 暴露出来的
+const fmtId = permalink.replace(/^\//, '').replaceAll(/[\s\/]/gi, '-');
+const disqusId = fmtId == '' ? 'main' : fmtId;
 
 // 在想放置的位置添加DiscussionEmbed组件。一般放在nextItem/prevItem之后。
 <DiscussionEmbed
   shortname="yourshortname" //在disqus 配置的
   config={{
-    url: "https://brightzoe.top" + permalink, //完整网址
+    url: 'https://brightzoe.top' + permalink, //完整网址
     identifier: disqusId, //识别符
     title: title,
   }}

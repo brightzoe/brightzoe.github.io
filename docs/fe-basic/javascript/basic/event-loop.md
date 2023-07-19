@@ -50,63 +50,63 @@ js 引擎遇到一个异步事件后并不会一直等待其返回结果，而�
 async 隐式返回 Promise 作为结果的函数，那么可以简单理解为，await 后面的函数执行完毕时，await 会产生一个微任务(Promise.then 是微任务)
 
 ```js
-console.log("script start");
+console.log('script start');
 async function async1() {
   await async2(); //同步
-  console.log("async1 end"); //微任务
+  console.log('async1 end'); //微任务
 }
 async function async2() {
-  console.log("async2 end");
+  console.log('async2 end');
 }
 async1();
 setTimeout(() => {
-  console.log("timeout"); //宏任务
+  console.log('timeout'); //宏任务
 }, 0);
 new Promise((resolve) => {
-  console.log("promise"); //同步
+  console.log('promise'); //同步
   resolve();
 })
   .then(function () {
-    console.log("promise1"); //微任务
+    console.log('promise1'); //微任务
   })
   .then(function () {
-    console.log("promise2"); //微任务
+    console.log('promise2'); //微任务
   });
-console.log("script end");
+console.log('script end');
 // script start => async2 end => Promise => script end => async1 end => promise1 => promise2 => setTimeout
 ```
 
 ![](https://s2.loli.net/2022/05/11/urd1blqZXF8cTsD.png)
 
 ```js
-console.log("script start");
+console.log('script start');
 async function async1() {
   await async2(); //这里执行完就跳出当前函数，先执行其他函数
-  console.log("async1 end"); //控制权转移，最后注册的微任务
+  console.log('async1 end'); //控制权转移，最后注册的微任务
 }
 async function async2() {
   //里面有异步
-  console.log("async2 end");
+  console.log('async2 end');
   return Promise.resolve().then(() => {
-    console.log("async2 end1");
+    console.log('async2 end1');
   });
 }
 async1();
 setTimeout(function () {
-  console.log("setTimeout");
+  console.log('setTimeout');
 }, 0);
 
 new Promise((resolve) => {
-  console.log("Promise");
+  console.log('Promise');
   resolve();
 })
   .then(function () {
-    console.log("promise1");
+    console.log('promise1');
   })
   .then(function () {
-    console.log("promise2");
+    console.log('promise2');
   });
-console.log("script end");
+console.log('script end');
 ```
 
 ## NodeJS 的事件循环

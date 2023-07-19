@@ -18,7 +18,7 @@ function App() {
   const [count, setCount] = useState(0);
   const handleClick = () => {
     setTimeout(() => {
-      console.log("点击次数: " + count);
+      console.log('点击次数: ' + count);
     }, 3000);
   };
   //1、点击增加按钮两次，将 count 增加到 2。
@@ -89,7 +89,7 @@ function App() {
   const [count, setCount] = useState(0);
   useEffect(() => {
     setTimeout(() => {
-      console.log("点击次数: " + count);
+      console.log('点击次数: ' + count);
     }, 3000);
   }); //没有deps,组件重新渲染时，会重新执行 useEffect 内的回调，并且里面 count 值也是当时的快照的一个常量值。
   return (
@@ -114,12 +114,12 @@ class App extends React.Component {
   }
   componentDidUpdate() {
     setTimeout(() => {
-      console.log("点击次数: " + this.state.count);
+      console.log('点击次数: ' + this.state.count);
     }, 3000);
   }
   render() {
     return (
-      <button onClick={() => this.setState({count: this.state.count + 1})}>
+      <button onClick={() => this.setState({ count: this.state.count + 1 })}>
         点击{this.state.count}次
       </button>
     );
@@ -153,18 +153,18 @@ note: live-codeblock 里添加多个组件的方法：添加 noInLine, 代码最
 -->
 
 ```jsx live noInline
-function Child({data}) {
+function Child({ data }) {
   useEffect(() => {
-    console.log("查询条件：", data);
+    console.log('查询条件：', data);
   }, [data]);
 
   return <div>子组件</div>;
 }
 
 function App() {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [kw, setKw] = useState("");
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [kw, setKw] = useState('');
 
   // const data = {
   //   name,
@@ -297,7 +297,7 @@ const ChildUseMemo = (props = {}) => {
 ### useCallback
 
 ```jsx live noInline
-function Child({callback}) {
+function Child({ callback }) {
   useEffect(() => {
     callback();
   }, [callback]);
@@ -305,15 +305,15 @@ function Child({callback}) {
   return <div>子组件</div>;
 }
 function App() {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [kw, setKw] = useState("");
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [kw, setKw] = useState('');
   // const callback = () => {
   //   console.log('我是callback')
   // }
   //按照上面，父组件的重新渲染就会导致子组件重新渲染，给子组件添加依赖什么重新渲染,作为性能优化。
   const callback = useCallback(() => {
-    console.log("我是callback");
+    console.log('我是callback');
   }, []);
   return (
     <div className="App">
@@ -346,14 +346,14 @@ useMemo 和 useCallback，都能为「重复渲染」这个问题，提供很好
 
 ```jsx live noInline
 //使用 React.memo 将子组件作为 pureComponent,减少不必要的渲染。useCallback 缓存 props 中的函数，减少 props 不必要的变化导致的渲染。
-const Child = React.memo(function ({val, onChange}) {
-  console.log("render...", val);
+const Child = React.memo(function ({ val, onChange }) {
+  console.log('render...', val);
   return <input value={val} onChange={onChange} />;
 });
 
 function App() {
-  const [val1, setVal1] = useState("");
-  const [val2, setVal2] = useState("");
+  const [val1, setVal1] = useState('');
+  const [val2, setVal2] = useState('');
 
   //如果不用useCallback, 任何一个输入框的变化都会导致另一个输入框重新渲染.
   //一个输入框变化，父组件重新渲染，导致生成新的onChange函数，props 变化了，则子组件也重新渲染
@@ -382,7 +382,7 @@ useCallback 支持我们缓存某一函数，当且仅当依赖项发生变化�
 ```js live noInline
 function Parent() {
   const [count, setCount] = useState(0);
-  const [query, setQuery] = useState("keyword");
+  const [query, setQuery] = useState('keyword');
 
   const getData = useCallback(() => {
     const url = `https://mocks.alibaba-inc.com/mock/fO87jdfKqX/demo/queryData.json?query=${query}`;
@@ -405,7 +405,7 @@ function Parent() {
   );
 }
 
-function Child({getData}) {
+function Child({ getData }) {
   useEffect(() => {
     getData();
   }, [getData]); // 函数可以作为依赖项参与到数据流中
@@ -434,8 +434,8 @@ render(<Parent />);
 > Provider 内部的组件，如果不消费 context ,用 memo 包起来可以减少渲染。
 
 ```jsx live noInline
-const UserContext = React.createContext("default");
-const ChannelContext = React.createContext("channel");
+const UserContext = React.createContext('default');
+const ChannelContext = React.createContext('channel');
 //只有当组件所处的树中没有匹配到 Provider 时，其 defaultValue 参数才会生效。
 
 //两种消费方式
@@ -452,7 +452,7 @@ function ComponentE() {
   //使用多个context 的时候，useContext 相比consumer 更优雅简洁
   const user = useContext(UserContext);
   const channel = useContext(ChannelContext);
-  console.log("user Render");
+  console.log('user Render');
   return (
     <div>
       FFFFFFF {user} - {channel}
@@ -461,7 +461,7 @@ function ComponentE() {
 }
 const ComponentF = React.memo(ComponentE);
 const App = () => {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState('');
   const changeUser = (e) => {
     setUser(e.target.value);
   };
@@ -495,16 +495,16 @@ state 逻辑处理较复杂且包含多个子值，或者下一个 state 依赖�
 每次 state 变化时，都会触发一次重新渲染。
 
 ```jsx live noInline
-const initialState = {count: 0};
+const initialState = { count: 0 };
 function reducer(state, action) {
   //接收当前 state 和 action， 并根据不同的 action 返回不同的新的 state。
   switch (action.type) {
-    case "increment":
-      return {count: state.count + 1};
-    case "decrement":
-      return {count: state.count - 1};
-    case "reset":
-      return {count: 0};
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    case 'reset':
+      return { count: 0 };
     default:
       return state;
   }
@@ -515,9 +515,9 @@ function Counter() {
     <>
       Count: {state.count}
       {/* dispatch 一个action */}
-      <button onClick={() => dispatch({type: "decrement"})}>-</button>
-      <button onClick={() => dispatch({type: "increment"})}>+</button>
-      <button onClick={() => dispatch({type: "reset"})}>reset</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'reset' })}>reset</button>
     </>
   );
 }
@@ -631,7 +631,7 @@ let ForwardChild = forwardRef(A); // 把子组件包裹起来
 function App() {
   const parentRef = useRef();
   function focusHander() {
-    console.log("input的value", parentRef.current.value);
+    console.log('input的value', parentRef.current.value);
   }
   return (
     <div>
@@ -656,7 +656,7 @@ render(<App />);
 ```jsx live noInline
 function Child(props, parentRef) {
   const inputRef = useRef();
-  const [name, setName] = useState("默认name");
+  const [name, setName] = useState('默认name');
   // 把子组件A 内部的一些值或方法暴露给父组件使用
   useImperativeHandle(parentRef, () => {
     return {

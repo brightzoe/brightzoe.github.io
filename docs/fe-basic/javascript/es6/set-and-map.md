@@ -107,7 +107,7 @@ class Foo {
   }
   method() {
     if (!foos.has(this)) {
-      throw new TypeError("Foo.prototype.method 只能在Foo的实例上调用！");
+      throw new TypeError('Foo.prototype.method 只能在Foo的实例上调用！');
     }
   }
 }
@@ -135,7 +135,7 @@ m.size; //0 map的长度
 map.clear(); //清除所有的成员，没有返回值
 
 //set方法返回的是当前的Map对象，因此可以采用链式写法。
-let map = new Map().set(1, "a").set(2, "b");
+let map = new Map().set(1, 'a').set(2, 'b');
 
 //遍历方法
 //Map 的遍历顺序就是插入顺序。

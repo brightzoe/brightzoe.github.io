@@ -20,18 +20,18 @@ string,number,boolean,undefined,null,symbol,bigInt
 
 ```js
 //一些方法
-let str = "gdagffasd";
-str.indexOf("d");
-str.lastIndexOf("g");
+let str = 'gdagffasd';
+str.indexOf('d');
+str.lastIndexOf('g');
 
-str.split(""); //转为数组
-str.split("g"); //['', 'da', 'ffasd']
+str.split(''); //转为数组
+str.split('g'); //['', 'da', 'ffasd']
 ```
 
 ### number
 
 ```js
-typeof NaN === "number"; // true
+typeof NaN === 'number'; // true
 
 NaN !== NaN; //true
 
@@ -52,7 +52,7 @@ Number.isNaN(NaN); // true
 ```js
 const a = BigInt(9007199254740991);
 const b = 9007199254740991n;
-const hugeHex = BigInt("0x1fffffffffffff");
+const hugeHex = BigInt('0x1fffffffffffff');
 ```
 
 ### symbol
@@ -60,7 +60,7 @@ const hugeHex = BigInt("0x1fffffffffffff");
 基本数据类型。 创建后独一无二不可变，可以解决全局变量冲突的问题。
 
 ```js
-const a = Symbol("这是描述符");
+const a = Symbol('这是描述符');
 const b = Symbol();
 ```
 
@@ -70,7 +70,7 @@ const b = Symbol();
 
 ```js
 //唯一的，每次创建的都是新的symbol类型
-Symbol("foo") === Symbol("foo"); // false
+Symbol('foo') === Symbol('foo'); // false
 
 const sym = new Symbol(); // TypeError 不能new,语法错误
 ```
@@ -82,12 +82,12 @@ const sym = new Symbol(); // TypeError 不能new,语法错误
 > symbol 注册表通常构建在 JavaScript 编译器基础设施，所以 symbol 注册表的内容不会出现 JavaScript 运行时环境，除了通过它们的反射方法。`Symbol.for("tokenString")` 方法从注册表返回一个 symbol 值，`Symbol.keyFor(symbolValue)` 方法从注册表返回"tokenString"；
 
 ```js
-Symbol.keyFor(Symbol.for("tokenString")) == "tokenString"; // true
+Symbol.keyFor(Symbol.for('tokenString')) == 'tokenString'; // true
 
-let a = Symbol.for("唯一的");
+let a = Symbol.for('唯一的');
 Symbol.keyFor(a); // 唯一的
 
-Symbol.for("foo"); //向全局搜寻是否有通过Symbol.for('foo') 全局注册的symbol ，没有的话就注册一个
+Symbol.for('foo'); //向全局搜寻是否有通过Symbol.for('foo') 全局注册的symbol ，没有的话就注册一个
 ```
 
 [Symbol - 术语表 | MDN](https://developer.mozilla.org/zh-CN/docs/Glossary/Symbol)
@@ -99,9 +99,9 @@ Symbol.for("foo"); //向全局搜寻是否有通过Symbol.for('foo') 全局注�
   Symbol 值作为属性名时，该属性是公有属性不是私有属性，但 for in 不能遍历 Symbol 属性。
 
   ```js
-  const foo = Symbol("a");
+  const foo = Symbol('a');
   const obj = {};
-  obj[foo] = "xx";
+  obj[foo] = 'xx';
 
   foo in obj; //true
 
@@ -133,15 +133,15 @@ object,array,function
 
   ```js
   [1] instanceof Array; //true
-  "str" instanceof String; // false
+  'str' instanceof String; // false
   true instanceof Boolean; // false
   ```
 
 - `Object.prototype.toString` 可以准确判断所有的类型，Array、String 等都重写了该方法，因此就需要借助 call/apply 来调用 Object.prototype 上的方法。
 
   ```js
-  Object.prototype.toString.call([1, 2, 3]) === "[object Array]";
-  Object.prototype.toString.call("foo") === "[object String]";
+  Object.prototype.toString.call([1, 2, 3]) === '[object Array]';
+  Object.prototype.toString.call('foo') === '[object String]';
   ```
 
   [Object.prototype.toString() - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toString)
@@ -174,9 +174,9 @@ object,array,function
   String(233);
   (233).toString(); // 或 233..toString()  //遇到null，undefined会报错，不安全
 
-  "" + 233;
+  '' + 233;
 
-  233 + "";
+  233 + '';
   ```
 
   > 孰优孰劣见 reference。 个人一般采用 String()，比较明确，存在 null,undefined 等不会报错。
@@ -189,7 +189,7 @@ object,array,function
   NaN == NaN; //false
   null == undefined; //true
   [] == 0; //转换为数字
-  "" == 0; //true
+  '' == 0; //true
   ```
 - 逻辑运算符
 
@@ -200,11 +200,11 @@ object,array,function
   //前面的判断转换为布尔类型
   2 && 3; //3
   1 && null && 2; //null 从左到右返回第一个为 falsy 的值
-  false || null || "" || 0 || NaN || "Hello" || undefined; // "Hello"
+  false || null || '' || 0 || NaN || 'Hello' || undefined; // "Hello"
 
   null || false || undefined; //undefined
   0 || 2 || alert(3); //2  从左到右返回第一个为 true 的值
-  1 && [] && {} && true && "World" && null && 2010; // null
+  1 && [] && {} && true && 'World' && null && 2010; // null
   ```
 
 ## 基本类型与引用类型的区别

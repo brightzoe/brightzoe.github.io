@@ -28,14 +28,14 @@ Object.is() 与比较操作符 “===”、“==”
 
   ```js
   let outObj = {
-    inObj: {a: 1, b: 2},
+    inObj: { a: 1, b: 2 },
   };
-  let newObj = {...outObj};
+  let newObj = { ...outObj };
   newObj.inObj.a = 2;
   console.log(outObj); // {inObj: {a: 2, b: 2}}
 
   let outObj = {
-    inObj: {a: 1, b: 2},
+    inObj: { a: 1, b: 2 },
   };
   let newObj = Object.assign({}, outObj);
   newObj.inObj.a = 2;
@@ -66,7 +66,7 @@ function cloneDeep(obj) {
       return cache.get(obj);
     }
     let res;
-    if (obj && typeof obj === "object") {
+    if (obj && typeof obj === 'object') {
       //引用数据类型，且不是null
       if (Array.isArray(obj)) {
         //数组

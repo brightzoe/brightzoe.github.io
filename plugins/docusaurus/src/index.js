@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require("path");
-const {validateThemeConfig} = require("./validateThemeConfig");
+const path = require('path');
+const { validateThemeConfig } = require('./validateThemeConfig');
 
 function theme() {
   return {
-    name: "docusaurus-sandpack",
+    name: 'docusaurus-sandpack',
 
     getThemePath() {
-      return path.resolve(__dirname, "./theme");
+      return path.resolve(__dirname, './theme');
     },
   };
 }

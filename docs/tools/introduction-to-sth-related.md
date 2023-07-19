@@ -35,7 +35,7 @@
 
   - Jenkins 新手安装配置操作(https://zhuanlan.zhihu.com/p/80031057)
   - Gitlab CI
-  
+
     gitlab 推出的 ci 工具，方便使用，使用 yml 配置。
 
     [yaml - Gitlab-Ci: How could I share data between jobs - Stack Overflow](https://stackoverflow.com/questions/50358923/gitlab-ci-how-could-i-share-data-between-jobs)

@@ -75,7 +75,7 @@ webpack-dev-server 端口占用的问题
   1. 按 css modules 的方式引用样式，使用`style.cptbutton`
 
      ```js
-     import style from "./index.less";
+     import style from './index.less';
      ```
 
   2. css modules 使用全局作用域。

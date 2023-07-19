@@ -78,12 +78,12 @@ compilation 对象是 complier 的实例，是每一次构建的上下文对象�
 
 `devtool:source-map/eval-source-map/cheap-module-source-map`等
 
-| 参数 | 参数解释 |
-| --- | --- |
-| eval | 打包后的模块都使用 eval() 执行，行映射可能不准；不产生独立的 map 文件 |
-| cheap | map 映射只显示行不显示列，忽略源自 loader 的 source map |
+| 参数   | 参数解释                                                                |
+| ------ | ----------------------------------------------------------------------- |
+| eval   | 打包后的模块都使用 eval() 执行，行映射可能不准；不产生独立的 map 文件   |
+| cheap  | map 映射只显示行不显示列，忽略源自 loader 的 source map                 |
 | inline | 映射文件以 base64 格式编码，加在 bundle 文件最后，不产生独立的 map 文件 |
-| module | 增加对 loader source map 和第三方模块的映射 |
+| module | 增加对 loader source map 和第三方模块的映射                             |
 
 生产环境勿用内联方式，会增大代码体积，可以配置 cheap-module-source-map。
 
@@ -153,7 +153,7 @@ plugins: [
   ```js
   optimization: {
     splitChunks: {
-      chunks: "all"; //自动分析多入口chunk中有没有公共的文件，公共文件会生成单独的chunk
+      chunks: 'all'; //自动分析多入口chunk中有没有公共的文件，公共文件会生成单独的chunk
     }
   }
   ```

@@ -20,7 +20,7 @@
 1. 输入框非空的判断
 
    ```js
-   if ((value ?? "") !== "") {
+   if ((value ?? '') !== '') {
      // 不是null/undefined/''
    }
    ```
@@ -38,8 +38,8 @@
 
    0 || 42; //42
 
-   "" ?? "default"; //''
-   "" || "default"; //'default
+   '' ?? 'default'; //''
+   '' || 'default'; //'default
    ```
 
 2. 相同的短路特性。若左边不为 `undefined`/`null` ，右侧不会被执行
@@ -62,8 +62,8 @@ true || undefined ?? "foo"; // 抛出 SyntaxError
 
 ```js
 const [a, b] = [1, 2]; //变量声明，并解构数组后赋值给变量
-const {a, b, c, d, e} = obj;
-const {a: a1} = obj; // 提取变量a 并赋值给a1：a1 对应obj.a
+const { a, b, c, d, e } = obj;
+const { a: a1 } = obj; // 提取变量a 并赋值给a1：a1 对应obj.a
 
 [a, b] = [b, a]; //交换两个变量的值
 ```
@@ -73,14 +73,14 @@ const {a: a1} = obj; // 提取变量a 并赋值给a1：a1 对应obj.a
 1. 要注意解构的对象不能为 undefined、null.
 
    ```js
-   const {a, b, c, d, e} = obj || {};
+   const { a, b, c, d, e } = obj || {};
    ```
 
 2. 解构时赋予默认值.防止取出 undefined 的对象.
 
    ```js
    const [a = 5, b = 7] = [1];
-   const {a = 10, b = 5} = {a: 3};
+   const { a = 10, b = 5 } = { a: 3 };
    ```
 
 3. 同 2 在赋值时两边长度不相等，也可以忽略某些值。
@@ -111,7 +111,7 @@ const {a: a1} = obj; // 提取变量a 并赋值给a1：a1 对应obj.a
    const obj2 = {
      b: 1,
    };
-   const obj = {...obj1, ...obj2}; //{a:1,b:1}
+   const obj = { ...obj1, ...obj2 }; //{a:1,b:1}
    ```
 
 2. 数组/对象拷贝。
@@ -128,9 +128,9 @@ const {a: a1} = obj; // 提取变量a 并赋值给a1：a1 对应obj.a
 **注意事项**
 
 ```js
-var obj1 = {foo: "bar", x: 42};
-var obj2 = {foo: "baz", y: 13};
-const merge = (...objects) => ({...objects}); //这里按照剩余参数解析，和预期的展开操作行为不一致
+var obj1 = { foo: 'bar', x: 42 };
+var obj2 = { foo: 'baz', y: 13 };
+const merge = (...objects) => ({ ...objects }); //这里按照剩余参数解析，和预期的展开操作行为不一致
 
 var mergedObj = merge(obj1, obj2);
 // Object { 0: { foo: 'bar', x: 42 }, 1: { foo: 'baz', y: 13 } }
@@ -170,18 +170,18 @@ function(a, b, ...[c,d]) {
 1. 模板字符串插入任意的表达式
 
    ```js
-   const name = "小明";
+   const name = '小明';
    const score = 59;
    // 模板字符串里可以插入任意的js 表达式
    const result = `${name}${
-     score > 60 ? "的考试成绩及格" : "的考试成绩不及格"
+     score > 60 ? '的考试成绩及格' : '的考试成绩不及格'
    }`;
 
    //可以在模板字符串的占位符内继续嵌套模板
    const classes = `header ${
      isLargeScreen()
-       ? ""
-       : `icon-${item.isCollapsed ? "expander" : "collapser"}`
+       ? ''
+       : `icon-${item.isCollapsed ? 'expander' : 'collapser'}`
    }`;
    ```
 
@@ -194,7 +194,7 @@ function(a, b, ...[c,d]) {
    // string text line 2"
 
    //普通字符串实现的模板字符串
-   console.log("string text line 1\n" + "string text line 2");
+   console.log('string text line 1\n' + 'string text line 2');
    ```
 
 ## Array.prototype.includes()
@@ -240,7 +240,7 @@ arr4.flat(Infinity);
 ```js
 let obj = {};
 let index = 1;
-obj[`topic${index}`] = "话题内容";
+obj[`topic${index}`] = '话题内容';
 ```
 
 ## Reference

@@ -22,7 +22,7 @@ HTML 中原生的 input，随着用户的输入可以改变 UI 的显示，内�
 
 ```jsx live noInline
 // 组件提供方
-function Input({defaultValue}) {
+function Input({ defaultValue }) {
   const [value, setValue] = React.useState(defaultValue);
   return <input value={value} onChange={(e) => setValue(e.target.value)} />;
 }
@@ -40,7 +40,7 @@ render(<Demo />);
 
 ```jsx live noInline
 // 组件提供方
-function Input({value, onChange}) {
+function Input({ value, onChange }) {
   return <input value={value} onChange={onChange} />;
 }
 

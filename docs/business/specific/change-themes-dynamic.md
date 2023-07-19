@@ -15,10 +15,10 @@ var createLink = (function () {
     if ($link) {
       return $link;
     }
-    $link = document.createElement("link");
-    $link.rel = "stylesheet";
-    $link.type = "text/css";
-    document.querySelector("head").appendChild($link);
+    $link = document.createElement('link');
+    $link.rel = 'stylesheet';
+    $link.type = 'text/css';
+    document.querySelector('head').appendChild($link);
     return $link;
   };
 })();
@@ -29,10 +29,10 @@ var createLink = (function () {
 ```js
 function toggleTheme(theme) {
   var $link = window.createLink();
-  $link.href = "./" + theme + ".css";
+  $link.href = './' + theme + '.css';
   return theme;
 }
-toggleTheme("light");
+toggleTheme('light');
 ```
 
 ## docsify 是如何实现的？
@@ -44,11 +44,11 @@ toggleTheme("light");
 docsify 源码：
 
 ```js
-var preview = Docsify.dom.find(".demo-theme-preview");
+var preview = Docsify.dom.find('.demo-theme-preview');
 var themes = Docsify.dom.findAll('[rel="stylesheet"]');
 
 preview.onclick = function (e) {
-  var title = e.target.getAttribute("data-theme");
+  var title = e.target.getAttribute('data-theme');
 
   themes.forEach(function (theme) {
     theme.disabled = theme.title !== title;
@@ -81,10 +81,10 @@ preview.onclick = function (e) {
 </style>
 
 <script>
-  var preview = Docsify.dom.find(".demo-theme-preview");
+  var preview = Docsify.dom.find('.demo-theme-preview');
   var themes = Docsify.dom.findAll('[rel="stylesheet"]');
   preview.onclick = function (e) {
-    var title = e.target.getAttribute("data-theme");
+    var title = e.target.getAttribute('data-theme');
     themes.forEach(function (theme) {
       theme.disabled = theme.title !== title;
     });
@@ -95,7 +95,7 @@ preview.onclick = function (e) {
 ## 覆盖样式实现
 
 ```scss
-[data-theme="dark"] {
+[data-theme='dark'] {
   body {
     background: $dark-fill-1;
   }
@@ -127,14 +127,14 @@ preview.onclick = function (e) {
 ```css
 @mixin bg-color($key) {
   background-color: map-get($colors-light, $key);
-  [data-theme="dark"] & {
+  [data-theme='dark'] & {
     background-color: map-get($colors-dark, $key);
   }
 }
 // text色
 @mixin text-color($key) {
   color: map-get($colors-light, $key);
-  [data-theme="dark"] & {
+  [data-theme='dark'] & {
     color: map-get($colors-dark, $key);
   }
 }

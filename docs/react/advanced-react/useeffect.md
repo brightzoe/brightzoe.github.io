@@ -179,19 +179,19 @@ useLayoutEffect 会在所有 dom 变更之后同步调用 effect，适合用来�
 ```jsx live noInline
 function Son() {
   useEffect(() => {
-    console.log("son useEffect"); //3
+    console.log('son useEffect'); //3
   }, []);
   useLayoutEffect(() => {
-    console.log("son useLayoutEffect"); //1
+    console.log('son useLayoutEffect'); //1
   }, []);
   return <></>;
 }
 function Parent() {
   useEffect(() => {
-    console.log("parent useEffect"); //4
+    console.log('parent useEffect'); //4
   }, []);
   useLayoutEffect(() => {
-    console.log("parent useLayoutEffect"); //2
+    console.log('parent useLayoutEffect'); //2
   }, []);
   return <Son />;
 }
