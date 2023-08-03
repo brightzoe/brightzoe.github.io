@@ -67,7 +67,29 @@ tags: [dev, rules]
 常量： 大驼峰命名。变量：小驼峰命名。
 
 //todo: 未完待整理。
+### prettier
+```
+{
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "bracketSameLine": false,
+  "jsxSingleQuote": false,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "useTabs": false
+}
 
+- 工具：@trivago/prettier-plugin-sort-imports 帮助整理import顺序
+```
+## 测试
+
+<!-- todo: -->
+Mocha  Chai Jest
 ## Reference
 
 - [前端开发规范：命名规范、html 规范、css 规范、js 规范 - 掘金](https://juejin.cn/post/6844903479698259975)

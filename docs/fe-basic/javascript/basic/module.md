@@ -1,8 +1,6 @@
 # 模块化
 
-老实讲，之前一直没有学明白模块化，AMD，require，requirejs，CMD，es Module 这类与模块化相关的概念以及具体怎么使用怎么区分。只是在项目中照着使用罢了。
-
-> 小声 bb： 都长得太像了，cmd amd commonjs ，里面的变量 require,exports 也都是相似的单词，确实容易搞得头昏 😵
+模块化，AMD（require.js），require，CMD，es Module 这些，里面的变量 require, exports 都是相似的单词，确实容易搞得头昏 😵
 
 ### 概述
 

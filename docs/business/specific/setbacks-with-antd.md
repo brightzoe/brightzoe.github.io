@@ -34,7 +34,7 @@
 
 //正确写法：label留在外面，实际的元素用Form.Item再包一层，name 加在最里面。
 <Form.Item label="username">
-  <Form.Item name="username">
+  <Form.Item name="username" noStyle>
   <Input />
   </Form.Item>
   <span>please input username.</span>

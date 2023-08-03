@@ -24,7 +24,7 @@ Object.is() 与比较操作符 “===”、“==”
 
   浅拷贝：扩展运算符，`Object.assign({}, obj)`。
 
-  > `Object.assign(targetObj, obj1,[obj2])` 将源对象的所有可枚举属性复制到目标对象。返回的是目标对象本身。
+  > `Object.assign(targetObj, obj1,[obj2])` 将源对象的所有可枚举属性复制到目标对象。返回的是目标对象本身。可以有多个源对象。
 
   ```js
   let outObj = {
