@@ -62,6 +62,10 @@
 
 3. 这个需求还蛮普遍的，antd 暂时没提供这样的方法(https://github.com/ant-design/ant-design/issues/30270)
 
+## Table
+
+[Table 组件能怎么能支持高度固定？ · Issue #37359 · ant-design/ant-design](https://github.com/ant-design/ant-design/issues/37359)
+
 ## Carousel
 
 ### 自定义箭头

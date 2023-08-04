@@ -74,7 +74,7 @@ function Count() {
 
 依赖 deps：每次 deps 改变就会执行回调函数（useEffect 的第一个参数）。如果不传 deps，只要该组件有 state 改变就会触发回调函数。如果 deps 为一个空数组，回调函数只会在该组件初始化时执行一次。
 
-依赖项如果是对象，只能浅比较，是不是同一个对象（通过`Object.is`的方法比较）。如果需要深比较，可以使用` useDeepCompareEffect`。
+> 依赖项如果是对象，只能浅比较，是不是同一个对象（通过`Object.is`的方法比较）。如果需要深比较，可以使用` useDeepCompareEffect`。
 
 在 useEffect 的第一个参数中 return 一个清除函数，这个函数将在组件卸载的时候执行，因此在这里可以移除监听等在卸载时执行的操作。
 

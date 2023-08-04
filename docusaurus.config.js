@@ -40,7 +40,10 @@ module.exports = {
           showLastUpdateTime: true,
           sidebarCollapsed: true,
           // options for remark-admonitions
-          // admonitions: {},
+          admonitions: {
+            keywords: ['note', 'tip', 'info', 'caution', 'danger'],
+            // extendDefaults: true,
+          },
           breadcrumbs: false,
         },
         blog: {
