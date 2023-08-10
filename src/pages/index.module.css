@@ -2,7 +2,7 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
-.layout {
+ .layout {
   display: flex;
   flex-direction: column;
 }
@@ -20,8 +20,14 @@
   overflow: hidden;
 }
 
-@media screen and (max-width: 966px) {
+@media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;
   }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

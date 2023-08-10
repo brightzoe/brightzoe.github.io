@@ -1,7 +1,8 @@
+// @ts-check
+// Note: type annotations allow type checking and IDEs autocompletion
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-// With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: "brightzoe's blog",
@@ -10,12 +11,19 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+  // Even if you don't use internalization, you can use this field to set useful
+  // metadata like html lang. For example, if your site is Chinese, you may want
+  // to replace "en" with "zh-Hans".
+  i18n: {
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans'],
+  },
   favicon: 'img/favicon.ico',
   trailingSlash: false, //customize the presence/absence of a trailing slash at the end of URLs/links, and how static HTML files are generated
   organizationName: 'brightzoe', // Usually your GitHub org/user name.
   projectName: 'brightzoe.github.io', // Usually your repo name.
   themes: [
-    '@codesandbox/sandpack-docusaurus',
+    // '@codesandbox/sandpack-docusaurus',
     '@docusaurus/theme-live-codeblock',
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
@@ -28,9 +36,8 @@ module.exports = {
   ],
 
   presets: [
-    //预设:将某些插件和主题一起使用
     [
-      '@docusaurus/preset-classic',
+      'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       {
         docs: {
@@ -77,11 +84,12 @@ module.exports = {
       },
     ],
   ],
-  plugins: ['@docusaurus/plugin-ideal-image'],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
+      // Replace with your project's social card
+      // image: 'img/docusaurus-social-card.jpg',
       colorMode: {
         defaultMode: 'light',
         disableSwitch: false,
@@ -131,6 +139,7 @@ module.exports = {
         ],
       },
       footer: {
+        style: 'dark',
         links: [
           {
             title: '博客推荐',
@@ -163,7 +172,6 @@ module.exports = {
             ],
           },
         ],
-        style: 'dark',
         copyright: `Copyright © ${new Date().getFullYear()} brightzoe's blog`,
       },
       prism: {

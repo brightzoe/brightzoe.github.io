@@ -1,9 +1,9 @@
 import React from 'react';
 import clsx from 'clsx';
-import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import styles from './index.module.css';
+import Layout from '@theme/Layout';
 import HomepageContent from '../components/HomepageContent';
+import styles from './index.module.css';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -17,13 +17,12 @@ function HomepageHeader() {
   );
 }
 
-export default function Home() {
+export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      pageClassName={styles.layout}
       title={`Hello from ${siteConfig.title}`}
-      description="Learning by doing"
+      description="Description will go into a meta tag in <head />"
     >
       <HomepageHeader />
       <main>

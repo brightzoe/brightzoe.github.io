@@ -5,7 +5,7 @@ authors: [zoe]
 tags: [about, docusaurus]
 ---
 
-import { Sandpack } from "@codesandbox/sandpack-react";
+<!-- import { Sandpack } from "@codesandbox/sandpack-react"; -->
 
 ## About
 
@@ -84,7 +84,11 @@ Some **content** with _markdown_ `syntax`.
 
 Blog posts support [Docusaurus Markdown features](https://docusaurus.io/docs/markdown-features), such as [MDX](https://mdxjs.com/).
 
-:::tip Use the power of React to create interactive blog posts. <button onClick={() => alert('button clicked!')}>Click me!</button> :::
+:::tip
+
+Use the power of React to create interactive blog posts. <button onClick={() => alert('button clicked!')}>Click me!</button>
+
+:::
 
 ### Using Interactive code editor
 
@@ -117,9 +121,9 @@ function Clock(props) {
 
 <!-- todo:自定义文件内容好像未生效。 -->
 
-<Sandpack
+<!-- <Sandpack
 template="react"
-/>
+/> -->
 
 ## ChangeLog
 
