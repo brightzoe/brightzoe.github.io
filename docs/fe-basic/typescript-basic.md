@@ -28,7 +28,7 @@ tags: [typescript, ts]
 ## Flow
 
 <details>
-  <summary><b>Flow (点击展开)</b></summary>
+  <summary><b>JS 的类型检查工具</b></summary>
 
 JS 的类型检查,是一个小工具，在需要的时候添加类型,学习成本较小。
 

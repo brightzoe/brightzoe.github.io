@@ -100,7 +100,8 @@ pureComponent 自动调用 `shouldComponentUpdate()` ，以浅层对比 prop 和
 
 手写原理和实现: [React PureComponent 源码解析 - SegmentFault 思否](https://segmentfault.com/a/1190000006741060)
 
-react 源码中的浅比较：
+<details>
+  <summary><b>react 源码中的浅比较</b></summary>
 
 ```js
 //https://github.com/facebook/fbjs/blob/main/packages/fbjs/src/core/shallowEqual.js
@@ -154,6 +155,8 @@ function is(x: mixed, y: mixed): boolean {
   }
 }
 ```
+
+</details>
 
 函数组件：
 
