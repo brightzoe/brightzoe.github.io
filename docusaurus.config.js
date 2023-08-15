@@ -49,7 +49,7 @@ module.exports = {
           // options for remark-admonitions
           admonitions: {
             keywords: ['note', 'tip', 'info', 'caution', 'danger','deep'],
-            extendDefaults: true,
+            // extendDefaults: true,
           },
           breadcrumbs: false,
         },
