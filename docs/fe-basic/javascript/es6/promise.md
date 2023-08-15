@@ -359,6 +359,14 @@ const urls = [
 poolLimit(3, urls, (data) => console.log(data));
 ```
 
+## async await
+
+async/await 只是 promise 的语法糖。
+
+在任何函数前面添加 async，该函数的返回值一定为 promise，不是 promise 的值将被包裹在 resolved 的 promise 中。
+
+await 只在 async 函数内工作。
+
 ## Reference
 
 - [Promise 中的三兄弟 .all(), .race(), .allSettled() - 掘金](https://juejin.cn/post/6844903912592375821#heading-7)

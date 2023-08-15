@@ -429,9 +429,16 @@ render(<Parent />);
 
 具体使用场景：管理当前的 locale，theme，userInfo 或者一些缓存数据，比替代方案要简单的多。
 
-**Provider 的 value 值发生变化时，它内部的所有消费组件都会重新渲染。** 即使组件使用 React.memo 或 shouldComponentUpdate，也会在组件本身使用 useContext 时重新渲染。
+> 替代方案：redux 等状态管理工具、webStorage、props 层层传递等。
 
-> Provider 内部的组件，如果不消费 context ,用 memo 包起来可以减少渲染。
+:::tip
+**Provider 的 value 值发生变化时，它内部的所有消费组件都会重新渲染。**
+
+如果被 Provide 包裹的组件内部没有使用 value 里的值，可以将组件用 React.memo 包裹或者使用 shouldComponentUpdate，或者使用 useMemo 将组件缓存起来（利用 React 本身对 React element 对象的缓存）减少渲染。
+
+但是如果组件使用了 value,在 value 值发生变化时都会重新渲染。
+
+:::
 
 ```jsx live noInline
 const UserContext = React.createContext('default');
@@ -439,6 +446,7 @@ const ChannelContext = React.createContext('channel');
 //只有当组件所处的树中没有匹配到 Provider 时，其 defaultValue 参数才会生效。
 
 //两种消费方式
+//①
 function ComponentC() {
   return (
     <UserContext.Consumer>
@@ -448,6 +456,8 @@ function ComponentC() {
     </UserContext.Consumer>
   );
 }
+
+//②
 function ComponentE() {
   //使用多个context 的时候，useContext 相比consumer 更优雅简洁
   const user = useContext(UserContext);
@@ -460,6 +470,7 @@ function ComponentE() {
   );
 }
 const ComponentF = React.memo(ComponentE);
+
 const App = () => {
   const [user, setUser] = useState('');
   const changeUser = (e) => {
@@ -480,11 +491,18 @@ const App = () => {
 render(<App />);
 ```
 
-了解更多：
+#### Context 的特性
 
-- [**React Hooks 系列之 3 useContext - 掘金**](https://juejin.cn/post/6844904153584500749#heading-0)
+- Provider 作为 context 的提供者，value 更新会导致包裹的所有组件重新更新。
+- 多个不同的/相同的 Provider 之间可以相互嵌套。
 
-- [发布者订阅者模式跳过中间组件的 Render 过程 - CodeSandbox](https://codesandbox.io/s/fabuzhedingyuezhemoshitiaoguozhongjianzujiande-render-guocheng-nm7nt?file=/src/PubSubCommunicate.js)
+- 同一个 context 可以逐层嵌套多个 Provider,里面的 value 的值可以不同。下一层级的 Provider 可以覆盖上一层及的 Provider。
+
+:::tip Reference
+
+[**React Hooks 系列之 3 useContext - 掘金**](https://juejin.cn/post/6844904153584500749#heading-0)
+
+:::
 
 ### useReducer
 

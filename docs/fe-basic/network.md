@@ -74,6 +74,13 @@ HTTP/2.0
 - http 协议信息是明文传输的，https 是具有安全性的 SSL 加密的传输协议，具有身份验证、信息加密、完整性校验等功能。
 - http 默认端口是 80 ，https 默认端口是 443。
 
+
+:::tip deep
+
+[网络安全科普：奇妙的 SSL/TLS 证书（基础篇） - Joe’s Blog](https://hijiangtao.github.io/2022/11/16/Dig-Out-All-Secrets-Behind-TLS-Certificate-One/)
+[网络安全科普：奇妙的 SSL/TLS 证书（进阶篇） - Joe’s Blog](https://hijiangtao.github.io/2022/11/16/Dig-Out-All-Secrets-Behind-TLS-Certificate-Two/)
+:::
+
 #### 加密原理
 
 握手的是非对称加密，握手完成以后是对称加密，非对称加密解密时间较久。基于散列函数验证信息的完整性。

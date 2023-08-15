@@ -45,11 +45,11 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/brightzoe/brightzoe.github.io/edit/main',
           showLastUpdateTime: true,
-          sidebarCollapsed: true,
+          sidebarCollapsed: false,
           // options for remark-admonitions
           admonitions: {
-            keywords: ['note', 'tip', 'info', 'caution', 'danger'],
-            // extendDefaults: true,
+            keywords: ['note', 'tip', 'info', 'caution', 'danger','deep'],
+            extendDefaults: true,
           },
           breadcrumbs: false,
         },
