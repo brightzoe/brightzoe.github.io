@@ -41,7 +41,13 @@ function App() {
 
 ### useState
 
-useState 的参数是变量、对象或者是函数，变量或者对象会作为 state 的初始值，如果是函数，函数的返回值会作为初始值。
+useState 的参数（initState）是变量、对象或者是函数，变量或者对象会作为 state 的初始值，如果是函数，函数的返回值会作为初始值。
+
+:::tip
+
+initState 只会在组件的初始化渲染中起作用，后续渲染会被忽略。initState 可以是一个函数，函数的返回值会作为 initState 的值,这被称为惰性初始化。
+
+:::
 
 使用 useState 依赖上一次 state 时，使用 function 的方式更新 setState，确保拿到的是准确的 previous state。
 
@@ -61,6 +67,8 @@ function Count() {
   );
 }
 ```
+
+#### State 的特性
 
 对于对象和数组，注意 useState 中不会自动补全旧的变量，需要使用展开运算符自己手动补充,完成合并更新。
 
@@ -671,9 +679,9 @@ render(<App />);
 
 - 通过 useImperativeHandle ，子组件还可以使用很多的 ref,可以暴露给父组件操作子组件内部的多个 ref
 
-```jsx live noInline
-function Child(props, parentRef) {
-  const inputRef = useRef();
+```tsx
+const Child = forwardRef<HTMLInputElement, {}>((props, parentRef) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [name, setName] = useState('默认name');
   // 把子组件A 内部的一些值或方法暴露给父组件使用
   useImperativeHandle(parentRef, () => {
@@ -690,23 +698,26 @@ function Child(props, parentRef) {
       />
     </div>
   );
-}
-let ForwardChild = forwardRef(Child);
+});
+
 function App() {
-  const parentRef = useRef();
+  //使用时需要使用 ElementRef 泛型，并使用 typeof 获取组件的 ref 类型
+  const parentRef = useRef<ElementRef<typeof ForwardChild>>(null);
   //parentRef.current 拿到的是子组件通过useImperativeHandle 返回的一个对象
   const say = () => {
     console.log(parentRef.current.name);
   };
   return (
     <>
-      <ForwardChild ref={parentRef} />
+      <Child ref={parentRef} />
       <button onClick={say}>打印子组件name</button>
     </>
   );
 }
 render(<App />);
 ```
+
+- [react 在 typescript 下传递 ref 给子组件 | WONDER's Notes](https://wonderlust91.github.io/2021/05/19/react%E5%9C%A8typescript%E4%B8%8B%E4%BC%A0%E9%80%92ref%E7%BB%99%E5%AD%90%E7%BB%84%E4%BB%B6/#%E5%9C%A8-tsx-%E4%B8%8B%E4%BD%BF%E7%94%A8)
 
 ### 自定义 Hook
 

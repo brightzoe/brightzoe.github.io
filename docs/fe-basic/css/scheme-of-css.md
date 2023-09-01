@@ -51,8 +51,6 @@ CSS 方案的一种方法论 [BEM — Block Element Modifier](http://getbem.com/
 
 - 大量重复 CSS ，CSS 文件大小膨胀速度过快。
 
-<!-- //TODO: 练习使用 Tailwind CSS ，体验一下。 -->
-
 ## HTML 与 CSS 的关系
 
 关注点分离： HTML 应该只包含关于内容的信息，而所有的样式决定都应该在 CSS 中进行。

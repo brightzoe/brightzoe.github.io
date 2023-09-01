@@ -197,11 +197,15 @@ class App extends React.Component {
 
 用于父元素访问子元素的方法。也可以用于缓存一个值。
 
+[useRef](./hooks.md#useref)
+
 ### Context
 
 跨层级组件数据传递。
 
 通过组件树传递数据的方法，实现在组件间共享数据，可以避免一层层地手动 props 传递数据。
+
+[useContext](./hooks.md#usecontext)
 
 ### 组件传值的方式
 
@@ -215,7 +219,7 @@ props
 
 class： Refs 拿到子组件的实例，调用其方法
 
-hooks：forwordRef+useImperativeHandle
+hooks：forwardRef+useImperativeHandle
 
 #### 兄弟组件
 
@@ -226,6 +230,8 @@ hooks：forwordRef+useImperativeHandle
 context
 
 redux
+
+自定义事件
 
 ### Portals 传送门
 
