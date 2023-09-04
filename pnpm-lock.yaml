@@ -65,8 +65,8 @@ devDependencies:
     specifier: ^18.0.11
     version: 18.0.11
   prettier:
-    specifier: ^2.8.4
-    version: 2.8.4
+    specifier: ^3.0.3
+    version: 3.0.3
   typescript:
     specifier: ^5.0.2
     version: 5.0.2
@@ -3790,7 +3790,7 @@ packages:
   /@types/sax@1.2.4:
     resolution: {integrity: sha512-pSAff4IAxJjfAXUG6tFkO7dsSbTmf8CtUpfhhZ5VhkRpC4628tJhh3+V6H1E+/Gs9piSzYKT5yzHO5M4GG9jkw==}
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 20.4.8
     dev: false
 
   /@types/scheduler@0.16.3:
@@ -9435,9 +9435,9 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /prettier@2.8.4:
-    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
-    engines: {node: '>=10.13.0'}
+  /prettier@3.0.3:
+    resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
