@@ -1,5 +1,8 @@
 # pnpm workspace monorepo 实践
 
+- Monorepo：所有依赖库完全放入一个项目工程
+- Multirepo：多个依赖包独立进行 git 管理
+
 ## 为什么使用
 
 workspace 将 一个仓库分成不同的工作空间。在根目录下执行 pnpm install ，会将 workspace 内所有的依赖都下载到 node_modules/.pnpm 目录下，而各个子包的 workspace 的依赖，对应目录下将通过软链接的方式添加。
@@ -9,7 +12,10 @@ workspace 将 一个仓库分成不同的工作空间。在根目录下执行 pn
 monorepo 适用于几个项目互相依赖，共同开发的场景，解决不同项目中代码复用的问题。
 
 - 代码互相依赖，可以实时更新。
+- 工程配置统一。
 - 减少项目安装时间，减少空间占用，相同的第三方依赖不会被多次安装。
+
+> 缺陷：代码权限管理。如果参与人很多，无法有效控制代码权限问题，可以使用lint相关工具在代码质量和风格上做一定限制。
 
 ## 将原来的项目调整至 monorepo
 
@@ -70,6 +76,10 @@ packages:
   }
 }
 ```
+
+## monorepo 版本管理
+
+changeset 工具，主要用于 monorepo 项目下子项目版本的更新、changelog 文件生成、包的发布。
 
 ## Reference
 

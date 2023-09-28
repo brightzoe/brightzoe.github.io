@@ -82,7 +82,15 @@ display:inline 水平方向的 margin，padding 有效，垂直方向无效。
 
 ## 物理像素 逻辑像素
 
-手机上像素密度（DPR）一般为 3。一个逻辑像素（CSS 像素）=3 个物理像素
+设备像素（物理像素）device pixels
+
+设备独立像素 device independent pixels
+
+> 一个设备独立像素里可能包含 1 个或者多个物理像素点，包含的越多则屏幕看起来越清晰。一般没有缩放的情况下，1 个 CSS 像素 等于 1 个设备独立像素。
+
+像素密度 devicePixelRatio
+
+> devicePixelRatio = 物理像素 / 设备独立像素。手机上像素密度（DPR）一般为 3，即一个逻辑像素（CSS 像素）=3 个物理像素
 
 ## 常见单位
 

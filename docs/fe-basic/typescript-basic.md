@@ -170,15 +170,37 @@ TypeScript 编译的时候即使报错了，还是会生成编译结果，我们
 
 如果要在报错的时候终止 js 文件的生成，可以在 tsconfig.json 中配置 noEmitOnError
 
-## 使用第三方库
+### tsup
+
+另一个 ts 的构建工具，基于 esBuild,打包速度快，可以生成多个支持不同模块规范的包。
+
+安装之后默认不需要配置即可使用。也可以配置入口文件、打包类型、是否生成类型文件等。
+
+## 使用第三方库的 TS 支持问题
 
 很多第三方库原生支持 TS，在使用时就能获得代码补全和提示。
 
-而有些第三方库原生不支持 TS ，可以安装社区维护的类型声明库来获得代码补全的能力。比如使用`npm install --save-dev @types/react`安装 React 的类型声明库。 [DefinitelyTyped/DefinitelyTyped: The repository for high quality TypeScript type definitions.](https://github.com/DefinitelyTyped/DefinitelyTyped)
+而有些第三方库原生不支持 TS， 可以安装社区维护的类型声明库来获得代码补全的能力。比如使用`npm install --save-dev @types/react`安装 React 的类型声明库。
+
+DefinitelyTyped 组织的类型定义，包含大多数流行的包的类型定义：[DefinitelyTyped: The repository for high quality TypeScript type definitions.](https://github.com/DefinitelyTyped/DefinitelyTyped)，他们的包名是`@types/pkgName`。
+
+:::tip ts 类型查找顺序
+
+类似 node 包查找顺序的递归查找
+
+- 局部作用域：当前文件
+- 项目类型声明文件: `*.d.ts`
+- `node_modules/@types`
+
+  可以通过 tsconfig.json 中 typeRoot 指定类型声明文件位置，默认为@types,会引入所有的类型声明。
+
+  可以通过 compilerOptions.types 配置 控制需要引入哪些包的类型声明，以保证全局变量污染的问题。
+
+:::
 
 ### 类型声明
 
-没有类型声明文件的库，或者自己写类型声明对全局文件进行类型定义。
+没有类型声明文件的库，可以自己写类型声明对全局文件进行类型定义。
 
 ```ts title="xx.d.ts"
 declare function replace(input: string): string; //如果没有类型声明，自己声明一下类型。

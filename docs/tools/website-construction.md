@@ -148,6 +148,18 @@ server {
 
 ```
 
+#### location 块能否被重复匹配
+
+不可以！一旦一个 location 块被匹配，该块的配置就会被用于处理该请求，其他 location 块的配置将不会被合并或继承。
+
+如果想要复用其他 location 内的配置，可能需要在不同的 location 块中重复相同的配置，或者使用 include 指令来引入共用的配置片段。
+
+#### proxy——pass 的匹配规则
+
+如果 proxy_pass 中的 URL 包含子路径（哪怕是/），则 location 中的路径被替换，即直接使用 proxy_pass。在proxy_pass中谨慎加 /
+
+[nginx 在访问链接末尾不加斜杠导致的自动重定向 | WONDER's Notes](https://wonderlust91.github.io/2023/05/01/nginx%E5%9C%A8%E8%AE%BF%E9%97%AE%E9%93%BE%E6%8E%A5%E6%9C%AB%E5%B0%BE%E4%B8%8D%E5%8A%A0%E6%96%9C%E6%9D%A0%E5%AF%BC%E8%87%B4%E7%9A%84%E8%87%AA%E5%8A%A8%E9%87%8D%E5%AE%9A%E5%90%91/#%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86)
+
 #### nginx CORS
 
 ```nginx.conf

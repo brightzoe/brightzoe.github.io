@@ -195,7 +195,9 @@ js 同上修改 data-theme 的值。
 
 css-vars-ponyfill (https://jhildenbiddle.github.io/css-vars-ponyfill/#/)
 
-//TODO:呜呜，写不下去了。啥时候实际项目遇到了再补充完善吧。
+### CSS 变量配合 tailwindCSS 实现动态更换样式
+
+[Applying dynamic styles with Tailwind CSS - LogRocket Blog --- 使用 Tailwind CSS 应用动态样式 - LogRocket 博客](https://blog.logrocket.com/applying-dynamic-styles-tailwind-css/)
 
 ## 总结
 
