@@ -24,10 +24,10 @@ useEffect(() => {
 
 以上代码，如果 props 从`{id: 10}`变到`{id:20}`，执行如下：
 
-1. React 渲染{id: 20}的 UI。
-2. 浏览器绘制。我们在屏幕上看到{id: 20}的 UI。
-3. React 清除{id: 10}的 effect。//先清除再运行新的
-4. React 运行{id: 20}的 effect。
+1. React 渲染`{id: 20}`的 UI。
+2. 浏览器绘制。我们在屏幕上看到`{id: 20}`的 UI。
+3. React 清除`{id: 10}`的 effect。//先清除再运行新的
+4. React 运行`{id: 20}`的 effect。
 
 > 来自 [useEffect 完整指南 — Overreacted](https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/)
 
