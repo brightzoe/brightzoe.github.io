@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbrightzoe_blog=self.webpackChunkbrightzoe_blog||[]).push([[2474],{5194:e=>{e.exports=JSON.parse('{"label":"vercel","permalink":"/blog/tags/vercel","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
