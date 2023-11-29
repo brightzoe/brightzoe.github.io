@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@codesandbox/sandpack-docusaurus':
     specifier: file:./plugins/docusaurus
@@ -61,8 +65,8 @@ devDependencies:
     specifier: ^18.0.11
     version: 18.0.11
   prettier:
-    specifier: ^2.8.4
-    version: 2.8.4
+    specifier: ^3.1.0
+    version: 3.1.0
   typescript:
     specifier: ~5.2.2
     version: 5.2.2
@@ -583,6 +587,7 @@ packages:
   /@babel/plugin-proposal-unicode-property-regex@7.18.6(@babel/core@7.22.9):
     resolution: {integrity: sha512-2BShG/d5yoZyXZfVePH91urL5wTG6ASZU9M4o03lKK8u8UW1y08OMttBSOADTcJrnPMpvDXRG3G8fyLh4ovs8w==}
     engines: {node: '>=4'}
+    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-unicode-property-regex instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -7346,7 +7351,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
@@ -11182,9 +11187,9 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /prettier@2.8.4:
-    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
-    engines: {node: '>=10.13.0'}
+  /prettier@3.1.0:
+    resolution: {integrity: sha512-TQLvXjq5IAibjh8EpBIkNKxO749UEWABoiIZehEPiY4GNpVdhaFKqSTu+QrlU6D2dPAfubRmtJTi4K4YkQ5eXw==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
@@ -14294,7 +14299,6 @@ packages:
     resolution: {directory: plugins/docusaurus, type: directory}
     id: file:plugins/docusaurus
     name: '@codesandbox/sandpack-docusaurus'
-    version: 0.0.1
     engines: {node: '>=12.13.0'}
     peerDependencies:
       react: ^16.8.4 || ^17.0.0
@@ -14320,7 +14324,3 @@ packages:
       - vue-template-compiler
       - webpack-cli
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
