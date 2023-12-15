@@ -86,8 +86,9 @@ swr 使用 mutate / useSWRMutation 避免竞态条件。
   wrappedFn(100).then((value) => console.log(value));
   ```
 
+  使用 useEffect 实现，利用 didCancel 变量以及 **useEffect 的清除函数**，本质是发起新请求后将之前请求的标志位置为 false。
+
   ```js
-  // 使用useEffect 实现，利用 didCancel 变量以及 useEffect 的清除函数，本质是发起新请求后将之前请求的标志位置为false。
   useEffect(() => {
     let didCancel = false;
     setIsLoading(true);
@@ -122,46 +123,46 @@ swr 使用 mutate / useSWRMutation 避免竞态条件。
   }, [articleId]);
   ```
 
-  上面 useEffect 的方式同样可以改为 abortController 实现取消请求:
+上面 useEffect 的方式同样可以改为 abortController 实现**取消请求**。利用清理函数，在发起新的请求时取消上一个请求:
 
-  ```js
-  useEffect(() => {
-    const abortController = new AbortController();
+```js
+useEffect(() => {
+  const abortController = new AbortController();
 
-    setIsLoading(true);
-    fetch(`https://get.a.rticle.com/articles/${articleId}`, {
-      signal: abortController.signal,
+  setIsLoading(true);
+  fetch(`https://get.a.rticle.com/articles/${articleId}`, {
+    signal: abortController.signal,
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      return Promise.reject();
     })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject();
-      })
-      .catch(() => {
-        // note: 注意做好错误处理、由于请求被取消不报错
-        if (abortController.signal.aborted) {
-          console.log('The user aborted the request');
-        } else {
-          console.error('The request failed');
-        }
-      })
-      .then((fetchedArticle: Article) => {
-        setArticle(fetchedArticle);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    .catch(() => {
+      // note: 注意做好错误处理、由于请求被取消不报错
+      if (abortController.signal.aborted) {
+        console.log('The user aborted the request');
+      } else {
+        console.error('The request failed');
+      }
+    })
+    .then((fetchedArticle: Article) => {
+      setArticle(fetchedArticle);
+    })
+    .finally(() => {
+      setIsLoading(false);
+    });
 
-    return () => {
-      abortController.abort();
-    };
-  }, [articleId]);
-  ```
+  return () => {
+    abortController.abort();
+  };
+}, [articleId]);
+```
 
 ### 取消请求与忽略请求
 
-取消请求依赖于具体请求的 api,如果采用取消请求可以一定程度减轻服务端压力。
+取消请求依赖于具体请求的 api，如果采用取消请求可以一定程度减轻服务端压力。
 
 忽略请求更通用，更容易抽象和封装，本质上所有的异步方法都能通过忽略过期的异步请求的方式实现。
 
@@ -175,6 +176,7 @@ swr 使用 mutate / useSWRMutation 避免竞态条件。
 
 ## References
 
+[Handling API request race conditions in React](https://sebastienlorber.com/handling-api-request-race-conditions-in-react)
 [如何解决前端常见的竞态问题 - 掘金](https://juejin.cn/post/7128205011019890695?searchId=2023080917253797875C308C998069E70D#comment)
 [awesome-imperative-promise/src/index.ts at master · slorber/awesome-imperative-promise](https://github.com/slorber/awesome-imperative-promise/blob/master/src/index.ts)
 [解决前端常见问题：竞态条件 - 掘金](https://juejin.cn/post/7098287689618685966?searchId=202308111708527F6158743AF6EB075B5C#heading-1)

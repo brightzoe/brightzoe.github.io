@@ -470,6 +470,18 @@ const funcSay: SayHi = (word) => {
 };
 ```
 
+描述函数：
+
+```ts
+interface SearchFunc {
+  (source: string, subString: string): boolean;
+}
+
+const searchFunc: SearchFunc = (source, subString) => {
+  return source.includes(subString);
+};
+```
+
 ### 类
 
 ```ts
@@ -536,7 +548,7 @@ const demo2 = Demo.create('jan');
 console.log(demo1.name, demo2.name, demo1 === demo2);
 ```
 
-### 类与接口
+#### 类与接口
 
 ```ts
 interface EatAndRun {
@@ -570,7 +582,7 @@ class AutoMan implements Eat, Run {
 }
 ```
 
-### 抽象类
+#### 抽象类
 
 抽象类不允许被实例化。
 
@@ -655,7 +667,16 @@ const data = new DataManager([{ name: '1' }, { name: 'hh' }]);
 console.log(data.getData(1));
 ```
 
-#### keyof
+### keyof
+
+```ts
+interface Person {
+  name: string;
+  age: number;
+}
+
+type Keys = keyof Person; // 'name' | 'age' 得到联合类型
+```
 
 ```ts
 interface Person {
@@ -678,6 +699,38 @@ const teacher = new Teacher({
 
 const test = teacher.getInfo('gender');
 console.log(test);
+```
+
+### key in
+
+```ts
+type TraceType = 'OK' | 'NOK' | 'COK' | 'NA';
+const TRACE_TYPE = ['OK', 'NOK', 'COK', 'NA'] as const;
+type DerivedType = (typeof TRACE_TYPE)[number];
+
+TraceType === DerivedType; //true
+```
+
+声明一个对象的类型,以下两种方式是一致的：
+
+```ts
+type ExampleType = {
+  [key in TraceType]: number;
+};
+
+type ExampleType = {
+  [key in (typeof TRACE_TYPE)[number]]: number;
+};
+```
+
+### extends 条件类型（Conditional Types）
+
+在泛型中的 extends 表示对于参数的类型约束，在表达式中表示 A 是否可以赋值给 B 的条件判断
+
+```ts
+function getProperty<T, K extends keyof T>(obj: T, key: K) {
+  return obj[key];
+}
 ```
 
 ### 装饰器
