@@ -1,5 +1,6 @@
 ---
-title: 谈谈Script 标签
+title: 谈谈 Script 标签
+tags: [script]
 ---
 
 说说`<script>`标签，通常用作嵌入或引用可执行脚本。
@@ -8,11 +9,11 @@ title: 谈谈Script 标签
 
 ### 一些属性
 
-- src:这个属性定义引用外部脚本的 URI，这可以用来代替直接在文档中嵌入脚本。指定了 src 属性的 script 元素标签内不应该再有嵌入的脚本。
+- **src** 这个属性定义引用外部脚本的 URI，这可以用来代替直接在文档中嵌入脚本。指定了 src 属性的 script 元素标签内不应该再有嵌入的脚本。
 
-- type:该属性定义 script 元素包含或 src 引用的脚本语言(text/javascript)。如果 type 属性为 module，代码会被当作 JavaScript 模块。
+- **type** 该属性定义 script 元素包含或 src 引用的脚本语言(text/javascript)。如果 type 属性为 module，代码会被当作 JavaScript 模块。
 
-- crossorigin:默认不使用 CORS。"anonymous"配置文件请求不必设置凭据标志。"use-credentials"设置凭据标志，意味着出站请求会包含凭据。
+- **crossorigin** 默认不使用 CORS。`anonymous` 配置文件请求不必设置凭据标志。`use-credentials`设置凭据标志，意味着出站请求会包含凭据。
 
   ![](https://i.loli.net/2021/06/29/Est72uLzZgnA9Qp.png)
 
