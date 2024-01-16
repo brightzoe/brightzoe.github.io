@@ -115,9 +115,13 @@ You can use Sanitize.css or Modern-normalize in non-Bootstrap projects, use the 
 
   各个浏览器对于 CSS 宽高的解析不完全相同。
 
-  :::caution `min-height` 不是一个有效的高度值：高度不明确。
+  :::caution
 
-  ::: 特殊的`min-height`为父元素的百分比生效的现象：
+  `min-height` 不是一个有效的高度值：高度不明确。
+
+  :::
+
+  特殊的`min-height`为父元素的百分比生效的现象：
 
   //todo:why?
 
