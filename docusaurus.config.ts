@@ -1,11 +1,11 @@
-// @ts-check
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
 // Note: type annotations allow type checking and IDEs autocompletion
 const { themes } = require('prism-react-renderer');
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
 
-/** @type {import('@docusaurus/types').DocusaurusConfig} */
-module.exports = {
+const config : Config = {
   title: "brightzoe's blog",
   tagline: 'Learning by doing',
   url: 'https://brightzoe.top',
@@ -39,7 +39,6 @@ module.exports = {
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
       {
         docs: {
           //@docusaurus/plugin-content-docs
@@ -82,12 +81,11 @@ module.exports = {
         //   // Optional fields.
         //   anonymizeIP: true, // Should IPs be anonymized?
         // },
-      },
+      } satisfies Preset.Options ,
     ],
   ],
 
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
       // Replace with your project's social card
       // image: 'img/docusaurus-social-card.jpg',
@@ -179,5 +177,20 @@ module.exports = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-    },
+    } satisfies Preset.ThemeConfig,
+    plugins:[
+
+      async function TailwindCSS(context, options) {
+        return {
+          name: "docusaurus-tailwindcss",
+          configurePostCss(postcssOptions) {
+            // Appends TailwindCSS and AutoPrefixer.
+            postcssOptions.plugins.push(require("tailwindcss"),require("autoprefixer"));
+            return postcssOptions;
+          },
+        };
+      },
+    ]
 };
+
+export default config
