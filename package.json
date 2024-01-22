@@ -31,7 +31,7 @@
     "clsx": "^2.1.0",
     "disqus-react": "1.1.5",
     "lxgw-wenkai-screen-webfont": "1.7.0",
-    "postcss": "^8.4.31",
+    "postcss": "^8.4.33",
     "prism-react-renderer": "^2.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
