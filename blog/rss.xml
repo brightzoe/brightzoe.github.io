@@ -487,6 +487,9 @@
 <p>2023.05 添加 ts 支持，由 yarn 切换至 pnpm。</p>
 <p>依赖升级至 react18, 遇到 react 版本不兼容的问题，添加了<code>.npmrc</code>文件解决。 <a href="https://github.com/facebook/docusaurus/issues/7264" target="_blank" rel="noopener noreferrer">Migrate to React 18 · Issue #7264 · facebook/docusaurus</a></p>
 </li>
+<li>
+<p>2024.01 添加 tailwindcss 支持。<a href="https://dev.to/shannonajclarke/using-tailwindcss-v3-in-docusaurus-in-5-steps-5c26" target="_blank" rel="noopener noreferrer">Using TailwindCSS v3 in Docusaurus in 5 steps</a></p>
+</li>
 </ol>
 <h2 class="anchor anchorWithStickyNavbar_pPUv" id="reference">Reference<a href="https://brightzoe.top/blog/welcome#reference" class="hash-link" aria-label="Reference的直接链接" title="Reference的直接链接">​</a></h2>
 <ul>
