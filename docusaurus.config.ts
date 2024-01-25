@@ -138,39 +138,19 @@ const config : Config = {
         ],
       },
       footer: {
-        style: 'dark',
-        links: [
-          {
-            title: '博客推荐',
-            items: [
-              {
-                label: "Ashes Born's Blog",
-                href: 'https://sadofriod.github.io/',
-              },
-              {
-                label: 'Overreacted - Dan Abramov',
-                href: 'https://overreacted.io/',
-              },
-            ],
-          },
-          {
-            title: '  ',
-            items: [],
-          },
-          {
-            title: '博客推荐',
-            items: [
-              {
-                label: "Ashes Born's Blog",
-                href: 'https://sadofriod.github.io/',
-              },
-              {
-                label: 'Overreacted - Dan Abramov',
-                href: 'https://overreacted.io/',
-              },
-            ],
-          },
-        ],
+        style: 'light',
+        links:
+          [
+            {
+              label: "Ashes Born's Blog",
+              href: 'https://sadofriod.github.io/',
+            },
+            {
+              label: 'Overreacted - Dan Abramov',
+              href: 'https://overreacted.io/',
+            },
+           ],
+
         copyright: `Copyright © ${new Date().getFullYear()} brightzoe's blog`,
       },
       prism: {

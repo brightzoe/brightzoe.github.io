@@ -19,13 +19,32 @@
 }
 :root {
   /* --ifm-background-color: rgb(245, 241, 237); */
-  --ifm-color-primary: rgb(37, 194, 160);
+  /* --ifm-color-primary: rgb(37, 194, 160);
   --ifm-color-primary-dark: rgb(33, 175, 144);
   --ifm-color-primary-darker: rgb(31, 165, 136);
   --ifm-color-primary-darkest: rgb(26, 136, 112);
   --ifm-color-primary-light: rgb(70, 203, 174);
   --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-color-primary-lightest: rgb(146, 224, 208); */
+  --ifm-color-primary: #4338ca;
+  --ifm-color-primary-dark: #3b31b7;
+  --ifm-color-primary-darker: #382ead;
+  --ifm-color-primary-darkest: #2e268f;
+  --ifm-color-primary-light: #564ccf;
+  --ifm-color-primary-lighter: #6057d2;
+  --ifm-color-primary-lightest: #7d75da;
+
+  --ifm-color-secondary: #9f7aea; /* 基础紫色（Purple-400） */
+  --ifm-color-secondary-dark: #805ad5; /* 紫色稍暗 */
+  --ifm-color-secondary-darker: #6b46c1; /* 紫色更暗 */
+  --ifm-color-secondary-darkest: #553c9a; /* 紫色最暗 */
+  --ifm-color-secondary-light: #b794f4; /* 紫色稍亮 */
+  --ifm-color-secondary-lighter: #d6bcfa; /* 紫色更亮 */
+  --ifm-color-secondary-lightest: #e9d8fd; /* 紫色最亮 */
+
+  /* --ifm-footer-background-color:rgb(209 213 219); */
+  --ifm-footer-background-color:#d1d5db;
+
   --ifm-code-font-size: 95%;
   --ifm-leading: 0.7rem;
   --ifm-list-paragraph-margin: 0.6rem;
@@ -37,6 +56,30 @@
     'Liberation Mono', 'Courier New', monospace;
 }
 
+[data-theme='dark'] {
+  --ifm-color-primary: #818cf8; /* 淡紫色，作为主色调 */
+  --ifm-color-primary-dark: #6366f1; /* 深紫色 */
+  --ifm-color-primary-darker: #4f46e5; /* 更深的紫色 */
+  --ifm-color-primary-darkest: #4338ca; /* 最深的紫色 */
+  --ifm-color-primary-light: #a5b4fc; /* 浅紫色 */
+  --ifm-color-primary-lighter: #c7d2fe; /* 更浅的紫色 */
+  --ifm-color-primary-lightest: #e0e7ff; /* 最浅的紫色 */
+
+  --ifm-color-secondary: #a78bfa; /* 次要色调，淡淡的紫罗兰色 */
+  --ifm-color-secondary-dark: #8b5cf6; /* 深紫罗兰色 */
+  --ifm-color-secondary-darker: #7c3aed; /* 更深的紫罗兰色 */
+  --ifm-color-secondary-darkest: #6d28d9; /* 最深的紫罗兰色 */
+  --ifm-color-secondary-light: #c4b5fd; /* 浅紫罗兰色 */
+  --ifm-color-secondary-lighter: #ddd6fe; /* 更浅的紫罗兰色 */
+  --ifm-color-secondary-lightest: #ede9fe; /* 最浅的紫罗兰色 */
+
+  --ifm-background-color: #0f172a; /* 背景色 */
+  --ifm-footer-background-color: #1a202c; /* 深灰色，低调协调 */
+
+}
+.color-primary {
+  color: var(--ifm-color-primary);
+}
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;
