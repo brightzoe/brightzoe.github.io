@@ -133,7 +133,7 @@ template="react"
 4. 2023.05 添加 ts 支持，由 yarn 切换至 pnpm。
 
    依赖升级至 react18, 遇到 react 版本不兼容的问题，添加了`.npmrc`文件解决。 [Migrate to React 18 · Issue #7264 · facebook/docusaurus](https://github.com/facebook/docusaurus/issues/7264)
-
+5. 2024.01 添加 tailwindcss 支持。[Using TailwindCSS v3 in Docusaurus in 5 steps](https://dev.to/shannonajclarke/using-tailwindcss-v3-in-docusaurus-in-5-steps-5c26)
 ## Reference
 
 - [Docusaurus docs](https://docusaurus.io/docs)

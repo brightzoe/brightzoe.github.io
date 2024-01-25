@@ -724,14 +724,31 @@ type ExampleType = {
 ```
 
 ### extends 条件类型（Conditional Types）
+`A extends B ? C : D`，用于判断类型 A 是否可以赋值给类型 B。
 
-在泛型中的 extends 表示对于参数的类型约束，在表达式中表示 A 是否可以赋值给 B 的条件判断
+在表达式中表示 A 是否可以赋值给 B 的条件判断，在泛型中的 extends 表示对于参数的类型约束。
 
 ```ts
 function getProperty<T, K extends keyof T>(obj: T, key: K) {
   return obj[key];
 }
 ```
+
+关于`{}`,如果一个对象类型 A 至少拥有另一个对象类型 B 的所有属性，则可以认为 A 是 B 的子类型，因此 A 可以赋值给 B。空对象由于其内部无属性，任意一个对象（甚至是原始类型）都可以认为是它的子集。
+
+```ts
+type _T5 = { name: 'aaa';  } extends {}
+  ? true
+  : false;
+
+type _T6 = string extends {}
+  ? true
+  : false;
+```
+
+#### 分布式条件类型 Distributive Conditional Types
+条件类型的特殊功能，也可以叫条件类型的分布式特性。
+
 
 ### 装饰器
 
@@ -793,3 +810,4 @@ test1.getName();
 - [ts 入门教程](https://ts.xcatliu.com/)
 - [flow](https://flow.org/en/docs/usage/)
 - [TypeScript and React: Hooks](https://fettblog.eu/typescript-react/hooks/#useref)
+- [Equals 为什么这么设计](https://www.zhihu.com/question/577318797)

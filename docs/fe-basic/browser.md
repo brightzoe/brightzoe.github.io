@@ -178,18 +178,18 @@ CSSOM DOM
 
 浏览器的安全机制，限制了从一个源的文档/脚本如何与另一个源的资源进行交互。用于隔离恶意的潜在文件。
 
-同源：协议，域名，端口号必须一致。
+同源：协议，域名，端口号必须一致。（子域名不同也是不同的源）
 
 - 当前域不能访问其他域的 cookie，localStorage
 - 当前域不能访问，操作其他域的 DOM。
-- 当前域的 ajax 不能发送跨域请求。
+- 当前域的 ajax/fetch 不能发送跨域请求。
 
 ### 跨域
 
 - 通过 html 的标签(img, video, script)的 src 属性引入的外域资源不受限制
 - jsonp script 标签内容是自动执行的，拿不到里面内容。只能是 get 请求
 - iframe postMessage 传递数据
-- CORS 发起的跨域 HTTP 请求需要 CORS 标准
+- CORS(跨域资源共享) 一种标准机制，是解决跨域最常见的方式。通过服务器的响应头实现控制。
 
   - 预检请求
     - 需预检的请求必须首先使用 OPTIONS 方法发起一个预检请求到服务器，以获知服务器是否允许该实际请求。
@@ -198,7 +198,7 @@ CSSOM DOM
 
     响应头:
 
-    Access-Control-Allow-Origin:url/\* 服务器允许的域
+    Access-Control-Allow-Origin:url/* 服务器允许的域
 
     Access-Control-Allow-Methods: (POST, GET, OPTIONS) 服务器允许使用这些方法
 
