@@ -1,5 +1,6 @@
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+
 // Note: type annotations allow type checking and IDEs autocompletion
 const { themes } = require('prism-react-renderer');
 const lightCodeTheme = themes.github;
@@ -72,6 +73,7 @@ const config : Config = {
         },
         sitemap: {
           //@docusaurus/plugin-content-sitemap
+          // @ts-ignore
           changefreq: 'weekly',
           priority: 0.5,
         },

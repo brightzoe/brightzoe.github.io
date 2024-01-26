@@ -1,8 +1,7 @@
 import React from 'react';
-import styles from './HomepageContent.module.css';
 import DocusaurusMountain from '@site/static/img/undraw_docusaurus_mountain.svg';
 
-const ContentProps = {
+const contents = {
   title: 'Hello from here',
   Svg: DocusaurusMountain,
   description: (
@@ -16,27 +15,17 @@ const ContentProps = {
   ),
 };
 
-function Content({ Svg, title, description }) {
-  return (
-    <div className={styles.flexMain}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <div>{description}</div>
-      </div>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
-      </div>
-    </div>
-  );
-}
-
 export default function HomepageContent() {
   return (
-    <div className="container">
-      <Content {...ContentProps} />
+    <div className="container p-10 flex flex-col md:flex-row items-center">
+      <DocusaurusMountain
+        className="w-full md:w-2/5 rounded-lg"
+        title={contents.title}
+      />
+      <div className="mt-6 md:mt-0 md:ml-6 text-center md:text-left">
+        <h2 className="text-3xl font-bold">{contents.title}</h2>
+        <div className="mt-4">{contents.description}</div>
+      </div>
     </div>
   );
 }
