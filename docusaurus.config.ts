@@ -1,4 +1,4 @@
-import type {Config} from '@docusaurus/types';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // Note: type annotations allow type checking and IDEs autocompletion
@@ -6,7 +6,7 @@ const { themes } = require('prism-react-renderer');
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
 
-const config : Config = {
+const config: Config = {
   title: "brightzoe's blog",
   tagline: 'Learning by doing',
   url: 'https://brightzoe.top',
@@ -83,96 +83,98 @@ const config : Config = {
         //   // Optional fields.
         //   anonymizeIP: true, // Should IPs be anonymized?
         // },
-      } satisfies Preset.Options ,
+      } satisfies Preset.Options,
     ],
   ],
 
-  themeConfig:
-    {
-      // Replace with your project's social card
-      // image: 'img/docusaurus-social-card.jpg',
-      colorMode: {
-        defaultMode: 'light',
-        disableSwitch: false,
-        respectPrefersColorScheme: false,
+  themeConfig: {
+    // Replace with your project's social card
+    // image: 'img/docusaurus-social-card.jpg',
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: false,
+    },
+    docs: {
+      sidebar: {
+        autoCollapseCategories: true,
+        hideable: true,
       },
-      docs: {
-        sidebar: {
-          autoCollapseCategories: true,
-          hideable: true,
+    },
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 5,
+    },
+    navbar: {
+      title: 'brightzoe',
+      logo: {
+        alt: 'My Site Logo',
+        src: 'img/logo.svg',
+        width: 40,
+        height: 40,
+      },
+      items: [
+        { to: '/docs/fe-basic/html', label: 'FE Basic', position: 'left' },
+        { to: '/docs/react', label: 'React', position: 'left' },
+        { to: '/docs/vue', label: 'Vue', position: 'left' },
+        {
+          to: '/docs/data-structure',
+          label: '算法',
+          position: 'left',
         },
-      },
-      tableOfContents: {
-        minHeadingLevel: 2,
-        maxHeadingLevel: 5,
-      },
-      navbar: {
-        title: 'brightzoe',
-        logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
-          width: 40,
-          height: 40,
+        { to: '/docs/business', label: '业务', position: 'left' },
+        {
+          to: '/docs/tools/chrome-devtools',
+          label: '工具',
+          position: 'left',
         },
-        items: [
-          { to: '/docs/fe-basic/html', label: 'FE Basic', position: 'left' },
-          { to: '/docs/react', label: 'React', position: 'left' },
-          { to: '/docs/vue', label: 'Vue', position: 'left' },
-          {
-            to: '/docs/data-structure',
-            label: '算法',
-            position: 'left',
-          },
-          { to: '/docs/business', label: '业务', position: 'left' },
-          {
-            to: '/docs/tools/chrome-devtools',
-            label: '工具',
-            position: 'left',
-          },
-          { to: '/blog', label: 'Blog', position: 'left' },
-          {
-            href: 'https://github.com/brightzoe',
-            // label: "GitHub",
-            className: 'header-github-link',
-            'aria-label': 'GitHub repository',
-            position: 'right',
-          },
-        ],
-      },
-      footer: {
-        style: 'light',
-        links:
-          [
-            {
-              label: "Ashes Born's Blog",
-              href: 'https://sadofriod.github.io/',
-            },
-            {
-              label: 'Overreacted - Dan Abramov',
-              href: 'https://overreacted.io/',
-            },
-           ],
+        { to: '/blog', label: 'Blog', position: 'left' },
+        {
+          href: 'https://github.com/brightzoe',
+          // label: "GitHub",
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
+          position: 'right',
+        },
+      ],
+    },
+    footer: {
+      style: 'light',
+      links: [
+        {
+          label: "Ashes Born's Blog",
+          href: 'https://sadofriod.github.io/',
+        },
+        {
+          label: 'Overreacted - Dan Abramov',
+          href: 'https://overreacted.io/',
+        },
+      ],
 
-        copyright: `Copyright © ${new Date().getFullYear()} brightzoe's blog`,
-      },
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-      },
-    } satisfies Preset.ThemeConfig,
-    plugins:[
+      copyright: `Copyright © ${new Date().getFullYear()} brightzoe's blog`,
+    },
+    prism: {
+      theme: lightCodeTheme,
+      darkTheme: darkCodeTheme,
+    },
+  } satisfies Preset.ThemeConfig,
+  plugins: [
+    './plugins/tags/plugins.ts',
 
-      async function TailwindCSS(context, options) {
-        return {
-          name: "docusaurus-tailwindcss",
-          configurePostCss(postcssOptions) {
-            // Appends TailwindCSS and AutoPrefixer.
-            postcssOptions.plugins.push(require("tailwindcss"),require("autoprefixer"));
-            return postcssOptions;
-          },
-        };
-      },
-    ]
+    async function TailwindCSS(context, options) {
+      return {
+        name: 'docusaurus-tailwindcss',
+        configurePostCss(postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(
+            require('tailwindcss'),
+            require('autoprefixer'),
+          );
+          return postcssOptions;
+        },
+      };
+    },
+  ],
 };
 
-export default config
+export default config;
