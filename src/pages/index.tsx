@@ -1,4 +1,3 @@
-import React from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageContent from '../components/HomepageContent';
@@ -12,8 +11,8 @@ function HomepageHeader() {
   return (
     <header className="hero p-6 md:p-10 xl:p-16 hero--primary text-center text-gradient bg-gradient-to-r from-purple-500 to-indigo-600">
       <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <h1>{siteConfig.title}</h1>
+        <p className="shine-text">{siteConfig.tagline}</p>
       </div>
     </header>
   );
