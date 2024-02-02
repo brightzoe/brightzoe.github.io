@@ -159,8 +159,7 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
   plugins: [
-    './plugins/tags/plugins.ts',
-
+    // './plugins/tags/plugins.ts',
     async function TailwindCSS(context, options) {
       return {
         name: 'docusaurus-tailwindcss',

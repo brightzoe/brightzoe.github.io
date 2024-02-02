@@ -33,7 +33,7 @@ function RelatedBlogs() {
           <div
             onClick={() => window.open(blog.href, '_blank')}
             key={blog.label}
-            className="cursor-pointer p-6 rounded-lg shadow-lg flex items-start hover:shadow-xl transition-shadow duration-300 ease-in-out dark:shadow-gray-700/50"
+            className="card cursor-pointer p-6  flex items-start "
           >
             <div className="text-2xl mr-4">{i % 2 === 0 ? '🌐 ' : '⚡'}</div>
             <div>

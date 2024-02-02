@@ -128,6 +128,10 @@ code {
     no-repeat;
 }
 
+.card {
+  @apply border-0 rounded-t-none rounded-lg  border-b-2 border-solid border-[var(--ifm-color-secondary)] shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out dark:shadow-gray-700/40;
+}
+
 .shine-text {
   font-weight: 800;
   /* letter-spacing: var(--ls); */
