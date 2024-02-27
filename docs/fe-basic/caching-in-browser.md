@@ -1,6 +1,6 @@
 # 浏览器本地存储
 
-### 数据存储的类型
+## 数据存储的类型
 
 localStorage
 
@@ -37,13 +37,11 @@ webStorage：
 2. 存储容量 5M ，满足大多数应用场景，且每个存储有对应的 key,可以独立的管理对应的数据。
 3. 只支持字符串类，需要手动 JSON.stringify()。
 
-### 使用本地存储遇到的问题
+## 使用本地存储遇到的问题
 
 目前在实际项目中，很容易出现，需要存储什么，就直接存储到 localStorage/sessionStorage 里。哪里需要就添加一个，随着项目复杂度提升，已经不记得写了多少个存储的 value,也容易出现顶掉前面设置的 key,从而导致一些 bug。项目变大后，后期不好维护整体的存储状态。需要统一管理存储。
 
-- 可以给使用的本地存储添加前缀，项目前缀或作者等，对使用本地存储做一层封装，统一管理本地存储。在 config 统一注册需要存储的 key,只有注册了才能操作，没注册的提醒先去注册再进行存取删的操作。config 中规范所有本地存储中的值，分别代表什么。
-
-  这个思路不错，来源于：[项目优化——localStorage|sessionStorage 统一管理方案 - 掘金](https://juejin.cn/post/6919376014867070989#heading-0)
+可以给使用的本地存储添加前缀，项目前缀或作者等，对使用本地存储做一层封装，统一管理本地存储。在 config 统一注册需要存储的 key,只有注册了才能操作，没注册的提醒先去注册再进行存取删的操作。config 中规范所有本地存储中的值，分别代表什么。这个思路来源于：[项目优化——localStorage|sessionStorage 统一管理方案 - 掘金](https://juejin.cn/post/6919376014867070989#heading-0)
 
 ### 使用 webStorage 的注意事项
 
@@ -94,9 +92,7 @@ webStorage：
 
    ```
 
-5. 可以监听 webStorage 的变化
-
-https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent
+5. 可以监听 webStorage 的变化。https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent
 
 6. 封装一个修改的方法.把旧的值变成新的值。与 setItem 的区别是是不是需要旧的值。
 
@@ -134,6 +130,22 @@ https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent
 
 如果濒临溢出，可以对存储时间戳进行排序，把旧的清除掉。
 
+### 封装
+
+由于原生的 webStorage 的 api 不够完善，所以经常需要封装一层。封装的目的是可以统一管理存储，使用时更方便。
+
+原生storage的麻烦之处：
+
+1. 只能存储字符串，需要手动 JSON.stringify()。读取时也需要再转换成需要的类型，不方便。[是最主要的问题-不能保留原来的数据类型，JSON.parse 也很容易报错]
+2. 提供的方法比较少只有set,get,clear。
+
+解决第一点需要做到：
+
+- 判断存入数据的类型。
+- 分别针对不同类型的数据封装单独的存储和读取逻辑。
+
+- [二次封装Storage的第一要素](https://juejin.cn/post/7327157426297536527?searchId=20240223111207AD9C948E19FA1F947D41)
+
 ### 场景
 
 - 搜索历史：频繁修改 storage ，可以使用 changeItem 方法。
@@ -150,3 +162,4 @@ https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent
 
 - [前端数据缓存（前端数据库）的一些见解，利用内存存储帮你优化接口请求 - 掘金](https://juejin.cn/post/6955672622587707428/)
 - [【收藏就会】浏览器 WebStorage 缓存使用指南 - 掘金](https://juejin.cn/post/6984908770149138446#heading-13)
+- [二次封装Storage的第一要素](https://juejin.cn/post/7327157426297536527?searchId=20240223111207AD9C948E19FA1F947D41)
