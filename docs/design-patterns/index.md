@@ -1,0 +1,95 @@
+# 设计模式
+
+## 观察者模式
+
+## 发布订阅模式 Publish-Subscribe Pattern
+
+举个生活中的例子，想排公租房，有一个平台供大家填写需求信息。公租房平台有房源时，会主动通知订阅这些信息的人。而不需要这些人主动去咨询公租房平台。
+
+发布订阅模式是一个基础的软件设计概念，可以帮助解耦应用程序中的组件，允许它们以动态和灵活的方式彼此通信。分为发布者和订阅者两种不同的身份，发布者和订阅者不需要强耦合在一起。
+
+发布订阅模式可以用于替代回调函数。比如订阅ajax的error/success 等事件，当有事件发生时，发布者会通知订阅者。
+
+### 发布订阅的常见场景
+
+- addEventListener
+
+  通过 addEventListener 函数，可以订阅 Click Change 等事件，等到事件触发时则会收到消息。
+
+  可以随时增加、删减订阅某个事件的订阅者。对订阅者的修改不会影响发布者。
+
+### 使用发布订阅模式实现自定义事件
+
+核心逻辑：
+
+- 指定发布者：发布消息并且不需要关心订阅者
+- 一个缓存列表（事件中心）-用于记录订阅的每个key及需要分发的消息
+- 发布者在需要通知订阅者的时候，遍历缓存列表，通知订阅者
+
+```ts
+class PubSub<T> {
+  private list: Map<string, ((...args: T[]) => void)[]>;
+  constructor() {
+    this.list = new Map();
+  }
+  private addSubscriber(eventName: string) {
+    if (!this.list.has(eventName)) {
+      this.list.set(eventName, []);
+    }
+  }
+  removeSubscriber(eventName: string, subscriber: (...args: T[]) => void) {
+    const subscribers = this.list.get(eventName);
+    if (!subscribers) return;
+
+    const filteredSubscribers = subscribers.filter((s) => s !== subscriber);
+    if (filteredSubscribers.length) {
+      this.list.set(eventName, filteredSubscribers);
+    } else {
+      // 这条消息没有订阅了，key也删掉
+      this.list.delete(eventName);
+    }
+  }
+  publish(eventName: string, ...args: T[]) {
+    if (this.list.has(eventName)) {
+      const subscribers = this.list.get(eventName);
+      if (!subscribers) return;
+      subscribers.forEach((subscriber) => {
+        subscriber(...args);
+      });
+    }
+  }
+  subscribe(eventName: string, subscriber: (...args: T[]) => void) {
+    this.addSubscriber(eventName);
+    const subscribers = this.list.get(eventName);
+    if (subscribers) {
+      subscribers.push(subscriber);
+    }
+    return {
+      // 方便订阅者取消订阅
+      unsubscribe: () => this.removeSubscriber(eventName, subscriber),
+    };
+  }
+}
+const pubSubInstance = new PubSub<string>();
+const subscription = pubSubInstance.subscribe('dudu', (e) => {
+  console.log('duud', e);
+});
+pubSubInstance.publish('dudu', '123');
+subscription.unsubscribe();
+```
+
+### 优点
+
+- 解耦：发布者和订阅者之间没有直接的依赖关系，发布者和订阅者可以独立地发展和变化，互不影响。
+- 灵活：可以自由地添加和删除订阅者。
+- 可扩展性：可以方便地添加新的消息类型，也可以方便地添加新的订阅者。
+
+### 缺点
+
+- 发布订阅模式弱化了发布者和订阅者之间的联系。过度使用。对象和对象之间的必要联系也将埋藏再最后，导致程序难以跟踪维护和理解。特别是有多个发布者和订阅者嵌套在一起的情况。
+
+### 功能扩展
+
+1. 必须先订阅再发布？有些场景可能需要缓存先发布的消息，等订阅来了再推送过去
+
+2. 事件变多了可能存在命名冲突。提供命名空间的功能解决命名冲突问题
