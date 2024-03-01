@@ -2,9 +2,8 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // Note: type annotations allow type checking and IDEs autocompletion
-const { themes } = require('prism-react-renderer');
-const lightCodeTheme = themes.github;
-const darkCodeTheme = themes.dracula;
+import {themes as prismThemes} from 'prism-react-renderer'
+
 
 const config: Config = {
   title: "brightzoe's blog",
@@ -114,15 +113,30 @@ const config: Config = {
         height: 40,
       },
       items: [
-        { to: '/docs/fe-basic/html', label: 'FE Basic', position: 'left' },
-        { to: '/docs/react', label: 'React', position: 'left' },
-        { to: '/docs/vue', label: 'Vue', position: 'left' },
+        {
+          label: 'FE Basic',
+          position: 'left',
+          items: [
+            { to: '/docs/fe-basic/html', label: 'HTML' },
+            { to: '/docs/fe-basic/css', label: 'CSS' },
+            { to: '/docs/fe-basic/javascript', label: 'JavaScript' },
+            { to: '/docs/fe-basic/typescript-basic', label: 'TypeScript' },
+            { to: '/docs/react', label: 'React' },
+            { to: '/docs/vue', label: 'Vue' },
+          ],
+        },
+        { to: '/docs/business', label: '业务', position: 'left' },
         {
           to: '/docs/data-structure',
           label: '算法',
           position: 'left',
         },
-        { to: '/docs/business', label: '业务', position: 'left' },
+        {
+          to: '/docs/design-patterns',
+          label: '设计模式',
+          position: 'left',
+        },
+
         {
           to: '/docs/tools/chrome-devtools',
           label: '工具',
@@ -154,8 +168,8 @@ const config: Config = {
       copyright: `Copyright © ${new Date().getFullYear()} brightzoe's blog`,
     },
     prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
+      theme: prismThemes.dracula,
+      darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
   plugins: [
