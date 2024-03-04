@@ -27,7 +27,7 @@
     "@easyops-cn/docusaurus-search-local": "^0.40.1",
     "@mdx-js/react": "^3.0.0",
     "add": "^2.0.6",
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "^10.4.18",
     "clsx": "^2.1.0",
     "disqus-react": "1.1.5",
     "lxgw-wenkai-screen-webfont": "1.7.0",
