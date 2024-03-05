@@ -99,7 +99,7 @@ const a: "foo" = "foo"; //字面量类型，只能是'foo'
 const type: "success" | "warning" | "danger" = "success"; //联合类型，只能是其中之一
 const b: string|number //string 或者字符串
 
-const StringOrNumber = string |number //给类型定义别名，可复用了
+const StringOrNumber = string | number //给类型定义别名，可复用了
 const b: StringOrNumber
 
 const gender:?number = null  //加?则可以使用null/undefined
@@ -285,6 +285,18 @@ const enum postStatus {}
 //...
 ```
 
+#### 联合类型
+
+```ts
+type UnionType = string | number | boolean;
+```
+
+#### 交叉类型
+
+```ts
+type IntersectionType = { foo: string } & { bar: number };
+```
+
 #### 函数
 
 函数的数据类型定义：
@@ -374,7 +386,7 @@ const num2 = <number>res; //JSX不能使用，会产生冲突
 
 ### 非空断言
 
-t tells the TypeScript compiler to assume that the value before the operator is not null or undefined。
+It tells the TypeScript compiler to assume that the value before the operator is not null or undefined。
 
 ```ts
 dragObj!;
@@ -493,7 +505,10 @@ class Person {
   // protected 只能在类内部/继承的子类中访问
   // readonly 不能再修改
 
-  constructor(public name: string = 'init', private age: number) {
+  constructor(
+    public name: string = 'init',
+    private age: number,
+  ) {
     this.name = name;
     this.age = age;
   }
@@ -667,6 +682,110 @@ const data = new DataManager([{ name: '1' }, { name: 'hh' }]);
 console.log(data.getData(1));
 ```
 
+#### 泛型工具类型
+
+Required:将类型中的可选属性转换为必有属性。
+
+```ts
+type Required<T> = {
+  [K in keyof T]: NonNullable<T[K]>;
+};
+
+type Required<T> = {
+  [P in keyof T]-?: T[P]; //去掉可选属性
+};
+```
+
+Record:生成一个对象类。
+
+```ts
+type Record<K extends string | number | symbol, T> = {
+  [P in K]: T[K];
+};
+```
+
+Pick:从对象中提取部分属性。
+
+```ts
+type Pick<T, K extends keyof T> = {
+  [P in K]: T[P];
+};
+```
+
+Omit:从对象中排除部分属性。
+
+```ts
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+```
+
+Exclude:将某个类型从一个类型中排除。
+
+```ts
+type Exclude<T, U> = T extends U ? never : T;
+```
+
+Extract:从T中提取能够赋值给U的类型。
+
+```ts
+type Extract<T, U> = T extends U ? T : never;
+```
+
+ReturnType:返回一个函数的返回类型。
+
+```ts
+type ReturnType<T extends (...args: any[]) => any> = T extends (
+  ...args: any[]
+) => infer R
+  ? R
+  : any;
+```
+
+Parameters:返回一个函数的参数类型。
+
+```ts
+type Parameters<T extends (...args: any[]) => any> = T extends (
+  ...args: infer P
+) => any
+  ? P
+  : never;
+```
+
+### extends 条件类型（Conditional Types）
+
+`A extends B ? C : D`，用于判断类型 A 是否可以赋值给类型 B。
+
+在表达式中表示 A 是否可以赋值给 B 的条件判断，在泛型中的 extends 表示对于参数的类型约束。
+
+```ts
+function getProperty<T, K extends keyof T>(obj: T, key: K) {
+  return obj[key];
+}
+```
+
+关于`{}`,如果一个对象类型 A 至少拥有另一个对象类型 B 的所有属性，则可以认为 A 是 B 的子类型，因此 A 可以赋值给 B。空对象由于其内部无属性，任意一个对象（甚至是原始类型）都可以认为是它的子集。
+
+```ts
+type _T5 = { name: 'aaa' } extends {} ? true : false;
+
+type _T6 = string extends {} ? true : false;
+```
+
+#### 分布式条件类型 Distributive Conditional Types
+
+条件类型的特殊功能，也可以叫条件类型的分布式特性。
+
+### typeof
+
+获取一个值的ts类型,返回的是一个类型。注意与js的typeof区分
+
+```ts
+const a = { x: 0 };
+
+type T0 = typeof a; // { x: number }
+type T1 = typeof a.x; // number
+const a = typeof a; // object
+```
+
 ### keyof
 
 ```ts
@@ -722,33 +841,6 @@ type ExampleType = {
   [key in (typeof TRACE_TYPE)[number]]: number;
 };
 ```
-
-### extends 条件类型（Conditional Types）
-`A extends B ? C : D`，用于判断类型 A 是否可以赋值给类型 B。
-
-在表达式中表示 A 是否可以赋值给 B 的条件判断，在泛型中的 extends 表示对于参数的类型约束。
-
-```ts
-function getProperty<T, K extends keyof T>(obj: T, key: K) {
-  return obj[key];
-}
-```
-
-关于`{}`,如果一个对象类型 A 至少拥有另一个对象类型 B 的所有属性，则可以认为 A 是 B 的子类型，因此 A 可以赋值给 B。空对象由于其内部无属性，任意一个对象（甚至是原始类型）都可以认为是它的子集。
-
-```ts
-type _T5 = { name: 'aaa';  } extends {}
-  ? true
-  : false;
-
-type _T6 = string extends {}
-  ? true
-  : false;
-```
-
-#### 分布式条件类型 Distributive Conditional Types
-条件类型的特殊功能，也可以叫条件类型的分布式特性。
-
 
 ### 装饰器
 
