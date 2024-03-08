@@ -432,6 +432,30 @@ function add(first: object | NumberObj, second: object | NumberObj) {
 }
 ```
 
+### 索引签名
+
+当你声明一个索引签名时，所有明确的成员都必须符合索引签名。
+
+```ts
+interface foo {
+  [key:string]：{name:string}; //确认存储在对象中所有的key都是string，所有value都要符合`{name:string}`的结构。
+}
+
+// ok
+interface Foo {
+  [key: string]: number;
+  x: number;
+  y: number;
+}
+
+// Error
+interface Bar {
+  [key: string]: number;
+  x: number;
+  y: string; // Error: y 属性必须为 number 类型
+}
+```
+
 ### 接口 interface
 
 约定一个对象的结构。

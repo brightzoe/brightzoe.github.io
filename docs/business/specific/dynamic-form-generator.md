@@ -37,7 +37,7 @@
 
 - props 父传子
 - 子传父。注册回调函数
-- eventBus
-- redux 等公共状态管理
+- eventBus 发布订阅模式
+- vuex/redux 等公共状态管理
 - iframe postmessage
 - event emitters
