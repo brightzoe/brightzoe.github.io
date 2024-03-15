@@ -518,6 +518,43 @@ const searchFunc: SearchFunc = (source, subString) => {
 };
 ```
 
+#### interface with type
+
+类型别名与接口的区别：
+
+- type 更灵活：可以用于原始值、联合类型、交叉类型、对象等。
+- interface 可扩展： 可以extends扩展其他interface，也可以通过implements实现interface。
+- interface可以多次被声明，类型别名只能被声明一次。多次被声明的接口会被合并成一个。
+
+```ts
+interface A {
+  aa: number;
+}
+interface A {
+  bb: string;
+}
+const test = () => {
+  type propType = {
+    [key: string]: number;
+    a: number;
+  };
+  let prop: propType; // 带索引签名类型的属性
+
+  interface type1 {
+    a: number;
+  } // 不含索引签名
+  type type2 = { a: number }; // 不含索引签名
+
+  const data1: type1 = { a: 1 }; // interface声明类型变量
+  const data2: type2 = { a: 1 }; // type声明类型变量
+
+  prop = data1; // Error：不能将类型“type1”分配给类型“propType”。类型“type1”中缺少类型“string”的索引签名。
+  prop = data2; // 编译通过，没有报索引签名错
+};
+```
+
+> [TS中的type、interface关于索引签名的区别](https://juejin.cn/post/7057471253279408135#heading-5)
+
 ### 类
 
 ```ts
