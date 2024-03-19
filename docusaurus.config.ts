@@ -127,7 +127,7 @@ const config: Config = {
         },
         { to: '/docs/business', label: '业务', position: 'left' },
         {
-          to: '/docs/data-structure',
+          to: '/docs/algorithm',
           label: '算法',
           position: 'left',
         },

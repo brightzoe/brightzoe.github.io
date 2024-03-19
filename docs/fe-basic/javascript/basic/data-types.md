@@ -151,7 +151,7 @@ object,array,function
   ```js
   Array.isArray(ary)
   Object.prototype.toString.call(ary)==='[object Array]'
-  ary.instanceof Array
+  ary instanceof Array
   ary.__proto__ === Array.prototype;
 
   ```

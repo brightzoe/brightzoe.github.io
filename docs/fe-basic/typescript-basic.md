@@ -176,29 +176,7 @@ TypeScript 编译的时候即使报错了，还是会生成编译结果，我们
 
 安装之后默认不需要配置即可使用。也可以配置入口文件、打包类型、是否生成类型文件等。
 
-## 使用第三方库的 TS 支持问题
-
-很多第三方库原生支持 TS，在使用时就能获得代码补全和提示。
-
-而有些第三方库原生不支持 TS， 可以安装社区维护的类型声明库来获得代码补全的能力。比如使用`npm install --save-dev @types/react`安装 React 的类型声明库。
-
-DefinitelyTyped 组织的类型定义，包含大多数流行的包的类型定义：[DefinitelyTyped: The repository for high quality TypeScript type definitions.](https://github.com/DefinitelyTyped/DefinitelyTyped)，他们的包名是`@types/pkgName`。
-
-:::tip ts 类型查找顺序
-
-类似 node 包查找顺序的递归查找
-
-- 局部作用域：当前文件
-- 项目类型声明文件: `*.d.ts`
-- `node_modules/@types`
-
-  可以通过 tsconfig.json 中 typeRoot 指定类型声明文件位置，默认为@types,会引入所有的类型声明。
-
-  可以通过 compilerOptions.types 配置 控制需要引入哪些包的类型声明，以保证全局变量污染的问题。
-
-:::
-
-### 类型声明
+## 类型声明
 
 没有类型声明文件的库，可以自己写类型声明对全局文件进行类型定义。
 
@@ -234,6 +212,28 @@ declare module Express {
 }
 ```
 
+- 使用第三方库的 TS 支持问题
+
+很多第三方库原生支持 TS，在使用时就能获得代码补全和提示。
+
+而有些第三方库原生不支持 TS， 可以安装社区维护的类型声明库来获得代码补全的能力。比如使用`npm install --save-dev @types/react`安装 React 的类型声明库。
+
+DefinitelyTyped 组织的类型定义，包含大多数流行的包的类型定义：[DefinitelyTyped: The repository for high quality TypeScript type definitions.](https://github.com/DefinitelyTyped/DefinitelyTyped)，他们的包名是`@types/pkgName`。
+
+:::tip ts 类型查找顺序
+
+类似 node 包查找顺序的递归查找
+
+- 局部作用域：当前文件
+- 项目类型声明文件: `*.d.ts`
+- `node_modules/@types`
+
+  可以通过 tsconfig.json 中 typeRoot 指定类型声明文件位置，默认为@types,会引入所有的类型声明。
+
+  可以通过 compilerOptions.types 配置 控制需要引入哪些包的类型声明，以避免全局变量污染的问题。
+
+:::
+
 ## TS 语法
 
 ### 数据类型
@@ -264,8 +264,12 @@ const arr3: (string | number)[] = [1, '2'];
 const tuple: [number, string] = [18, 'foo'];
 const age = tuple[0];
 const [age, name] = tuple;
+```
 
-//Enum 枚举类型：只存在几个固定的值
+- Enum 枚举类型：只存在几个固定的值
+  枚举类型会被编译成双向的map，入侵了运行时。
+
+```ts
 // const postStatus ={Draft:0,Unpublished:1,Published:2} //js模拟枚举类型
 enum postStatus { //枚举类型
   Draft = 0, //不指定值的话，从0开始累加。只指定第一个则从指定的值开始累加。也可以使用字符串。
@@ -276,8 +280,15 @@ console.log(postStatus[5]); //也可以通过 value 拿到 key
 const post = {
   status: postStatus.Draft,
 };
+
 //枚举类型会入侵到编译后的代码。
 //会被编译成双向键值对的对象：可以通过key读取，也可以通过value读取。
+const Size = {};
+(function (Size) {
+  Size[(Size['small'] = 3)] = 'small';
+  Size[(Size['big'] = 4)] = 'big';
+  Size[(Size['large'] = 5)] = 'large';
+})(Size);
 
 //常量枚举
 //如果不通过索引值的方式读取枚举类型，推荐使用常量枚举。编译后枚举类型会被移除，使用的枚举值会被替换掉，以注释的形式标注。
@@ -285,21 +296,50 @@ const enum postStatus {}
 //...
 ```
 
-#### 联合类型
+- never:底部类型（bottom type），是其他任意类型的子类型。
+
+never为空类型和顶部类型。never类型的变量无法被赋值。
+
+```ts
+type Exclude<T, U> = T extends U ? never : T; //在T中去除U中包含的部分
+
+T | never; // 结果为T
+T & never; // 结果为never
+```
+
+场景：获取类型为函数的propName
+
+```ts
+interface SomeProps {
+  a: string;
+  b: number;
+  c: (e: MouseEvent) => void;
+  d: (e: TouchEvent) => void;
+}
+// 如何得到 'c' | 'd' ？
+
+type GetKeyByValueType<T, Condition> = {
+  [K in keyof T]: T[K] extends Condition ? K : never;
+}[keyof T];
+
+type FunctionPropNames = GetKeyByValueType<SomeProps, Function>; // 'c' | 'd'
+```
+
+- unknown:不可预先定义的类型。大部分用于替代any同时保留静态检查的能力。
+
+- 联合类型
 
 ```ts
 type UnionType = string | number | boolean;
 ```
 
-#### 交叉类型
+- 交叉类型
 
 ```ts
 type IntersectionType = { foo: string } & { bar: number };
 ```
 
-#### 函数
-
-函数的数据类型定义：
+- 函数
 
 ```ts
 //函数声明式
@@ -326,18 +366,39 @@ const func: (str: string) => number = (str) => {
 };
 ```
 
-函数重载
+函数重载：
 
 ```ts
+// 重载签名（函数类型定义）
+function toString(x: string): string;
+function toString(x: number): string;
 
+// 实现签名（函数体具体实现）
+function toString(x: string | number) {
+  return String(x);
+}
+```
+
+重载签名的类型不会合并：
+
+```ts
+function stringOrNumber(x): string | number {
+  return x ? '' : 0;
+}
+
+// input 是 string 和 number 的联合类型
+// 即 string | number
+const input = stringOrNumber(1);
+
+toString(input); //错误
 ```
 
 ### 作用域问题
 
-如果什么也不做，在两个文件声明同名的变量，则会产生冲突，需要声明为模块。
+在ts中的多个文件声明同名的变量、函数、类、接口时，会产生命名冲突，在全局作用域中所有声明的命名空间是共享的。需要声明为模块，模块内的作用域是局部的，不会影响全局作用域。
 
 ```ts
-//一个文件加上export
+//一个文件加上export即可声明为模块
 export {}; //以模块形式导出，一般不这样做，因为一般每个文件（组件）会以模块形式使用
 const a = 123;
 ```
@@ -523,8 +584,9 @@ const searchFunc: SearchFunc = (source, subString) => {
 类型别名与接口的区别：
 
 - type 更灵活：可以用于原始值、联合类型、交叉类型、对象等。
-- interface 可扩展： 可以extends扩展其他interface，也可以通过implements实现interface。
+- interface 可扩展： 可以extends扩展其他interface，也可以通过implements实现interface。而要扩展type只能创建新的type。
 - interface可以多次被声明，类型别名只能被声明一次。多次被声明的接口会被合并成一个。
+- <del>基本上所有的interface都可以用type表示。但在函数上挂载属性只能使用interface，不能用type。(实践上都可以实现)</del>
 
 ```ts
 interface A {
@@ -811,7 +873,7 @@ type Parameters<T extends (...args: any[]) => any> = T extends (
   : never;
 ```
 
-### extends 条件类型（Conditional Types）
+### 条件类型 Conditional Types
 
 `A extends B ? C : D`，用于判断类型 A 是否可以赋值给类型 B。
 
@@ -831,9 +893,29 @@ type _T5 = { name: 'aaa' } extends {} ? true : false;
 type _T6 = string extends {} ? true : false;
 ```
 
-#### 分布式条件类型 Distributive Conditional Types
+- 分布式条件类型 Distributive Conditional Types
 
 条件类型的特殊功能，也可以叫条件类型的分布式特性。
+
+```ts
+// 用于简单的条件判断，直接判断前面的类型是否可以分配给后面的类型。
+type A2 = 'x' | 'y' extends 'x' ? 1 : 2; //2
+
+//extends 前面是泛型，且泛型是一个联合类型则一次判断联合类型的所有子类型是否可以分配给extends后面的类型。
+type A<T> = [T] extends ['x'] ? 1 : 2;
+type B = A<'x' | 'y'>;
+
+//如果 T 是一个联合类型，比如 Type1 | Type2 | Type3，那么 Condition<T> 的结果将是 Condition<Type1> | Condition<Type2> | Condition<Type3>。
+type Condition<T> = T extends SomeType ? TypeA : TypeB;
+```
+
+如果不想条件类型中的联合类型备份发，可以使用简单的元组类型包裹：
+
+```ts
+type A<T> = [T] extends ['x'] ? 1 : 2;
+
+type B = A<'x' | 'y'>; //2
+```
 
 ### typeof
 
@@ -856,6 +938,8 @@ interface Person {
 }
 
 type Keys = keyof Person; // 'name' | 'age' 得到联合类型
+
+type Values = Person[keyof Person]; // string | number
 ```
 
 ```ts
@@ -964,3 +1048,4 @@ test1.getName();
 - [flow](https://flow.org/en/docs/usage/)
 - [TypeScript and React: Hooks](https://fettblog.eu/typescript-react/hooks/#useref)
 - [Equals 为什么这么设计](https://www.zhihu.com/question/577318797)
+- [重学TS](https://juejin.cn/post/7211358106629750841#heading-5)

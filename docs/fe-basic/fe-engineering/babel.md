@@ -26,7 +26,7 @@ Babel是一个广泛使用的JavaScript编译器，它可以将ES6等高版本�
   @babel/generator 根据转换后的 AST 生成新的代码
 
 ## 用途
-- 静态分析。 仅借助AST提供的信息进行分析，不修改AST.比如linter,type checker,code formatter，自动生成api文档等。
+- 静态分析。 仅借助AST提供的信息进行分析，不修改AST。比如linter,type checker,code formatter，自动生成api文档等。
 - 特定用途代码转换。 借助AST提供的信息进行转换，保持原有AST结构上做部分的增删改。比如函数插桩、删除console、自动国际化等。
 - 代码转译。 将浏览器不支持和不兼容的语法进行转换。比如ES新特性、TypeScript。
 
