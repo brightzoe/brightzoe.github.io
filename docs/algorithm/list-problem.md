@@ -188,3 +188,78 @@ const three = new ListNode(3);
 const two = new ListNode(2, three);
 const one = new ListNode(1, two);
 ```
+
+[92. 反转链表 II - 力扣（LeetCode）](https://leetcode.cn/problems/reverse-linked-list-ii/)
+
+- 局部反转链表。是上一题的加强版，利用多指针。第一种思路，找到开始节点，和preNode，找到结束节点和nextNode。将链表切成三部分，将中间切开的部分进行反转，然后preNode.next = newStart;start.next = nextNode 进行拼接。思路顺畅但编码量稍多。
+- 第二种思路,同样是遍历链表，找到preNode,原地将left-node段进行反转。使用pre,curr的快慢指针遍历反转。然后特殊处理两个边界，
+
+> 注意添加dummy节点简化思路。
+
+```ts
+//拆分为三段
+function reverseBetween(
+  head: ListNode | null,
+  left: number,
+  right: number,
+): ListNode | null {
+  let dummy = new ListNode(0, head);
+  let pre = dummy;
+  for (let i = 0; i < left - 1; i++) {
+    pre = pre.next;
+  }
+  let start = pre.next;
+  let end = pre;
+  for (let i = 0; i < right - left + 1; i++) {
+    end = end.next;
+  }
+  let next = end.next;
+  end.next = null;
+  pre.next = null;
+  reverse(start);
+
+  pre.next = end;
+
+  start.next = next;
+
+  return dummy.next;
+}
+
+function reverse(head: ListNode) {
+  let pre = null;
+  let curr = head;
+  while (curr) {
+    const next = curr.next;
+    curr.next = pre;
+    pre = curr;
+    curr = next;
+  }
+}
+```
+
+```ts
+// 不拆分直接反转
+function reverseBetween(
+  head: ListNode | null,
+  left: number,
+  right: number,
+): ListNode | null {
+  let dummy = new ListNode(0, head);
+  let leftPre = dummy;
+  for (let i = 0; i < left - 1; i++) {
+    leftPre = leftPre.next;
+  }
+  let start = leftPre.next;
+  let pre = start;
+  let curr = start.next;
+  for (let i = left; i < right; i++) {
+    const next = curr.next;
+    curr.next = pre;
+    pre = curr;
+    curr = next;
+  }
+  leftPre.next = pre;
+  start.next = curr;
+  return dummy.next;
+}
+```
