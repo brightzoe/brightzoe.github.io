@@ -50,6 +50,48 @@ function preorder(root) {
 preorder(root);
 ```
 
+### 迭代式
+
+是栈的思想.出栈顺序为 根-左-右.
+
+出入栈顺序应该是这样的：
+
+1. 将根结点入栈
+2. 取出栈顶结点，将结点值 push 进结果数组
+3. 若栈顶结点有右孩子，则将右孩子入栈
+4. 若栈顶结点有左孩子，则将左孩子入栈
+
+重复 2、3、4 步骤，直至栈空，我们就能得到一个先序遍历序列。
+
+```ts
+function preOrderTraversal(root: TreeNode) {
+  const res: string[] = [];
+  // 边界条件
+  if (!root) {
+    return res;
+  }
+  const stack = [];
+  // 根节点入栈
+  stack.push(root);
+  // 若栈不为空则重复出栈入栈操作
+  while (stack.length) {
+    // 栈顶为当前处理的节点
+    const top: TreeNode = stack.pop()!;
+    // 当前节点就是当前子树的根节点,出栈
+    res.push(top.val!);
+    // 右子树入栈
+    if (top.right) {
+      stack.push(top.right);
+    }
+    // 左子树入栈
+    if (top.left) {
+      stack.push(top.left);
+    }
+  }
+  return res;
+}
+```
+
 ## 深度优先搜索 DFS
 
 深度优先搜索的核心思想，是试图穷举所有的完整路径。
