@@ -92,6 +92,58 @@ function preOrderTraversal(root: TreeNode) {
 }
 ```
 
+[145. 二叉树的后序遍历 - 力扣（LeetCode）](https://leetcode.cn/problems/binary-tree-postorder-traversal)⭐⭐✨
+
+- 后序遍历与前序遍历不同的就是根节点位置由第一个变成了最后一个.从stack入手会比较麻烦所以从res入手比较方便.
+
+```ts
+function postorderTraversal(root: TreeNode) {
+  // 边界条件
+  if (!root) {
+    return [];
+  }
+  const res: number[] = [];
+  const stack: TreeNode[] = [];
+  stack.push(root);
+  // 用栈
+  while (stack.length) {
+    // 需要的顺序是左右根,那么放入栈的顺序是根右左,这样分别向前插
+    const top = stack.pop()!;
+    res.unshift(top.val);
+    top.left && stack.push(top.left);
+    top.right && stack.push(top.right);
+  }
+  return res;
+}
+```
+
+[94. 二叉树的中序遍历 - 力扣（LeetCode）](https://leetcode.cn/problems/binary-tree-inorder-traversal/)⭐⭐⭐✨
+
+- 中序遍历的迭代与前后序遍历的迭代不同。前后序遍历都是先处理根节点，然后是孩子节点。
+- 中序遍历的序列规则是 左 -> 中 -> 右 ，这意味着我们必须首先定位到最左的叶子结点，其中会途经目标结点的父结点、爷爷结点和各种辈分的祖宗结点。途经的每一个节点都要先入栈。当我们处理完目标节点，就可以处理它的父节点或兄弟节点了。
+
+```ts
+function inorderTraversal(root: TreeNode | null): number[] {
+  if (!root) {
+    return [];
+  }
+  const stack = [];
+  const res = [];
+  let node = root;
+
+  while (node || stack.length) {
+    while (node) {
+      stack.push(node);
+      node = node.left;
+    }
+    node = stack.pop()!;
+    res.push(node.val);
+    node = node.right;
+  }
+  return res;
+}
+```
+
 ## 深度优先搜索 DFS
 
 深度优先搜索的核心思想，是试图穷举所有的完整路径。
@@ -115,7 +167,7 @@ function preOrderTraversal(root: TreeNode) {
 所以是先入先出的规则，BFS算法的核心是队列。
 
 ```ts
-// 层次遍历扫描
+// 层次遍历扫描 bfs + queue
 function bfs(root: TreeNode) {
   const queue = [];
   queue.push(root);
@@ -127,6 +179,33 @@ function bfs(root: TreeNode) {
     top.right && queue.push(top.right);
     queue.shift();
   }
+}
+```
+
+[102. 二叉树的层序遍历 - 力扣（LeetCode）](https://leetcode.cn/problems/binary-tree-level-order-traversal/)⭐⭐⭐
+
+```ts
+// bfs+ queue 分层输出需要记录每一层的长度
+function levelOrder(root: TreeNode | null): number[][] {
+  if (!root) {
+    return [];
+  }
+  const res = [];
+  const queue = [];
+  queue.push(root);
+  while (queue.length) {
+    // 缓存当前层的长度
+    const len = queue.length;
+    const level = [];
+    for (let i = 0; i < len; i++) {
+      const top = queue.shift()!;
+      level.push(top.val);
+      top.left && queue.push(top.left);
+      top.right && queue.push(top.right);
+    }
+    res.push(level);
+  }
+  return res;
 }
 ```
 
