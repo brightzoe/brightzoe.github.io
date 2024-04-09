@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkbrightzoe_blog=self.webpackChunkbrightzoe_blog||[]).push([[6052],{6371:a=>{a.exports=JSON.parse('{"label":"diary","permalink":"/blog/tags/diary","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
