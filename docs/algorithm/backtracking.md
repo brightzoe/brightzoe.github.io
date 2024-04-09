@@ -79,7 +79,7 @@ console.log(permute([1, 2, 3]));
 [78. 子集 - 力扣（LeetCode）](https://leetcode.cn/problems/subsets/description/)⭐⭐⭐✨
 
 - 组合问题。递归与回溯。
-- 深度优先遍历。寻找变与不变。变的是每个组合的长度，不变的是可以选择的元素。所以
+- 深度优先遍历。寻找变与不变。变的是每个组合的长度，不变的是可以选择的元素。
 
 ```ts
 function subsets(nums: number[]): number[][] {
