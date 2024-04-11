@@ -123,6 +123,7 @@ const config: Config = {
             { to: '/docs/fe-basic/typescript-basic', label: 'TypeScript' },
             { to: '/docs/react', label: 'React' },
             { to: '/docs/vue', label: 'Vue' },
+            { to: '/docs/fe-basic/fe-engineering', label: '工程化' },
           ],
         },
         { to: '/docs/business', label: '业务', position: 'left' },

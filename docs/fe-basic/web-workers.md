@@ -55,7 +55,7 @@ self.onmessage = (messageEvent) => {
 - 视频网站，视频解码
 - 大量计算，比如设计相关的网站，解析 sketch 文件
 
-### SharedWorker
+### Shared Worker
 
 共享 worker，可以被多个浏览器环境访问，只要页面同域即可，为跨浏览器 tab 共享数据提供了解决方案。
 
@@ -93,7 +93,7 @@ port.onmessage = (messageEvent) => {
 
 - SharedWorker 的作用域是公用的。
 
-## ServiceWorker
+## Service Worker
 
 一般用来提高离线体验，拦截网络请求，根据网络是否可用来采取适当的手段或者更新来自服务器的资源。
 
