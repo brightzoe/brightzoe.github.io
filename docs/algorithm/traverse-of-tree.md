@@ -131,7 +131,9 @@ function inorderTraversal(root: TreeNode | null): number[] {
   const res = [];
   let node = root;
 
+  // 有没有当前要处理的子树节点||之前入栈的其他节点需要处理
   while (node || stack.length) {
+    //一路向左全部入栈
     while (node) {
       stack.push(node);
       node = node.left;
