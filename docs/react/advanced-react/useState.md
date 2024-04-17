@@ -4,6 +4,7 @@
 
 调用 useState 时，返回一个数组，state 初始值为外部调用 useState 时传入的参数。
 
+返回数组：是一个解构赋值，想叫什么名字就叫什么。
 > initState 只会在组件的初始化渲染中起作用，后续渲染会被忽略。initState 可以是一个函数，函数的返回值会作为 initState 的值,这被称为惰性初始化。
 
 当执行 setState 时 state 值被更新，UI 视图也将被更新。即 useState 返回的 setState 既更改了 state 的值，也自动调用了 render 方法触发视图更新。

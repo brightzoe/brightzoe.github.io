@@ -23,6 +23,12 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 `react-router`是路由核心库。`react-router-dom`基于`react-router`，加入了一些在浏览器运行的功能，与 dom 相关。一般二者要一起使用。
 
+### React router
+
+基于 history 来实现
+
+- link 标签与 a 标签。 Link的跳转只触发对应路由页面更新，不会触发整个页面更新。
+
 ## 问题汇总
 
 ### React 特点
@@ -34,6 +40,14 @@ JSX 语法
 虚拟 DOM
 
 组件化
+
+jsx： js 的语法糖。
+
+### 如何将jsx 转换为真实节点
+
+React.createElement 具体做了什么？
+
+将 传入的 element 及 key ref props children 数据组合，返回 React.element 对象（虚拟dom）。React 会在稍后的渲染过程中使用虚拟dom构建真实dom和进行更新。
 
 ### 虚拟 DOM
 
@@ -47,9 +61,17 @@ JSX 语法
 2. 计算虚拟 DOM 与之前虚拟 DOM 的差异。
 3. 将 DOM 的变化用于更新真实 DOM。
 
+为什么需要：
+
+- 框架帮你实现一定的优化。
+
+- 只需要专注业务代码。
+
+- 跨平台复用。
+
 虚拟 DOM 一定更快吗？
 
-不是的。虚拟 DOM 会有大量的计算，不一定比直接操作 DOM 更快。虚拟 DOM 提高了代码的性能下限，优化了大量操作 DOM 的性能损耗。
+不是的。虚拟 DOM 会有大量的计算，不一定比直接操作 DOM 更快。虚拟 DOM 提高了代码的性能下限，优化了大量操作 DOM 的性能损耗。所以在简单场景，或初次渲染等情况不如原生DOM。
 
 ### Class Comp 与 Function Comp
 
@@ -131,7 +153,7 @@ react 组件可以用 jsx 创建，（jsx 是`React.createElement`的简写）�
 
 react 架构或渲染机制改变带来的问题。有副作用，在 render 之前执行，不能保证副作用被清除。
 
-### 错误边界
+### 错误处理
 
 捕获并打印在子组件的 js 错误，并渲染备用 UI
 
@@ -143,7 +165,11 @@ react 架构或渲染机制改变带来的问题。有副作用，在 render 之
 
 > 事件处理器不会在渲染阶段触发，可以在事件处理内部使用 try catch 语句。
 
+todo: 实现一个hooks 进行错误处理
+
 ### setState 同步异步问题
+
+我们一直说的同步异步并不是指setState本身, setState本身一直一个同步函数, 我们指的是调用完setState后react会同步的去执行后续的步骤还是会异步的去执行后续的步骤。
 
 本身不是异步的，但在表现上有时同步，有时异步。因为 setState 都会触发更新，将多个状态合并更新，减少渲染次数。
 
@@ -151,7 +177,7 @@ React 早期（使用 Fiber 架构之前）实现更新批处理导致的，更�
 
 在 React 的事件处理函数或 React 生命周期中，state 的更新是异步的，浏览器事件处理结束后批量合并后批量更新。
 
-在 setTimeout 或原生 dom 事件里是同步更新的。
+在 setTimeout 或原生 dom 事件里没有处于batchUpdate中是同步更新的。
 
 - [setState 同步还是异步？ - CodeSandbox](https://codesandbox.io/s/setstate-tongbuhuanshiyibu-1bo16?file=/src/App.js)
 
@@ -182,6 +208,12 @@ class App extends React.Component {
   }
 }
 ```
+
+#### React18 的 setState
+
+React 18 要看是 React.createRoot 创建的话，无论是不是在setTimeout中都走批量处理，都表现为异步更新。否则还是之前的更新逻辑。
+
+如果需要同步更新可以使用React.flushSync()
 
 ### 受控组件
 
@@ -249,6 +281,11 @@ React 内部使用链表，保存每个 hook 调用的顺序，完全依赖 hook
 
 ### Fiber 架构
 
+为什么有？
+
+- 传统调和 - 虚拟dom递归diff ，更新拆分无法暂停继续。
+- 重新实现 - 任务分片，可以暂停记录，处理其他事情后可以继续执行。
+
 相对以前的递归更新组件(虚拟 DOM 比较)有优势。递归更新组件会让 JS 调用栈占用很长时间。
 
 Fiber 将组件分段渲染，建立了一个虚拟栈机制，将各个事件的执行顺序进行优化排序，然后执行。
@@ -257,6 +294,61 @@ Fiber 将组件分段渲染，建立了一个虚拟栈机制，将各个事件�
 2.  将 DOM 拆分渲染，分不同时间片段异步渲染
 3.  由于异步的存在，根据用户行为灵活调整 DOM
 4.  异步渲染导致 render 之前的函数可能执行多次，所有 render 之前的函数都必须是纯函数/static 方法函数
+
+怎么优化性能？
+
+fiber 和虚拟dom
+
+使用链表，快速找到一个组件。
+
+fiber 的调度器
+rdic 异步可打断更新 messageChannel
+
+优先级方案
+
+- fiber 优先级
+  - expiration time 判断
+  - line 更新。细粒度
+- 调度优先级
+
+### 如何实现时间切片
+
+大的渲染任务切片成小任务。
+
+- 任务分割
+- 任务优先级
+
+流程：
+
+1. 任务切分。
+2. 按优先级排序构建Fiber树。
+3. 调度。 空闲时找优先级最高的任务执行。
+
+历史：
+
+- idle 有兼容性问题 & 时间不准确
+- raf messageChannel
+  依赖刷新频率
+- 高频xx
+
+### diff
+
+三原则：
+
+- 同级
+- 不同类型，直接删除。
+- 同类，根据key。
+
+策略：
+
+- tree diff 同级元素比较 ，跨层级不比较。
+- comp diff 同类型组件比较，不同类型认定为dirty comp，删除。
+- element diff
+  - 插入 - 全新节点。
+  - 移动 - key 存在，同一个元素移动。
+  - 删除 - 不能被复用。
+
+具体操作：
 
 ### reconciliation 调和阶段
 
@@ -369,9 +461,12 @@ React 事件：parent
 
 将所有的事件绑定在 document 上，使用一个事件监听器维持一个映射来保存所有组件内部的事件监听和处理函数，简化事件处理和回收机制。
 
-1. 一定的兼容问题。
+1. 浏览器一定的兼容问题。
 2. 节省内存，全部挂载 document 上，不用每个元素都挂载。
 3. 事件统一管理：事务机制。
+
+写一个 onClick，具体会发生什么？
+fiber tree memri props xxx
 
 ### 如何封装组件
 
@@ -414,13 +509,17 @@ const MyComponentWithPersistentData = withPersistentData(MyComponent2);
 
 ### 如何实现自定义 hook
 
-### React 性能优化
+### React 18
 
-核心：减少不必要的重新渲染。
-
-良好的组件结构，把变的部分与不变的部分分离，在不使用性能优化 api 的情况下减少重新渲染。
-
-shouldComponentUpdate/PureComponent/React.memo
+- setState 都会自动批处理
+- createRoot
+- flushSync
+- 不支持 ie
+- 批量更新
+- 并发模式
+- 支持返回undefined/null
+- 严格模式
+- useTranslation
 
 ## 相关生态，常用的库
 
@@ -429,6 +528,15 @@ shouldComponentUpdate/PureComponent/React.memo
 - [react-spring](https://react-spring.io/)
 
 ## Future Learning
+
+- 各种react/vue 对比
+
+  React渲染粒度为什么不能精确到一个组件的粒度？
+
+  组件状态不可被修改。只能重新创建。而Vue是可以直接被修改的。
+
+- 并发与并行
+
 
 - [React Hooks 的原理，有的简单有的不简单 - 掘金](https://juejin.cn/post/7075701341997236261#heading-5)
 - [Hooks 数据流 · 语雀](https://www.yuque.com/lxylona/note/nz6gk4)

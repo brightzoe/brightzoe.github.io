@@ -152,6 +152,17 @@ filter/
 - 性能：允许组件仅订阅状态的一部分，减少不必要的渲染。
 - 支持中间件。可以轻松扩展，添加persist,devtools等功能。
 
+### 比较redux 与vuex
+
+同：
+
+- 中心store,单一数据源
+- 变化可预测
+
+区别：
+
+- 弱化action ,通过commit;弱化reduce,commit 直接修改state
+
 ## Reference
 
 - [【微信公众号：JS 每日一题 2021-07-16 08:31】说说你对 Redux 的理解？其工作原理？](https://mp.weixin.qq.com/s/w33yWPg-CO0FBAZbPS_gdg)

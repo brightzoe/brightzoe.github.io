@@ -8,69 +8,19 @@
 
 ## 设计 React 组件的原则
 
-保持接口小，props 数量要少；
+保持接口小，props 数量要少;
 
-根据数据边界来划分组件，充分利用组合（composition）；
+根据数据边界来划分组件，充分利用组合（composition）;
 
 把 state 往上层组件提取，让下层组件只需要实现为纯函数。
 
-## create-react-app
-
-webpack 配置： sass: cra 已内置 sass-loader,只需安装 node-sass/sass(dart-sass)
-
-修改其他配置，不 eject 的方式：
-
-- 需要安装：react-app-rewired customize-cra
-
-  ```js title='config-overrides.js'
-  const {
-    override,
-    addBabelPlugin,
-    addBabelPreset,
-    addWebpackAlias,
-    adjustStyleLoaders,
-  } = require('customize-cra');
-  const path = require('path');
-  module.exports = override(
-    //写样式的方式
-    addBabelPlugin('styled-jsx/babel'),
-
-    //别名
-    addWebpackAlias({
-      '@': path.resolve(__dirname, '.', 'src'),
-    }),
-
-    //sass-resources-loader共享公共样式文件
-    adjustStyleLoaders((rule) => {
-      if (rule.test.toString().includes('scss')) {
-        rule.use.push({
-          loader: require.resolve('sass-resources-loader'),
-          options: {
-            resources: './src/styles/shared.scss', //地址
-          },
-        });
-      }
-    }),
-  );
-  ```
-
-- 通过 craco 配置，antd4 推荐。 [无 eject 重写 CRA 配置 — Craco 详解 - 掘金](https://juejin.cn/post/6871148364919111688#heading-6)
-
 ## React 中的性能优化
 
-### React 工作流
+核心：减少不必要的重新渲染。
 
-reconciliation 调和阶段：
+良好的组件结构，把变的部分与不变的部分分离，在不使用性能优化 api 的情况下减少重新渲染。
 
-1. 将目标 state 计算出虚拟 DOM 结构。
-2. DOM diff ，寻找到目标虚拟 DOM 的最优更新方案。
-
-commit 阶段：
-
-1. 对于 reconciliation 调和阶段比较完成后，将获取到的变化部分应用到真实的 DOM 树上。
-2. 调用暴露给用户的钩子方法。比如 ComponentDidUpdate/useLayoutEffect 等。
-
-主要的性能优化点在计算虚拟 DOM 阶段：跳过不必要的组件更新。
+shouldComponentUpdate/PureComponent/React.memo
 
 ### 重新渲染 reconciliation
 
