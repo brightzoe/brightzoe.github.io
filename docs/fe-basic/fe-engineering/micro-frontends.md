@@ -58,7 +58,7 @@ function createSandbox(window) {
 ```
 
 - 使用iframe 实现沙箱。在一个iframe中加载外部脚本，将外部脚本隔离在一个独立的环境中，避免影响全局作用域。但是使用iframe会增加网络请求和内存占用开销。
-- 使用Worker 实现。 创建一个Worker，在独立线程中运行JS代码，将外部脚本隔离在一个独立线程中，避免影响主线程作用域。但是需要考虑线程通信和数据同步的问题。
+- 使用 Worker 实现。 创建一个 Worker，在独立线程中运行JS代码，将外部脚本隔离在一个独立线程中，避免影响主线程作用域。但是需要考虑线程通信和数据同步的问题。
 - 一些沙箱库，比如 sandbox.js、vm.js 等。
 
 ## CSS隔离
@@ -76,10 +76,10 @@ function createSandbox(window) {
 
 ## qiankun
 
-基于 single-spa的微前端解决方案，通过js的import功能动态加载子应用，然后在主应用的dom中挂载子应用的dom。
+基于 single-spa 的微前端解决方案，通过 js 的 import 功能动态加载子应用，然后在主应用的 dom 中挂载子应用的dom。
 
 - CSS 隔离
-  通过Shadow DOM实现，是浏览器内置的web标准技术，可以创建一个封闭的DOM结构，对外部隔离，包括CSS样式。qiankun挂载子应用，会将子应用的HTML挂载到Shadow DOM上，从而实现CSS隔离。
+  通过 Shadow DOM 实现，是浏览器内置的 web 标准技术，可以创建一个封闭的DOM结构，对外部隔离，包括CSS样式。qiankun挂载子应用，会将子应用的HTML挂载到Shadow DOM上，从而实现CSS隔离。
 
 - 父子项目通信，通信机制
 
