@@ -47,3 +47,40 @@ function bubbleSort(arr: number[]) {
   return arr;
 }
 ```
+
+## 快排
+
+```ts
+function quickSort(arr: number[], startIndex = 0, endIndex = arr.length - 1) {
+  if (startIndex >= endIndex) {
+    // 如果开始索引大于等于结束索引，说明子数组长度为0或1，无需排序
+    return arr;
+  }
+
+  const pivotIndex = partition(arr, startIndex, endIndex); // 获取经过分区后基准值的索引
+
+  quickSort(arr, startIndex, pivotIndex - 1); // 递归排序基准值左边的子数组
+  quickSort(arr, pivotIndex + 1, endIndex); // 递归排序基准值右边的子数组
+  return arr;
+}
+
+function partition(
+  arr: number[],
+  startIndex: number,
+  endIndex: number,
+): number {
+  const pivot = arr[startIndex]; // 基准值
+  let mark = startIndex; // mark用来记录遍历过程中小于基准值的区域边界
+
+  for (let i = startIndex + 1; i <= endIndex; i++) {
+    if (arr[i] < pivot) {
+      mark++; // 找到小于基准值的元素，mark扩大区域边界
+      [arr[mark], arr[i]] = [arr[i], arr[mark]]; // 交换元素，将小于基准值的元素移至左边
+    }
+  }
+
+  // 将基准值交换到中间位置
+  [arr[startIndex], arr[mark]] = [arr[mark], arr[startIndex]];
+  return mark; // 返回基准值的最终索引
+}
+```

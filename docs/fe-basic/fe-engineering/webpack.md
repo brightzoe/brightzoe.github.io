@@ -208,6 +208,20 @@ bundle
 - speed-measure-webpack-plugin 分析打包耗时，每个 loader ，plugin 构建耗费的时间
 - webpack-dashboard 了解当前构建现状，进度，每个 chunk 大小等
 
+## Module Federation
+
+模块联邦，核心作用是在当前应用中动态加载来自另一个应用的代码。
+
+分为
+
+- Local Modules 本地模块
+- Remote Modules 远程模块
+- Host 页面中首先被加载的应用，内部可以动态加载运行远程模块。
+- Remote 提供远程模块的应用，内部的本地模块暴露出去供Host 消费。
+- Bidirectional-hosts：双向Host，既是Host又是Remote的应用。
+
+使用模块联邦可以实现微前端，可以做到依赖共享，减少资源重复加载。
+
 ## Reference
 
 - [当面试官问 webpack 的时候他想知道什么 - 掘金](https://juejin.cn/post/6943468761575849992#heading-0)
