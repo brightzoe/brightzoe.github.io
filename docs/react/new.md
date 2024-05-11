@@ -1,5 +1,33 @@
 # React 新动态
 
+## React 18
+
+### flushSync
+
+React18中所有的 setState 都是批处理更新。使用 flushSync 可以退出批量更新，直接进行强制更新。但flushSync函数内部的多个setState仍然为批量更新。
+
+### Concurrent Mode
+
+并发模式，通过渲染可中断来修复阻塞渲染的限制，允许React在浏览器空闲时执行渲染更新，依赖 requestIdleCallback 实现。
+
+使用createRoot 才能启用并发渲染模式。
+
+### useTransition
+
+### useDeferredValue
+
+### Strict Mode
+
+采用严格模式，React 对每个组件都会执行两次渲染。
+
+### useSyncExternalStore
+
+将外部数据同步到React中，一般是第三方状态管理库使用。
+
+---
+
+以下为React 19中新特性：
+
 ## React Compiler
 
 近几年，许多前端框架拥抱基于 Signal 的细粒度更新，用于优化前端框架的性能问题。而React 基于 Fiber 的diff 更新成为了最大的短板，大量 re-render 造成的性能损耗，是不得不面对的挑战。（细粒度更新并非所有场景都有明显优势）

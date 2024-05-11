@@ -44,7 +44,7 @@ p.then(
 );
 ```
 
-前面 promise 的状态不改变，后面的 then 方法就不会执行。在 then 方法中，通过 return 将返回的 promise 实例改为 fulfilled 状态。如果在 then 方法中出现错误，会将返回的 promise 实例改为 rejected 状态。
+前面 promise 的状态不改变，后面的 then 方法就不会执行。在 then 方法中，通过 return 将返回的 promise 实例改为 fulfilled 状态。**如果在 then 方法中出现错误，会将返回的 promise 实例改为 rejected 状态。**
 
 ```js
 new Promise((resolve, reject) => {
