@@ -58,6 +58,12 @@ defer：并行进行 HTML 解析与 script 的请求，到整个 HTML 加载完�
 
 了解更多：[**script 标签的使用**](/docs/fe-basic/attributes-and-usage-of-the-script-tag)
 
+## load 事件
+
+onLoad 在整个页面及所依赖资源加载完成后触发。用于检测完全加载的页面。
+
+DOMContentLoaded 事件：html文档完全解析，且所有延迟脚本（defer script/type = module）执行完毕后触发。
+
 ## img
 
 `alt`备用文本：网络错误，图片加载失败时显示的文本。

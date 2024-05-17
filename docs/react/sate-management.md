@@ -144,6 +144,8 @@ filter/
 
 ## Zustand
 
+将所有state放在全局store，使用的时候通过selector选取需要的部分。
+
 ### 优点
 
 - 状态管理简单。api轻量，不需要很多样板代码。
@@ -151,6 +153,18 @@ filter/
 - 可以创建多个独立store,灵活。
 - 性能：允许组件仅订阅状态的一部分，减少不必要的渲染。
 - 支持中间件。可以轻松扩展，添加persist,devtools等功能。
+
+### Jotai
+
+主要特点是原子化，通过atom定义一个原子状态，可以组合成新的状态。（和 tailwind 类似的思路）
+
+核心使用：
+
+通过 atom 创建原子状态，定义的时候可以单独指定 get、set，用于实现状态派生和异步修改。
+
+使用的时候通过 useAtom 获取`[get,set]`，也可以通过 useAtomValue，useSetAtom 分别获取 get、set。
+
+产生的初衷：解决React中的额外重新渲染的问题。比如数据透传使用Context，但导致不必要的重新渲染。或者添加非常多层的Context导致嵌套地狱。
 
 ## Reference
 

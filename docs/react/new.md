@@ -10,11 +10,23 @@ React18中所有的 setState 都是批处理更新。使用 flushSync 可以退�
 
 并发模式，通过渲染可中断来修复阻塞渲染的限制，允许React在浏览器空闲时执行渲染更新，依赖 requestIdleCallback 实现。
 
-使用createRoot 才能启用并发渲染模式。
+使用 createRoot 才能启用并发渲染模式。
 
-### useTransition
+### 并发特性
 
-### useDeferredValue
+开启并发模式后才能使用的特性。
+
+#### useTransition
+
+延迟更新，返回`[isPending, startTransition]`用于改善用户交互。被 `startTransition`包裹的代码触发的渲染被标记为不紧急渲染，可能被其他紧急渲染抢占
+。
+把更新任务变成延迟更新任务。
+
+#### useDeferredValue
+
+返回一个延迟值，让一个state延迟渲染。当没有紧急更新时，该state才会更新。
+
+包裹一个state，产生一个新的值，这个值作为延迟状态。
 
 ### Strict Mode
 

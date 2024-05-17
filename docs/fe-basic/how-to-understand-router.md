@@ -68,7 +68,7 @@
 
   服务端与客户端同一套代码。
 
-  服务端渲染组件，使用 renderToString 的结果拼接为html返回。浏览器接收到需要再次渲染，使用 hydrateRoot（注水）的方式渲染。hydrate渲染的过程，不创建html标签，而是直接关联已有的标签。
+  服务端渲染组件，使用 renderToString 的 string 结果拼接为html返回。浏览器接收到需要再次渲染，使用 hydrateRoot（注水）的方式渲染。hydrate渲染的过程，不创建html标签，而是直接关联已有的标签。
 
 ## 核心原理
 
