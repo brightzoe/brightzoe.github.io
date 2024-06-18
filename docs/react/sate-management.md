@@ -154,17 +154,22 @@ filter/
 - 性能：允许组件仅订阅状态的一部分，减少不必要的渲染。
 - 支持中间件。可以轻松扩展，添加persist,devtools等功能。
 
-### Jotai
+## Jotai
 
 主要特点是原子化，通过atom定义一个原子状态，可以组合成新的状态。（和 tailwind 类似的思路）
 
+产生的初衷：解决React中的额外重新渲染的问题。
+
+- 比如数据透传通常使用Context，但导致不必要的重新渲染。组件消费了Context，就会在value 修改时重新渲染，即使引用的值并未变化。
+  - 解决此问题，通过将Context的值进行拆分，但是会导致Context.Provider 层数变多，产生嵌套地狱问题。
+  - 拆分组件，将 re-render expensive 的组件拆分出来，并进行memo(comp)，以此优化性能。
+- 或者添加非常多层的Context导致嵌套地狱。
+
 核心使用：
 
-通过 atom 创建原子状态，定义的时候可以单独指定 get、set，用于实现状态派生和异步修改。
+- 通过 atom 创建原子状态，定义的时候可以单独指定 get、set，用于实现状态派生和异步修改。
 
-使用的时候通过 useAtom 获取`[get,set]`，也可以通过 useAtomValue，useSetAtom 分别获取 get、set。
-
-产生的初衷：解决React中的额外重新渲染的问题。比如数据透传使用Context，但导致不必要的重新渲染。或者添加非常多层的Context导致嵌套地狱。
+- 使用的时候通过 useAtom 获取`[get,set]`，也可以通过 useAtomValue，useSetAtom 分别获取 get、set。
 
 ## Reference
 
