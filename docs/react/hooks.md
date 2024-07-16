@@ -521,6 +521,8 @@ render(<Counter />);
 
 useReducer + useContext 实现全局 state：[hook - CodeSandbox](https://codesandbox.io/s/hook-e49wk?file=/src/useReducer%2BuseContext.js)
 
+> 即在上层组件封装useReducer,将`[state,dispatch]`通过provider广播出去，在下层任意组件使用。
+
 useReducer 实现 todo：[react-todo - CodeSandbox](https://codesandbox.io/s/react-todo-k99v11?file=/src/reducer-todos/todos.js)
 
 useReducer 中的 reducer 不支持异步，配合使用异步：[hook - CodeSandbox](https://codesandbox.io/s/hook-e49wk?file=/src/asyncUseReducer.js)

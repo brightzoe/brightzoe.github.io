@@ -324,9 +324,55 @@ Promise.allSettled([Promise.reject(1), Promise.resolve(2)]).then((res) =>
 
 ### 实现取消
 
-- 比如 fetch 等的AbortController.
+- 比如 fetch 等的AbortController。
 
 - 扩展原生Promise类。
+
+```ts
+class CancellablePromise<T> extends Promise<T> {
+  private isCanceled: boolean;
+  public cancel: () => void;
+  constructor(
+    executor: (
+      resolve: (value: T | PromiseLike<T>) => void,
+      reject: (error?: any) => void,
+    ) => void,
+  ) {
+    let cancel: () => void;
+    super((resolve, reject) => {
+      let isCanceled = false;
+      cancel = () => {
+        reject({ canceled: true });
+        isCanceled = true;
+      };
+
+      executor(
+        (v) => (isCanceled ? reject({ canceled: true }) : resolve(v)),
+        (e) => (isCanceled ? reject({ canceled: true }) : reject(e)),
+      );
+    });
+    this.isCanceled = false;
+    this.cancel = cancel!;
+  }
+}
+
+const a = new CancellablePromise<number>((resolve, reject) => {
+  setTimeout(() => {
+    resolve(11);
+  }, 1000);
+});
+
+setTimeout(() => {
+  a.cancel();
+}, 300);
+a.then((data) => console.log(data)).catch((error) => {
+  if (error.canceled) {
+    console.log('Promise canceled');
+  } else {
+    console.error('Promise error:', error);
+  }
+});
+```
 
 ## 请求并发
 

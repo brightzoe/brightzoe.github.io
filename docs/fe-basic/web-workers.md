@@ -54,6 +54,7 @@ self.onmessage = (messageEvent) => {
 
 - 视频网站，视频解码
 - 大量计算，比如设计相关的网站，解析 sketch 文件
+- 解决定时器问题。由于浏览器的节能策略，对后台标签的定时器的执行进行了限制。可以使用worker中执行定时postMessage绕过定时器的节能限制。
 
 ### Shared Worker
 
