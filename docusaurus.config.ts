@@ -2,8 +2,7 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // Note: type annotations allow type checking and IDEs autocompletion
-import {themes as prismThemes} from 'prism-react-renderer'
-
+import { themes as prismThemes } from 'prism-react-renderer';
 
 const config: Config = {
   title: "brightzoe's blog",
@@ -143,7 +142,7 @@ const config: Config = {
           label: '工具',
           position: 'left',
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
+        { to: '/blog/archive', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/brightzoe',
           // label: "GitHub",

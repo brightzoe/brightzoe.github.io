@@ -39,39 +39,6 @@ function App() {
 1. 总在组件的顶部调用 Hooks，不能在循环，条件或嵌套函数中使用 Hooks。
 2. 只能在函数组件中使用 Hooks 或者在自定义 Hooks 中调用 Hooks。不要在普通的 js 函数中调用 Hooks。
 
-### useState
-
-useState 的参数（initState）是变量、对象或者是函数，变量或者对象会作为 state 的初始值，如果是函数，函数的返回值会作为初始值。
-
-:::tip
-
-initState 只会在组件的初始化渲染中起作用，后续渲染会被忽略。initState 可以是一个函数，函数的返回值会作为 initState 的值,这被称为惰性初始化。
-
-:::
-
-使用 useState 依赖上一次 state 时，使用 function 的方式更新 setState，确保拿到的是准确的 previous state。
-
-```jsx live
-function Count() {
-  let [count, setCount] = useState(0);
-  const handleAdd = function () {
-    //批量更新
-    setCount(count + 1); // setCount(count=>count + 1);
-    setCount(count + 1);
-  };
-  return (
-    <div>
-      <p>{count}</p>
-      <button onClick={handleAdd}>add</button>
-    </div>
-  );
-}
-```
-
-#### State 的特性
-
-对于对象和数组，注意 useState 中不会自动补全旧的变量，需要使用展开运算符自己手动补充,完成合并更新。
-
 ### useEffect
 
 解决的问题：EffectHook 用于函数式组件中副作用，执行一些相关的操作，逻辑聚合。
@@ -553,6 +520,8 @@ render(<Counter />);
 > useState,useReducer 都提供了惰性初始化的方式。可以通过函数计算初始值。
 
 useReducer + useContext 实现全局 state：[hook - CodeSandbox](https://codesandbox.io/s/hook-e49wk?file=/src/useReducer%2BuseContext.js)
+
+> 即在上层组件封装useReducer,将`[state,dispatch]`通过provider广播出去，在下层任意组件使用。
 
 useReducer 实现 todo：[react-todo - CodeSandbox](https://codesandbox.io/s/react-todo-k99v11?file=/src/reducer-todos/todos.js)
 

@@ -58,21 +58,63 @@ function createSandbox(window) {
 ```
 
 - 使用iframe 实现沙箱。在一个iframe中加载外部脚本，将外部脚本隔离在一个独立的环境中，避免影响全局作用域。但是使用iframe会增加网络请求和内存占用开销。
-- 使用Worker 实现。 创建一个Worker，在独立线程中运行JS代码，将外部脚本隔离在一个独立线程中，避免影响主线程作用域。但是需要考虑线程通信和数据同步的问题。
+- 使用 Worker 实现。 创建一个 Worker，在独立线程中运行JS代码，将外部脚本隔离在一个独立线程中，避免影响主线程作用域。但是需要考虑线程通信和数据同步的问题。
 - 一些沙箱库，比如 sandbox.js、vm.js 等。
 
-## qiankun
+## CSS隔离
 
-- CSS 隔离
-  通过Shadow DOM实现，是浏览器内置的web标准技术，可以创建一个封闭的DOM结构，对外部隔离，包括CSS样式。qiankun挂载子应用，会将子应用的HTML挂载到Shadow DOM上，从而实现CSS隔离
-
-- 父子项目通信，通信机制
-  - 观察者模式。通过 setGlobalState 设置 globalState，并通过 onGlobalStateChange 和 offGlobalStateChange 来注册和取消 观察者 函数，从而实现通信。
+- qiankun 使用 Shadow DOM
+- CSS Modules
+- postCSS 插件
+- tailwind CSS
 
 ## 实现通信机制
 
-- 使用CustomEvent ，派发和监听自定义事件。避免全局污染，也符合模块化的原则。
+- 使用 CustomEvent ，派发和监听自定义事件。避免全局污染，也符合模块化的原则。
 - 或者实现一个发布订阅模式，通过emit/on来派发和监听事件。
+- 通过路由参数或者 localStorage 来实现。
+
+## qiankun
+
+基于 single-spa 的微前端解决方案，通过 js 的 import 功能动态加载子应用，然后在主应用的 dom 中挂载子应用的dom。
+
+- CSS 隔离
+  通过 Shadow DOM 实现，是浏览器内置的 web 标准技术，可以创建一个封闭的DOM结构，对外部隔离，包括CSS样式。qiankun挂载子应用，会将子应用的HTML挂载到Shadow DOM上，从而实现CSS隔离。
+
+- 父子项目通信，通信机制
+
+  - 观察者模式。通过 setGlobalState 设置 globalState，并通过 onGlobalStateChange 和 offGlobalStateChange 来注册和取消 观察者 函数，从而实现通信。
+
+- 优缺点
+  - 提供完备的沙箱方案，包括js沙箱和CSS沙箱。
+  - 支持静态资源预加载。
+  - 适配成本高，包括工程化、生命周期、静态资源路径、路由等方面。
+  - 不支持vite。
+
+## wujie
+
+微前端框架，基于 iframe 实现。
+
+### 应用加载机制和JS沙箱
+
+将子应用的 js 注入到和主应用同域的 iframe 中运行。利用了 iframe 自己的沙箱机制，且有完整的 history 和location。
+
+- 不用注册，不用改造路由，直接使用组件方式
+
+- 一个页面可以同时激活多个子应用，iframe路由不用担心占用问题
+
+- 天然js沙箱，不会污染主应用环境
+
+- 不污染主应用所以销毁子应用也不需要清理
+
+### CSS沙箱机制
+
+通过 webcomponent 实现页面样式隔离。
+子应用的实例 instance 在 iframe 内运行，dom 在主应用的 webcomponent 中，通过代理iframe的document到webcomponent，实现iframe与webcomponet的互联。
+
+### 路由同步
+
+劫持子应用所在 iframe 的 history，将子应用的 url 同步到主应用。刷新浏览器初始化 iframe 时，再使用子应用的 replaceState 进行同步。
 
 ## Reference
 

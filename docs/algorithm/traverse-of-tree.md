@@ -107,7 +107,7 @@ function postorderTraversal(root: TreeNode) {
   stack.push(root);
   // 用栈
   while (stack.length) {
-    // 需要的顺序是左右根,那么放入栈的顺序是根右左,这样分别向前插
+    // 需要的顺序是左右根,那么出栈的顺序是右左根,这样分别向前插
     const top = stack.pop()!;
     res.unshift(top.val);
     top.left && stack.push(top.left);
@@ -209,6 +209,66 @@ function levelOrder(root: TreeNode | null): number[][] {
   }
   return res;
 }
+```
+
+## 综合问题
+
+[199. 二叉树的右视图 - 力扣（LeetCode）](https://leetcode.cn/problems/binary-tree-right-side-view/)⭐⭐⭐
+
+```js
+// bfs 层序遍历，每一层从右向左遍历，每一层 用 queue存储 取第一个
+function rightSideView(root) {
+  if (!root) {
+    return [];
+  }
+  const res = [];
+  const queue = [];
+  queue.push(root);
+  while (queue.length) {
+    const levelSize = queue.length;
+    for (let i = 0; i < levelSize; i++) {
+      const top = queue.shift();
+      if (i === 0) {
+        res.push(top.val);
+      }
+      top.right && queue.push(top.right);
+      top.left && queue.push(top.left);
+    }
+  }
+  return res;
+}
+```
+
+```js
+// bfs
+function rightSideView(root) {
+  if (!root) {
+    return [];
+  }
+  const res = [];
+  // 每个深度取一个值，最右侧的值
+  dfs(root, 0);
+  function dfs(node, depth) {
+    // 递归终止条件
+    if (!node) {
+      return;
+    }
+    // 第一次遇到当前深度的
+    if (res.length === depth) {
+      res.push(node.val);
+    }
+    // 下一个深度，从右侧开始
+    dfs(node.right, depth + 1);
+    dfs(node.left, depth + 1);
+  }
+  return res;
+}
+```
+
+[543. 二叉树的直径 - 力扣（LeetCode）](https://leetcode.cn/problems/diameter-of-binary-tree/description/?envType=study-plan-v2&envId=top-100-liked) ⭐⭐⭐⭐
+
+```js
+
 ```
 
 ## Reference

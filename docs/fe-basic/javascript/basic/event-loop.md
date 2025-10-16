@@ -107,6 +107,7 @@ new Promise((resolve) => {
     console.log('promise2');
   });
 console.log('script end');
+// script start ->async2 end->Promise->script end->async2 end1->promise1->promise2->async1 end->setTimeout
 ```
 
 ## NodeJS 的事件循环
