@@ -75,6 +75,16 @@ class PubSub<T> {
       unsubscribe: () => this.removeSubscriber(eventName, subscriber),
     };
   }
+
+  // 只订阅一次的实现
+  once(eventName: string, subscriber: (...args: any[]) => void) {
+    const wrapper = (...args: any[]) => {
+      subscriber(...args);
+      this.removeSubscriber(eventName, subscriber);
+    };
+
+    this.subscribe(eventName, wrapper);
+  }
 }
 const pubSubInstance = new PubSub<string>();
 const subscription = pubSubInstance.subscribe('dudu', (e) => {

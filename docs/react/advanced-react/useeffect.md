@@ -173,7 +173,9 @@ render(<Counter />);
 
 **useLayloutEffect**
 
-useLayoutEffect 会在所有 dom 变更之后同步调用 effect，适合用来读取 dom 布局并同步触发重渲染。在浏览器执行绘制之前，useLayoutEffect 内部的更新计划将被同步刷新。 :::
+useLayoutEffect 会在所有 dom 变更之后同步调用 effect，适合用来读取 dom 布局并同步触发重渲染。在浏览器执行绘制之前，useLayoutEffect 内部的更新计划将被同步刷新。
+
+:::
 
 执行顺序见下面的栗子：
 

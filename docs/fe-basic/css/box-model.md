@@ -60,8 +60,8 @@ keywords: [css, box-model]
 
 - html/body 元素
 - overflow 值不为 visible 的块元素 hidden/auto/scroll
-- 浮动元素（元素的 float 不是 none）
-- 定位元素（position 不是 static/relative) absolute/fixed
+- float:（元素的 float 不是 none）
+- position:（position 不是 static/relative） absolute/fixed
 - display 值为 flow-root 的元素： 成为块级元素，并创建 BFC
 - display:inline-block/table-cell/table
 

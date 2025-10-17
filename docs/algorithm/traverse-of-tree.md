@@ -92,6 +92,60 @@ function preOrderTraversal(root: TreeNode) {
 }
 ```
 
+[145. 二叉树的后序遍历 - 力扣（LeetCode）](https://leetcode.cn/problems/binary-tree-postorder-traversal)⭐⭐✨
+
+- 后序遍历与前序遍历不同的就是根节点位置由第一个变成了最后一个.从stack入手会比较麻烦所以从res入手比较方便.
+
+```ts
+function postorderTraversal(root: TreeNode) {
+  // 边界条件
+  if (!root) {
+    return [];
+  }
+  const res: number[] = [];
+  const stack: TreeNode[] = [];
+  stack.push(root);
+  // 用栈
+  while (stack.length) {
+    // 需要的顺序是左右根,那么出栈的顺序是右左根,这样分别向前插
+    const top = stack.pop()!;
+    res.unshift(top.val);
+    top.left && stack.push(top.left);
+    top.right && stack.push(top.right);
+  }
+  return res;
+}
+```
+
+[94. 二叉树的中序遍历 - 力扣（LeetCode）](https://leetcode.cn/problems/binary-tree-inorder-traversal/)⭐⭐⭐✨
+
+- 中序遍历的迭代与前后序遍历的迭代不同。前后序遍历都是先处理根节点，然后是孩子节点。
+- 中序遍历的序列规则是 左 -> 中 -> 右 ，这意味着我们必须首先定位到最左的叶子结点，其中会途经目标结点的父结点、爷爷结点和各种辈分的祖宗结点。途经的每一个节点都要先入栈。当我们处理完目标节点，就可以处理它的父节点或兄弟节点了。
+
+```ts
+function inorderTraversal(root: TreeNode | null): number[] {
+  if (!root) {
+    return [];
+  }
+  const stack = [];
+  const res = [];
+  let node = root;
+
+  // 有没有当前要处理的子树节点||之前入栈的其他节点需要处理
+  while (node || stack.length) {
+    //一路向左全部入栈
+    while (node) {
+      stack.push(node);
+      node = node.left;
+    }
+    node = stack.pop()!;
+    res.push(node.val);
+    node = node.right;
+  }
+  return res;
+}
+```
+
 ## 深度优先搜索 DFS
 
 深度优先搜索的核心思想，是试图穷举所有的完整路径。
@@ -115,7 +169,7 @@ function preOrderTraversal(root: TreeNode) {
 所以是先入先出的规则，BFS算法的核心是队列。
 
 ```ts
-// 层次遍历扫描
+// 层次遍历扫描 bfs + queue
 function bfs(root: TreeNode) {
   const queue = [];
   queue.push(root);
@@ -128,6 +182,93 @@ function bfs(root: TreeNode) {
     queue.shift();
   }
 }
+```
+
+[102. 二叉树的层序遍历 - 力扣（LeetCode）](https://leetcode.cn/problems/binary-tree-level-order-traversal/)⭐⭐⭐
+
+```ts
+// bfs+ queue 分层输出需要记录每一层的长度
+function levelOrder(root: TreeNode | null): number[][] {
+  if (!root) {
+    return [];
+  }
+  const res = [];
+  const queue = [];
+  queue.push(root);
+  while (queue.length) {
+    // 缓存当前层的长度
+    const len = queue.length;
+    const level = [];
+    for (let i = 0; i < len; i++) {
+      const top = queue.shift()!;
+      level.push(top.val);
+      top.left && queue.push(top.left);
+      top.right && queue.push(top.right);
+    }
+    res.push(level);
+  }
+  return res;
+}
+```
+
+## 综合问题
+
+[199. 二叉树的右视图 - 力扣（LeetCode）](https://leetcode.cn/problems/binary-tree-right-side-view/)⭐⭐⭐
+
+```js
+// bfs 层序遍历，每一层从右向左遍历，每一层 用 queue存储 取第一个
+function rightSideView(root) {
+  if (!root) {
+    return [];
+  }
+  const res = [];
+  const queue = [];
+  queue.push(root);
+  while (queue.length) {
+    const levelSize = queue.length;
+    for (let i = 0; i < levelSize; i++) {
+      const top = queue.shift();
+      if (i === 0) {
+        res.push(top.val);
+      }
+      top.right && queue.push(top.right);
+      top.left && queue.push(top.left);
+    }
+  }
+  return res;
+}
+```
+
+```js
+// bfs
+function rightSideView(root) {
+  if (!root) {
+    return [];
+  }
+  const res = [];
+  // 每个深度取一个值，最右侧的值
+  dfs(root, 0);
+  function dfs(node, depth) {
+    // 递归终止条件
+    if (!node) {
+      return;
+    }
+    // 第一次遇到当前深度的
+    if (res.length === depth) {
+      res.push(node.val);
+    }
+    // 下一个深度，从右侧开始
+    dfs(node.right, depth + 1);
+    dfs(node.left, depth + 1);
+  }
+  return res;
+}
+```
+
+[543. 二叉树的直径 - 力扣（LeetCode）](https://leetcode.cn/problems/diameter-of-binary-tree/description/?envType=study-plan-v2&envId=top-100-liked) ⭐⭐⭐⭐
+
+```js
+
 ```
 
 ## Reference

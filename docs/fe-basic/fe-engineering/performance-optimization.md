@@ -8,13 +8,33 @@
 
 Lighthouse 是一个开源的自动化工具，用于改进网络应用的质量。有对应 chrome extension 使用参考：https://juejin.cn/post/6950855971379871757
 
+- First Paint 第一个像素绘制到屏幕的时间
 - First Contentful Paint 渲染出首个文本/首张图片的时间
 
   测量**加载**性能，最好在 2.5s 内。
 
+  ```js
+  const observer = new PerformanceObserver((list) => {
+    list.getEntries().forEach((entry) => {
+      console.log(entry);
+    });
+  });
+  observer.observe({ type: 'paint', buffered: true });
+  ```
+
 - Time to Interactive 可交互时间。大部分可视区域的事件都可以操作
 - Total Blocking Time ：= TTI - FCP
 - Largest Contentful Paint 视口中可见的最大图像或文本块的渲染时间
+
+  ```ts
+  const observer = new PerformanceObserver((list) => {
+    const entries = list.getEntries();
+    const lastEntry = entries[entries.length - 1];
+    console.log(lastEntry);
+  });
+  observer.observe({ type: 'largest-contentful-paint', buffered: true });
+  ```
+
 - Cumulative Layout Shift 布局偏移分数
 
 [如何使用 Lighthouse 性能检测工具 - 掘金](https://juejin.cn/post/6950855971379871757#heading-6)
@@ -23,8 +43,8 @@ Lighthouse 是一个开源的自动化工具，用于改进网络应用的质量
 
 ## 相关指标
 
-- 首屏时间： 从浏览器输入地址并回车后到首屏内容渲染完毕的时间。
-- 白屏时间：从输入地址回车后到页面出现第一个元素的时间。
+- 首屏时间： 从浏览器输入地址并回车后到首屏内容渲染完毕的时间。可以使用performance.timing 的 domContentLoadedEventEnd - fetchStart
+- 白屏时间：从输入地址回车后到页面出现第一个元素的时间。FP
 - 可操作时间： 点击事件有反应。window.DOMContentLoaded
 - 总下载时间： window.onload
 
@@ -61,6 +81,35 @@ Lighthouse 是一个开源的自动化工具，用于改进网络应用的质量
 
 3.  NetWork 面板
 
+## 加载网站全过程
+
+- DNS 解析
+  - 减少解析次数或者把解析前置：浏览器DNS缓存和DNS prefetch
+- TCP 连接
+  - 长连接、预连接
+- HTTP 请求
+
+  - 减少请求次数：长连接、预连接、缓存、CDN
+  - 减小请求体积：图片压缩、gzip、base64
+  - 请求慢：CDN
+
+  :::tip 资源的压缩与合并
+  通常由构建工具实现，见下方webpack的处理。
+
+  - 减少打包时间
+  - 减小打包体积
+
+    HTTP压缩：内置到网页服务器和客户端中以改进传输速度和带宽利用率的方式。最常见的HTTP压缩方式有：deflate、br、gzip。
+
+    gzip原理：在文本文件中找出重复出现的字符串，临时替换他们，使整个文件变小。文件中重复率越高，压缩率越高。
+
+    gzip通常由服务端实现。以服务器的压缩时间和CPU的开销为代价，省下一些传输过程中的时间开销。Webpack中的Gzip压缩才做，在构建过程中做了一部分服务器的操作，为服务器分压。
+
+  :::
+
+- HTTP 响应
+- 渲染
+
 ## 选择合适的优化方式
 
 - 网络层面
@@ -79,6 +128,13 @@ Lighthouse 是一个开源的自动化工具，用于改进网络应用的质量
   - 阻塞策略 defer async
   - 回流重绘策略 修改类而不直接修改对应 CSS，transform 代替 top
   - 异步更新 异步修改 DOM 时包装为微任务
+
+- 浏览器资源优先级优化
+
+  - prefetch 预先请求并缓存未来可能使用的资源
+  - dns-prefetch 优化域名解析的时间，适用于加载第三方域名资源
+  - preconnect 涵盖了 DNS 查询、TLS 协商以及 TCP 握手等步骤
+  - preload 提前下载的重要资源，比如关键css/影响lcp的资源
 
 - 运行时加载：组件动态加载，图片懒加载
 
@@ -174,3 +230,4 @@ throttle 更适合需要实时响应的场景：拖拽进行放大缩小,滚动�
 - [如何使用 Lighthouse 性能检测工具 - 掘金](https://juejin.cn/post/6950855971379871757#heading-6)
 - [性能优化-思维导图](https://docs.qq.com/mind/DWnljWm52eEVjWWNE)
 - [**写给中高级前端关于性能优化的 9 大策略和 6 大指标 | 网易四年实践 - 掘金**](https://juejin.cn/post/6981673766178783262#heading-6)
+- [【微信公众号：量子前端 2024-05-07 12:01】前端如何体系化性能优化？](https://mp.weixin.qq.com/s/SYM7iGrUeRZ5K6LlC_0WEw)
