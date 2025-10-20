@@ -6,12 +6,20 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
-  build:
+  test-deploy:
+    if: github.event_name != 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5.0.0
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v6.0.0
+        with:
+          node-version: 20
       - uses: pnpm/action-setup@v4.2.0
 
       - name: Install Dependencies
@@ -19,24 +27,30 @@ jobs:
 
       - name: Build
         run: pnpm build
-
-      - name: Upload artifact
-        if: github.event_name == 'push'
-        uses: actions/upload-pages-artifact@v4.0.0
-        with:
-          path: ./build
   deploy:
-    if: github.event_name == 'push'
-    needs: build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@v5.0.0
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6.0.0
+        with:
+          node-version: 20
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
+      - uses: pnpm/action-setup@v4.2.0
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4.0.5
+        env:
+          USE_SSH: true
+          GIT_USER: git
+          DEPLOYMENT_BRANCH: gh-pages
+          CURRENT_BRANCH: main
+        run: |
+          git config --global user.email "brightzoe@qq.com"
+          git config --global user.name "brightzoe"
+          pnpm install --no-frozen-lockfile
+          pnpm run build
+          pnpm run deploy
 
