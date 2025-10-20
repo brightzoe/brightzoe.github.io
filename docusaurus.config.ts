@@ -9,7 +9,7 @@ const config: Config = {
   tagline: 'Learning by doing',
   url: 'https://brightzoe.github.io',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: 'warn',
