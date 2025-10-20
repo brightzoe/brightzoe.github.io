@@ -160,34 +160,142 @@ queue.unshift(1); // 双端队列头部入队
 [239. 滑动窗口最大值 - 力扣（LeetCode）](https://leetcode.cn/problems/sliding-window-maximum/)⭐⭐⭐⭐
 
 - 顺着题目思路，使用双指针分别计算范围内的最大值。时间复杂度O(kn)。
-- 使用双端队列，维护一个递减队列，队首元素为当前最大值。时间复杂度O(n)。
+- 使用双端队列，维护一个递减队列，队首元素为当前最大值。时间复杂度O(n)。每次从后面入队，若没有递减性，队尾的都给他踢出去。每次维护队头，看是否还在窗口内。
 
 ```ts
 //双端队列。递减，维护递减性，及队头边界。队头都是最大值放在结果中
 const maxSlidingWindow = (nums: number[], k: number) => {
-  // 双端递减队列
+  // 递减的双端队列，里面放置nums的index
   const deque: number[] = [];
-  // 结果数组
-  const res = [];
+  const res: number[] = [];
   for (let i = 0; i < nums.length; i++) {
-    // 队列队尾的值<当前值，把队尾的值都踢出去。保证递减性
+    // 队尾的如果小于当前值，都踢出去
     while (deque.length && nums[deque[deque.length - 1]] < nums[i]) {
       deque.pop();
     }
-    // 当前值放进去
-    //deque里放去的是index,比较方便
     deque.push(i);
-    // 如果队头的值已经不在窗口的范围了，把队头踢出去
-
-    while (deque.length && deque[0] < i - k + 1) {
+    // 队头的不在范围内了，踢出去
+    while (deque.length && deque[0] < i + 1 - k) {
       deque.shift();
     }
-    //到第k个元素开始产生第一个结果
+    // 每次从这个deque中取最大值。第一次为 i =k-1
     if (i >= k - 1) {
       res.push(nums[deque[0]]);
-      console.log(res);
     }
   }
   return res;
 };
+```
+
+## 用栈实现队列
+
+[232. 用栈实现队列 - 力扣（LeetCode）](https://leetcode.cn/problems/implement-queue-using-stacks/description/)⭐⭐⭐
+
+- 使用两个栈实现队列。stack1用于输入，push进stack1。stack2用于输出，pop出stack2。注意什么时候将stack2中的元素放进stack1。
+
+```ts
+class MyQueue {
+  private stack1: number[];
+  private stack2: number[];
+  constructor() {
+    this.stack1 = [];
+    this.stack2 = [];
+  }
+  push(x: number): void {
+    this.stack1.push(x);
+  }
+  pop(): number {
+    // 先进的item使用完毕再继续存放。
+    if (this.stack2.length === 0) {
+      while (this.stack1.length) {
+        this.stack2.push(this.stack1.pop()!);
+      }
+    }
+    return this.stack2.pop()!;
+  }
+  peek(): number {
+    if (this.stack2.length === 0) {
+      while (this.stack1.length) {
+        this.stack2.push(this.stack1.pop()!);
+      }
+    }
+    return this.stack2[this.stack2.length - 1];
+  }
+
+  empty(): boolean {
+    return this.stack1.length === 0 && this.stack2.length === 0;
+  }
+}
+```
+
+## 用队列实现栈
+
+[225. 用队列实现栈 - 力扣（LeetCode）](https://leetcode.cn/problems/implement-stack-using-queues)⭐⭐⭐✨
+
+- 使用两个队列互相交换内容。 队列是先进先出，栈是先进后出。所以使用队列的时候把后面进来的元素放在最前面，就可以达到先进后出的效果。
+- 使用一个队列。 先添加新的元素。然后将旧的元素依次添加到队列的末尾。
+
+```ts
+class MyStack {
+  private queue1: number[];
+  private queue2: number[];
+  constructor() {
+    this.queue1 = [];
+    this.queue2 = [];
+  }
+
+  push(x: number): void {
+    //借助queue2 把后面进来的元素放在最前面
+    this.queue2.push(x);
+    while (this.queue1.length) {
+      this.queue2.push(this.queue1.shift()!);
+    }
+    const temp = this.queue1;
+    this.queue1 = this.queue2;
+    this.queue2 = temp;
+  }
+
+  pop(): number {
+    return this.queue1.shift()!;
+  }
+
+  top(): number {
+    return this.queue1[0];
+  }
+
+  empty(): boolean {
+    return this.queue1.length === 0;
+  }
+}
+```
+
+```ts
+// 使用一个队列
+// 先添加新的元素。然后将旧的元素依次添加到队列的末尾
+class MyStack {
+  private queue: number[];
+  constructor() {
+    this.queue = [];
+  }
+
+  push(x: number): void {
+    const length = this.queue.length;
+    this.queue.push(x);
+    for (let i = 0; i < length; i++) {
+      this.queue.push(this.queue.shift()!);
+    }
+  }
+
+  pop(): number {
+    return this.queue.shift();
+  }
+
+  top(): number {
+    return this.queue[0];
+  }
+
+  empty(): boolean {
+    return this.queue.length === 0;
+  }
+}
 ```

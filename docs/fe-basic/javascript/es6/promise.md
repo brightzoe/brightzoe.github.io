@@ -4,7 +4,11 @@
 
 异步操作，通过回调函数实现，下面的操作依赖上一个回调的结果。则下面的操作都要写在上面的回调里面，回调里面嵌套回调，以致产生回调地狱。
 
+为了使处理异步操作的代码更简洁、可读，重点在于处理异步操作的成功和失败。
+
 ## 特点
+
+**状态机**的思想。
 
 - Promise 对象代表一个异步操作，包含三种状态：pending fulfilled rejected。只有异步操作的结果才可以决定当前 promise 的状态。
 - 状态已经改变就不会变。由 pending->fulfilled 或者 pending->rejected。
@@ -44,7 +48,7 @@ p.then(
 );
 ```
 
-前面 promise 的状态不改变，后面的 then 方法就不会执行。在 then 方法中，通过 return 将返回的 promise 实例改为 fulfilled 状态。如果在 then 方法中出现错误，会将返回的 promise 实例改为 rejected 状态。
+前面 promise 的状态不改变，后面的 then 方法就不会执行。在 then 方法中，通过 return 将返回的 promise 实例改为 fulfilled 状态。**如果在 then 方法中出现错误，会将返回的 promise 实例改为 rejected 状态。**
 
 ```js
 new Promise((resolve, reject) => {
@@ -308,6 +312,68 @@ Promise.allSettled([Promise.reject(1), Promise.resolve(2)]).then((res) =>
 );
 ```
 
+## 为什么没有取消？
+
+设计哲学 ：简化异步操作，状态机的设计思想。
+
+取消需要考虑的点：
+
+- 状态机中更多的状态转换和边界情况。
+  - 可能会存在状态转换冲突。同时转换到cancel/resolved ，是否有优先级冲突？
+  - 异步操作一般伴随一些副作用，比如文件读写网络请求等，需要清理资源等，在实现上会增加复杂性。
+
+### 实现取消
+
+- 比如 fetch 等的AbortController。
+
+- 扩展原生Promise类。
+
+```ts
+class CancellablePromise<T> extends Promise<T> {
+  private isCanceled: boolean;
+  public cancel: () => void;
+  constructor(
+    executor: (
+      resolve: (value: T | PromiseLike<T>) => void,
+      reject: (error?: any) => void,
+    ) => void,
+  ) {
+    let cancel: () => void;
+    super((resolve, reject) => {
+      let isCanceled = false;
+      cancel = () => {
+        reject({ canceled: true });
+        isCanceled = true;
+      };
+
+      executor(
+        (v) => (isCanceled ? reject({ canceled: true }) : resolve(v)),
+        (e) => (isCanceled ? reject({ canceled: true }) : reject(e)),
+      );
+    });
+    this.isCanceled = false;
+    this.cancel = cancel!;
+  }
+}
+
+const a = new CancellablePromise<number>((resolve, reject) => {
+  setTimeout(() => {
+    resolve(11);
+  }, 1000);
+});
+
+setTimeout(() => {
+  a.cancel();
+}, 300);
+a.then((data) => console.log(data)).catch((error) => {
+  if (error.canceled) {
+    console.log('Promise canceled');
+  } else {
+    console.error('Promise error:', error);
+  }
+});
+```
+
 ## 请求并发
 
 ### 为什么需要
@@ -370,3 +436,4 @@ await 只在 async 函数内工作。
 ## Reference
 
 - [Promise 中的三兄弟 .all(), .race(), .allSettled() - 掘金](https://juejin.cn/post/6844903912592375821#heading-7)
+- [Promise：为什么没有取消？ - 掘金](https://juejin.cn/post/7373986431850872869)

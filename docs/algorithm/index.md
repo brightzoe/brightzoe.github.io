@@ -19,7 +19,7 @@ sidebar_position: 1
 
 #### 虚拟 DOM
 
-用 JS 对象描述 DOM 结构，描述
+用 JS 对象描述 DOM 结构
 
 #### React DOM Diff
 

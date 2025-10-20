@@ -173,7 +173,7 @@ bundle
 
 ## webpack optimization
 
-构建时间优化
+**构建时间优化**
 
 - speed-measure-webpack-plugin 分析打包耗时
 - 比较耗时的包可以使用 cdn 分包。或者预编译资源为 dll
@@ -190,7 +190,7 @@ bundle
 - 开发环境：不需要代码压缩，gzip，体积优化，提高构建速度
 - 生产环境：代码压缩，gzip，体积优化
 
-打包体积优化
+**打包体积优化**
 
 - webpack-bundle-analyzer 打包体积分析，定位问题
 - 比较大的包使用 cdn 引入或者按需加载。 使用 cdn 引入的，在配置中要在打包时排除掉。
@@ -207,6 +207,20 @@ bundle
 
 - speed-measure-webpack-plugin 分析打包耗时，每个 loader ，plugin 构建耗费的时间
 - webpack-dashboard 了解当前构建现状，进度，每个 chunk 大小等
+
+## Module Federation
+
+模块联邦，核心作用是在当前应用中动态加载来自另一个应用的代码。
+
+分为
+
+- Local Modules 本地模块
+- Remote Modules 远程模块
+- Host 页面中首先被加载的应用，内部可以动态加载运行远程模块。
+- Remote 提供远程模块的应用，内部的本地模块暴露出去供Host 消费。
+- Bidirectional-hosts：双向Host，既是Host又是Remote的应用。
+
+使用模块联邦可以实现微前端，可以做到依赖共享，减少资源重复加载。
 
 ## Reference
 

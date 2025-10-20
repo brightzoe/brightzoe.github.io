@@ -67,9 +67,26 @@ display:inline 水平方向的 margin，padding 有效，垂直方向无效。
 
 - gif 动图，只有 256 色
 - jpeg/jpg 有损压缩，色彩丰富，适合存储照片
+  > 处理矢量图形和Logo等线条感强、色彩对比强烈的压缩后模糊会相当明显。不支持透明度
 - png 无损压缩，支持透明度，适合大块相同颜色区域的图像
+- svg 矢量图、文本文件、体积小
 - webp 有损压缩，体积小
 - bmp 无损，不压缩，体积大，不适合网页
+
+:::tip how to detect webp support in project
+
+- 使用canvas, `toDataURL('image/webp').indexOf('data:image/webp') == 0` 来检测
+- 使用一张webp图片判断onload 和onerror 事件
+- 在html5中 使用：
+
+  ```html
+  <picture>
+    <source srcset="/path/to/image.webp" type="image/webp" />
+    <img src="/path/to/image.jpg" alt="insert alt text here" />
+  </picture>
+  ```
+
+:::
 
 ## CSS Sprites
 
@@ -173,3 +190,7 @@ display:inline 水平方向的 margin，padding 有效，垂直方向无效。
 - sticky
 
   粘连定位。粘性定位可以被认为是相对定位和固定定位的混合。元素在跨越特定值前为相对定位，之后为固定定位,固定定位相对于他的包含块。
+
+```
+
+```
