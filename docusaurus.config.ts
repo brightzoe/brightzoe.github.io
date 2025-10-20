@@ -10,8 +10,13 @@ const config: Config = {
   url: 'https://brightzoe.github.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
+  markdown:{
+    hooks:{
   onBrokenMarkdownLinks: 'warn',
-  // Even if you don't use internalization, you can use this field to set useful
+
+    }
+  },
+  // Even if you don't use internalization,F you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
