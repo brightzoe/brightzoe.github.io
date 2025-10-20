@@ -61,8 +61,8 @@ const config: Config = {
           //@docusaurus/plugin-content-blog
           showReadingTime: true,
           editUrl: 'https://github.com/brightzoe/brightzoe.github.io/edit/main',
-          // blogSidebarTitle: '全部博文',
-          blogSidebarCount: 6,
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL',
           feedOptions: {
             type: 'all',
             copyright: `版权所有 © ${new Date().getFullYear()} brightzoe's blog`,
@@ -147,7 +147,7 @@ const config: Config = {
           label: '工具',
           position: 'left',
         },
-        { to: '/blog/archive', label: 'Blog', position: 'left' },
+        { to: 'blog', label: 'Blog', position: 'right' },
         {
           href: 'https://github.com/brightzoe',
           // label: "GitHub",
