@@ -7,7 +7,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 const config: Config = {
   title: "brightzoe's blog",
   tagline: 'Learning by doing',
-  url: 'https://brightzoe.top',
+  url: 'https://brightzoe.github.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
