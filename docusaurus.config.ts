@@ -10,11 +10,10 @@ const config: Config = {
   url: 'https://brightzoe.github.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  markdown:{
-    hooks:{
-  onBrokenMarkdownLinks: 'warn',
-
-    }
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
   },
   // Even if you don't use internalization,F you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -24,7 +23,7 @@ const config: Config = {
     locales: ['zh-Hans'],
   },
   favicon: 'img/favicon.ico',
-  trailingSlash: false, //customize the presence/absence of a trailing slash at the end of URLs/links, and how static HTML files are generated
+  trailingSlash: true, //customize the presence/absence of a trailing slash at the end of URLs/links, and how static HTML files are generated
   organizationName: 'brightzoe', // Usually your GitHub org/user name.
   projectName: 'brightzoe.github.io', // Usually your repo name.
   themes: [
