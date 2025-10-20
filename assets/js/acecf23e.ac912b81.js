@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkbrightzoe_blog=globalThis.webpackChunkbrightzoe_blog||[]).push([[1903],{1912:o=>{o.exports=JSON.parse('{"blogBasePath":"/blog","blogTitle":"Blog","authorsListPath":"/blog/authors"}')}}]);

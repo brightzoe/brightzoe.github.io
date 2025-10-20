@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkbrightzoe_blog=globalThis.webpackChunkbrightzoe_blog||[]).push([[8947],{6600:t=>{t.exports=JSON.parse('{"authors":[{"name":"brightzoe","url":"https://github.com/brightzoe","imageURL":"https://github.com/brightzoe.png","key":"zoe","page":null,"count":5}]}')}}]);

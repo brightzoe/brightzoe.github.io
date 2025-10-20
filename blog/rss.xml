@@ -4,7 +4,7 @@
         <title>brightzoe's blog Blog</title>
         <link>https://brightzoe.github.io/blog</link>
         <description>brightzoe's blog Blog</description>
-        <lastBuildDate>Mon, 20 Oct 2025 06:20:57 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 20 Oct 2025 07:09:07 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-Hans</language>
@@ -13,50 +13,50 @@
             <title><![CDATA[gpt 学习]]></title>
             <link>https://brightzoe.github.io/blog/gpt-prompt</link>
             <guid>https://brightzoe.github.io/blog/gpt-prompt</guid>
-            <pubDate>Mon, 20 Oct 2025 06:20:57 GMT</pubDate>
+            <pubDate>Mon, 20 Oct 2025 07:09:07 GMT</pubDate>
             <description><![CDATA[利用chatgpt思维最大发挥优势]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_pPUv" id="利用chatgpt思维最大发挥优势">利用chatgpt思维最大发挥优势<a href="https://brightzoe.github.io/blog/gpt-prompt#%E5%88%A9%E7%94%A8chatgpt%E6%80%9D%E7%BB%B4%E6%9C%80%E5%A4%A7%E5%8F%91%E6%8C%A5%E4%BC%98%E5%8A%BF" class="hash-link" aria-label="利用chatgpt思维最大发挥优势的直接链接" title="利用chatgpt思维最大发挥优势的直接链接">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="利用chatgpt思维最大发挥优势">利用chatgpt思维最大发挥优势<a href="https://brightzoe.github.io/blog/gpt-prompt#%E5%88%A9%E7%94%A8chatgpt%E6%80%9D%E7%BB%B4%E6%9C%80%E5%A4%A7%E5%8F%91%E6%8C%A5%E4%BC%98%E5%8A%BF" class="hash-link" aria-label="利用chatgpt思维最大发挥优势的直接链接" title="利用chatgpt思维最大发挥优势的直接链接" translate="no">​</a></h2>
 <ul>
-<li>提供充足的背景和知识。</li>
-<li>提供工具武装。插件：浏览网页或者数学计算等</li>
-<li>允许回溯和反思。在回答完问题后，继续询问你觉得回答是准确的吗？是否完成我的要求？</li>
-<li>对于复杂问题，激发慢思维模式。<!-- -->
+<li class="">提供充足的背景和知识。</li>
+<li class="">提供工具武装。插件：浏览网页或者数学计算等</li>
+<li class="">允许回溯和反思。在回答完问题后，继续询问你觉得回答是准确的吗？是否完成我的要求？</li>
+<li class="">对于复杂问题，激发慢思维模式。<!-- -->
 <ul>
-<li>因为chatgpt本质上是通过token去思考的，所以让他有更多token完成回答。可以将复杂任务拆解为多个小任务，使每个任务都有足够的token</li>
-<li>给出一个示例提示让他模仿思维过程</li>
-<li>告诉模型step by step</li>
+<li class="">因为chatgpt本质上是通过token去思考的，所以让他有更多token完成回答。可以将复杂任务拆解为多个小任务，使每个任务都有足够的token</li>
+<li class="">给出一个示例提示让他模仿思维过程</li>
+<li class="">告诉模型step by step</li>
 </ul>
 </li>
-<li>要求chatgpt成功<!-- -->
+<li class="">要求chatgpt成功<!-- -->
 <ul>
-<li>根据期望chatgpt完成的任务，告诉他你是这个领域的专家，让他以专家视角给你输出结果</li>
+<li class="">根据期望chatgpt完成的任务，告诉他你是这个领域的专家，让他以专家视角给你输出结果</li>
 </ul>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="prompt">prompt<a href="https://brightzoe.github.io/blog/gpt-prompt#prompt" class="hash-link" aria-label="prompt的直接链接" title="prompt的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="prompt">prompt<a href="https://brightzoe.github.io/blog/gpt-prompt#prompt" class="hash-link" aria-label="prompt的直接链接" title="prompt的直接链接" translate="no">​</a></h2>
 <p>完整的提示词结构： 指令词+上下文+输入内容+输出要求</p>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="提出合格的问题">提出合格的问题<a href="https://brightzoe.github.io/blog/gpt-prompt#%E6%8F%90%E5%87%BA%E5%90%88%E6%A0%BC%E7%9A%84%E9%97%AE%E9%A2%98" class="hash-link" aria-label="提出合格的问题的直接链接" title="提出合格的问题的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="提出合格的问题">提出合格的问题<a href="https://brightzoe.github.io/blog/gpt-prompt#%E6%8F%90%E5%87%BA%E5%90%88%E6%A0%BC%E7%9A%84%E9%97%AE%E9%A2%98" class="hash-link" aria-label="提出合格的问题的直接链接" title="提出合格的问题的直接链接" translate="no">​</a></h2>
 <ul>
-<li>设定用户的角色与设定ChatGpt的角色。</li>
-<li>明确问题，让问题更具体和明确。</li>
-<li>提供背景信息和上下文。</li>
-<li>如果需要丰富的信息可以采用开放式问题引导对话。</li>
-<li>针对复杂问题，可以以简单的问题作为开端并逐渐深入。</li>
-<li>如果对某个答案不理解或需要更多信息，可以要求提供具体示例或进一步解释。</li>
+<li class="">设定用户的角色与设定ChatGpt的角色。</li>
+<li class="">明确问题，让问题更具体和明确。</li>
+<li class="">提供背景信息和上下文。</li>
+<li class="">如果需要丰富的信息可以采用开放式问题引导对话。</li>
+<li class="">针对复杂问题，可以以简单的问题作为开端并逐渐深入。</li>
+<li class="">如果对某个答案不理解或需要更多信息，可以要求提供具体示例或进一步解释。</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="一些技巧">一些技巧<a href="https://brightzoe.github.io/blog/gpt-prompt#%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7" class="hash-link" aria-label="一些技巧的直接链接" title="一些技巧的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="一些技巧">一些技巧<a href="https://brightzoe.github.io/blog/gpt-prompt#%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7" class="hash-link" aria-label="一些技巧的直接链接" title="一些技巧的直接链接" translate="no">​</a></h2>
 <ul>
-<li>明确背景和身份。比如：我是个正在学习xx的初学者，希望对xx进行xx,请告诉我使用哪些工具辅助分析</li>
-<li>限制回答长度。告诉他你期望的回答长度，（但长度不一定准确。）</li>
-<li>让他一步一步思考。尤其是在一些复杂问题或者逻辑/数学问题上。</li>
-<li>明确要求和目的。而不只是给出材料。</li>
-<li>让gpt给你提供思考方向。比如面对一些难题或者创造性问题，让gpt进行头脑风暴给你提供思路和方向。</li>
-<li>让gpt承担工作流中的某个角色。</li>
-<li></li>
+<li class="">明确背景和身份。比如：我是个正在学习xx的初学者，希望对xx进行xx,请告诉我使用哪些工具辅助分析</li>
+<li class="">限制回答长度。告诉他你期望的回答长度，（但长度不一定准确。）</li>
+<li class="">让他一步一步思考。尤其是在一些复杂问题或者逻辑/数学问题上。</li>
+<li class="">明确要求和目的。而不只是给出材料。</li>
+<li class="">让gpt给你提供思考方向。比如面对一些难题或者创造性问题，让gpt进行头脑风暴给你提供思路和方向。</li>
+<li class="">让gpt承担工作流中的某个角色。</li>
+<li class=""></li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="reference">Reference<a href="https://brightzoe.github.io/blog/gpt-prompt#reference" class="hash-link" aria-label="Reference的直接链接" title="Reference的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="reference">Reference<a href="https://brightzoe.github.io/blog/gpt-prompt#reference" class="hash-link" aria-label="Reference的直接链接" title="Reference的直接链接" translate="no">​</a></h2>
 <ul>
-<li><a href="https://www.bookai.top/docs/ChatGPT-tutorial/%E6%8F%90%E5%8D%87%E4%B8%8EChatGPT%E5%AF%B9%E8%AF%9D%E8%83%BD%E5%8A%9B%E7%9A%84%E4%B8%83%E4%B8%AA%E6%8A%80%E5%B7%A7" target="_blank" rel="noopener noreferrer">🚀 提升与ChatGPT对话能力的七个技巧 | ChatGPT最佳中文学习网站</a></li>
+<li class=""><a href="https://www.bookai.top/docs/ChatGPT-tutorial/%E6%8F%90%E5%8D%87%E4%B8%8EChatGPT%E5%AF%B9%E8%AF%9D%E8%83%BD%E5%8A%9B%E7%9A%84%E4%B8%83%E4%B8%AA%E6%8A%80%E5%B7%A7" target="_blank" rel="noopener noreferrer" class="">🚀 提升与ChatGPT对话能力的七个技巧 | ChatGPT最佳中文学习网站</a></li>
 </ul>]]></content:encoded>
         </item>
         <item>
@@ -75,196 +75,196 @@
             <guid>https://brightzoe.github.io/blog/2022/08/29/web-safety</guid>
             <pubDate>Mon, 29 Aug 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[安全世界观]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_pPUv" id="安全世界观">安全世界观<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E5%AE%89%E5%85%A8%E4%B8%96%E7%95%8C%E8%A7%82" class="hash-link" aria-label="安全世界观的直接链接" title="安全世界观的直接链接">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="安全世界观">安全世界观<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E5%AE%89%E5%85%A8%E4%B8%96%E7%95%8C%E8%A7%82" class="hash-link" aria-label="安全世界观的直接链接" title="安全世界观的直接链接" translate="no">​</a></h2>
 <p>讲安全，需要关注攻击的技术原理，也需要关注防御的思路和实现的技术。</p>
 <p>安全是什么？什么情况下才会产生安全问题？如何看待安全问题？这些是安全的基本问题，需要搞清楚，才能明白一切防御技术的出发点。这也是一个道跟术的问题。</p>
 <p>安全的本质是信任问题。安全方案的设计是建立在信任关系上，比如说要保管重要的文件，我们可以把它锁在抽屉里物理的一把锁，要保证锁的工匠，品牌是值得信任的，没有私自保留额外的钥匙，没有给锁留后门。且锁的钥匙也要在一个不会出问题的地方，或者钥匙交给值得信任的人来保管。如果工匠，品牌不可信任或者钥匙的保管不够安全。我们的决策依据被打破，安全的前提就不再存在。</p>
 <p>安全是一个持续的过程，不能一劳永逸地解决安全问题。任何一种防御技术都不可能永远有效。防御技术在不断的发展，攻击的技术也在动态的发展，二者是相互促进的辩证关系。黑客在不断地研究寻找新的攻击技术，作为防御这也需要不断地跟进，增加对于新的攻击方式的检测与防御方案。</p>
-<h3 class="anchor anchorWithStickyNavbar_pPUv" id="设计安全方案">设计安全方案<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E8%AE%BE%E8%AE%A1%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88" class="hash-link" aria-label="设计安全方案的直接链接" title="设计安全方案的直接链接">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_RZRg" id="设计安全方案">设计安全方案<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E8%AE%BE%E8%AE%A1%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88" class="hash-link" aria-label="设计安全方案的直接链接" title="设计安全方案的直接链接" translate="no">​</a></h3>
 <p>安全三要素(作为设计安全方案的出发点)</p>
 <ul>
-<li>机密性。保护数据不能泄露。常见的手段是加密。比如放在加了锁的抽屉里。</li>
-<li>完整性。保护数据内容完整，没有被篡改。常见的技术手段是数字签名，比如 github 可以对每个 commit 进行签名。</li>
-<li>可用性。保护资源在需要的时候都能获得。 典型的破获可用性的例子是 DDOS，服务端拒绝攻击，把可用的端口都占满了，导致无法再提供服务。</li>
+<li class="">机密性。保护数据不能泄露。常见的手段是加密。比如放在加了锁的抽屉里。</li>
+<li class="">完整性。保护数据内容完整，没有被篡改。常见的技术手段是数字签名，比如 github 可以对每个 commit 进行签名。</li>
+<li class="">可用性。保护资源在需要的时候都能获得。 典型的破获可用性的例子是 DDOS，服务端拒绝攻击，把可用的端口都占满了，导致无法再提供服务。</li>
 </ul>
 <p>安全评估</p>
 <ul>
-<li>
+<li class="">
 <p>目标是什么，要保护什么</p>
 </li>
-<li>
+<li class="">
 <p>核心问题是数据安全问题。根据业务内容不同，划分的侧重点也不同，有的公司关心员工的资料信息，有的公司关注客户数据，设计安全方案，需要了解最重要的数据是什么，以及不同数据的重要程度。</p>
 </li>
 </ul>
 <p>最简单的划分信任域和信任边界，从网络逻辑上进行划分。</p>
-<h4 class="anchor anchorWithStickyNavbar_pPUv" id="威胁分析">威胁分析<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90" class="hash-link" aria-label="威胁分析的直接链接" title="威胁分析的直接链接">​</a></h4>
+<h4 class="anchor anchorTargetStickyNavbar_RZRg" id="威胁分析">威胁分析<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90" class="hash-link" aria-label="威胁分析的直接链接" title="威胁分析的直接链接" translate="no">​</a></h4>
 <p>要把所有的威胁都找出来，一般比较难找，可以采取头脑风暴的形式。也可以采用比较科学的方法，比如使用一个模型帮助我们去想到底有哪些方面可能存在威胁。</p>
 <p>微软提出的威胁建模的方法，我们可以从六个方面去考虑。当然可能存在的威胁有很多，一个威胁到底能造成多大的危害，该怎么衡量，则需要进行风险分析。</p>
 <p>风险 = 发生的可能性 * 破坏潜力（造成的损失大小）</p>
 <p>可以根据风险衡量模型来计算一个威胁的具体风险大小。</p>
-<h3 class="anchor anchorWithStickyNavbar_pPUv" id="白帽子兵法防御思路">白帽子兵法（防御思路）<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E7%99%BD%E5%B8%BD%E5%AD%90%E5%85%B5%E6%B3%95%E9%98%B2%E5%BE%A1%E6%80%9D%E8%B7%AF" class="hash-link" aria-label="白帽子兵法（防御思路）的直接链接" title="白帽子兵法（防御思路）的直接链接">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_RZRg" id="白帽子兵法防御思路">白帽子兵法（防御思路）<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E7%99%BD%E5%B8%BD%E5%AD%90%E5%85%B5%E6%B3%95%E9%98%B2%E5%BE%A1%E6%80%9D%E8%B7%AF" class="hash-link" aria-label="白帽子兵法（防御思路）的直接链接" title="白帽子兵法（防御思路）的直接链接" translate="no">​</a></h3>
 <ul>
-<li>
+<li class="">
 <p>黑名单，白名单原则</p>
 <p>白名单比黑名单安全。但白名单也不是一定安全的。基于白名单的安全方案，也是信任白名单是好的，是安全的，若信任基础不存在，也就谈不上安全。比如浏览器在加载跨域资源的时候，设计的跨域资源共享机制就是通过白名单的思想。设置允许访问的域，允许的请求方法等。</p>
 </li>
-<li>
+<li class="">
 <p>最小权限原则。</p>
 <p>只授予必要的权限，而不要过度授权，可以有效减少出错的机会。比如在 Linux 系统中，比较好的操作习惯是用 普通用户操作，只在必要的时候使用 sudo 命令而不是一开始就使用 root 账户，可以最大化降低误操作的风险，在账户被盗用时，造成的影响也会比较低。</p>
 </li>
-<li>
+<li class="">
 <p>纵深防御原则</p>
 <p>需要全面防御。在不同的层面，不同的角度对系统做整体的解决方案，将风险分散到系统的各个方面。</p>
 </li>
-<li>
+<li class="">
 <p>数据与代码分离的原则。广泛适用于各种由于注入引发的安全问题，原因是混淆了数据与代码的边界。</p>
 </li>
-<li>
+<li class="">
 <p>不可预测性原则，攻击方式具有不可预测性。通常利用加密算法，随机数算法等来实现这一条原则。比如防御 CSRF 的时候，通常使用 token 的方式。是因为 token 是足够复杂而且是随机的，无法提前预知。</p>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="浏览器安全">浏览器安全<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8" class="hash-link" aria-label="浏览器安全的直接链接" title="浏览器安全的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="浏览器安全">浏览器安全<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8" class="hash-link" aria-label="浏览器安全的直接链接" title="浏览器安全的直接链接" translate="no">​</a></h2>
 <ul>
-<li>
+<li class="">
 <p>浏览器具有同源策略。 ----浏览器的安全功能最核心一点。 CORS</p>
 <p>限制跨域的资源，跨域的脚本。跨域：协议，域名，端口。</p>
 <p>CORS 机制（Cross Origin Resource Sharing） 浏览器控制允许访问的资源，通过 HTTP 头来实现。这个跨域访问方案的安全基础是信任“JavaScript 无法控制相应的 http 头”，而只是来自目标域设置的。</p>
 </li>
-<li>
+<li class="">
 <p>其他机制：</p>
 <p>浏览器沙箱，以及现代浏览器的多进程架构。浏览器进程，渲染进程，插件进程，扩展进程等。将浏览器的各个功能模块分隔开，各个 tab 页也分隔开，这样其中一个进程崩溃时也不会影响其他的进程。</p>
 <p>恶意网址拦截。比如钓鱼网站，挂马网站，有专门提供恶意网址的组织。</p>
 </li>
-<li>
+<li class="">
 <p>XSS</p>
 <p>跨站脚本攻击。通常指通过 HTML 注入 篡改网页，插入恶意的脚本，从而控制浏览器的行为。破坏力强大，场景复杂。</p>
 <ul>
-<li>反射型 用户输入的脚本反射给浏览器，非持久型的 XSS。</li>
-<li>存储型 顾名思义，把用户输入的数据存储在服务器端，XSS 具有很强的稳定性，持久性 XSS。</li>
-<li>DOM based XSS 属于反射型 XSS 的特例，修改页面 DOM 节点形成的 XSS。</li>
+<li class="">反射型 用户输入的脚本反射给浏览器，非持久型的 XSS。</li>
+<li class="">存储型 顾名思义，把用户输入的数据存储在服务器端，XSS 具有很强的稳定性，持久性 XSS。</li>
+<li class="">DOM based XSS 属于反射型 XSS 的特例，修改页面 DOM 节点形成的 XSS。</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p>CSRF</p>
 </li>
 </ul>
 <p>浏览器在用户不知情的情况下进行恶意操作。</p>
 <p>防御：</p>
 <ul>
-<li>
+<li class="">
 <p>验证码是最简洁有效的。但一定程度上牺牲了用户体验。</p>
 </li>
-<li>
+<li class="">
 <p>token 根据不可预测性的原则。token 的生成要足够随机的安全函数生成。</p>
 </li>
-<li>
+<li class="">
 <p>Referrer Check 。检查源是否合法。缺陷在于服务点并不是在所有时候都可以获取到 Referrer。</p>
 </li>
-<li>
+<li class="">
 <p>点击劫持</p>
 <p>视觉上的欺骗手段。 透明的或者不可见的 iframe 覆盖。用户在不知情的情况下点击透明的 iframe。</p>
 <p>防御：</p>
 <ul>
-<li>禁止 iframe 。iframe 安全性无法保证。</li>
+<li class="">禁止 iframe 。iframe 安全性无法保证。</li>
 </ul>
 </li>
-<li>
+<li class="">
 <p>HTML5 安全</p>
 </li>
-<li>
+<li class="">
 <p>SQL 注入攻击</p>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="服务器安全">服务器安全<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8" class="hash-link" aria-label="服务器安全的直接链接" title="服务器安全的直接链接">​</a></h2>
-<h3 class="anchor anchorWithStickyNavbar_pPUv" id="注入攻击">注入攻击<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB" class="hash-link" aria-label="注入攻击的直接链接" title="注入攻击的直接链接">​</a></h3>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="服务器安全">服务器安全<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8" class="hash-link" aria-label="服务器安全的直接链接" title="服务器安全的直接链接" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_RZRg" id="注入攻击">注入攻击<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB" class="hash-link" aria-label="注入攻击的直接链接" title="注入攻击的直接链接" translate="no">​</a></h3>
 <ul>
-<li>sql 注入</li>
-<li>XML 注入等</li>
+<li class="">sql 注入</li>
+<li class="">XML 注入等</li>
 </ul>
-<h3 class="anchor anchorWithStickyNavbar_pPUv" id="文件上传漏洞">文件上传漏洞<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E" class="hash-link" aria-label="文件上传漏洞的直接链接" title="文件上传漏洞的直接链接">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_RZRg" id="文件上传漏洞">文件上传漏洞<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E" class="hash-link" aria-label="文件上传漏洞的直接链接" title="文件上传漏洞的直接链接" translate="no">​</a></h3>
 <p>用户上传了可执行脚本，并通过此脚本获得了执行服务器命令的能力。</p>
 <p>比如 上传了 web 脚本或者上传了 钓鱼图片，或者图片上包含脚本等</p>
 <p>防御：</p>
 <ul>
-<li>文件上传目录设置为不可执行。</li>
-<li>判断文件类型（MIME Type 和后缀检查），推荐使用白名单的方式放行</li>
-<li>单独设置文件服务器的域名</li>
+<li class="">文件上传目录设置为不可执行。</li>
+<li class="">判断文件类型（MIME Type 和后缀检查），推荐使用白名单的方式放行</li>
+<li class="">单独设置文件服务器的域名</li>
 </ul>
-<h3 class="anchor anchorWithStickyNavbar_pPUv" id="认证与会话管理">认证与会话管理<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E8%AE%A4%E8%AF%81%E4%B8%8E%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86" class="hash-link" aria-label="认证与会话管理的直接链接" title="认证与会话管理的直接链接">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_RZRg" id="认证与会话管理">认证与会话管理<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E8%AE%A4%E8%AF%81%E4%B8%8E%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86" class="hash-link" aria-label="认证与会话管理的直接链接" title="认证与会话管理的直接链接" translate="no">​</a></h3>
 <p>认证 &amp; 授权 认证是识别用户是谁，授权是为了决定用户能够有执行哪些操作</p>
 <p>认证</p>
 <ul>
-<li>认证 - 实际就是验证凭证的过程。通过凭证数量可以分为单因素认证以及多因素认证。使用多因素认证可以提高攻击的门槛。</li>
+<li class="">认证 - 实际就是验证凭证的过程。通过凭证数量可以分为单因素认证以及多因素认证。使用多因素认证可以提高攻击的门槛。</li>
 </ul>
 <p>session</p>
 <ul>
-<li>
+<li class="">
 <p>用户登录之后，服务端创建的会话，保存用户的状态和相关信息。</p>
 </li>
-<li>
+<li class="">
 <p>产生 session 保持攻击等问题。</p>
 <ul>
-<li>利用服务端对于活动的 session 不销毁的特点。攻击者不停发起访问请求，让这个 session 一直存货，成为永久的后门。</li>
+<li class="">利用服务端对于活动的 session 不销毁的特点。攻击者不停发起访问请求，让这个 session 一直存货，成为永久的后门。</li>
 </ul>
 </li>
 </ul>
-<h3 class="anchor anchorWithStickyNavbar_pPUv" id="访问控制">访问控制<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6" class="hash-link" aria-label="访问控制的直接链接" title="访问控制的直接链接">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_RZRg" id="访问控制">访问控制<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6" class="hash-link" aria-label="访问控制的直接链接" title="访问控制的直接链接" translate="no">​</a></h3>
 <p>垂直权限管理，用户与权限之间的对应关系。 常常使用的 RBAC 基于角色的访问控制。比如 linux 文件系统中的权限管理，针对不同的角色分别设置不用的读写权限。</p>
 <p>水平权限管理，基于数据的访问控制，需要控制数据是否属于当前用户</p>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="加密算法与随机数">加密算法与随机数<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%95%B0" class="hash-link" aria-label="加密算法与随机数的直接链接" title="加密算法与随机数的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="加密算法与随机数">加密算法与随机数<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%95%B0" class="hash-link" aria-label="加密算法与随机数的直接链接" title="加密算法与随机数的直接链接" translate="no">​</a></h2>
 <p>在系统中对数据进行加密的加密算法和随机数算法的安全性和健壮性关乎整个系统的安全性。</p>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="ddos-分布式拒绝服务">DDOS 分布式拒绝服务<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#ddos-%E5%88%86%E5%B8%83%E5%BC%8F%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1" class="hash-link" aria-label="DDOS 分布式拒绝服务的直接链接" title="DDOS 分布式拒绝服务的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="ddos-分布式拒绝服务">DDOS 分布式拒绝服务<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#ddos-%E5%88%86%E5%B8%83%E5%BC%8F%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1" class="hash-link" aria-label="DDOS 分布式拒绝服务的直接链接" title="DDOS 分布式拒绝服务的直接链接" translate="no">​</a></h2>
 <p>本质是利用合理的请求造成资源过载，导致服务不可用。</p>
 <p>网络层 DDOS</p>
 <ul>
-<li>利用 TCP/IP 协议的特征，大量发包。</li>
-<li>有 SYN flood ,UDP flood, ICMP flood 等。</li>
-<li>易于拦截，价值不大。</li>
+<li class="">利用 TCP/IP 协议的特征，大量发包。</li>
+<li class="">有 SYN flood ,UDP flood, ICMP flood 等。</li>
+<li class="">易于拦截，价值不大。</li>
 </ul>
 <p>应用层 DDOS</p>
 <ul>
-<li>
+<li class="">
 <p>大量高频的合法请求，一般是通过代理服务器或者僵尸网络发送，也达到了快速消耗目标主机资源，造成网络堵塞，服务不可用的问题。</p>
 </li>
-<li>
+<li class="">
 <p>DNS flood,HTTP 慢连接攻击，CC 攻击等</p>
 </li>
-<li>
+<li class="">
 <p>请求合法，很难识别和过滤</p>
 </li>
 </ul>
 <p>防御：</p>
 <ul>
-<li>常见的对抗手段：限制每个 IP 的请求频率。</li>
+<li class="">常见的对抗手段：限制每个 IP 的请求频率。</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="web-服务器安全">web 服务器安全<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#web-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8" class="hash-link" aria-label="web 服务器安全的直接链接" title="web 服务器安全的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="web-服务器安全">web 服务器安全<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#web-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8" class="hash-link" aria-label="web 服务器安全的直接链接" title="web 服务器安全的直接链接" translate="no">​</a></h2>
 <p>应用部署时的运行环境安全。主要关注自身是否安全，以及是否提供了可使用的安全功能。</p>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="安全开发流程">安全开发流程<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B" class="hash-link" aria-label="安全开发流程的直接链接" title="安全开发流程的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="安全开发流程">安全开发流程<a href="https://brightzoe.github.io/blog/2022/08/29/web-safety#%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B" class="hash-link" aria-label="安全开发流程的直接链接" title="安全开发流程的直接链接" translate="no">​</a></h2>
 <ul>
-<li>SDL Security Development Lifecycle</li>
+<li class="">SDL Security Development Lifecycle</li>
 </ul>
 <p>瀑布流开发模型中的安全开发生命周期。但国内的公司一般采用敏捷开发，快速迭代出产品的模式，这套 SDL 模型则显得有些厚重。按照产品的开发周期，分别介绍常用的 SDL 实施方法。</p>
 <p>需求分析与设计阶段</p>
 <ul>
-<li>
+<li class="">
 <p>在需求分析阶段，需要了解产品的背景以及需要应对的场景，才能给出相应的建议。</p>
 </li>
-<li>
+<li class="">
 <p>需要了解项目中是否包含一些第三方软件，评估第三方软件的安全问题，很多时候入侵是从第三方软件开始的。</p>
 </li>
 </ul>
 <p>开发阶段</p>
 <ul>
-<li>安全是为业务服务。</li>
-<li>力求实现代码上的安全，分析可能出现的漏洞，并在代码上提供可行的解决方案。</li>
-<li>采用代码安全审计工具，将代码审计工作前置，放入代码开发规范中从而减少问题。</li>
+<li class="">安全是为业务服务。</li>
+<li class="">力求实现代码上的安全，分析可能出现的漏洞，并在代码上提供可行的解决方案。</li>
+<li class="">采用代码安全审计工具，将代码审计工作前置，放入代码开发规范中从而减少问题。</li>
 </ul>
 <p>测试阶段</p>
 <ul>
-<li>
+<li class="">
 <p>安全测试。独立于代码审计，对于逻辑相对复杂的代码，难以通过代码审计发现。</p>
 <ul>
-<li>
+<li class="">
 <p>自动化测试和手动测试。</p>
 <p>自动化测试工具，覆盖性的测试，对项目或产品进行漏洞扫描。</p>
 <p>手动测试。部分设计系统或业务的逻辑无法通过自动化测试完成。以及自动化测试的结果也需要再次确认，因为自动化测试可能存在误报或漏报的问题。</p>
@@ -284,55 +284,55 @@
             <pubDate>Tue, 07 Jun 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[为本博客（docusaurus）添加 disqus 评论系统。]]></description>
             <content:encoded><![CDATA[<p>为本博客（docusaurus）添加 disqus 评论系统。</p>
-<p>首先需要在 disqus 有一个账号，没有需要先<a href="https://disqus.com/" target="_blank" rel="noopener noreferrer">注册</a>。选择 "get started" =&gt;" I want to install Disqus on my site" 。在 disqus 上配置对应的网站信息，配置的 Website Name 就是后面组件中要用到的 shortname。</p>
-<p><img loading="lazy" src="https://s2.loli.net/2022/06/20/kTYx62bD4oc5KaP.png" alt="" class="img_VdRt"></p>
+<p>首先需要在 disqus 有一个账号，没有需要先<a href="https://disqus.com/" target="_blank" rel="noopener noreferrer" class="">注册</a>。选择 "get started" =&gt;" I want to install Disqus on my site" 。在 disqus 上配置对应的网站信息，配置的 Website Name 就是后面组件中要用到的 shortname。</p>
+<p><img decoding="async" loading="lazy" src="https://s2.loli.net/2022/06/20/kTYx62bD4oc5KaP.png" alt="" class="img_RzGf"></p>
 <p>disqus 准备好，接下来我们就要在 docusaurus 中去使用了 🐾~</p>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="暴露出要添加部分的组件代码">暴露出要添加部分的组件代码<a href="https://brightzoe.github.io/blog/2022/06/07/add-comment-system-on-blog#%E6%9A%B4%E9%9C%B2%E5%87%BA%E8%A6%81%E6%B7%BB%E5%8A%A0%E9%83%A8%E5%88%86%E7%9A%84%E7%BB%84%E4%BB%B6%E4%BB%A3%E7%A0%81" class="hash-link" aria-label="�暴露出要添加部分的组件代码的直接链接" title="暴露出要添加部分的组件代码的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="暴露出要添加部分的组件代码">暴露出要添加部分的组件代码<a href="https://brightzoe.github.io/blog/2022/06/07/add-comment-system-on-blog#%E6%9A%B4%E9%9C%B2%E5%87%BA%E8%A6%81%E6%B7%BB%E5%8A%A0%E9%83%A8%E5%88%86%E7%9A%84%E7%BB%84%E4%BB%B6%E4%BB%A3%E7%A0%81" class="hash-link" aria-label="暴露出要添加部分的组件代码的直接链接" title="暴露出要添加部分的组件代码的直接链接" translate="no">​</a></h2>
 <p>为 blog 功能添加评论，docusaurus 中对应的组件名是 <code>BlogPostPage</code>，我们将它 <code>swizzle</code> 出来。</p>
-<div class="language-bash codeBlockContainer_pVuc theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_tPy1"><pre tabindex="0" class="prism-code language-bash codeBlock_YRIs thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_PkAf"><span class="token-line" style="color:#F8F8F2"><span class="token plain">yarn swizzle @docusaurus/theme-classic BlogPostPage  --danger</span><br></span></code></pre><div class="buttonGroup_N6rP"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_B7x5" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_CsKR"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_psnU"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="language-bash codeBlockContainer_ZBm_ theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_hOyd"><pre tabindex="0" class="prism-code language-bash codeBlock_dshx thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_VV2A"><span class="token-line" style="color:#F8F8F2"><span class="token plain">yarn swizzle @docusaurus/theme-classic BlogPostPage  --danger</span><br></span></code></pre></div></div>
 <blockquote>
 <p>如果需要 typescript，在 <code>--danger</code> 后面加上 <code>--typescript</code>。</p>
 </blockquote>
-<p><code>swizzle</code> 命令会把当前 theme 的组件代码暴露出来，然后把它们替换到当前项目的目录下。<code>swizzle</code> 命令是有一定风险的，使用前先阅读文档。 <a href="https://docusaurus.io/docs/next/swizzling" target="_blank" rel="noopener noreferrer">Swizzling | Docusaurus</a></p>
+<p><code>swizzle</code> 命令会把当前 theme 的组件代码暴露出来，然后把它们替换到当前项目的目录下。<code>swizzle</code> 命令是有一定风险的，使用前先阅读文档。 <a href="https://docusaurus.io/docs/next/swizzling" target="_blank" rel="noopener noreferrer" class="">Swizzling | Docusaurus</a></p>
 <p><code>swizzle</code> 有两个选项，一个是<code>wrap</code>，一个是<code>eject</code>。<code>wrap</code>是包裹当前的组件，添加一些内容。<code>eject</code>是暴露出当前组件的所有结构，进行一些修改，暴露更彻底，风险更大，如果<code>wrap</code>能满足要求则不必使用<code>eject</code>。</p>
 <p>这里为了调整评论组件的位置，我选择了<code>eject</code> 选项。</p>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="添加对应评论组件">添加对应评论组件<a href="https://brightzoe.github.io/blog/2022/06/07/add-comment-system-on-blog#%E6%B7%BB%E5%8A%A0%E5%AF%B9%E5%BA%94%E8%AF%84%E8%AE%BA%E7%BB%84%E4%BB%B6" class="hash-link" aria-label="添加对应评论组件的直接链接" title="添加对应评论组件的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="添加对应评论组件">添加对应评论组件<a href="https://brightzoe.github.io/blog/2022/06/07/add-comment-system-on-blog#%E6%B7%BB%E5%8A%A0%E5%AF%B9%E5%BA%94%E8%AF%84%E8%AE%BA%E7%BB%84%E4%BB%B6" class="hash-link" aria-label="添加对应评论组件的直接链接" title="添加对应评论组件的直接链接" translate="no">​</a></h2>
 <p>当 <code>swizzle</code> 命令执行完毕后，在<code>src/theme/</code>下会多出一个文件名为<code>BlogPostPage</code>。</p>
 <p>需要安装 disqus 对应组件包 <code>disqus-react</code></p>
-<div class="language-bash codeBlockContainer_pVuc theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_tPy1"><pre tabindex="0" class="prism-code language-bash codeBlock_YRIs thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_PkAf"><span class="token-line" style="color:#F8F8F2"><span class="token plain">yarn add disqus-react</span><br></span></code></pre><div class="buttonGroup_N6rP"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_B7x5" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_CsKR"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_psnU"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="language-bash codeBlockContainer_ZBm_ theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_hOyd"><pre tabindex="0" class="prism-code language-bash codeBlock_dshx thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_VV2A"><span class="token-line" style="color:#F8F8F2"><span class="token plain">yarn add disqus-react</span><br></span></code></pre></div></div>
 <p>在<code>src/theme/BlogPostPage</code>文件中添加如下代码：</p>
-<div class="language-tsx codeBlockContainer_pVuc theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_tPy1"><pre tabindex="0" class="prism-code language-tsx codeBlock_YRIs thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_PkAf"><span class="token-line" style="color:#F8F8F2"><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">import</span><span class="token plain"> </span><span class="token imports punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token imports"> </span><span class="token imports maybe-class-name">DiscussionEmbed</span><span class="token imports"> </span><span class="token imports punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">from</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">'disqus-react'</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token comment" style="color:rgb(98, 114, 164)">// BlogPostPageContent 组件中</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">const</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> title</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> description</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> tags</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> permalink </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"> </span><span class="token operator">=</span><span class="token plain"> metadata</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"> </span><span class="token comment" style="color:rgb(98, 114, 164)">//docusaurus 暴露出来的</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">const</span><span class="token plain"> fmtId </span><span class="token operator">=</span><span class="token plain"> permalink</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token method function property-access" style="color:rgb(80, 250, 123)">replace</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-source language-regex anchor function" style="color:rgb(80, 250, 123)">^</span><span class="token regex regex-source language-regex escape">\/</span><span class="token regex regex-delimiter">/</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">''</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token method function property-access" style="color:rgb(80, 250, 123)">replaceAll</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-source language-regex char-class char-class-punctuation punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token regex regex-source language-regex char-class char-set class-name">\s</span><span class="token regex regex-source language-regex char-class escape">\/</span><span class="token regex regex-source language-regex char-class char-class-punctuation punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-flags">gi</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">'-'</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">const</span><span class="token plain"> disqusId </span><span class="token operator">=</span><span class="token plain"> fmtId </span><span class="token operator">==</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">''</span><span class="token plain"> </span><span class="token operator">?</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">'main'</span><span class="token plain"> </span><span class="token operator">:</span><span class="token plain"> fmtId</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token comment" style="color:rgb(98, 114, 164)">// 在想放置的位置添加DiscussionEmbed组件。一般放在nextItem/prevItem之后。</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">&lt;</span><span class="token tag class-name" style="color:rgb(255, 121, 198)">DiscussionEmbed</span><span class="token tag" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag" style="color:rgb(255, 121, 198)">  </span><span class="token tag attr-name" style="color:rgb(241, 250, 140)">shortname</span><span class="token tag attr-value punctuation attr-equals" style="color:rgb(248, 248, 242)">=</span><span class="token tag attr-value punctuation" style="color:rgb(248, 248, 242)">"</span><span class="token tag attr-value" style="color:rgb(255, 121, 198)">yourshortname</span><span class="token tag attr-value punctuation" style="color:rgb(248, 248, 242)">"</span><span class="token tag" style="color:rgb(255, 121, 198)"> </span><span class="token tag comment" style="color:rgb(98, 114, 164)">//在disqus 配置的</span><span class="token tag" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag" style="color:rgb(255, 121, 198)">  </span><span class="token tag attr-name" style="color:rgb(241, 250, 140)">config</span><span class="token tag script language-javascript script-punctuation punctuation" style="color:rgb(248, 248, 242)">=</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)">    url</span><span class="token tag script language-javascript operator" style="color:rgb(255, 121, 198)">:</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"> </span><span class="token tag script language-javascript string" style="color:rgb(255, 121, 198)">'https://brightzoe.top'</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"> </span><span class="token tag script language-javascript operator" style="color:rgb(255, 121, 198)">+</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"> permalink</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"> </span><span class="token tag script language-javascript comment" style="color:rgb(98, 114, 164)">//完整网址</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)">    identifier</span><span class="token tag script language-javascript operator" style="color:rgb(255, 121, 198)">:</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"> disqusId</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"> </span><span class="token tag script language-javascript comment" style="color:rgb(98, 114, 164)">//识别符</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)">    title</span><span class="token tag script language-javascript operator" style="color:rgb(255, 121, 198)">:</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"> title</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)">  </span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token tag" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag" style="color:rgb(255, 121, 198)"></span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">/&gt;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><br></span></code></pre><div class="buttonGroup_N6rP"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_B7x5" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_CsKR"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_psnU"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="为-doc-部分添加评论组件">为 doc 部分添加评论组件<a href="https://brightzoe.github.io/blog/2022/06/07/add-comment-system-on-blog#%E4%B8%BA-doc-%E9%83%A8%E5%88%86%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%BB%84%E4%BB%B6" class="hash-link" aria-label="为 doc 部分添加评论组件的直接链接" title="为 doc 部分添加评论组件的直接链接">​</a></h2>
+<div class="language-tsx codeBlockContainer_ZBm_ theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_hOyd"><pre tabindex="0" class="prism-code language-tsx codeBlock_dshx thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_VV2A"><span class="token-line" style="color:#F8F8F2"><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">import</span><span class="token plain"> </span><span class="token imports punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token imports"> </span><span class="token imports maybe-class-name">DiscussionEmbed</span><span class="token imports"> </span><span class="token imports punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">from</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">'disqus-react'</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token comment" style="color:rgb(98, 114, 164)">// BlogPostPageContent 组件中</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">const</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> title</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> description</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> tags</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> permalink </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"> </span><span class="token operator">=</span><span class="token plain"> metadata</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"> </span><span class="token comment" style="color:rgb(98, 114, 164)">//docusaurus 暴露出来的</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">const</span><span class="token plain"> fmtId </span><span class="token operator">=</span><span class="token plain"> permalink</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token method function property-access" style="color:rgb(80, 250, 123)">replace</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-source language-regex anchor function" style="color:rgb(80, 250, 123)">^</span><span class="token regex regex-source language-regex escape">\/</span><span class="token regex regex-delimiter">/</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">''</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token method function property-access" style="color:rgb(80, 250, 123)">replaceAll</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-source language-regex char-class char-class-punctuation punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token regex regex-source language-regex char-class char-set class-name">\s</span><span class="token regex regex-source language-regex char-class escape">\/</span><span class="token regex regex-source language-regex char-class char-class-punctuation punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-flags">gi</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">'-'</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">const</span><span class="token plain"> disqusId </span><span class="token operator">=</span><span class="token plain"> fmtId </span><span class="token operator">==</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">''</span><span class="token plain"> </span><span class="token operator">?</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">'main'</span><span class="token plain"> </span><span class="token operator">:</span><span class="token plain"> fmtId</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token comment" style="color:rgb(98, 114, 164)">// 在想放置的位置添加DiscussionEmbed组件。一般放在nextItem/prevItem之后。</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">&lt;</span><span class="token tag class-name" style="color:rgb(255, 121, 198)">DiscussionEmbed</span><span class="token tag" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag" style="color:rgb(255, 121, 198)">  </span><span class="token tag attr-name" style="color:rgb(241, 250, 140)">shortname</span><span class="token tag attr-value punctuation attr-equals" style="color:rgb(248, 248, 242)">=</span><span class="token tag attr-value punctuation" style="color:rgb(248, 248, 242)">"</span><span class="token tag attr-value" style="color:rgb(255, 121, 198)">yourshortname</span><span class="token tag attr-value punctuation" style="color:rgb(248, 248, 242)">"</span><span class="token tag" style="color:rgb(255, 121, 198)"> </span><span class="token tag comment" style="color:rgb(98, 114, 164)">//在disqus 配置的</span><span class="token tag" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag" style="color:rgb(255, 121, 198)">  </span><span class="token tag attr-name" style="color:rgb(241, 250, 140)">config</span><span class="token tag script language-javascript script-punctuation punctuation" style="color:rgb(248, 248, 242)">=</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)">    url</span><span class="token tag script language-javascript operator" style="color:rgb(255, 121, 198)">:</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"> </span><span class="token tag script language-javascript string" style="color:rgb(255, 121, 198)">'https://brightzoe.top'</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"> </span><span class="token tag script language-javascript operator" style="color:rgb(255, 121, 198)">+</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"> permalink</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"> </span><span class="token tag script language-javascript comment" style="color:rgb(98, 114, 164)">//完整网址</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)">    identifier</span><span class="token tag script language-javascript operator" style="color:rgb(255, 121, 198)">:</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"> disqusId</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"> </span><span class="token tag script language-javascript comment" style="color:rgb(98, 114, 164)">//识别符</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)">    title</span><span class="token tag script language-javascript operator" style="color:rgb(255, 121, 198)">:</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"> title</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag script language-javascript" style="color:rgb(255, 121, 198)">  </span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token tag" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag" style="color:rgb(255, 121, 198)"></span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">/&gt;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="为-doc-部分添加评论组件">为 doc 部分添加评论组件<a href="https://brightzoe.github.io/blog/2022/06/07/add-comment-system-on-blog#%E4%B8%BA-doc-%E9%83%A8%E5%88%86%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E7%BB%84%E4%BB%B6" class="hash-link" aria-label="为 doc 部分添加评论组件的直接链接" title="为 doc 部分添加评论组件的直接链接" translate="no">​</a></h2>
 <p>前面只是为 docusaurus 的 blog 部分添加了评论组件，如果需要为 doc 部分添加评论组件，那就暴露出 doc 部分对应的组件，名字叫做<code>DocItem</code></p>
-<div class="language-bash codeBlockContainer_pVuc theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_tPy1"><pre tabindex="0" class="prism-code language-bash codeBlock_YRIs thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_PkAf"><span class="token-line" style="color:#F8F8F2"><span class="token plain">yarn swizzle @docusaurus/theme-classic DocItem  --danger</span><br></span></code></pre><div class="buttonGroup_N6rP"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_B7x5" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_CsKR"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_psnU"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="language-bash codeBlockContainer_ZBm_ theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_hOyd"><pre tabindex="0" class="prism-code language-bash codeBlock_dshx thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_VV2A"><span class="token-line" style="color:#F8F8F2"><span class="token plain">yarn swizzle @docusaurus/theme-classic DocItem  --danger</span><br></span></code></pre></div></div>
 <p>同上添加对应<code>DiscussionEmbed</code> 组件即可。</p>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="遇到的问题">遇到的问题<a href="https://brightzoe.github.io/blog/2022/06/07/add-comment-system-on-blog#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98" class="hash-link" aria-label="遇到的问题的直接链接" title="遇到的问题的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="遇到的问题">遇到的问题<a href="https://brightzoe.github.io/blog/2022/06/07/add-comment-system-on-blog#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98" class="hash-link" aria-label="遇到的问题的直接链接" title="遇到的问题的直接链接" translate="no">​</a></h2>
 <ul>
-<li>
+<li class="">
 <p>disqus 不能加载，可能是因为没有配置 disqus 的网址，或者是因为 disqus 的网址配置错误。</p>
 <p>url 不完整。必须完整，例如：<code>https://zoe.me/blog/xx</code></p>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="一些可选用的评论系统">一些可选用的评论系统<a href="https://brightzoe.github.io/blog/2022/06/07/add-comment-system-on-blog#%E4%B8%80%E4%BA%9B%E5%8F%AF%E9%80%89%E7%94%A8%E7%9A%84%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F" class="hash-link" aria-label="一些可选用的评论系统的直接链接" title="一些可选用的评论系统的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="一些可选用的评论系统">一些可选用的评论系统<a href="https://brightzoe.github.io/blog/2022/06/07/add-comment-system-on-blog#%E4%B8%80%E4%BA%9B%E5%8F%AF%E9%80%89%E7%94%A8%E7%9A%84%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F" class="hash-link" aria-label="一些可选用的评论系统的直接链接" title="一些可选用的评论系统的直接链接" translate="no">​</a></h2>
 <p>disqus：第三方评论托管系统，用户量大，lazy-loaded。</p>
 <blockquote>
-<p><a href="https://github.com/disqus/disqus-react" target="_blank" rel="noopener noreferrer">disqus/disqus-react: A React component for Disqus</a></p>
+<p><a href="https://github.com/disqus/disqus-react" target="_blank" rel="noopener noreferrer" class="">disqus/disqus-react: A React component for Disqus</a></p>
 </blockquote>
 <p>gitalk： 开源，利用 GitHub issues，被广泛使用的。</p>
 <blockquote>
-<p><a href="https://github.com/gitalk/gitalk" target="_blank" rel="noopener noreferrer">gitalk/gitalk: Gitalk is a modern comment component based on GitHub Issue and Preact.</a></p>
+<p><a href="https://github.com/gitalk/gitalk" target="_blank" rel="noopener noreferrer" class="">gitalk/gitalk: Gitalk is a modern comment component based on GitHub Issue and Preact.</a></p>
 </blockquote>
 <p>giscus：开源的，利用 GitHub Discussions。</p>
 <blockquote>
-<p><a href="https://github.com/giscus/giscus" target="_blank" rel="noopener noreferrer">giscus/giscus: A comment system powered by GitHub Discussions.</a></p>
+<p><a href="https://github.com/giscus/giscus" target="_blank" rel="noopener noreferrer" class="">giscus/giscus: A comment system powered by GitHub Discussions.</a></p>
 </blockquote>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="reference">Reference<a href="https://brightzoe.github.io/blog/2022/06/07/add-comment-system-on-blog#reference" class="hash-link" aria-label="Reference的直接链接" title="Reference的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="reference">Reference<a href="https://brightzoe.github.io/blog/2022/06/07/add-comment-system-on-blog#reference" class="hash-link" aria-label="Reference的直接链接" title="Reference的直接链接" translate="no">​</a></h2>
 <ul>
-<li><a href="https://docusaurus.io/docs/swizzling#ejecting" target="_blank" rel="noopener noreferrer">Swizzling | Docusaurus</a></li>
-<li><a href="https://madrus4u.com/blog/blog-comments#prepare-the-frontmatter" target="_blank" rel="noopener noreferrer">Add Disqus Comments to Docusaurus Blog Posts | Madrus's Webdings</a></li>
-<li><a href="https://github.com/Chasen-Zhang/blog/blob/5d61d247e53071b399c81b3b7873023d4cb4ad76/src/theme/BlogPostPage/index.js" target="_blank" rel="noopener noreferrer">blog/index.js at 5d61d247e53071b399c81b3b7873023d4cb4ad76 · Chasen-Zhang/blog</a></li>
-<li><a href="https://kdmw.dev/docusaurus/disqus-integration" target="_blank" rel="noopener noreferrer">Integrate with Disqus | kdmw</a></li>
-<li><a href="https://github.com/kkdm/kdmw/blob/main/src/theme/DocItem/index.js" target="_blank" rel="noopener noreferrer">kdmw/index.js at main · kkdm/kdmw</a></li>
+<li class=""><a href="https://docusaurus.io/docs/swizzling#ejecting" target="_blank" rel="noopener noreferrer" class="">Swizzling | Docusaurus</a></li>
+<li class=""><a href="https://madrus4u.com/blog/blog-comments#prepare-the-frontmatter" target="_blank" rel="noopener noreferrer" class="">Add Disqus Comments to Docusaurus Blog Posts | Madrus's Webdings</a></li>
+<li class=""><a href="https://github.com/Chasen-Zhang/blog/blob/5d61d247e53071b399c81b3b7873023d4cb4ad76/src/theme/BlogPostPage/index.js" target="_blank" rel="noopener noreferrer" class="">blog/index.js at 5d61d247e53071b399c81b3b7873023d4cb4ad76 · Chasen-Zhang/blog</a></li>
+<li class=""><a href="https://kdmw.dev/docusaurus/disqus-integration" target="_blank" rel="noopener noreferrer" class="">Integrate with Disqus | kdmw</a></li>
+<li class=""><a href="https://github.com/kkdm/kdmw/blob/main/src/theme/DocItem/index.js" target="_blank" rel="noopener noreferrer" class="">kdmw/index.js at main · kkdm/kdmw</a></li>
 </ul>]]></content:encoded>
             <category>docusaurus</category>
             <category>disqus</category>
@@ -345,8 +345,8 @@
             <guid>https://brightzoe.github.io/blog/2021/11/05/the-little-schemer</guid>
             <pubDate>Fri, 05 Nov 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[环境配置使用 VS Code 编写 scheme ,参考: Windows + VS Code 搭建 Scheme 开发环境 - 知乎]]></description>
-            <content:encoded><![CDATA[<p>环境配置使用 VS Code 编写 scheme ,参考: <a href="https://zhuanlan.zhihu.com/p/405246479" target="_blank" rel="noopener noreferrer">Windows + VS Code 搭建 Scheme 开发环境 - 知乎</a></p>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="基本语法">基本语法<a href="https://brightzoe.github.io/blog/2021/11/05/the-little-schemer#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95" class="hash-link" aria-label="基本语法的直接链接" title="基本语法的直接链接">​</a></h2>
+            <content:encoded><![CDATA[<p>环境配置使用 VS Code 编写 scheme ,参考: <a href="https://zhuanlan.zhihu.com/p/405246479" target="_blank" rel="noopener noreferrer" class="">Windows + VS Code 搭建 Scheme 开发环境 - 知乎</a></p>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="基本语法">基本语法<a href="https://brightzoe.github.io/blog/2021/11/05/the-little-schemer#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95" class="hash-link" aria-label="基本语法的直接链接" title="基本语法的直接链接" translate="no">​</a></h2>
 <p><code>atom</code>: 元子 <code>atom</code></p>
 <p><code>list</code>: 列表 <code>(atom ss)</code> <code>()</code></p>
 <p><code>car</code>: list 里的第一个 元素 <code>(car l)</code></p>
@@ -376,41 +376,41 @@
             <guid>https://brightzoe.github.io/blog/welcome</guid>
             <pubDate>Thu, 09 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[About]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_pPUv" id="about">About<a href="https://brightzoe.github.io/blog/welcome#about" class="hash-link" aria-label="About的直接链接" title="About的直接链接">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="about">About<a href="https://brightzoe.github.io/blog/welcome#about" class="hash-link" aria-label="About的直接链接" title="About的直接链接" translate="no">​</a></h2>
 <p>你好，这里是我的 blog，或者可以说是我的 wiki 文档。</p>
-<p>本博客使用 <code>docusaurus</code> 搭建，想要进一步了解请参阅官方文档 <a href="https://docusaurus.io/docs" target="_blank" rel="noopener noreferrer">Docusaurus docs</a></p>
-<p>前期使用<code>docsify</code> 作为文档网站，2021.09 迁移至<code>docusaurus</code>。 <a href="https://docsify.js.org/#/zh-cn/" target="_blank" rel="noopener noreferrer">Docsify docs</a></p>
+<p>本博客使用 <code>docusaurus</code> 搭建，想要进一步了解请参阅官方文档 <a href="https://docusaurus.io/docs" target="_blank" rel="noopener noreferrer" class="">Docusaurus docs</a></p>
+<p>前期使用<code>docsify</code> 作为文档网站，2021.09 迁移至<code>docusaurus</code>。 <a href="https://docsify.js.org/#/zh-cn/" target="_blank" rel="noopener noreferrer" class="">Docsify docs</a></p>
 <p>欢迎来到这里，如果对你有些帮助，我会很开心。有任何想说的或建议都欢迎留言。</p>
-<div class="theme-admonition theme-admonition-info admonition_sN92 alert alert--info"><div class="admonitionHeading_zMCR"><span class="admonitionIcon_BKm4"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>信息</div><div class="admonitionContent_F1C5"><p>本 blog 中技术相关的文档，有参考来自网络的很多内容，包括来自 StackOverFlow, 掘金，思否，微信公众号，知乎等等。我在撰写文章，参考一些优秀内容时会记得添加到 References 注明出处, 若有疏漏，或者不小心侵权了，请放心联系我，尊重所有人的版权。</p></div></div>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="site-content">Site Content<a href="https://brightzoe.github.io/blog/welcome#site-content" class="hash-link" aria-label="Site Content的直接链接" title="Site Content的直接链接">​</a></h2>
+<div class="theme-admonition theme-admonition-info admonition_EBEo alert alert--info"><div class="admonitionHeading_wXUf"><span class="admonitionIcon_UPSp"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>信息</div><div class="admonitionContent_no1K"><p>本 blog 中技术相关的文档，有参考来自网络的很多内容，包括来自 StackOverFlow, 掘金，思否，微信公众号，知乎等等。我在撰写文章，参考一些优秀内容时会记得添加到 References 注明出处, 若有疏漏，或者不小心侵权了，请放心联系我，尊重所有人的版权。</p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="site-content">Site Content<a href="https://brightzoe.github.io/blog/welcome#site-content" class="hash-link" aria-label="Site Content的直接链接" title="Site Content的直接链接" translate="no">​</a></h2>
 <p>截至目前，本 blog 的技术相关文档还是以笔记为主，记录本人在技术学习过程中对参考资料的整理，以及练习某些技术的总结。</p>
 <p>以后在整理文档时，会在相关内容处直接放上参考，来源链接，并同时把链接放到最后‘Reference’处，方便使用。</p>
 <blockquote>
 <p>近期阅读参考‘掘金’比较多。 2021-10</p>
 </blockquote>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="how-to-use-docusaurus">How to use docusaurus<a href="https://brightzoe.github.io/blog/welcome#how-to-use-docusaurus" class="hash-link" aria-label="How to use docusaurus的直接链接" title="How to use docusaurus的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="how-to-use-docusaurus">How to use docusaurus<a href="https://brightzoe.github.io/blog/welcome#how-to-use-docusaurus" class="hash-link" aria-label="How to use docusaurus的直接链接" title="How to use docusaurus的直接链接" translate="no">​</a></h2>
 <p>以下为个人使用 docusaurus 的 doc 参考，更多请直接参考官方文档。</p>
-<h3 class="anchor anchorWithStickyNavbar_pPUv" id="docusaurus-blogging-features">Docusaurus blogging features<a href="https://brightzoe.github.io/blog/welcome#docusaurus-blogging-features" class="hash-link" aria-label="Docusaurus blogging features的直接链接" title="Docusaurus blogging features的直接链接">​</a></h3>
-<p><a href="https://docusaurus.io/docs/blog" target="_blank" rel="noopener noreferrer">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog" target="_blank" rel="noopener noreferrer">blog plugin</a>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_RZRg" id="docusaurus-blogging-features">Docusaurus blogging features<a href="https://brightzoe.github.io/blog/welcome#docusaurus-blogging-features" class="hash-link" aria-label="Docusaurus blogging features的直接链接" title="Docusaurus blogging features的直接链接" translate="no">​</a></h3>
+<p><a href="https://docusaurus.io/docs/blog" target="_blank" rel="noopener noreferrer" class="">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog" target="_blank" rel="noopener noreferrer" class="">blog plugin</a>.</p>
 <p>Simply add Markdown files (or folders) to the <code>blog</code> directory.</p>
 <p>Regular blog authors can be added to <code>authors.yml</code>.</p>
 <p>The blog post date can be extracted from filenames, such as:</p>
 <ul>
-<li><code>2019-05-30-welcome.md</code></li>
-<li><code>2019-05-30-welcome/index.md</code></li>
+<li class=""><code>2019-05-30-welcome.md</code></li>
+<li class=""><code>2019-05-30-welcome/index.md</code></li>
 </ul>
 <p>A blog post folder can be convenient to co-locate blog post images:</p>
-<p><img loading="lazy" alt="Docusaurus Plushie" src="https://brightzoe.github.io/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500" class="img_VdRt"></p>
+<p><img decoding="async" loading="lazy" alt="Docusaurus Plushie" src="https://brightzoe.github.io/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500" class="img_RzGf"></p>
 <p>The blog supports tags as well!</p>
 <p>Use a <code>&lt;!--truncate--&gt;</code> comment to limit blog post size in the list view.</p>
-<div class="theme-admonition theme-admonition-note admonition_sN92 alert alert--secondary"><div class="admonitionHeading_zMCR"><span class="admonitionIcon_BKm4"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>备注</div><div class="admonitionContent_F1C5"><p>Some <strong>content</strong> with <em>markdown</em> <code>syntax</code>.</p></div></div>
-<div class="theme-admonition theme-admonition-info admonition_sN92 alert alert--info"><div class="admonitionHeading_zMCR"><span class="admonitionIcon_BKm4"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>信息</div><div class="admonitionContent_F1C5"><p>Some <strong>content</strong> with <em>markdown</em> <code>syntax</code>.</p></div></div>
-<div class="theme-admonition theme-admonition-caution admonition_sN92 alert alert--warning"><div class="admonitionHeading_zMCR"><span class="admonitionIcon_BKm4"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>警告</div><div class="admonitionContent_F1C5"><p>Some <strong>content</strong> with <em>markdown</em> <code>syntax</code>.</p></div></div>
-<div class="theme-admonition theme-admonition-danger admonition_sN92 alert alert--danger"><div class="admonitionHeading_zMCR"><span class="admonitionIcon_BKm4"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg></span>危险</div><div class="admonitionContent_F1C5"><p>Some <strong>content</strong> with <em>markdown</em> <code>syntax</code>.</p></div></div>
-<p>Blog posts support <a href="https://docusaurus.io/docs/markdown-features" target="_blank" rel="noopener noreferrer">Docusaurus Markdown features</a>, such as <a href="https://mdxjs.com/" target="_blank" rel="noopener noreferrer">MDX</a>.</p>
-<div class="theme-admonition theme-admonition-tip admonition_sN92 alert alert--success"><div class="admonitionHeading_zMCR"><span class="admonitionIcon_BKm4"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>提示</div><div class="admonitionContent_F1C5"><p>Use the power of React to create interactive blog posts. <button>Click me!</button></p></div></div>
-<h3 class="anchor anchorWithStickyNavbar_pPUv" id="using-interactive-code-editor">Using Interactive code editor<a href="https://brightzoe.github.io/blog/welcome#using-interactive-code-editor" class="hash-link" aria-label="Using Interactive code editor的直接链接" title="Using Interactive code editor的直接链接">​</a></h3>
-<div class="playgroundContainer_n482"><div class="playgroundHeader_Zc1i">实时编辑器</div><div class="playgroundEditor_Izz_"><pre class="prism-code language-tsx" style="margin:0;outline:none;padding:10px;font-family:inherit;color:#F8F8F2;background-color:#282A36" spellcheck="false"><span class="token-line" style="color:#F8F8F2"><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">function</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">Clock</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">props</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span>
+<div class="theme-admonition theme-admonition-note admonition_EBEo alert alert--secondary"><div class="admonitionHeading_wXUf"><span class="admonitionIcon_UPSp"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>备注</div><div class="admonitionContent_no1K"><p>Some <strong>content</strong> with <em>markdown</em> <code>syntax</code>.</p></div></div>
+<div class="theme-admonition theme-admonition-info admonition_EBEo alert alert--info"><div class="admonitionHeading_wXUf"><span class="admonitionIcon_UPSp"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>信息</div><div class="admonitionContent_no1K"><p>Some <strong>content</strong> with <em>markdown</em> <code>syntax</code>.</p></div></div>
+<div class="theme-admonition theme-admonition-caution admonition_EBEo alert alert--warning"><div class="admonitionHeading_wXUf"><span class="admonitionIcon_UPSp"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>警告</div><div class="admonitionContent_no1K"><p>Some <strong>content</strong> with <em>markdown</em> <code>syntax</code>.</p></div></div>
+<div class="theme-admonition theme-admonition-danger admonition_EBEo alert alert--danger"><div class="admonitionHeading_wXUf"><span class="admonitionIcon_UPSp"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg></span>危险</div><div class="admonitionContent_no1K"><p>Some <strong>content</strong> with <em>markdown</em> <code>syntax</code>.</p></div></div>
+<p>Blog posts support <a href="https://docusaurus.io/docs/markdown-features" target="_blank" rel="noopener noreferrer" class="">Docusaurus Markdown features</a>, such as <a href="https://mdxjs.com/" target="_blank" rel="noopener noreferrer" class="">MDX</a>.</p>
+<div class="theme-admonition theme-admonition-tip admonition_EBEo alert alert--success"><div class="admonitionHeading_wXUf"><span class="admonitionIcon_UPSp"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>提示</div><div class="admonitionContent_no1K"><p>Use the power of React to create interactive blog posts. <button>Click me!</button></p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_RZRg" id="using-interactive-code-editor">Using Interactive code editor<a href="https://brightzoe.github.io/blog/welcome#using-interactive-code-editor" class="hash-link" aria-label="Using Interactive code editor的直接链接" title="Using Interactive code editor的直接链接" translate="no">​</a></h3>
+<div class="playgroundContainer_BzM0"><div class="playgroundHeader_v31Z">实时编辑器</div><div class="playgroundEditor_Wluq"><pre class="prism-code language-tsx" style="margin:0;outline:none;padding:10px;font-family:inherit;color:#F8F8F2;background-color:#282A36" spellcheck="false"><span class="token-line" style="color:#F8F8F2"><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">function</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">Clock</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">props</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span>
 </span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">const</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token plain">date</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> setDate</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain"> </span><span class="token operator">=</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">useState</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">new</span><span class="token plain"> </span><span class="token class-name">Date</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span>
 </span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token function" style="color:rgb(80, 250, 123)">useEffect</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token plain"> </span><span class="token arrow operator">=&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span>
 </span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">var</span><span class="token plain"> timerID </span><span class="token operator">=</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">setInterval</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token plain"> </span><span class="token arrow operator">=&gt;</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">tick</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token number">1000</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span>
@@ -430,34 +430,34 @@
 </span><span class="token-line" style="color:#F8F8F2"><span class="token plain-text">    </span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">&lt;/</span><span class="token tag" style="color:rgb(255, 121, 198)">div</span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">&gt;</span><span class="token plain"></span>
 </span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span>
 </span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span>
-</span></pre></div><div class="playgroundHeader_Zc1i">结果</div><div class="playgroundPreview_J3Qd"><div>Loading...</div></div></div>
-<h3 class="anchor anchorWithStickyNavbar_pPUv" id="using-sandpack">Using sandpack<a href="https://brightzoe.github.io/blog/welcome#using-sandpack" class="hash-link" aria-label="Using sandpack的直接链接" title="Using sandpack的直接链接">​</a></h3>
+</span></pre></div><div class="playgroundHeader_v31Z">结果</div><div class="playgroundPreview_uIWP"><div>Loading...</div></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_RZRg" id="using-sandpack">Using sandpack<a href="https://brightzoe.github.io/blog/welcome#using-sandpack" class="hash-link" aria-label="Using sandpack的直接链接" title="Using sandpack的直接链接" translate="no">​</a></h3>
 <ul>
-<li><a href="https://sandpack.codesandbox.io/docs/getting-started/custom-content" target="_blank" rel="noopener noreferrer">Custom Content | Sandpack</a></li>
+<li class=""><a href="https://sandpack.codesandbox.io/docs/getting-started/custom-content" target="_blank" rel="noopener noreferrer" class="">Custom Content | Sandpack</a></li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="changelog">ChangeLog<a href="https://brightzoe.github.io/blog/welcome#changelog" class="hash-link" aria-label="ChangeLog的直接链接" title="ChangeLog的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="changelog">ChangeLog<a href="https://brightzoe.github.io/blog/welcome#changelog" class="hash-link" aria-label="ChangeLog的直接链接" title="ChangeLog的直接链接" translate="no">​</a></h2>
 <ol>
-<li>
+<li class="">
 <p>2021.10 添加@codesandbox/sand-pack，直接在 md 文档里放可以运行预览的代码,自定义文件内容不是詪好用，待研究。</p>
 </li>
-<li>
-<p>2022.01 添加<code>lxgw-wenkai-screen</code>字体。字体文件较大，使用 github <a href="https://github.com/chawyehsu/lxgw-wenkai-webfont" target="_blank" rel="noopener noreferrer">chawyehsu/lxgw-wenkai-webfont: webfont package for the LXGW WenKai typeface</a> 的 node 包，优化加载。</p>
+<li class="">
+<p>2022.01 添加<code>lxgw-wenkai-screen</code>字体。字体文件较大，使用 github <a href="https://github.com/chawyehsu/lxgw-wenkai-webfont" target="_blank" rel="noopener noreferrer" class="">chawyehsu/lxgw-wenkai-webfont: webfont package for the LXGW WenKai typeface</a> 的 node 包，优化加载。</p>
 </li>
-<li>
+<li class="">
 <p>2022.06 添加 disqus 评论插件。在 blog 部分默认开启，doc 部分关闭，可以通过<code>disqus: true</code>来开启某篇文档的评论。</p>
 </li>
-<li>
+<li class="">
 <p>2023.05 添加 ts 支持，由 yarn 切换至 pnpm。</p>
-<p>依赖升级至 react18, 遇到 react 版本不兼容的问题，添加了<code>.npmrc</code>文件解决。 <a href="https://github.com/facebook/docusaurus/issues/7264" target="_blank" rel="noopener noreferrer">Migrate to React 18 · Issue #7264 · facebook/docusaurus</a></p>
+<p>依赖升级至 react18, 遇到 react 版本不兼容的问题，添加了<code>.npmrc</code>文件解决。 <a href="https://github.com/facebook/docusaurus/issues/7264" target="_blank" rel="noopener noreferrer" class="">Migrate to React 18 · Issue #7264 · facebook/docusaurus</a></p>
 </li>
-<li>
-<p>2024.01 添加 tailwindcss 支持。<a href="https://dev.to/shannonajclarke/using-tailwindcss-v3-in-docusaurus-in-5-steps-5c26" target="_blank" rel="noopener noreferrer">Using TailwindCSS v3 in Docusaurus in 5 steps</a></p>
+<li class="">
+<p>2024.01 添加 tailwindcss 支持。<a href="https://dev.to/shannonajclarke/using-tailwindcss-v3-in-docusaurus-in-5-steps-5c26" target="_blank" rel="noopener noreferrer" class="">Using TailwindCSS v3 in Docusaurus in 5 steps</a></p>
 </li>
 </ol>
-<h2 class="anchor anchorWithStickyNavbar_pPUv" id="reference">Reference<a href="https://brightzoe.github.io/blog/welcome#reference" class="hash-link" aria-label="Reference的直接链接" title="Reference的直接链接">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_RZRg" id="reference">Reference<a href="https://brightzoe.github.io/blog/welcome#reference" class="hash-link" aria-label="Reference的直接链接" title="Reference的直接链接" translate="no">​</a></h2>
 <ul>
-<li><a href="https://docusaurus.io/docs" target="_blank" rel="noopener noreferrer">Docusaurus docs</a></li>
-<li><a href="https://docusaurus.io/docs/markdown-features/code-blocks#interactive-code-editor" target="_blank" rel="noopener noreferrer">Code blocks | Docusaurus</a></li>
+<li class=""><a href="https://docusaurus.io/docs" target="_blank" rel="noopener noreferrer" class="">Docusaurus docs</a></li>
+<li class=""><a href="https://docusaurus.io/docs/markdown-features/code-blocks#interactive-code-editor" target="_blank" rel="noopener noreferrer" class="">Code blocks | Docusaurus</a></li>
 </ul>]]></content:encoded>
             <category>about</category>
             <category>docusaurus</category>
