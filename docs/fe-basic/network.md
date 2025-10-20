@@ -164,7 +164,7 @@ put 用于更新资源，具有幂等性。
 
 ### 攻击
 
-#### XSS
+#### XSS Cross-Site Scripting
 
 跨站**脚本攻击**。代码注入，运行在客户端，可能盗取用户信息。
 
@@ -176,13 +176,13 @@ put 用于更新资源，具有幂等性。
 
 > CSP 内容安全策略，建立白名单，告诉浏览器可以加载并执行哪些外部资源。可以通过 HTTP 请求头的 Content-Security-Policy 实现。
 
-#### CSRF
+#### CSRF Cross-Site Request Forgery
 
 跨站**请求伪造**攻击，冒充用户进行一些操作。比如诱导用户进入第三方站点，向被攻击网站发送跨站请求。
 
 防御：
 
-- 进行同源检测。通过 http 请求头的 referer/origin 来判断。缺点是可能屏蔽了搜索引擎的连接。
+- 进行同源检测，验证请求来源。通过 http 请求头的 referer/origin 来判断。缺点是可能屏蔽了搜索引擎的连接。
 - 设置 cookie 的 Samesite，限制 cookie 不能被第三方使用。
 
 ## 一些问题

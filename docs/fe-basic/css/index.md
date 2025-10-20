@@ -73,6 +73,21 @@ display:inline 水平方向的 margin，padding 有效，垂直方向无效。
 - webp 有损压缩，体积小
 - bmp 无损，不压缩，体积大，不适合网页
 
+:::tip how to detect webp support in project
+
+- 使用canvas, `toDataURL('image/webp').indexOf('data:image/webp') == 0` 来检测
+- 使用一张webp图片判断onload 和onerror 事件
+- 在html5中 使用：
+
+  ```html
+  <picture>
+    <source srcset="/path/to/image.webp" type="image/webp" />
+    <img src="/path/to/image.jpg" alt="insert alt text here" />
+  </picture>
+  ```
+
+:::
+
 ## CSS Sprites
 
 雪碧图，过时技术。将一个页面涉及到的所有图片都包含到一张大图，利用 background-repeat，background-position 实现图片的重复利用。
@@ -175,3 +190,7 @@ display:inline 水平方向的 margin，padding 有效，垂直方向无效。
 - sticky
 
   粘连定位。粘性定位可以被认为是相对定位和固定定位的混合。元素在跨越特定值前为相对定位，之后为固定定位,固定定位相对于他的包含块。
+
+```
+
+```

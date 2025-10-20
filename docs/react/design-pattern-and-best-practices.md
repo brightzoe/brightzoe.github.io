@@ -141,7 +141,7 @@ const MyComponent = React.memo(function Component(props) {
 
 很多种方法实现发布订阅模式：redux、use-global-state、React.createContext 等。
 
-使用 React.createContext 进行实现： [发布者订阅者模式跳过中间组件的 Render 过程 - CodeSandbox](https://codesandbox.io/s/fabuzhedingyuezhemoshitiaoguozhongjianzujiande-render-guocheng-nm7nt?file=/src/PubSubCommunicate.js)
+使用 createContext + memo 进行实现： [发布者订阅者模式跳过中间组件的 Render 过程 - CodeSandbox](https://codesandbox.io/s/fabuzhedingyuezhemoshitiaoguozhongjianzujiande-render-guocheng-nm7nt?file=/src/PubSubCommunicate.js)
 
 #### 状态下放，缩小状态影响范围
 
@@ -162,3 +162,4 @@ https://juejin.cn/post/6935584878071119885#heading-10
 - [性能！！让你的 React 组件跑得再快一点 - 政采云前端团队](https://www.zoo.team/article/react-render)
 - [React 性能优化 | 包括原理、技巧、Demo、工具使用 - 掘金](https://juejin.cn/post/6935584878071119885#heading-1)
 - [我在工作中写 React，学到了什么？性能优化篇 - 掘金](https://juejin.cn/post/6889247428797530126#heading-1)
+- [⚡️卡顿减少 95% — 记一次React性能优化实践（性能篇） - 掘金](https://juejin.cn/post/7314493192187265074)

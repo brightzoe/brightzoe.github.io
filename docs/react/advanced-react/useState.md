@@ -3,9 +3,43 @@
 `const [state, setState] = useState(initState);`
 
 调用 useState 时，返回一个数组，state 初始值为外部调用 useState 时传入的参数。
+useState 的参数（initState）是变量、对象或者是函数，变量或者对象会作为 state 的初始值，如果是函数，函数的返回值会作为初始值。
 
 返回数组：是一个解构赋值，想叫什么名字就叫什么。
 > initState 只会在组件的初始化渲染中起作用，后续渲染会被忽略。initState 可以是一个函数，函数的返回值会作为 initState 的值,这被称为惰性初始化。
+
+> 对于对象和数组，注意 useState 中不会自动补全旧的变量，需要使用展开运算符自己手动补充,完成合并更新。
+
+使用 useState 依赖上一次 state 时，使用 function 的方式更新 setState，确保拿到的是准确的 previous state。
+
+```jsx live
+function Count() {
+  let [count, setCount] = useState(0);
+  const handleAdd = function () {
+    //批量更新
+    setCount(count + 1); // setCount(count=>count + 1);
+    setCount(count + 1);
+  };
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={handleAdd}>add</button>
+    </div>
+  );
+}
+```
+
+## setState 同步异步问题
+
+本身不是异步的，但在表现上有时同步，有时异步。因为 setState 都会触发更新，将多个状态合并更新，减少渲染次数。
+
+React 18之前，只在React时间处理函数或React声明周期中进行更新批处理（batchUpdate）。其他情况下，比如promise、setTimeout、setInterval、原生事件处理函数等，React会立即更新状态，而不进行批处理。
+
+React 18之后，React会批处理所有更新。
+
+- setState(newState)：这种形式直接接受一个新状态作为参数。它不考虑当前的状态，因此如果多次执行setState，只有最后一次设置的状态会被应用，这可能导致前面的状态更新被覆盖。
+
+- setState(prevState => newState)：这种形式接受一个函数作为参数，该函数的参数是前一个状态prevState。这允许你基于前一个状态计算新状态，因此每次更新都基于最新的状态，这是更安全的方式，特别是在有多个连续状态更新的情况下。
 
 当执行 setState 时 state 值被更新，UI 视图也将被更新。即 useState 返回的 setState 既更改了 state 的值，也自动调用了 render 方法触发视图更新。
 

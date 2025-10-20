@@ -5,7 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "dev": "docusaurus start --port 3334",
+    "dev": "docusaurus start --host 0.0.0.0 --port 3334",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -17,7 +17,6 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@codesandbox/sandpack-docusaurus": "file:./plugins/docusaurus",
     "@docusaurus/core": "3.1.0",
     "@docusaurus/plugin-ideal-image": "3.1.0",
     "@docusaurus/preset-classic": "3.1.0",
@@ -44,7 +43,7 @@
     "@types/react-dom": "^18.2.18",
     "prettier": "^3.1.1",
     "typescript": "~5.3.2",
-    "tailwindcss": "^3.3.1"
+    "tailwindcss": "^3.4.3"
 
   },
   "browserslist": {

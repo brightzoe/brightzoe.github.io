@@ -107,7 +107,7 @@ function postorderTraversal(root: TreeNode) {
   stack.push(root);
   // 用栈
   while (stack.length) {
-    // 需要的顺序是左右根,那么放入栈的顺序是根右左,这样分别向前插
+    // 需要的顺序是左右根,那么出栈的顺序是右左根,这样分别向前插
     const top = stack.pop()!;
     res.unshift(top.val);
     top.left && stack.push(top.left);
