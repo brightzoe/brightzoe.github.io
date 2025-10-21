@@ -150,7 +150,7 @@ Lighthouse 是一个开源的自动化工具，用于改进网络应用的质量
 - 构建速度 先定位哪里耗时长（speed-measure-webpack-plugin）
 - 打包体积 先定位哪里大（webpack-bundle-analyzer）
 
-[webpack 优化](./webpack#webpack-optimization)
+[webpack 优化](/docs/fe-basic/fe-engineering/webpack#webpack-optimization)
 
 ## [ React 性能优化](/docs/react/design-pattern-and-best-practices#react-中的性能优化)
 

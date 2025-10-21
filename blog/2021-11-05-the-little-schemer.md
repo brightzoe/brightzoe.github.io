@@ -6,6 +6,8 @@ tags: [reading, dev, fp]
 
 环境配置使用 VS Code 编写 scheme ,参考: [Windows + VS Code 搭建 Scheme 开发环境 - 知乎](https://zhuanlan.zhihu.com/p/405246479)
 
+<!--truncate-->
+
 ## 基本语法
 
 `atom`: 元子 `atom`
