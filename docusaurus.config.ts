@@ -146,7 +146,12 @@ const config: Config = {
           label: '工具',
           position: 'left',
         },
-        { to: 'blog', label: 'Blog', position: 'right' },
+        {
+          to: '/blog',
+          activeBasePath: 'blog',
+          label: 'Blog',
+          position: 'right',
+        },
         {
           href: 'https://github.com/brightzoe',
           // label: "GitHub",

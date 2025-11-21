@@ -9,6 +9,13 @@ on:
 permissions:
   contents: write
 
+  # Cancels all previous workflow runs for the same branch that have not yet completed.
+concurrency:
+  # The concurrency group contains the workflow name and the branch name.
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+
 jobs:
   test-deploy:
     if: github.event_name != 'push'
@@ -19,7 +26,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v6.0.0
         with:
-          node-version: 20
+          node-version: 'latest'
       - uses: pnpm/action-setup@v4.2.0
 
       - name: Install Dependencies
@@ -36,7 +43,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v6.0.0
         with:
-          node-version: 20
+          node-version: 'latest'
       - uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
@@ -49,7 +56,7 @@ jobs:
           CURRENT_BRANCH: main
         run: |
           git config --global user.email "brightzoe@qq.com"
-          git config --global user.name "brightzoe"
+          git config --global user.name "gh-actions"
           pnpm install --no-frozen-lockfile
           pnpm run build
           pnpm run deploy
